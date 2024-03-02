@@ -1,0 +1,784 @@
+1. Fever
+2. Headache
+3. Fatigue
+4. Nausea
+5. Vomiting
+6. Diarrhea
+7. Cough
+8. Shortness of breath
+9. Chest pain
+10. Dizziness
+11. Joint pain
+12. Muscle aches
+13. Abdominal pain
+14. Swelling
+15. Skin rash
+16. Vision changes
+17. Difficulty swallowing
+18. Changes in bowel habits
+19. Changes in urination
+20. Memory loss
+21. Sweating
+22. Chills
+23. Loss of appetite
+24. Weight loss
+25. Insomnia
+26. Changes in taste or smell
+27. Sore throat
+28. Stiff neck
+29. Back pain
+30. Numbness or tingling
+31. Difficulty concentrating
+32. Mood swings
+33. Anxiety
+34. Depression
+35. Irritability
+36. Swollen lymph nodes
+37. Bruising easily
+38. Bleeding or bruising
+39. Cold hands and feet
+40. Frequent urination
+41. Increased thirst
+42. Joint swelling
+43. Muscle weakness
+44. Difficulty speaking or slurred speech
+45. Tremors
+46. Seizures
+47. Hallucinations
+48. Changes in bowel color or consistency
+49. Excessive gas or bloating
+50. Impaired coordination
+51. Loss of balance
+52. Chest tightness
+53. Blurred vision
+54. Ringing in the ears
+55. Sensitivity to light or sound
+56. Vertigo
+57. Jaw pain
+58. Toothache
+59. Hearing loss
+60. Loss of consciousness
+61. Abnormal menstrual bleeding
+62. Night sweats
+63. Skin discoloration
+64. Hair loss
+65. Changes in nail appearance
+66. Difficulty swallowing
+67. Feeling of a lump in the throat
+68. Itchy skin
+69. Unexplained weight gain
+70. Unexplained weight loss
+71. Persistent coughing
+72. Blood in urine
+73. Blood in stool
+74. Constipation
+75. Diarrhea alternating with constipation
+76. Frequent infections
+77. Short attention span
+78. Difficulty understanding or expressing language
+79. Excessive thirst and hunger
+80. Pale skin
+81. Chest pressure
+82. Abdominal bloating
+83. Unusual odors
+84. Metallic taste in the mouth
+85. Difficulty hearing
+86. Increased sensitivity to pain
+87. Jaw stiffness
+88. Leg cramps
+89. Sudden weakness or numbness on one side of the body
+90. Persistent hiccups
+91. Difficulty or pain during sexual intercourse
+92. Persistent itching in the genital area
+93. Abnormal vaginal discharge
+94. Swelling in the extremities
+95. Feeling of fullness in the ears
+96. Sudden mood swings
+97. Persistent heartburn
+98. Feeling of a lump in the breast
+99. Pain or discomfort in the testicles
+100. Abnormal eye movements
+101. Excessive thirst
+102. Rapid heartbeat
+103. Chest fluttering
+104. Sensation of heat or flushing
+105. Difficulty concentrating
+106. Difficulty walking
+107. Sudden and severe headache
+108. Changes in handwriting
+109. Loss of coordination
+110. Cold or clammy skin
+111. Difficulty starting or stopping urination
+112. Painful urination
+113. Frequent nosebleeds
+114. Difficulty swallowing liquids
+115. Feeling of a lump in the abdomen
+116. Excessive sweating at night
+117. Difficulty sleeping
+118. Feeling of a foreign object in the eye
+119. Frequent sighing
+120. Changes in taste perception
+121. Yellowing of the skin or eyes (jaundice)
+122. Unexplained coughing up blood
+123. Persistent bad breath
+124. Difficulty opening the mouth
+125. Abnormal facial expressions
+126. Feeling of impending doom
+127. Swelling or lumps in the neck
+128. Red or swollen eyes
+129. Changes in skin texture
+130. Changes in body odor
+131. Difficulty controlling bladder or bowels
+132. Persistent gas or belching
+133. Rash with joint pain
+134. Difficulty with fine motor skills
+135. Excessive salivation
+136. Changes in voice pitch or quality
+137. Unexplained irritability
+138. Pain or discomfort with urination
+139. Pain or discomfort with bowel movements
+140. Unexplained irritability
+141. Metallic taste in the mouth
+142. Unexplained fevers
+143. Sudden weight gain
+144. Joint stiffness
+145. Feeling of fullness in the chest
+146. Unexplained bruises
+147. Persistent cough with blood
+148. Red or purple skin discoloration
+149. Loss of taste or smell
+150. Persistent fatigue
+151. Difficulty concentrating
+152. Unexplained weight fluctuations
+153. Persistent nausea
+154. Changes in appetite
+155. Persistent indigestion
+156. Feeling of fullness after eating small amounts
+157. Unexplained cough or hoarseness
+158. Persistent night sweats
+159. Persistent abdominal discomfort
+160. Changes in bowel movements (e.g., thin stools)
+161. Difficulty opening or closing the jaw
+162. Persistent itching without visible rash
+163. Unexplained bruising patterns
+164. Difficulty swallowing solid foods
+165. Persistent urinary urgency
+166. Persistent urinary frequency
+167. Unexplained pain in multiple joints
+168. Persistent joint swelling
+169. Persistent muscle cramps or spasms
+170. Unexplained skin discoloration
+171. Changes in hair texture or thickness
+172. Persistent cough with phlegm
+173. Unexplained fatigue after normal activity
+174. Frequent urination during the night
+175. Persistent abdominal bloating
+176. Persistent hiccups
+177. Unexplained changes in sexual desire
+178. Difficulty getting or maintaining an erection
+179. Pain or discomfort during intercourse
+180. Persistent dry or irritated eyes
+181. Unexplained changes in handwriting
+182. Feeling of a lump or mass in the breast
+183. Persistent chest pressure or discomfort
+184. Difficulty starting or stopping the urine stream
+185. Persistent feeling of unreality or detachment
+186. Unexplained changes in taste perception
+187. Difficulty falling or staying asleep
+188. Unexplained changes in vision
+189. Persistent feeling of being overwhelmed
+190. Difficulty swallowing saliva
+191. Persistent pain or discomfort in the upper abdomen
+192. Persistent chest fluttering or palpitations
+193. Unexplained difficulty maintaining focus
+194. Changes in skin pigmentation
+195. Persistent feeling of doom or dread
+196. Persistent bloating after meals
+197. Unexplained weight loss despite normal diet
+198. Frequent or urgent bowel movements
+199. Persistent feeling of guilt or worthlessness
+200. Unexplained loss of balance or coordination
+201. Persistent hoarseness or changes in voice
+202. Unexplained abdominal tenderness
+203. Difficulty stopping the flow of urine
+204. Persistent feelings of hopelessness
+205. Changes in menstrual cycle
+206. Persistent feelings of sadness or emptiness
+207. Unexplained feelings of anger or irritability
+208. Persistent difficulty making decisions
+209. Changes in taste perception
+210. Persistent muscle weakness
+211. Unexplained pain or discomfort in the lower abdomen
+212. Frequent or urgent need to urinate
+213. Persistent feelings of fatigue and weakness
+214. Changes in skin temperature or sensation
+215. Persistent feelings of worthlessness
+216. Unexplained sensitivity to light or noise
+217. Persistent difficulty concentrating on tasks
+218. Changes in nail color or texture
+219. Persistent feelings of tension or restlessness
+220. Unexplained difficulty swallowing liquids
+221. Persistent feelings of numbness or tingling
+222. Changes in facial expressions or emotions
+223. Persistent feelings of guilt or shame
+224. Unexplained changes in skin texture or tone
+225. Persistent feelings of fear or panic
+226. Changes in urinary stream (e.g., weak or intermittent)
+227. Persistent feelings of worry or unease
+228. Unexplained muscle cramps or spasms
+229. Changes in bowel habits (constipation or diarrhea)
+230. Persistent feelings of sadness or tearfulness
+231. Unexplained changes in skin moisture or dryness
+232. Changes in menstrual flow or duration
+233. Persistent feelings of loneliness or isolation
+234. Unexplained changes in skin elasticity
+235. Changes in menstrual bleeding patterns
+236. Persistent feelings of irritability or frustration
+237. Unexplained changes in skin pigmentation
+238. Changes in sexual response or satisfaction
+239. Persistent feelings of restlessness or fidgeting
+240. Unexplained changes in skin thickness or texture
+241. Persistent feelings of fatigue or exhaustion
+242. Changes in menstrual cramping
+243. Unexplained changes in skin temperature or color
+244. Persistent feelings of guilt or remorse
+245. Changes in menstrual cycle regularity
+246. Unexplained changes in skin sensation or itching
+247. Persistent feelings of worthlessness or self-blame
+248. Changes in menstrual cycle length
+249. Unexplained changes in skin sensation or tingling
+250. Persistent feelings of hopelessness or despair
+251. Changes in menstrual flow amount or consistency
+252. Unexplained changes in skin sensation or numbness
+253. Persistent feelings of apathy or indifference
+254. Changes in menstrual cycle frequency
+255. Unexplained changes in skin texture or roughness
+256. Persistent feelings of tension or tightness
+257. Changes in menstrual flow color or odor
+258. Unexplained changes in skin texture or softness
+259. Persistent feelings of emptiness or numbness
+260. Changes in menstrual cycle timing or regularity
+261. Unexplained changes in skin moisture or dryness
+262. Persistent feelings of worry or nervousness
+263. Changes in menstrual cycle intensity or severity
+264. Unexplained changes in skin color or pigmentation
+265. Persistent feelings of sadness or tearfulness
+266. Changes in menstrual cycle duration or length
+267. Unexplained changes in skin color or tone
+268. Persistent feelings of irritability or frustration
+269. Changes in menstrual cycle regularity or predictability
+270. Unexplained changes in skin color or complexion
+271. Persistent feelings of restlessness or fidgeting
+272. Changes in menstrual cycle flow or volume
+273. Unexplained changes in skin color or hue
+274. Persistent feelings of fatigue or exhaustion
+275. Changes in menstrual cycle pattern or consistency
+276. Unexplained changes in skin color or shade
+277. Persistent feelings of guilt or remorse
+278. Changes in menstrual cycle frequency or regularity
+279. Unexplained changes in skin color or tint
+280. Persistent feelings of worthlessness or self-blame
+281. Changes in menstrual cycle timing or predictability
+282. Unexplained changes in skin color or tint
+283. Persistent feelings of hopelessness or despair
+284. Changes in menstrual cycle length or duration
+285. Unexplained changes in skin color or tint
+286. Persistent feelings of tension or tightness
+287. Changes in menstrual cycle intensity or severity
+288. Unexplained changes in skin color or tint
+289. Persistent feelings of worry or nervousness
+290. Changes in menstrual cycle duration or length
+291. Unexplained changes in skin color or tint
+292. Persistent feelings of sadness or tearfulness
+293. Changes in menstrual cycle regularity or predictability
+294. Unexplained changes in skin color or tint
+295. Persistent feelings of irritability or frustration
+296. Changes in menstrual cycle flow or volume
+297. Unexplained changes in skin color or tint
+298. Persistent feelings of restlessness or fidgeting
+299. Changes in menstrual cycle pattern or consistency
+300. Unexplained changes in skin color or tint
+itching
+skin rash
+nodal skin eruptions
+continuous sneezing
+shivering
+chills
+joint pain
+stomach pain
+acidity
+ulcers on tongue
+muscle wasting
+vomiting
+burning micturition
+spotting urination
+fatigue
+weight gain
+anxiety
+cold hands and feets
+mood swings
+weight loss
+restlessness
+lethargy
+patches in throat
+irregular sugar level
+cough
+high fever
+sunken eyes
+breathlessness
+sweating
+dehydration
+indigestion
+headache
+yellowish_skin
+dark urine
+nausea
+loss of appetite
+pain behind the eyes
+back pain
+constipation
+abdominal pain
+diarrhoea
+mild fever
+yellow urine
+yellowing of eyes
+acute liver failure
+fluid overload
+swelling of stomach
+swelled lymph nodes
+malaise
+blurred and distorted vision
+phlegm
+throat irritation
+redness of eyes
+sinus pressure
+runny nose
+congestion
+chest pain
+weakness in limbs
+fast heart rate
+pain during bowel movements
+pain in anal region
+bloody stool
+irritation in anus
+neck pain
+dizziness
+cramps
+bruising
+obesity
+swollen legs
+swollen blood vessels
+puffy face and eyes
+enlarged thyroid
+brittle nails
+swollen extremeties
+excessive hunger
+extra marital contacts
+drying and tingling lips
+slurred speech
+knee pain
+hip joint pain
+muscle weakness
+stiff neck
+swelling joints
+movement stiffness
+spinning movements
+loss of balance
+unsteadiness
+weakness of one body side
+loss of smell
+bladder discomfort
+foul smell of urine
+continuous feel of urine
+passage of gases
+internal itching
+toxic look (typhos)
+depression
+irritability
+muscle pain
+altered sensorium
+red spots over body
+belly pain
+abnormal menstruation
+dischromic patches
+watering from eyes
+increased appetite
+polyuria
+family history
+mucoid sputum
+rusty sputum
+lack of concentration
+visual disturbances
+receiving blood transfusion
+receiving unsterile injections
+coma
+stomach bleeding
+distention of abdomen
+history of alcohol consumption
+fluid overload
+blood in sputum
+prominent veins on calf
+palpitations
+painful walking
+pus filled_pimples
+blackheads
+scurring
+skin peeling
+silver like_dusting
+small dents in nails
+inflammatory nails
+blister
+red sore_around_nose
+yellow crust_ooze
+prognosis
+1. Chest discomfort
+2. Nausea
+3. Indigestion
+4. Heartburn
+5. Stomach pain
+6. Pain that spreads to the arm
+7. Dizziness
+8. Lightheadedness
+9. Sweating
+10. Fatigue
+11. Weakness
+12. Swelling in the legs, ankles, and feet
+13. Rapid or irregular heartbeat
+14. Reduced ability to exercise
+15. Wheezing
+16. Persistent cough
+17. Shortness of breath
+18. Fluttering in the chest
+19. Slow heartbeat (bradycardia)
+20. Pale gray or blue skin or lips (cyanosis)
+21. Swelling in the belly area
+22. Pain in the neck
+23. Jaw pain
+24. Throat pain
+25. Upper belly area pain
+26. Back pain
+27. Pain, numbness, weakness or coldness in the legs or arms
+28. Feeling extremely unwell
+29. Vomiting
+30. Pain radiating down the left side of the body
+31. Feeling faint
+32. Anxiety
+33. Feeling of impending doom
+34. Fever that cannot be attributed to an infection
+35. Palpitations (a fluttering sensation in your chest)
+36. Irregular heartbeat
+37. Racing heartbeat (tachycardia)
+38. Swelling in the legs
+39. Swelling around the eyes
+40. Shortness of breath during feedings in infants
+41. Poor weight gain in infants
+42. Unexplained weight loss
+43. Unexplained weight gain
+44. Frequent urination
+45. Excessive thirst
+46. Excessive hunger
+47. Blurred vision
+48. Slow healing of wounds
+49. Frequent infections
+50. Tingling or numbness in hands or feet
+51. Red, swollen, tender, or bleeding gums
+52. Persistent bad breath or bad taste in the mouth
+53. Loose or separating teeth
+54. Painful chewing
+55. Sensitive teeth
+56. Receding gums or longer appearing teeth
+57. Change in bite or tooth alignment
+58. Change in the fit of partial dentures
+59. Chronic dry mouth
+60. Trouble swallowing
+61. Hoarseness
+62. Persistent sore throat
+63. A lump in the neck
+64. Ear pain
+65. Nosebleeds
+66. Sinus pain
+67. Ringing in the ears
+68. Hearing loss
+69. Eye pain
+70. Vision changes
+71. Drooping of one or both eyelids
+72. A dilated pupil in one eye
+73. Double vision
+74. High fever
+75. Severe headache
+76. Stiff neck
+77. Mental confusion
+78. Seizures
+79. Double vision
+80. Weakness or numbness on one side of the body
+81. Slurred speech
+82. Loss of consciousness
+83. Difficulty breathing
+84. Persistent or high fever
+85. Severe cough
+86. Chest pain
+87. Unusual spots or rashes
+88. Severe vomiting or diarrhea
+89. Abdominal pain or cramping
+90. Bloody stools
+91. Joint pain
+92. Muscle aches
+93. Severe bruising
+94. Uncontrolled bleeding
+95. Blood in urine
+96. Severe or worsening reaction to an insect sting or bite
+97. Swelling of the face, throat, or mouth tissue
+98. Wheezing or difficulty swallowing
+99. Restlessness and anxiety
+100. Rapid pulse or dizziness
+Chest Discomfort
+Nausea
+Indigestion
+Heartburn
+Stomach Pain
+Pain that Spreads to the Arm
+Dizziness
+Lightheadedness
+Fainting
+Fluttering in the Chest
+Racing Heartbeat
+Shortness of Breath
+Slow Heartbeat
+Pale Gray or Blue Skin
+Swelling in the Legs
+Swelling in the Belly
+Swelling around the Eyes
+Shortness of Breath during Feedings
+Poor Weight Gain
+Rapid Heartbeat
+Reduced Ability to Exercise
+Wheezing
+Persistent Cough
+Cough that Brings Up White or Pink Mucus
+Cough that Brings Up Spots of Blood
+1. Nausea⁶⁷
+2. Vomiting⁶⁷
+3. Indigestion⁶⁷
+4. Bloating⁶
+5. Appetite loss⁶
+6. Black stool due to bleeding in your stomach⁶
+7. Abdominal pain⁶⁷
+8. Inability to drink fluids⁶
+9. Feeling hungry soon after eating⁶
+10. Fatigue⁶
+11. Weight loss⁶
+12. Chest pain⁶
+13. Hiccups⁶
+14. Constipation⁷
+15. Diarrhea⁷
+16. Gas⁷
+17. Colitis⁷
+18. Food poisoning⁷
+19. Lactose intolerance⁷
+20. Gastroenteritis⁶
+21. Hiatal hernia⁶
+22. Gastroparesis⁶
+23. Stomach cancer⁶
+24. GERD⁶
+25. Gastritis⁶
+26. Peptic ulcer⁶
+27. Acute ear infections⁶
+28. Triggering asthma⁶
+29. Acute sinusitis⁶
+30. Secondary infections such as strep throat, pneumonia⁶
+31. Stress⁷
+32. Bile reflux from your small intestine⁶
+33. Excess alcohol consumption⁶
+34. Chronic vomiting⁶
+35. Use of aspirin or nonsteroidal anti-inflammatory drugs (NSAIDs)⁶
+36. Bacterial or viral infections⁶
+37. Pernicious anemia⁶
+38. Autoimmune diseases⁶
+39. Runny or stuffy nose
+40. Sore throat¹⁴⁵
+41. Cough¹⁴⁵
+42. Sneezing¹⁴⁵
+43. Generally feeling unwell¹⁴⁵
+44. Slight body aches¹⁴⁵
+45. Mild headache¹⁴⁵
+46. Low-grade fever¹⁴⁵
+47. Congestion¹⁴⁵
+48. Sinus pressure¹¹
+49. Loss of smell or taste¹¹
+50. Watery nasal secretions¹¹
+51. Postnasal drip or drainage in the back of your throat¹¹
+52. Watery eyes³
+53. Fever of 100.4 degrees Fahrenheit (38 degrees Celsius) in newborns up to 12 weeks³
+54. Rising fever or fever lasting more than two days in a child of any age³
+55. More-intense symptoms, such as ,  or 
+56. Trouble with breathing or wheezing³
+cough
+headache
+throat pain
+57. Ear pain³
+58. Fussiness or drowsiness that isn't typical³
+59. No interest in eating³
+60. Fever greater than 101.3 degrees Fahrenheit (38.5 degrees Celsius) that lasts more than three days³
+61. Fever returning after a fever-free period³
+62. Shortness of breath³
+63. Wheezing³
+sinus pain
+65. Pain and discomfort in the head or neck region⁹
+66. Confusion, slurring or loss of consciousness⁹
+67. Weakness in any part of the body⁹
+68. Blurry vision⁹
+69. Nausea and vomiting⁹
+70. High fever⁹
+71. Tenderness of the face, head, neck, and shoulders¹²
+72. A feeling of pressure behind the eyes¹²
+73. Sensitivity to light and sound
+1. Nausea⁶⁷
+2. Vomiting⁶⁷
+3. Indigestion⁶⁷
+4. Bloating⁶
+5. Appetite loss⁶
+6. Black stool due to bleeding in your stomach⁶
+7. Abdominal pain⁶⁷
+8. Inability to drink fluids⁶
+9. Feeling hungry soon after eating⁶
+10. Fatigue⁶
+11. Weight loss⁶
+12. Chest pain⁶
+13. Hiccups⁶
+14. Constipation⁷
+15. Diarrhea⁷
+16. Gas⁷
+17. Colitis⁷
+18. Food poisoning⁷
+19. Lactose intolerance⁷
+20. Gastroenteritis⁶
+21. Hiatal hernia⁶
+22. Gastroparesis⁶
+23. Stomach cancer⁶
+24. GERD⁶
+25. Gastritis⁶
+26. Peptic ulcer⁶
+27. Acute ear infections⁶
+28. Triggering asthma⁶
+29. Acute sinusitis⁶
+30. Secondary infections such as strep throat, pneumonia⁶
+31. Stress⁷
+32. Bile reflux from your small intestine⁶
+33. Excess alcohol consumption⁶
+34. Chronic vomiting⁶
+35. Use of aspirin or nonsteroidal anti-inflammatory drugs (NSAIDs)⁶
+36. Bacterial or viral infections⁶
+37. Pernicious anemia⁶
+38. Autoimmune diseases⁶
+39. Runny or stuffy nose¹⁴⁵
+40. Sore throat¹⁴⁵
+41. Cough¹⁴⁵
+42. Sneezing¹⁴⁵
+43. Generally feeling unwell¹⁴⁵
+44. Slight body aches¹⁴⁵
+45. Mild headache¹⁴⁵
+46. Low-grade fever¹⁴⁵
+47. Congestion¹⁴⁵
+48. Sinus pressure¹¹
+49. Loss of smell or taste¹¹
+50. Watery nasal secretions¹¹
+51. Postnasal drip or drainage in the back of your throat¹¹
+52. Watery eyes³
+53. Fever of 100.4 degrees Fahrenheit (38 degrees Celsius) in newborns up to 12 weeks³
+54. Rising fever or fever lasting more than two days in a child of any age³
+55. More-intense symptoms, such as headache, throat pain or cough³
+56. Trouble with breathing or wheezing³
+57. Ear pain³
+58. Fussiness or drowsiness that isn't typical³
+59. No interest in eating³
+60. Fever greater than 101.3 degrees Fahrenheit (38.5 degrees Celsius) that lasts more than three days³
+61. Fever returning after a fever-free period³
+62. Shortness of breath³
+63. Wheezing³
+64. Intense sore throat, headache or sinus pain³
+65. Pain and discomfort in the head or neck region⁹
+66. Confusion, slurring or loss of consciousness⁹
+67. Weakness in any part of the body⁹
+68. Blurry vision⁹
+69. Nausea and vomiting⁹
+70. High fever⁹
+71. Tenderness of the face, head, neck, and shoulders¹²
+72. A feeling of pressure behind the eyes
+Sensitivity to light and sound9
+Migraine headache6
+Hemicrania continua6
+Ice pick headache6
+Thunderclap headache6
+Allergy or sinus headache6
+Hormone headache (also known as menstrual migraine)6
+Caffeine headache6
+Exertion headache6
+Hypertension headache6
+Rebound headache6
+Post-traumatic headache6
+Spinal headache6
+Bone pain
+Swelling and tenderness near the affected area
+Weakened bone, leading to fracture
+Fatigue
+Unintended weight loss
+A new cough that doesn’t go away
+Coughing up blood, even a small amount
+Shortness of breath
+Chest pain
+Hoarseness
+Fatigue
+Lump or area of thickening that can be felt under the skin
+Weight changes, including unintended loss or gain
+Skin changes, such as yellowing, darkening or redness of the skin, sores that won’t heal, or changes to existing moles
+Changes in bowel or bladder habits
+Persistent cough or trouble breathing
+Difficulty swallowing
+Hoarseness
+Persistent indigestion or discomfort after eating
+Persistent, unexplained muscle or joint pain
+Persistent, unexplained fevers or night sweats
+Unexplained bleeding or bruising
+Losing weight without trying
+Headache or pressure in the head
+A new mole, or a mole that changes in size, shape, or color, or that bleeds
+A pearly or waxy bump on your face, ears, or neck
+A flat, pink/red- or brown-colored patch or bump
+Areas on your skin that look like scars
+Sores that look crusty, have a depression in the middle, or bleed often
+A spot that is itchy or painful
+A non-healing sore that bleeds or develops a crust
+A red- or skin-colored shiny bump on the top of the skin
+A red rough or scaly spot that you can feel
+A growth with a raised border and central crust or bleeding
+A wart-like growth
+A scar-like growth without a well-defined border
+Does not respond to name by 9 months of age
+Does not show facial expressions like happy, sad, angry, and surprised by 9 months of age
+Does not play simple interactive games like pat-a-cake by 12 months of age
+Uses few or no gestures by 12 months of age (for example, does not wave goodbye)
+Does not share interests with others by 15 months of age (for example, shows you an object that they like)
+Does not point to show you something interesting by 18 months of age
+Does not notice when others are hurt or upset by 24 months of age
+Does not notice other children and join them in play by 36 months of age
+Does not pretend to be something else, like a teacher or superhero, during play by 48 months of age
+Does not sing, dance, or act for you by 60 months of age
+Lines up toys or other objects and gets upset when order is changed
+Repeats words or phrases over and over (called echolalia)
+Plays with toys the same way every time
+Is focused on parts of objects (for example, wheels)
+Gets upset by minor changes
+Has obsessive interests
+Must follow certain routines
+Flaps hands, rocks body, or spins self in circles
+Has unusual reactions to the way things sound, smell, taste, look, or feel
+Delayed language skills
+Delayed movement skills
+Delayed cognitive or learning skills
+Hyperactive, impulsive, and/or inattentive behavior
+Epilepsy or seizure disorder
+Unusual eating and sleeping habits
+Gastrointestinal issues (for example, constipation)
+Unusual mood or emotional reactions
+Anxiety, stress, or excessive worry
+Lack of fear or more fear than expected
