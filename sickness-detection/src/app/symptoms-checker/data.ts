@@ -4,7 +4,12 @@ export const data = {
       "Dizziness",
       "Blurred vision",
       "Migraine",
-      "Tension headache"
+      "Tension headache",
+      "Headache",
+      "Dizziness",
+      "Blurred vision",
+      "Migraine",
+      "Tension headache",
     ],
     "Neck": [
       "Stiff neck",

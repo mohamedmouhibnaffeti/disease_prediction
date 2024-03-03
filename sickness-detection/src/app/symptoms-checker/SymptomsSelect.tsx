@@ -13,18 +13,22 @@ export default () => {
                     <h1 className="text-3xl font-semibold uppercase"> Your <span className="text-sickness-primary">Symptoms</span> </h1>
                     <div className="mt-8 flex  gap-4 basis-[50%] flex-wrap justify-center">
                     {Object.entries(data).map(([bodyPart, symptomsArray]) => (
-                            <div key={bodyPart} className="basis-[40%] flex gap-2 flex-col">
+                        <div key={bodyPart} className="basis-[40%] flex gap-2 flex-col">
                             <h2 className="text-xl font-semibold text-sickness-orange">Symptoms for {bodyPart}:</h2>
                             <ul className="flex flex-col gap-2">
                                 {symptomsArray.map((symptom, index) => (
-                                <div className="flex gap-2 bg-sickness-lavenderBlue py-2 rounded-md" key={index}> 
-                                    <CheckIcon className="text-sickness-mayaBlue" />
-                                    <p> {symptom} </p>
+                                <div className="flex gap-2 bg-sickness-lavenderBlue py-2 rounded-md pl-4" key={index}> 
+                                    <CheckIcon className="text-sickness-orange w-5 h-5" />
+                                    <p className="font-[550] text-sm"> {symptom} </p>
                                 </div>
                                 ))}
                             </ul>
-                            </div>
-                        ))}
+                        </div>
+                    ))}
+                    </div>
+                    <div className="flex justify-between w-full">
+                        <button className="bg-none py-2 px-14 text-sickness-primary border-2 border-sickness-primary rounded-md font-semibold mt-6 self-end"> Back </button>
+                        <button className="bg-sickness-primary border-2 border-sickness-primary py-2 px-14 text-white rounded-md font-semibold mt-6 self-end"> Continue </button>
                     </div>
                 </div>
                 <div className="flex-[0.5]">

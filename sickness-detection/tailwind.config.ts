@@ -28,7 +28,7 @@ const config = {
           primaryText: "#023047",
           lightBlue: "#8ecae6",
           yellow: "#ffb703",
-          orange: "#fb8500",
+          orange: "#d18c3f",
           rosyBrown: "#BD9391",
           ashGray: "#ADBABD",
           powderBlue: "#91B7C7",
