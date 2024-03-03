@@ -119,9 +119,22 @@
 } 
 
 .mayablue-glassmorphism {
-  background: rgba( 130, 112, 129, 0.65 );
+  background: rgba( 108, 190, 237, 0.85 );
 box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-backdrop-filter: blur( 8.5px );
--webkit-backdrop-filter: blur( 8.5px );
+backdrop-filter: blur( 5.5px );
+-webkit-backdrop-filter: blur( 5.5px );
 border-radius: 10px;
+}
+
+
+.bg-main-layout{
+  background: hsla(244, 52%, 94%, 1);
+
+background: radial-gradient(circle, hsla(244, 52%, 94%, 1) 0%, hsla(198, 100%, 90%, 1) 100%);
+
+background: -moz-radial-gradient(circle, hsla(244, 52%, 94%, 1) 0%, hsla(198, 100%, 90%, 1) 100%);
+
+background: -webkit-radial-gradient(circle, hsla(244, 52%, 94%, 1) 0%, hsla(198, 100%, 90%, 1) 100%);
+
+filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#E7E6F7", endColorstr="#CAEFFF", GradientType=1 );
 }

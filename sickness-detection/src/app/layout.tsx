@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import Nav from "@/components/Nav";
+import { Providers } from "./Providers";
 
 export const inter = Inter({ 
   subsets: ["latin"],
@@ -22,11 +23,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn(
-          "min-h-screen bg-sickness-lightGray font-sans antialiased overflow-x-hidden",
+          "min-h-screen bg-main-layout font-sans antialiased overflow-x-hidden",
           inter.variable
         )}>
           <Nav />
-          {children}
+          <Providers>
+            {children}
+          </Providers>
       </body>
     </html>
   );
