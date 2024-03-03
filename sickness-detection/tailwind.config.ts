@@ -24,6 +24,11 @@ const config = {
       },
       colors: {
         sickness: {
+          primary: "#219ebc",
+          primaryText: "#023047",
+          lightBlue: "#8ecae6",
+          yellow: "#ffb703",
+          orange: "#fb8500",
           rosyBrown: "#BD9391",
           ashGray: "#ADBABD",
           powderBlue: "#91B7C7",

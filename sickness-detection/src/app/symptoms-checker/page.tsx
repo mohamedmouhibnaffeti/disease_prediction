@@ -12,8 +12,8 @@ export default () => {
                 { ListItems.map((item: any, index: number)=>{
                     return(
                         <div className="flex flex-col gap-4" key={index}>
-                            <p className="uppercase font-semibold"> {item.nom} </p>
-                            {item.etat && <div className="h-[2px] bg-black z-50 translate-y-[1.5px] rounded-full" />}
+                            <p className="uppercase font-semibold text-sickness-primaryText"> {item.nom} </p>
+                            {item.etat && <div className="h-[2px] bg-sickness-primaryText z-50 translate-y-[1.5px] rounded-full" />}
                         </div>
                     )
                 }) } 

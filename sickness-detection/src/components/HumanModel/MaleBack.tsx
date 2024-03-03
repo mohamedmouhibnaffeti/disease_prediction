@@ -1,3 +1,11 @@
+import { data } from "@/app/symptoms-checker/data"
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+  } from "@/components/ui/tooltip"
+  
 const MaleBack = () => {
     return (
             <svg id="full-body" x="0px" y="0px" viewBox="0 0 310 385" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
