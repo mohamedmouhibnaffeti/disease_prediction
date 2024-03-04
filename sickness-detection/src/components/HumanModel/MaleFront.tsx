@@ -1,6 +1,7 @@
 "use client"
 import { data } from "@/app/symptoms-checker/data"
 import { useState } from "react"
+import maleFront from "../Images/front-m.webp"
 
 
 
@@ -13,7 +14,7 @@ const MaleFront = (props: {setDialogOpen: any, setBodyPart: any}) => {
     return (
             <svg id="full-body" x="0px" y="0px" viewBox="0 0 310 385" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
 
-                <image xlinkHref="https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/symptom_checker_beta/assets/front-m.png" height="100%" width="100%" x="0" y="0" className="body-bg-img"></image>
+                <image xlinkHref={maleFront.src} height="100%" width="100%" x="0" y="0" className="body-bg-img"></image>
                                
                 <path onClick={()=>handleSetDialogOpen('Head')} className="hover:fill-blue-500 cursor-pointer fill-blue-200/5" d="M6.348 119.904c1.318 1.764 2.473 3.19 4.743 2.909 2.521-.313 2.98 1.095 3.44 3.151 1.164 5.183 2.56 10.317 3.974 15.44.057.206.124.412.198.615 11.872 8.438 24.13 19.488 39.493 18.548 8.276-.506 16.606-5.58 23.459-9.926 4.104-2.603 8.053-5.448 11.86-8.474 2.506-5.414 3.573-11.098 4.277-16.905.294-2.426 1.199-2.92 3.46-3.002 1.441-.052 3.303-.966 4.152-2.106 1.518-2.04 2.905-4.43 3.465-6.875 1.11-4.836 1.836-9.79 2.307-14.735.385-4.034.352-8.137.106-12.185-.077-1.249-1.203-2.88-2.317-3.514-1.695-.963-2.035-2.074-1.992-3.817.363-14.543.086-29.01-4.415-43.078-2.962-9.257-7.513-17.672-14.945-23.838C76.343 2.759 63.117-1.15 48.45 1.136c-9.297 1.448-17.978 4.75-24.99 11.173-8.07 7.393-13.073 16.756-15.686 27.364-3.262 13.243-3.715 26.712-2.995 40.253.084 1.587-.143 2.633-1.736 3.413-.835.408-1.762 1.593-1.81 2.473-.238 4.279-.532 8.603-.17 12.857.62 7.317.515 14.846 5.286 21.235" opacity=".525" transform="scale(0.32,0.32), translate(425,2)" ></path>
                 

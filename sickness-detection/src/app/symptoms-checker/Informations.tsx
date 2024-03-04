@@ -2,10 +2,13 @@
 import { AlertOctagon } from "lucide-react"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@radix-ui/react-label"
+import { useContext } from "react"
+import { SymptomsCheckerContext } from "./SymptomsCheckerContext"
 export default () => {
+    const { changeEtatByName } = useContext(SymptomsCheckerContext)
     return (
         <div className="w-[44rem] flex flex-col bg-white border-[1px] border-sickness-border shadow-md rounded-lg mt-[8rem] py-8 px-4">
-            <p className="text-center text-sickness-carolinaBlue font-semibold">Identify possible conditions and treatment related to your symptoms.</p>
+            <p className="text-center text-sickness-primaryText font-semibold">Identify possible conditions and treatment related to your symptoms.</p>
             <AlertOctagon  className="text-sickness-ashGray font-semibold self-center h-12 w-12 mt-3"/>
             <div className="flex gap-1 text-sickness-ashGray font-semibold w-full justify-center items-center mt-2"> <p>Please note that this tool doesn't replace a medical professional</p> </div>
             <p className="text-center text-sickness-ashGray font-semibold"> Don't worry, after the prediction is made we'll recommend a doctor near you so you can ask for an appointment </p>
@@ -28,7 +31,7 @@ export default () => {
                 </RadioGroup>
                 </div>
             </div>
-            <button className="mayablue-glassmorphism px-8 text-white py-3 mt-8"> Continue </button>
+            <button className="bg-sickness-primary border-2 border-sickness-primary py-2 px-14 text-white rounded-md font-semibold mt-6 self-end" onClick={()=>changeEtatByName('Symptoms')}> Continue </button>
         </div>
     )
 }

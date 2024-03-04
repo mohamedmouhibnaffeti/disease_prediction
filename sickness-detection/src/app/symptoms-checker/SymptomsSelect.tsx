@@ -2,7 +2,10 @@
 import Human from "@/components/HumanModel/Human"
 import { data } from "./data"
 import { CheckIcon } from "lucide-react"
+import { useContext } from "react"
+import { SymptomsCheckerContext } from "./SymptomsCheckerContext"
 export default () => {
+    const { changeEtatByName } = useContext(SymptomsCheckerContext)
     return (
         <div className="mt-[1rem] flex flex-col justify-center">
             <h1 className="text-center text-lg text-sickness-primaryText font-semibold"> Select your symptoms from the human model below </h1>
@@ -17,7 +20,7 @@ export default () => {
                             <h2 className="text-xl font-semibold text-sickness-orange">Symptoms for {bodyPart}:</h2>
                             <ul className="flex flex-col gap-2">
                                 {symptomsArray.map((symptom, index) => (
-                                <div className="flex gap-2 bg-sickness-lavenderBlue py-2 rounded-md pl-4" key={index}> 
+                                <div className="flex gap-2 bg-sickness-lavenderBlue py-2 rounded-md" key={index}> 
                                     <CheckIcon className="text-sickness-orange w-5 h-5" />
                                     <p className="font-[550] text-sm"> {symptom} </p>
                                 </div>
@@ -27,8 +30,8 @@ export default () => {
                     ))}
                     </div>
                     <div className="flex justify-between w-full">
-                        <button className="bg-none py-2 px-14 text-sickness-primary border-2 border-sickness-primary rounded-md font-semibold mt-6 self-end"> Back </button>
-                        <button className="bg-sickness-primary border-2 border-sickness-primary py-2 px-14 text-white rounded-md font-semibold mt-6 self-end"> Continue </button>
+                        <button className="bg-none py-2 px-14 text-sickness-primary border-2 border-sickness-primary rounded-md font-semibold mt-6" onClick={()=>changeEtatByName('informations')}> Back </button>
+                        <button className="bg-sickness-primary border-2 border-sickness-primary py-2 px-14 text-white rounded-md font-semibold mt-6" onClick={()=>changeEtatByName('Conditions')}> Continue </button>
                     </div>
                 </div>
                 <div className="flex-[0.5]">

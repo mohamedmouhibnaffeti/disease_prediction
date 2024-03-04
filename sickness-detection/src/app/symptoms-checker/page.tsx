@@ -3,9 +3,10 @@ import { useContext } from "react"
 import Informations from "./Informations"
 import { SymptomsCheckerContext } from "./SymptomsCheckerContext"
 import SymptomsSelect from "./SymptomsSelect"
+import Conditions from "./Conditions"
 
 export default () => {
-    const { ListItems } = useContext(SymptomsCheckerContext)
+    const { ListItems, getEtatByName } = useContext(SymptomsCheckerContext)
     return (
         <div className="flex flex-col items-center">
             <div className="flex gap-8 mt-[8rem]"> 
@@ -19,7 +20,9 @@ export default () => {
                 }) } 
             </div>
             <div className="w-full h-[2px] bg-sickness-border -z-50" />
-            <SymptomsSelect />
+            { getEtatByName('informations') && <Informations />}
+            { getEtatByName('Symptoms') && <SymptomsSelect />}
+            { getEtatByName('Conditions') && <Conditions />}
         </div>
     )
 }

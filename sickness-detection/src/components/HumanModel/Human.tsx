@@ -18,7 +18,6 @@ import { data } from "@/app/symptoms-checker/data"
 
 const DialogItem = (props: {etat: boolean, setDialogOpen: any, BodyPart: string}) => {
     const {etat, setDialogOpen, BodyPart} = props
-    console.log(etat)
     return(
         <Dialog open={etat}>
             <DialogContent className="sm:max-w-[425px]">
@@ -30,7 +29,7 @@ const DialogItem = (props: {etat: boolean, setDialogOpen: any, BodyPart: string}
                 </DialogHeader>
                 <div className="w-full h-[10rem] overflow-y-auto">
                 {Object.entries(data).map(([bodyPart, symptomsArray]) => (
-                            <ul className="flex flex-col gap-2">
+                            <ul className="flex flex-col gap-2" key={bodyPart}>
                                 { bodyPart === BodyPart && symptomsArray.map((symptom, index) => (
                                 <div className="flex items-center space-x-2 mt-2 gap-2 text-[#9D9D9D] ml-6" key={index}>
                                     <Checkbox id={symptom}/>
