@@ -4,6 +4,9 @@ import Informations from "./Informations"
 import { SymptomsCheckerContext } from "./SymptomsCheckerContext"
 import SymptomsSelect from "./SymptomsSelect"
 import Conditions from "./Conditions"
+import Result from "./Result"
+import Recommendations from "./Recommendations"
+import Doctors from "./Doctors"
 
 export default () => {
     const { ListItems, getEtatByName } = useContext(SymptomsCheckerContext)
@@ -23,6 +26,9 @@ export default () => {
             { getEtatByName('informations') && <Informations />}
             { getEtatByName('Symptoms') && <SymptomsSelect />}
             { getEtatByName('Conditions') && <Conditions />}
+            { getEtatByName('result') && <Result /> }
+            { getEtatByName('recommendations') && <Recommendations /> }
+            { getEtatByName('doctors') && <Doctors /> }
         </div>
     )
 }

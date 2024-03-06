@@ -39,7 +39,7 @@ const config = {
           rosequartz: "#AEA3B0",
           mouthbattenPink: "#827081",
           lavenderBlue: "#C6D2ED",
-          lightGray: "#F6F6F6",
+          gray: "#999999",
           border: "#C5C5C5"
         },
         border: "hsl(var(--border))",
