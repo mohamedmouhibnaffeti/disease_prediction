@@ -50,7 +50,7 @@ export default () => {
                 }
             </div>
             <div className="w-[30rem] flex flex-col bg-white border-[1px] border-l-0 border-sickness-border shadow-md rounded-r-lg mt-[6rem] py-8 px-4 items-center justify-center">
-                <p className="text-center text-sickness-primaryText font-semibold self-center">
+                <p className="text-center text-sickness-primaryText font-semibold self-center py-4 px-2 border-2 border-sickness-orange bg-sickness-yellow/20 rounded-md">
                     Please note that we won't recommend any medicines as it's out of our responsibilities, so we won't be responsible for you taking any kind of madicins based on our predictions, also please note that we urge you to seek a medical professional, it's not adviced to only follow our prediction.
                     <br />However don't worry in the next page we will provide you with a list with our trusted doctors so you can make an appointment as soon as possible.
                 </p>
