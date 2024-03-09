@@ -23,12 +23,12 @@ export const SymptomsCheckerContext = createContext<SymptomsCheckerContextType>(
 
 export const SymptomsCheckerProvider = ({ children }: {children: React.ReactNode}) => {
     const [ListItems, setListItems] = useState<any>([
-        { nom: 'informations', etat: false },
+        { nom: 'informations', etat: true },
         { nom: 'Symptoms', etat: false },
         { nom: 'Conditions', etat: false },
         { nom: 'result', etat: false },
         { nom: 'recommendations', etat: false },
-        { nom: 'doctors', etat: true },
+        { nom: 'doctors', etat: false },
     ])
 
     const getEtatByName = (name: string) => {
