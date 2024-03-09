@@ -20,8 +20,8 @@ export default () => {
     }, [])
     const { changeEtatByName } = useContext(SymptomsCheckerContext)
     return (
-        <div className="flex">
-            <div className="w-[44rem] flex flex-col bg-white border-[1px] border-sickness-border shadow-md rounded-l-lg mt-[6rem] py-8 px-4">
+        <div className="flex flex-wrap md:ml-0 ml-[12rem] md:py-0 pb-4">
+            <div className="md:w-[44rem] w-[30rem] flex flex-col bg-white border-[1px] border-sickness-border shadow-md md:rounded-l-lg rounded-lg md:mt-[6rem] mt-[2rem] py-8 px-4">
                 <p className="text-center text-2xl text-sickness-primaryText font-semibold self-start">
                     Our Recommendations :
                 </p>
@@ -49,7 +49,7 @@ export default () => {
                 </div>
                 }
             </div>
-            <div className="w-[30rem] flex flex-col bg-white border-[1px] border-l-0 border-sickness-border shadow-md rounded-r-lg mt-[6rem] py-8 px-4 items-center justify-center">
+            <div className="w-[30rem] flex flex-col bg-white border-[1px] md:border-l-0 border-sickness-border shadow-md md:rounded-r-lg rounded-lg md:mt-[6rem] mt-[2rem] py-8 px-4 items-center justify-center">
                 <p className="text-center text-sickness-primaryText font-semibold self-center py-4 px-2 border-2 border-sickness-orange bg-sickness-yellow/20 rounded-md">
                     Please note that we won't recommend any medicines as it's out of our responsibilities, so we won't be responsible for you taking any kind of madicins based on our predictions, also please note that we urge you to seek a medical professional, it's not adviced to only follow our prediction.
                     <br />However don't worry in the next page we will provide you with a list with our trusted doctors so you can make an appointment as soon as possible.

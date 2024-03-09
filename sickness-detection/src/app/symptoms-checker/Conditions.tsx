@@ -95,7 +95,7 @@ export default () => {
   }, [selectedConditions])
   
   return (
-      <div className="w-[44rem] flex flex-col bg-white border-[1px] border-sickness-border shadow-md rounded-lg mt-[8rem] py-8 px-4">
+      <div className="md:w-[44rem] w-[30rem] flex flex-col bg-white border-[1px] border-sickness-border shadow-md rounded-lg mt-[8rem] py-8 px-4 md:ml-0 ml-[12rem]">
           <p className="text-center text-sickness-primaryText font-semibold">Please provide details of your current and past medical conditions to help us understand your health history better and enhance our ability to make accurate predictions.</p>
           <div className="flex flex-col gap-2 mt-2">
             { selectedConditions.map((condition: {sicknessName: string, date: DateRange | undefined}, index: number)=>{
