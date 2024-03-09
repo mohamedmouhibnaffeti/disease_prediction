@@ -24,7 +24,7 @@ export default () => {
             <div className="lg:flex-[0.4] py-8 px-4 bg-sickness-primary/10 border border-sickness-primary rounded-lg ">
                 <div className="w-full flex justify-between">
                     <p className="font-semibold text-xl text-sickness-primaryText"> {`Dr. ${doctor.first_name} ${doctor.last_name}`} <span className="text-sickness-gray font-medium">{`(${doctor.specialty})`}</span> </p>
-                    <p className="font-medium text-sickness-gray translate-y-1"> <span className="font-semibold text-sickness-primaryText">{doctor.years_of_experience}</span> Years of experience </p>
+                    <p className="font-medium text-sickness-gray translate-y-1 self-end text-end"> <span className="font-semibold text-sickness-primaryText">{doctor.years_of_experience}</span> Years of experience </p>
                 </div>
                 <div className="w-full flex justify-between mt-4">
                     <div className="flex items-center">
