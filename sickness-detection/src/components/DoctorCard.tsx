@@ -1,7 +1,10 @@
+import { useRouter } from "next/navigation"
+
 export default (props: {doctor: any, color: any}) => {
+    const Router = useRouter()
     const {doctor, color} = props
     return(
-        <div className="w-[20rem] rounded-xl shadow-md border border-sickness-border flex flex-col pb-4">
+        <div className="w-[20rem] rounded-xl shadow-md border border-sickness-border flex flex-col pb-4 hover:shadow-xl shad hover:shadow-sickness-primary/70">
             <div className={`rounded-t-xl h-28`} style={{backgroundColor: `${color.bg}`}}/>
             <div className="self-center border-2 border-sickness-border rounded-full w-16 h-16 flex justify-center items-center shadow-xl z-30 -translate-y-8" style={{backgroundColor: `${color.bg}`}}> 
                 <p className="font-semibold" style={{color: `${color.text}`}}>
@@ -21,7 +24,7 @@ export default (props: {doctor: any, color: any}) => {
                 </div>
                 <p className="font-semibold text-sm"> {doctor.years_of_experience} <span className="text-sickness-gray font-medium">years of experience</span> </p>
             </div>
-            <button className="self-center mt-4 bg-sickness-primaryText text-white rounded-full px-4 py-2 shadow-lg text-sm font-semibold"> Visit Profile </button>
+            <button className="self-center mt-4 bg-sickness-primaryText text-white rounded-full px-4 py-2 shadow-lg text-sm font-semibold" onClick={()=>Router.push('/doctor')}> Visit Profile </button>
         </div>
     )
 }

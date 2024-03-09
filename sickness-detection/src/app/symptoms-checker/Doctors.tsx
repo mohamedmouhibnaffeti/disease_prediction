@@ -1,7 +1,9 @@
-import { useContext, useEffect, useLayoutEffect, useState } from "react"
+import { useContext, useEffect, useLayoutEffect, useState, lazy } from "react"
 import { SymptomsCheckerContext } from "./SymptomsCheckerContext"
-import DoctorCard from "@/components/DoctorCard"
 import { getRandomColor } from "@/lib/statics/Colors"
+
+const DoctorCard = lazy(()=>import('@/components/DoctorCard'))
+
 let doctors = [
     {
         "first_name": "John",

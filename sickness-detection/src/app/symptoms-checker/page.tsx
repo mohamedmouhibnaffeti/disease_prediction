@@ -1,12 +1,13 @@
 "use client"
-import { useContext } from "react"
-import Informations from "./Informations"
+import { useContext, lazy } from "react"
 import { SymptomsCheckerContext } from "./SymptomsCheckerContext"
-import SymptomsSelect from "./SymptomsSelect"
-import Conditions from "./Conditions"
-import Result from "./Result"
-import Recommendations from "./Recommendations"
-import Doctors from "./Doctors"
+
+const Informations = lazy(()=>import("./Informations"))
+const Conditions = lazy(()=>import("./Conditions"))
+const Result = lazy(()=>import("./Result"))
+const Recommendations = lazy(()=>import("./Recommendations"))
+const Doctors = lazy(()=>import("./Doctors"))
+const SymptomsSelect = lazy(()=>import("./SymptomsSelect"))
 
 export default () => {
     const { ListItems, getEtatByName } = useContext(SymptomsCheckerContext)
@@ -17,7 +18,7 @@ export default () => {
                     return(
                         <div className="flex flex-col gap-4" key={index}>
                             <p className="uppercase font-semibold text-sickness-primaryText"> {item.nom} </p>
-                            {item.etat && <div className="h-[2px] bg-sickness-primaryText z-50 translate-y-[1.5px] rounded-full" />}
+                            {item.etat && <div className="h-[2px] bg-sickness-primaryText z-20 translate-y-[1.5px] rounded-full" />}
                         </div>
                     )
                 }) } 
