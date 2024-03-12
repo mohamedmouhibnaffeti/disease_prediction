@@ -16,7 +16,7 @@ data = {
         ['swollen lymph node', 'throat pain', 'throat irrit', 'swell lymph node', 'stomach pain', 'muscl pain',
          'fever', 'shoulder pain', 'high fever', 'chest pain', 'chest discomfort', 'eye pain', 'mild fever',
          'ear pain', 'neck pain', 'irrit anu', 'bone pain', 'knee pain'],
-        ['difficulti hear', 'visual disturb', 'difficulti walk', 'weight loss', 'weight gain'],
+        ['difficulti hear', 'visual disturb', 'difficulti walk', 'weight gain'],
         ['nausea', 'chest pressur', 'depress', 'fast heart rate', 'dizzi', 'diarrhoea', 'hair loss',
          'sinu pressur', 'lightheaded', 'rapid heartbeat', 'chest pain', 'diarrhea', 'anxieti',
          'troubl breath wheez', 'chill', 'hear loss'],
@@ -59,7 +59,7 @@ input_size = X_train.shape[1]
 output_size = y_train.shape[1]
 hidden_size = 128
 num_layers = 2
-learning_rate = 0.001
+learning_rate = 0.0001
 num_epochs = 500
 
 # Define neural network model
@@ -104,10 +104,11 @@ def predict_disease(model, symptoms, threshold=0.6):
 # Example symptoms
 input_symptoms = ['nausea', 'chest pressur', 'depress', 'fast heart rate', 'dizzi', 'diarrhoea', 'hair loss',
          'sinu pressur', 'lightheaded', 'rapid heartbeat', 'chest pain', 'diarrhea', 'anxieti',
-         'troubl breath wheez', 'chill', 'hear loss']
+         'troubl breath wheez', 'irrit', 'itch', 'constip', 'bloat']
 
 # Predict diseases for the given symptoms
 predicted_diseases = predict_disease(model, input_symptoms)
 
 print("Predicted Diseases:", predicted_diseases)
+
 
