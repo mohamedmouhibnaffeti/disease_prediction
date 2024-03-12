@@ -162,7 +162,7 @@ const File_Insert = () => {
     return(
         <div className="flex flex-col justify-center items-center min-h-screen w-screen">        
             <div className="flex flex-col items-center justify-center gap-12 px-8 xl:flex-row ">
-                <div className="flex flex-col items-center justify-center bg-white px-10 pt-12 pb-6 rounded-3xl border-2 border-gray-300 shadow-xl mt-24 mb-4 md:w-fit w-[29rem]">
+                <div className="flex flex-col items-center justify-center bg-sickness-primaryText/20 px-10 pt-12 pb-6 rounded-3xl border-2 border-gray-300 shadow-xl mt-24 mb-4 md:w-fit w-[29rem]">
                     <p className="font-semibold text-4xl text-slate-950 text-center">
                         Upload and attach CSV files
                     </p>
