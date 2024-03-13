@@ -4,6 +4,7 @@ import tensorflow as tf
 from sklearn.preprocessing import MultiLabelBinarizer
 from sklearn.preprocessing import MinMaxScaler
 
+#9aad ysir overfitting
 # Load data
 data = {
     "result_sicknesses": ["Atrial fibrillation", "Adult Still disease", "Dry macular degeneration", 
@@ -16,7 +17,7 @@ data = {
         ['swollen lymph node', 'throat pain', 'throat irrit', 'swell lymph node', 'stomach pain', 'muscl pain',
          'fever', 'shoulder pain', 'high fever', 'chest pain', 'chest discomfort', 'eye pain', 'mild fever',
          'ear pain', 'neck pain', 'irrit anu', 'bone pain', 'knee pain'],
-        ['difficulti hear', 'visual disturb', 'difficulti walk', 'weight gain'],
+        ['difficulti hear', 'visual disturb', 'difficulti walk', 'weight loss', 'weight gain'],
         ['nausea', 'chest pressur', 'depress', 'fast heart rate', 'dizzi', 'diarrhoea', 'hair loss',
          'sinu pressur', 'lightheaded', 'rapid heartbeat', 'chest pain', 'diarrhea', 'anxieti',
          'troubl breath wheez', 'chill', 'hear loss'],
@@ -59,8 +60,8 @@ input_size = X_train.shape[1]
 output_size = y_train.shape[1]
 hidden_size = 128
 num_layers = 2
-learning_rate = 0.0001
-num_epochs = 500
+learning_rate = 0.001
+num_epochs = 2000
 
 # Define neural network model
 model = tf.keras.Sequential([
@@ -76,9 +77,6 @@ model.compile(optimizer='adam',
 # Train the model
 model.fit(X_train, y_train, epochs=num_epochs, batch_size=16)
 
-# Evaluate the model
-test_loss, test_acc = model.evaluate(X_test, y_test)
-print(f"Test Accuracy: {test_acc}")
 
 # Predict diseases for the given symptoms
 # Predict diseases for the given symptoms
@@ -104,7 +102,18 @@ def predict_disease(model, symptoms, threshold=0.6):
 # Example symptoms
 input_symptoms = ['nausea', 'chest pressur', 'depress', 'fast heart rate', 'dizzi', 'diarrhoea', 'hair loss',
          'sinu pressur', 'lightheaded', 'rapid heartbeat', 'chest pain', 'diarrhea', 'anxieti',
-         'troubl breath wheez', 'irrit', 'itch', 'constip', 'bloat']
+         'troubl breath wheez', 'chill', 'hear loss', 'itch', 'constip', 'bloat']
+
+# Define custom callback to track metrics during training
+class MetricsCallback(tf.keras.callbacks.Callback):
+    def on_epoch_end(self, epoch, logs=None):
+        print(" - epoch: {:d} - loss: {:.4f} - accuracy: {:.4f} - val_loss: {:.4f} - val_accuracy: {:.4f}".format(
+            epoch + 1, logs['loss'], logs['accuracy'], logs['val_loss'], logs['val_accuracy']))
+
+# Train the model
+history = model.fit(X_train, y_train, epochs=num_epochs, batch_size=16, 
+                    validation_data=(X_test, y_test),
+                    callbacks=[MetricsCallback()])
 
 # Predict diseases for the given symptoms
 predicted_diseases = predict_disease(model, input_symptoms)
@@ -112,3 +121,4 @@ predicted_diseases = predict_disease(model, input_symptoms)
 print("Predicted Diseases:", predicted_diseases)
 
 
+print("Predicted Diseases:", predicted_diseases)
