@@ -1,6 +1,7 @@
 "use client"
 import { useContext, lazy } from "react"
 import { SymptomsCheckerContext } from "./SymptomsCheckerContext"
+import Footer from "@/components/Footer"
 
 const Informations = lazy(()=>import("./Informations"))
 const Conditions = lazy(()=>import("./Conditions"))
@@ -30,6 +31,8 @@ export default () => {
             { getEtatByName('result') && <Result /> }
             { getEtatByName('recommendations') && <Recommendations /> }
             { getEtatByName('doctors') && <Doctors /> }
+            
+            <Footer />
         </div>
     )
 }
