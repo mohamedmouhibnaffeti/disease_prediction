@@ -1,7 +1,7 @@
-import { useContext, useEffect, useLayoutEffect, useState, lazy } from "react"
-import { SymptomsCheckerContext } from "./SymptomsCheckerContext"
+import { lazy } from "react"
 import { getRandomColor } from "@/lib/statics/Colors"
-
+import { useDispatch } from "react-redux"
+import { changeEtatByNom } from "@/Store/InsertSymptoms/InsertSymptomsSlice"
 const DoctorCard = lazy(()=>import('@/components/DoctorCard'))
 
 let doctors = [
@@ -56,7 +56,7 @@ let doctors = [
     },
 ];
 export default () => {
-    const { changeEtatByName } = useContext(SymptomsCheckerContext)
+    const dispatch = useDispatch()
     return(
         <div className="w-full mt-[2rem] md:px-[16rem] px-4 pb-12 flex flex-col md:ml-0 ml-[12rem]">
             <h1 className="md:text-3xl text-xl font-bold text-sickness-primaryText md:self-start self-center"> Doctors for your sickness : </h1>
@@ -69,7 +69,7 @@ export default () => {
                 
             </div>
             
-            <button className="bg-none py-2 px-14 text-sickness-primary border-2 border-sickness-primary rounded-md font-semibold mt-6 self-center" onClick={()=>changeEtatByName('recommendations')}> Back </button>
+            <button className="bg-none py-2 px-14 text-sickness-primary border-2 border-sickness-primary rounded-md font-semibold mt-6 self-center" onClick={()=>dispatch(changeEtatByNom('recommendations'))}> Back </button>
         </div>
     )
 }
