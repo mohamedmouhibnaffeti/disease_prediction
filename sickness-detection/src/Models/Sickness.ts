@@ -11,6 +11,7 @@ const SicknessSchema = new Schema({
     }
 })
 
+
 const Sickness = models.Sickness || model("Sickness", SicknessSchema)
 
 export default Sickness
