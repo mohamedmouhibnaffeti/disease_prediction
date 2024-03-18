@@ -1,7 +1,9 @@
 import mongoose, {Schema, model, models} from "mongoose"
 
 const SymptomSchema = new Schema({
-    title: String
+    title: {
+        type: String
+    }
 })
 
 const Symptom = models.Symptom || model("Symptom", SymptomSchema)

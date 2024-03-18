@@ -3,9 +3,11 @@ import Sickness from "@/Models/Sickness";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
-    const {title} = await request.json()
+    const {title, Symptoms} = await request.json()
+    console.log(Symptoms)
     await connectMongoDB()
-    await Sickness.create({title})
+    const res = await Sickness.create({title: title, symptoms: Symptoms})
+    console.log(res)
     return NextResponse.json({ message: "Sickness Created" }, { status: 201 })
 }
 
