@@ -1,4 +1,3 @@
-import os
 import pandas as pd
 import re
 import nltk
@@ -44,10 +43,6 @@ def preprocess_text(text):
 
     return symptoms_list
 
-
-
-
-
 def preprocess_and_save(csv_files):
     results = []
     for csv_file in csv_files:
@@ -56,14 +51,4 @@ def preprocess_and_save(csv_files):
         results.append(df)
     result_dataframe = pd.concat(results, ignore_index=True)
     result_dataframe.to_csv('./preprocessed_data.csv', index=False)
-
-if __name__ == "__main__":
-    # Get CSV files from the current directory
-    csv_files = [filename for filename in os.listdir() if filename.endswith('.csv')]
-    
-    if not csv_files:
-        print("No CSV files found in the current directory.")
-    else:
-        preprocess_and_save(csv_files)
-        print("Preprocessing completed. Preprocessed data saved as 'preprocessed_data.csv'.")
-
+    return result_dataframe
