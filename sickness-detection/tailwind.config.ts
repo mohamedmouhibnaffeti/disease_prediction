@@ -24,6 +24,11 @@ const config = {
       },
       colors: {
         sickness: {
+          primary: "#219ebc",
+          primaryText: "#023047",
+          lightBlue: "#8ecae6",
+          yellow: "#ffb703",
+          orange: "#d18c3f",
           rosyBrown: "#BD9391",
           ashGray: "#ADBABD",
           powderBlue: "#91B7C7",
@@ -34,7 +39,7 @@ const config = {
           rosequartz: "#AEA3B0",
           mouthbattenPink: "#827081",
           lavenderBlue: "#C6D2ED",
-          lightGray: "#F4F4F4",
+          gray: "#999999",
           border: "#C5C5C5"
         },
         border: "hsl(var(--border))",

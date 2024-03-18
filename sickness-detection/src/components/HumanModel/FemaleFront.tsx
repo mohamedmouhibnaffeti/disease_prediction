@@ -1,10 +1,11 @@
 "use client"
+import frontFemale from '../Images/front-f.webp'
 
 const FemaleFront = () => {
     return (
                 <svg id="full-body" x="0px" y="0px" viewBox="0 0 310 385" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                 
-                    <image xlinkHref="https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/symptom_checker_beta/assets/front-f.png" height="100%" width="100%" x="0" y="0" className="body-bg-img"></image>
+                    <image xlinkHref={frontFemale.src} height="100%" width="100%" x="0" y="0" className="body-bg-img"></image>
                     
                     <path className="hover:fill-blue-500 cursor-pointer fill-blue-200/5" d="M100.056 110.152c-8.382 24.824-24.639 42.59-43.77 42.59-18.379-1.677-34.098-17.54-42.737-40.267-3.224-1.472-7.182-6.548-9.957-13.201-3.65-8.754-3.87-16.923-.49-18.246 1.057-.413 2.34-.11 3.715.771-.25-3.175-.38-6.404-.38-9.675C6.437 29.576 17.922.46 56.287.46s49.85 29.116 49.85 71.664c0 2.772-.093 5.525-.274 8.25 1.632-1.253 3.169-1.752 4.396-1.272 3.344 1.31 3.127 9.39-.484 18.051-2.708 6.492-6.554 11.466-9.72 12.999z" opacity=".525" transform="scale(0.32,0.32), translate(428,0)"></path>
                     
