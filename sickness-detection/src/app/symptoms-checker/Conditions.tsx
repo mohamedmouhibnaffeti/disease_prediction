@@ -13,7 +13,8 @@ import {
 import { useContext, useEffect, useState } from "react"
 import React from "react"
 import { PlusIcon } from "lucide-react"
-import { SymptomsCheckerContext } from "./SymptomsCheckerContext"
+import { useDispatch } from "react-redux"
+import { changeEtatByNom } from "@/Store/InsertSymptoms/InsertSymptomsSlice"
 
 const CalendarComponent = (props: {date: any, setDate: any}) => {
     const { date, setDate } = props
@@ -59,6 +60,7 @@ const CalendarComponent = (props: {date: any, setDate: any}) => {
 
 
 export default () => {
+  const dispatch = useDispatch()
   const [selectedConditions, setSelectedConditions ] = useState<Array<{sicknessName: string, date: any}>>([{sicknessName: '', date: undefined}])
   const [date, setDate] = React.useState<any>({
     from: new Date(2022, 0, 20),
@@ -80,8 +82,6 @@ export default () => {
     });
   };
   
-  const { changeEtatByName } = useContext(SymptomsCheckerContext) 
-
   const handleAjouterMaladie = () => {
     setSelectedConditions(prevSelectedConditions => {
       const udpatedConditions = [...prevSelectedConditions]
@@ -109,8 +109,8 @@ export default () => {
           </div>
           <button className="text-white bg-sickness-rosyBrown/70 flex justify-center items-center py-2 mt-3 font-semibold rounded-md" onClick={()=>handleAjouterMaladie()}> <PlusIcon /> Add Condition </button>
           <div className="flex justify-between w-full">
-              <button className="bg-none py-2 px-14 text-sickness-primary border-2 border-sickness-primary rounded-md font-semibold mt-6" onClick={()=>changeEtatByName('Symptoms')}> Back </button>
-              <button className="bg-sickness-primary border-2 border-sickness-primary py-2 px-14 text-white rounded-md font-semibold mt-6" onClick={()=>changeEtatByName('result')}> Continue </button>
+              <button className="bg-none py-2 px-14 text-sickness-primary border-2 border-sickness-primary rounded-md font-semibold mt-6" onClick={()=>dispatch(changeEtatByNom('Symptoms'))}> Back </button>
+              <button className="bg-sickness-primary border-2 border-sickness-primary py-2 px-14 text-white rounded-md font-semibold mt-6" onClick={()=>dispatch(changeEtatByNom('result'))}> Continue </button>
           </div>
       </div>
   )

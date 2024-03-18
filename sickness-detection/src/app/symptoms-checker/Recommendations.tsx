@@ -1,8 +1,7 @@
-import { useContext, useEffect, useLayoutEffect, useState } from "react"
-import { SymptomsCheckerContext } from "./SymptomsCheckerContext"
+import { useLayoutEffect, useState } from "react"
 import { RecommendationsData } from "./data"
-import { Progress } from "@/components/ui/progress"
-
+import { useDispatch } from "react-redux"
+import { changeEtatByNom } from "@/Store/InsertSymptoms/InsertSymptomsSlice"
 export default () => {
     const [ResultLoading, setResultLoading] = useState(false)
     function simulateAPICall(delay = 500) {
@@ -18,7 +17,7 @@ export default () => {
     useLayoutEffect(()=>{
         simulateAPICall(4000)
     }, [])
-    const { changeEtatByName } = useContext(SymptomsCheckerContext)
+    const dispatch = useDispatch()
     return (
         <div className="flex flex-wrap md:ml-0 ml-[12rem] md:py-0 pb-4">
             <div className="md:w-[44rem] w-[30rem] flex flex-col bg-white border-[1px] border-sickness-border shadow-md md:rounded-l-lg rounded-lg md:mt-[6rem] mt-[2rem] py-8 px-4">
@@ -44,8 +43,8 @@ export default () => {
                 </div>
                 {!ResultLoading && 
                 <div className="flex justify-between w-full">
-                    <button className="bg-none py-2 px-14 text-sickness-primary border-2 border-sickness-primary rounded-md font-semibold mt-6" onClick={()=>changeEtatByName('Conditions')}> Back </button>
-                    <button className="bg-sickness-primary border-2 border-sickness-primary py-2 px-14 text-white rounded-md font-semibold mt-6" onClick={()=>changeEtatByName('doctors')}> Continue </button>
+                    <button className="bg-none py-2 px-14 text-sickness-primary border-2 border-sickness-primary rounded-md font-semibold mt-6" onClick={()=>dispatch(changeEtatByNom('Conditions'))}> Back </button>
+                    <button className="bg-sickness-primary border-2 border-sickness-primary py-2 px-14 text-white rounded-md font-semibold mt-6" onClick={()=>dispatch(changeEtatByNom('doctors'))}> Continue </button>
                 </div>
                 }
             </div>

@@ -2,10 +2,10 @@
 import { AlertOctagon } from "lucide-react"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@radix-ui/react-label"
-import { useContext } from "react"
-import { SymptomsCheckerContext } from "./SymptomsCheckerContext"
+import { useDispatch } from "react-redux"
+import { changeEtatByNom } from "@/Store/InsertSymptoms/InsertSymptomsSlice"
 export default () => {
-    const { changeEtatByName } = useContext(SymptomsCheckerContext)
+    const dispatch = useDispatch()
     return (
         <div className="md:w-[44rem] w-[30rem] flex flex-col bg-white border-[1px] border-sickness-border shadow-md rounded-lg md:mt-[8rem] mt-[2rem] py-8 px-4 md:ml-0 ml-[12.8rem]">
             <p className="text-center text-sickness-primaryText font-semibold">Identify possible conditions and treatment related to your symptoms.</p>
@@ -31,7 +31,7 @@ export default () => {
                 </RadioGroup>
                 </div>
             </div>
-            <button className="bg-sickness-primary border-2 border-sickness-primary py-2 px-14 text-white rounded-md font-semibold mt-6 md:self-end self-center" onClick={()=>changeEtatByName('Symptoms')}> Continue </button>
+            <button className="bg-sickness-primary border-2 border-sickness-primary py-2 px-14 text-white rounded-md font-semibold mt-6 md:self-end self-center" onClick={()=>dispatch(changeEtatByNom('Symptoms'))}> Continue </button>
         </div>
     )
 }

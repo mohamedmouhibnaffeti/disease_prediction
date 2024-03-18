@@ -1,9 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit"
 import counterReducer from "./counter/counterSlice"
+import humanReducer from "./HumanModel/HumanModelSlice"
+import insertSymptomsReducer from "./InsertSymptoms/InsertSymptomsSlice"
 
 export const store = configureStore({
     reducer: {
-        counter: counterReducer
+        counter: counterReducer,
+        humanModel: humanReducer,
+        insertSymptoms: insertSymptomsReducer
     }
 })
 

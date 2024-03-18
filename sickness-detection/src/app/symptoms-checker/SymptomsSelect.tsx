@@ -2,10 +2,10 @@
 import Human from "@/components/HumanModel/Human"
 import { data } from "./data"
 import { CheckIcon } from "lucide-react"
-import { useContext } from "react"
-import { SymptomsCheckerContext } from "./SymptomsCheckerContext"
+import { useDispatch } from "react-redux"
+import { changeEtatByNom } from "@/Store/InsertSymptoms/InsertSymptomsSlice"
 export default () => {
-    const { changeEtatByName } = useContext(SymptomsCheckerContext)
+    const dispatch = useDispatch()
     return (
         <div className="mt-[1rem] flex flex-col justify-center md:ml-0 ml-[12rem]">
             <h1 className="text-center md:text-lg text-md text-sickness-primaryText font-semibold"> Select your symptoms from the human model below </h1>
@@ -30,8 +30,8 @@ export default () => {
                     ))}
                     </div>
                     <div className="flex justify-between w-full">
-                        <button className="bg-none py-2 px-14 text-sickness-primary border-2 border-sickness-primary rounded-md font-semibold mt-6" onClick={()=>changeEtatByName('informations')}> Back </button>
-                        <button className="bg-sickness-primary border-2 border-sickness-primary py-2 px-14 text-white rounded-md font-semibold mt-6" onClick={()=>changeEtatByName('Conditions')}> Continue </button>
+                        <button className="bg-none py-2 px-14 text-sickness-primary border-2 border-sickness-primary rounded-md font-semibold mt-6" onClick={()=>dispatch(changeEtatByNom('informations'))}> Back </button>
+                        <button className="bg-sickness-primary border-2 border-sickness-primary py-2 px-14 text-white rounded-md font-semibold mt-6" onClick={()=>dispatch(changeEtatByNom('Conditions'))}> Continue </button>
                     </div>
                 </div>
                 <div className="flex-[0.5]">
