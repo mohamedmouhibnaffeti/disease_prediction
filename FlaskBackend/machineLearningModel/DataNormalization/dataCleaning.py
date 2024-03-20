@@ -5,8 +5,7 @@ from nltk.corpus import stopwords
 import ast
 import sys
 from pymongo import MongoClient
-import pymongo
-
+from bson import ObjectId
 # MongoDB connection
 client = MongoClient("mongodb+srv://mouhib:mouhib@medicaledb.nltr2yw.mongodb.net")
 
@@ -61,9 +60,10 @@ def preprocess_and_save(csv_files):
                 file.write(result_line)
                 
                 # Save to MongoDB collection
+                symptoms = [{'_id': ObjectId(),'title': symptom} for symptom in symptoms_list]
                 sickness_document = {
                     'title': row['Sickness_Name'],
-                    'symptoms': symptoms_list
+                    'symptoms': symptoms
                 }
                 collection.insert_one(sickness_document)
                 
