@@ -3,6 +3,8 @@ import re
 import nltk
 from nltk.corpus import stopwords
 import ast
+import sys
+
 
 # Initialize NLTK resources
 nltk.download('stopwords')

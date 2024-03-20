@@ -30,7 +30,9 @@ def load_model_and_preprocessors():
 
     return model, mlb, scaler, class_names, diseases_encoded
 
-def predict_disease(mlb, scaler, model, symptoms, class_names, diseases_encoded):
+def predict_disease(symptoms):
+    
+    model, mlb, scaler, class_names, diseases_encoded = load_model_and_preprocessors()
     input_symptoms = mlb.transform([symptoms])
     input_symptoms_normalized = scaler.transform(input_symptoms)
     input_tensor = tf.constant(input_symptoms_normalized, dtype=tf.float32)

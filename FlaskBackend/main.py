@@ -1,14 +1,14 @@
 import os
 from flask import Flask, request, jsonify
 import pandas as pd
-from machineLearningModel.DataNormalization.dataCleaning import preprocess_and_save
+from machineLearningModel.DataNormalization import *
 from machineLearningModel.Model.predictor import load_model_and_preprocessors, predict_disease
+from flask_cors import CORS 
 
 app = Flask(__name__)
-
+CORS(app) 
 
 #predict endpoint
-model, mlb, scaler, class_names, diseases_encoded = load_model_and_preprocessors()
 @app.route('/predict', methods=['POST'])
 def predict():
     symptoms = request.json.get('symptoms')
@@ -16,9 +16,12 @@ def predict():
         return jsonify({"message": "Symptoms not provided"}), 400
     
     # Predict diseases for the given symptoms
-    predicted_diseases = predict_disease(mlb=mlb, scaler=scaler, model=model, symptoms=symptoms, class_names=class_names, diseases_encoded=diseases_encoded)
+    predicted_diseases = predict_disease(symptoms=symptoms)
     
-    return jsonify({"predicted_diseases": predicted_diseases}), 200
+    # Convert any non-serializable data types to serializable format
+    predicted_diseases_serializable = [str(disease) for disease in predicted_diseases]
+    
+    return jsonify({"predicted_diseases": predicted_diseases_serializable}), 200
 
 #preprocess csv file endpoint
 @app.route('/preprocess', methods=['POST'])
@@ -35,7 +38,7 @@ def preprocess():
         saved_files.append(file_path)
     
     # Preprocess and save the files using the function from preprocessing module
-    result_df = preprocess_and_save(saved_files)
+    result_df = dataCleaning.preprocess_and_save(saved_files)
     
     return jsonify({"message": "Files preprocessed and saved successfully", "result_df": result_df.to_dict()}), 200
 
