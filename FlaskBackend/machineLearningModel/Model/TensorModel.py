@@ -25,7 +25,14 @@ data_list = list(data_from_mongodb)
 
 # Create a DataFrame from the list of dictionaries
 df = pd.DataFrame(data_list)
-print(df)
+
+# Extract symptom titles and create a new column in the DataFrame
+for i in range(len(df)):
+    symptom_titles = [symptom['title'] for symptom in df.loc[i, 'symptoms']]
+    df.at[i, 'symptoms'] = symptom_titles
+# Create a DataFrame from the list of dictionaries
+
+print(df['symptoms'])
 
 for symptom in df['symptoms']:
     print(type(symptom))
