@@ -4,7 +4,14 @@ import nltk
 from nltk.corpus import stopwords
 import ast
 import sys
+from pymongo import MongoClient
+import pymongo
 
+# MongoDB connection
+client = MongoClient("mongodb+srv://mouhib:mouhib@medicaledb.nltr2yw.mongodb.net")
+
+db = client["SicknessDetection"]
+collection = db["sicknesses"]
 
 # Initialize NLTK resources
 nltk.download('stopwords')
@@ -12,11 +19,9 @@ stop_words = set(stopwords.words('english'))
 
 def string_to_list(string_repr):
     try:
-        # Safely evaluate the string representation
         list_repr = ast.literal_eval(string_repr)
         return list_repr
     except (SyntaxError, ValueError) as e:
-        # Handle exceptions if the string is not a valid representation of a list
         print("Error:", e)
         return None
 
@@ -46,11 +51,32 @@ def preprocess_text(text):
     return symptoms_list
 
 def preprocess_and_save(csv_files):
-    results = []
-    for csv_file in csv_files:
-        df = pd.read_csv(csv_file)
-        df['Symptoms'] = df['Symptoms'].apply(lambda x: preprocess_text(str(x)))  # Apply preprocessing to symptoms column
-        results.append(df)
-    result_dataframe = pd.concat(results, ignore_index=True)
-    result_dataframe.to_csv('./preprocessed_data.csv', index=False)
+    with open('./preprocessed_data.csv', 'a') as file:
+        for csv_file in csv_files:
+            df = pd.read_csv(csv_file)
+            for index, row in df.iterrows():
+                symptoms_list = preprocess_text(str(row['Symptoms']))
+                symptoms = '"' + str(symptoms_list) + '"'  # Surround list with double quotes
+                result_line = f"{row['Sickness_Name']},{symptoms}\n"
+                file.write(result_line)
+                
+                # Save to MongoDB collection
+                sickness_document = {
+                    'title': row['Sickness_Name'],
+                    'symptoms': symptoms_list
+                }
+                collection.insert_one(sickness_document)
+                
+    result_dataframe = pd.read_csv('./preprocessed_data.csv')
     return result_dataframe
+
+def main():
+    # Specify CSV files
+    csv_files = ["sicknesses.csv"]  # Add more file paths as needed
+    
+    # Preprocess and save data
+    preprocess_and_save(csv_files)
+    
+
+if __name__ == "__main__":
+    main()

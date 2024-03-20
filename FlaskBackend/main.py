@@ -2,11 +2,32 @@ import os
 from flask import Flask, request, jsonify
 import pandas as pd
 from machineLearningModel.DataNormalization import *
-from machineLearningModel.Model.predictor import load_model_and_preprocessors, predict_disease
+from machineLearningModel.Model.predictor import predict_disease
 from flask_cors import CORS 
+from pymongo import MongoClient
+from bson import json_util
+
+client = MongoClient("mongodb+srv://mouhib:mouhib@medicaledb.nltr2yw.mongodb.net")
+db = client['SicknessDetection']
+
+if db is not None:
+    print("Connected to MongoDB")
+else:
+    print("Failed to connect to MongoDB")
 
 app = Flask(__name__)
 CORS(app) 
+
+@app.route('/get_data')
+def get_data():
+    collection = db['sicknesses']
+    data = collection.find()
+    
+    # Iterate over the cursor to access documents
+    data_list = json_util.dumps(list(data))
+    print(data_list)
+    
+    return jsonify({"sickness": data_list})
 
 #predict endpoint
 @app.route('/predict', methods=['POST'])

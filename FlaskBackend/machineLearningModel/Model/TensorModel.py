@@ -7,21 +7,30 @@ import tensorflow as tf
 from sklearn.preprocessing import MultiLabelBinarizer
 from sklearn.preprocessing import MinMaxScaler
 import ast
-
-
-
 import pandas as pd
+from pymongo import MongoClient
 
-# Read the CSV file
-data = pd.read_csv('./preprocessed_data.csv')
 
-# Create a DataFrame
-df = pd.DataFrame(data)
+# Connect to MongoDB
+client = MongoClient("mongodb+srv://mouhib:mouhib@medicaledb.nltr2yw.mongodb.net")
 
-for symptom in df['Symptoms']:
+db = client["SicknessDetection"]
+collection = db["sicknesses"]
+
+# Retrieve data from MongoDB
+data_from_mongodb = collection.find().limit(20)
+
+# Convert MongoDB cursor to list of dictionaries
+data_list = list(data_from_mongodb)
+
+# Create a DataFrame from the list of dictionaries
+df = pd.DataFrame(data_list)
+print(df)
+
+for symptom in df['symptoms']:
     print(type(symptom))
 # Remove double quotes before and after square brackets for each line of symptoms
-symptoms = df['Symptoms'].apply(ast.literal_eval)
+symptoms = df['symptoms']
 
 for symptom in symptoms:
     print(symptom)
@@ -31,7 +40,7 @@ symptoms.to_csv('modified_data.txt', sep='\t', index=False)
 # Preprocess data
 mlb = MultiLabelBinarizer()
 symptoms_encoded = mlb.fit_transform(symptoms)
-diseases_encoded = pd.get_dummies(df['Sickness_Name'])
+diseases_encoded = pd.get_dummies(df['title'])
 
 # Normalize input data
 scaler = MinMaxScaler()
