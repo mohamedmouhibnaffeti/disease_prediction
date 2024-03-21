@@ -7,3 +7,4 @@ export async function GET(){
     const symptoms = await Symptom.find()
     return NextResponse.json({ Symptoms: symptoms })
 }
+
