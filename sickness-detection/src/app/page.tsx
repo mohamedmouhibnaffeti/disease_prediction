@@ -1,7 +1,12 @@
 "use client"
+import Predict from "@/vendors/MachineLearning/Predict";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 export default function Home() {
   const Router = useRouter()
+  useEffect(()=>{
+    Predict()
+  }, [])
   return (
     <div className="flex flex-col">
       <div className="LandingImage h-screen flex justify-center items-center">
