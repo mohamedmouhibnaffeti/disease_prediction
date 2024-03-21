@@ -2,10 +2,19 @@
 import Human from "@/components/HumanModel/Human"
 import { data } from "./data"
 import { CheckIcon } from "lucide-react"
-import { useDispatch } from "react-redux"
-import { changeEtatByNom } from "@/Store/InsertSymptoms/InsertSymptomsSlice"
+import { useDispatch, useSelector } from "react-redux"
+import { changeEtatByNom, fetchSymptoms } from "@/Store/InsertSymptoms/InsertSymptomsSlice"
+import { AppDispatch, RootState } from "@/Store/store"
+import { useEffect } from "react"
+
 export default () => {
-    const dispatch = useDispatch()
+    const Symptoms = useSelector((state: RootState)=>state.insertSymptoms.Symptoms)
+    const dispatch = useDispatch<AppDispatch>()
+    useEffect(()=>{
+        dispatch(fetchSymptoms())
+    }, [])
+    
+    console.log(Symptoms)
     return (
         <div className="mt-[1rem] flex flex-col justify-center md:ml-0 ml-[12rem]">
             <h1 className="text-center md:text-lg text-md text-sickness-primaryText font-semibold"> Select your symptoms from the human model below </h1>

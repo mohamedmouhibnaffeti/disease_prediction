@@ -1,4 +1,6 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Symptom } from "@/app/interfaces/interfaces";
+import { next_backend_route } from "@/lib/statics/ApiRoutes";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type listItemType = {
     nom: string, 
@@ -7,7 +9,8 @@ type listItemType = {
 
 interface SymptomsStateType {
     listItems: Array<listItemType>,
-    currentItem: string
+    currentItem: string,
+    Symptoms: Array<Symptom>
 }
 
 const initialState: SymptomsStateType = {
@@ -19,7 +22,8 @@ const initialState: SymptomsStateType = {
         { nom: 'recommendations', etat: false },
         { nom: 'doctors', etat: false }
     ],
-    currentItem: 'informations'
+    currentItem: 'informations',
+    Symptoms: []
 }
 
 const InsertSymptomsSlice = createSlice({
@@ -36,8 +40,34 @@ const InsertSymptomsSlice = createSlice({
             )
         })
         }
-    }
+    },
+    extraReducers: (builder) => {
+        builder
+        .addCase(fetchSymptoms.fulfilled, (state, action: PayloadAction<Array<Symptom>>)=>{
+            console.log('fetched...')
+            state.Symptoms = action.payload
+        })
+    },
 })
+
+export const fetchSymptoms = createAsyncThunk(
+    "insertSymptoms/fetchSymptoms",
+    async () => {
+        try {
+            const resp = await fetch(`${next_backend_route}/symptom/sicknesses_symptoms`);
+            
+            if (resp.ok) {
+                const data = await resp.json();
+                return data.Symptoms
+            } else {
+                throw new Error('Failed to fetch symptoms')
+            }
+        } catch (error) {
+            console.error('Error fetching symptoms:', error)
+            throw error
+        }
+    }
+)
 
 export const { changeEtatByNom } = InsertSymptomsSlice.actions
 

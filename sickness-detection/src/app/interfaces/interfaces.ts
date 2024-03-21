@@ -1,4 +1,5 @@
 import { ObjectId } from "mongoose";
+import { Types } from 'mongoose';
 
 export interface Tip {
     key : number;
@@ -6,6 +7,6 @@ export interface Tip {
 }
 
 export interface Symptom {
-    _id: ObjectId,
-    title: string
+    _id: Types.ObjectId;
+    title: string;
 }
