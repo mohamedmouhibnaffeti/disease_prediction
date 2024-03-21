@@ -6,8 +6,15 @@ import ast
 import sys
 from pymongo import MongoClient
 from bson import ObjectId
-# MongoDB connection
-client = MongoClient("mongodb+srv://mouhib:mouhib@medicaledb.nltr2yw.mongodb.net")
+import os
+from dotenv import load_dotenv
+
+dotenv_path = 'C:/Users/mouha/OneDrive/Desktop/PFE/FlaskBackend/.env'
+load_dotenv(dotenv_path)
+db_string = os.environ['DATABASE_CONNECTION_STRING']
+
+# Connect to MongoDB
+client = MongoClient(db_string)
 
 db = client["SicknessDetection"]
 collection = db["sicknesses"]
