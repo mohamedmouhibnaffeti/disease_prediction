@@ -1,7 +1,7 @@
 import { lazy } from "react"
 import { getRandomColor } from "@/lib/statics/Colors"
 import { useDispatch } from "react-redux"
-import { changeEtatByNom } from "@/Store/InsertSymptoms/InsertSymptomsSlice"
+import { changeEtatByNom } from "@/Store/Predict/PredictSlice"
 const DoctorCard = lazy(()=>import('@/components/DoctorCard'))
 
 let doctors = [

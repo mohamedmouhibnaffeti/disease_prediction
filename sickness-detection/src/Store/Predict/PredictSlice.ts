@@ -7,13 +7,16 @@ type listItemType = {
     etat: boolean
 }
 
-interface SymptomsStateType {
+interface PredictType {
     listItems: Array<listItemType>,
     currentItem: string,
-    Symptoms: Array<Symptom>
+    Symptoms: Array<Symptom>,
+    SelectedSymptoms: Array<string>,
+    PredictionResult: Array<any>,
+    predicting: boolean
 }
 
-const initialState: SymptomsStateType = {
+const initialState: PredictType = {
     listItems: [
         { nom: 'informations', etat: true },
         { nom: 'Symptoms', etat: false },
@@ -23,11 +26,14 @@ const initialState: SymptomsStateType = {
         { nom: 'doctors', etat: false }
     ],
     currentItem: 'informations',
-    Symptoms: []
+    Symptoms: [],
+    SelectedSymptoms: [],
+    PredictionResult: [],
+    predicting: true
 }
 
-const InsertSymptomsSlice = createSlice({
-    name: "insertSymptoms",
+const PredictSlice = createSlice({
+    name: "Predict",
     initialState,
     reducers: {
         changeEtatByNom: (state, action: PayloadAction<string>) => {
@@ -39,6 +45,29 @@ const InsertSymptomsSlice = createSlice({
                 {...item, etat: item.nom === action.payload}
             )
         })
+        },
+        selectSymptoms: (state, action: PayloadAction<{etat: any, symptom: string}>) => {
+            if(action.payload.etat){
+                state.SelectedSymptoms.push(action.payload.symptom)
+            }else{
+                const updatedSymptoms = state.SelectedSymptoms.filter((i)=> i !== action.payload.symptom)
+                state.SelectedSymptoms = updatedSymptoms
+                
+            }
+        },
+        setPredictionResult: (state, action: PayloadAction<Array<any>>)=>{
+            console.log(action.payload)
+            const Predictions: Array<any> = []
+            action.payload.map((prediction: any, index: number)=>{
+                if(index < 4){
+                    Predictions.push(prediction)
+                }
+            })
+            state.PredictionResult = Predictions
+        },
+        setPredictingState: (state, action: PayloadAction<boolean> )=>{
+            console.log(action.payload)
+            state.predicting = action.payload
         }
     },
     extraReducers: (builder) => {
@@ -51,7 +80,7 @@ const InsertSymptomsSlice = createSlice({
 })
 
 export const fetchSymptoms = createAsyncThunk(
-    "insertSymptoms/fetchSymptoms",
+    "Predict/fetchSymptoms",
     async () => {
         try {
             const resp = await fetch(`${next_backend_route}/symptom/sicknesses_symptoms`);
@@ -69,6 +98,6 @@ export const fetchSymptoms = createAsyncThunk(
     }
 )
 
-export const { changeEtatByNom } = InsertSymptomsSlice.actions
+export const { changeEtatByNom, selectSymptoms, setPredictionResult, setPredictingState } = PredictSlice.actions
 
-export default InsertSymptomsSlice.reducer
+export default PredictSlice.reducer

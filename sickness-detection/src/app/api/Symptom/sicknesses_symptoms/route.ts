@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 
 export async function GET(){
     await connectMongoDB()
-    const sicknesses = await Sickness.find()
+    const sicknesses = await Sickness.find().limit(20)
     const symptoms: Array<Symptom> = []
     sicknesses.forEach((sickness)=>{
         sickness?.symptoms?.forEach((symptom: Symptom)=>{

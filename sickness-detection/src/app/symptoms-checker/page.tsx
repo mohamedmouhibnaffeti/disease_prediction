@@ -12,9 +12,8 @@ const Doctors = lazy(()=>import("./Doctors"))
 const SymptomsSelect = lazy(()=>import("./SymptomsSelect"))
 
 export default () => {
-    const ListItems = useSelector((state: RootState)=>state.insertSymptoms.listItems)
-    const currentItem = useSelector((state: RootState)=>state.insertSymptoms.currentItem)
-    console.log(currentItem)
+    const ListItems = useSelector((state: RootState)=>state.Predict.listItems)
+    const currentItem = useSelector((state: RootState)=>state.Predict.currentItem)
     return (
         <div className="flex flex-col items-center">
             <div className="flex gap-8 mt-[8rem]"> 

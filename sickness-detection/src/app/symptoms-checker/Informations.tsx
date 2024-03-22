@@ -3,7 +3,7 @@ import { AlertOctagon } from "lucide-react"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@radix-ui/react-label"
 import { useDispatch } from "react-redux"
-import { changeEtatByNom } from "@/Store/InsertSymptoms/InsertSymptomsSlice"
+import { changeEtatByNom } from "@/Store/Predict/PredictSlice"
 export default () => {
     const dispatch = useDispatch()
     return (

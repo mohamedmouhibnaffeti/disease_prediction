@@ -4,6 +4,8 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import Nav from "@/components/Nav";
 import { Providers } from "./Providers";
+import { Suspense } from "react";
+import Loader from "@/components/Loader";
 
 export const inter = Inter({ 
   subsets: ["latin"],
@@ -28,7 +30,9 @@ export default function RootLayout({
         )}>
           <Nav />
           <Providers>
-            {children}
+            <Suspense fallback={<Loader />}>
+              {children}
+            </Suspense>
           </Providers>
       </body>
     </html>
