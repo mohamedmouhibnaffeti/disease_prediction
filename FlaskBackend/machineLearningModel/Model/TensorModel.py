@@ -9,10 +9,15 @@ from sklearn.preprocessing import MinMaxScaler
 import ast
 import pandas as pd
 from pymongo import MongoClient
+import os
+from dotenv import load_dotenv
 
+dotenv_path = 'C:/Users/mouha/OneDrive/Desktop/PFE/FlaskBackend/.env'
+load_dotenv(dotenv_path)
+db_string = os.environ['DATABASE_CONNECTION_STRING']
 
 # Connect to MongoDB
-client = MongoClient("mongodb+srv://mouhib:mouhib@medicaledb.nltr2yw.mongodb.net")
+client = MongoClient(db_string)
 
 db = client["SicknessDetection"]
 collection = db["sicknesses"]

@@ -1,7 +1,7 @@
 import { useLayoutEffect, useState } from "react"
 import { RecommendationsData } from "./data"
 import { useDispatch } from "react-redux"
-import { changeEtatByNom } from "@/Store/InsertSymptoms/InsertSymptomsSlice"
+import { changeEtatByNom } from "@/Store/Predict/PredictSlice"
 export default () => {
     const [ResultLoading, setResultLoading] = useState(false)
     function simulateAPICall(delay = 500) {

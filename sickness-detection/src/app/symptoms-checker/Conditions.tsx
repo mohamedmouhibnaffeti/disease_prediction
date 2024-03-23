@@ -14,7 +14,7 @@ import { useContext, useEffect, useState } from "react"
 import React from "react"
 import { PlusIcon } from "lucide-react"
 import { useDispatch } from "react-redux"
-import { changeEtatByNom } from "@/Store/InsertSymptoms/InsertSymptomsSlice"
+import { changeEtatByNom } from "@/Store/Predict/PredictSlice"
 
 const CalendarComponent = (props: {date: any, setDate: any}) => {
     const { date, setDate } = props
