@@ -1,4 +1,4 @@
-export default async ({Symptoms}: {Symptoms: Array<string>}) => {
+export default async ({Symptoms}: {Symptoms?: Array<string>}) => {
     try {
         const PredictionResponse = await fetch('http://127.0.0.1:5000/predict', {
             method: 'POST',
