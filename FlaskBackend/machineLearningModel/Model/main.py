@@ -8,7 +8,7 @@ model, mlb, scaler, class_names, diseases_encoded = load_model_and_preprocessors
 
 input_symptoms = ['swelling', 'redness', 'tenderness touch', 'pain', 'limited movement joint toe', 'corns calluses']
 # Predict diseases for the given symptoms
-predicted_diseases = predict_disease(mlb=mlb,scaler=scaler,model=model, symptoms=input_symptoms, class_names=class_names, diseases_encoded=diseases_encoded)
+predicted_diseases = predict_disease(symptoms=input_symptoms)
 
 print("Predicted Diseases:", predicted_diseases)
 
