@@ -10,3 +10,12 @@ export interface Symptom {
     _id: Types.ObjectId;
     title: string;
 }
+
+export interface SignupformDataType {
+    name: string,
+    lastname: string,
+    email: string,
+    password: string,
+    confirmPassword: string,
+    images: Array<any>
+}
