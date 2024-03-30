@@ -1,13 +1,17 @@
 "use client"
-import { ImagePlusIcon, UserPlusIcon } from 'lucide-react'
+import { ChevronsLeftIcon, ImagePlusIcon, UserPlusIcon } from 'lucide-react'
 import React, {useCallback} from 'react'
 import {useDropzone} from 'react-dropzone'
+import { useDispatch } from 'react-redux'
+import { AppDispatch } from '@/Store/store'
+import { setCurrentDoctorSignupPage } from '@/Store/auth/authSlice'
 
 export default () => {
     const onDrop = useCallback((acceptedFiles: any) => {
         // Do something with the files
       }, [])
       const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
+      const dispatch = useDispatch<AppDispatch>()
     return (
         <>
             <p className='text-sm text-sickness-gray text-center'> In this step you'll need to insert your <span className="text-sickness-primary font-semibold"> Service card </span> and your <span className="text-sickness-primary font-semibold"> Certificate </span> to verify your identity </p>
@@ -28,7 +32,10 @@ export default () => {
                     <p className='text-center'>Drag 'n' drop your <span className='font-semibold'> Working Certificate </span> here, or click to select files</p>
                 </div>
             </div>
-            <button className="mt-4 w-full rounded-md text-white bg-sickness-primary hover:bg-sickness-primaryText/70 active:bg-sickness-primaryText transition delay-75 duration-100 py-2 font-semibold flex justify-center items-center gap-2"> Create Account <UserPlusIcon className="h-5 w-5" /> </button>
+            <div className='flex flex-col gap-2 w-full mt-4'>
+                <button className="w-full rounded-md text-sickness-primary hover:text-white bg-none border-2 border-sickness-primary hover:border-inherit hover:bg-sickness-primaryText/70 active:bg-sickness-primaryText transition delay-75 duration-100 py-2 font-semibold flex justify-center items-center gap-2" onClick={()=>dispatch(setCurrentDoctorSignupPage(1))} > <ChevronsLeftIcon /> Back  </button>
+                <button className="w-full rounded-md text-white bg-sickness-primary border-2 border-sickness-primary hover:border-inherit hover:bg-sickness-primaryText/70 active:bg-sickness-primaryText transition delay-75 duration-100 py-2 font-semibold flex justify-center items-center gap-2"> Create Account <UserPlusIcon className="h-5 w-5" /> </button>
+            </div>
         </>
       );
 }
