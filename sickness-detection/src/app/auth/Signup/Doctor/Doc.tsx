@@ -1,7 +1,11 @@
 import First from "./first"
 import Second from "./second"
+import { AppDispatch, RootState } from "@/Store/store"
+import { UseDispatch, useDispatch, useSelector } from "react-redux"
+import { setCurrentSignupPage } from "@/Store/auth/authSlice"
 
 export default () => {
+    const currendDoctorSignupPage = ((state: RootState) => state.Authentication.currentDoctorSignupPage )
     return(
         <div className="w-[34rem] flex justify-center items-center flex-col border border-sickness-border bg-white px-8 py-4 sm:gap-4 sm:mt-[8rem] mt-[10rem]">
             <h1 className="font-semibold text-sickness-primaryText text-3xl"> Create Account </h1>
