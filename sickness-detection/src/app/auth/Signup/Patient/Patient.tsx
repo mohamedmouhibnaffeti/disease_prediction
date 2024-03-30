@@ -22,9 +22,9 @@ const ButtonStyle = {
 
 export default () => {
     return(
-        <div className="w-[34rem] flex justify-center items-center flex-col border border-sickness-border bg-white px-8 py-4 gap-4 rounded-lg ">
+        <div className="w-[34rem] flex justify-center items-center flex-col border border-sickness-border bg-white px-8 py-4 gap-4 rounded-lg sm:mt-[8rem] mt-[10rem] ">
             <h1 className="font-semibold text-sickness-primaryText text-3xl"> Create Account </h1>
-            <div className="flex md:flex-row flex-col gap-2">
+            <div className="flex md:flex-row flex-col gap-2 w-full">
                 <div className="w-full">
                     <span className="text-sickness-gray text-lg"> Firstname </span>
                     <input type="text" className="outline-none border focus:border-sickness-primary text-sickness-gray text- pl-2 py-2 rounded-md w-full border-sickness-border" />

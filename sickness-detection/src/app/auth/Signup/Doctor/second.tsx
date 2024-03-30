@@ -8,7 +8,7 @@ import { setCurrentDoctorSignupPage } from '@/Store/auth/authSlice'
 
 export default () => {
     const onDrop = useCallback((acceptedFiles: any) => {
-        // Do something with the files
+        console.log(acceptedFiles)
       }, [])
       const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
       const dispatch = useDispatch<AppDispatch>()

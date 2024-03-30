@@ -28,7 +28,7 @@ export default() => {
     const dispatch = useDispatch<AppDispatch>()
     return(
         <>
-        <div className="flex md:flex-row flex-col gap-2">
+        <div className="flex md:flex-row flex-col gap-2 w-full">
                 <div className="w-full">
                     <span className="text-sickness-gray text-lg"> Firstname </span>
                     <input type="text" className="outline-none border focus:border-sickness-primary text-sickness-gray text- pl-2 py-2 rounded-md w-full border-sickness-border" />
