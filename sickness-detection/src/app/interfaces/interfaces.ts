@@ -11,11 +11,26 @@ export interface Symptom {
     title: string;
 }
 
-export interface SignupformDataType {
+export interface DoctorSignupformDataType {
     name: string,
     lastname: string,
     email: string,
+    phone: string,
     password: string,
     confirmPassword: string,
     images: Array<any>
+}
+
+export interface PatientSignupformDataType {
+    name: string,
+    lastname: string,
+    email: string,
+    phone: string,
+    password: string,
+    confirmPassword: string
+}
+
+export interface LoginFormDataType {
+    email: string,
+    password: string
 }

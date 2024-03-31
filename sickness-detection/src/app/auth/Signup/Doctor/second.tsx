@@ -4,16 +4,16 @@ import React, {useCallback} from 'react'
 import {useDropzone} from 'react-dropzone'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '@/Store/store'
-import { setCurrentDoctorSignupPage, setSignupFormData } from '@/Store/auth/authSlice'
+import { setCurrentDoctorSignupPage, setSignupFormDataDoctor } from '@/Store/auth/authSlice'
 import Image from 'next/image'
 
 export default () => {
 
     const dispatch = useDispatch<AppDispatch>()
-    const SignupFormData = useSelector((state: RootState) => state.Authentication.SignupFormData)
+    const SignupFormData = useSelector((state: RootState) => state.Authentication.SignupFormDataDoctor)
     const onDrop = useCallback((acceptedFiles: any) => {
         console.log(acceptedFiles)
-        dispatch(setSignupFormData({ name: "images", value: acceptedFiles?.map((file: File)=>{return file}) }))
+        dispatch(setSignupFormDataDoctor({ name: "images", value: acceptedFiles?.map((file: File)=>{return file}) }))
       }, [])
       const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
       console.log(SignupFormData)

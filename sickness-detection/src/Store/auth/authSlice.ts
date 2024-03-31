@@ -1,16 +1,20 @@
-import { SignupformDataType } from "@/app/interfaces/interfaces";
+import { LoginFormDataType, DoctorSignupformDataType, PatientSignupformDataType } from "@/app/interfaces/interfaces";
 import { PayloadAction, createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 interface authSliceType {
     currentSignUpPage: string,
     currentDoctorSignupPage: number,
-    SignupFormData: SignupformDataType
+    SignupFormDataDoctor: DoctorSignupformDataType,
+    PatientSignupFormData: PatientSignupformDataType,
+    LoginFormData: LoginFormDataType
 }
 
 const initialState: authSliceType = {
     currentSignUpPage: "role",
     currentDoctorSignupPage: 1,
-    SignupFormData: { name: "", lastname: "", email: "", password: "", confirmPassword: "", images: [] }
+    SignupFormDataDoctor: { name: "", lastname: "", email: "", phone: "",password: "", confirmPassword: "", images: [] },
+    PatientSignupFormData: { name: "", lastname: "", email: "", phone: "",password: "", confirmPassword: "" },
+    LoginFormData: { email: "", password: "" }
 }
 
 const authSlice = createSlice({
@@ -23,14 +27,24 @@ const authSlice = createSlice({
         setCurrentDoctorSignupPage: (state, action: PayloadAction<number>) => {
             state.currentDoctorSignupPage = action.payload
         },
-        setSignupFormData: (state, action: PayloadAction<{name: keyof SignupformDataType, value: any}>) => {
-            const newSignupFormDatastate = {...state.SignupFormData}
+        setSignupFormDataDoctor: (state, action: PayloadAction<{name: keyof DoctorSignupformDataType, value: any}>) => {
+            const newSignupFormDatastate = {...state.SignupFormDataDoctor}
             newSignupFormDatastate[action.payload.name] = action.payload.value
-            state.SignupFormData = newSignupFormDatastate
+            state.SignupFormDataDoctor = newSignupFormDatastate
+        },
+        setPatientSignupFormData: (state, action: PayloadAction<{name: keyof PatientSignupformDataType, value: any}>) => {
+            const newSignupFormDatastate = {...state.PatientSignupFormData}
+            newSignupFormDatastate[action.payload.name] = action.payload.value
+            state.PatientSignupFormData = newSignupFormDatastate
+        },
+        setLoginFormData: (state, action: PayloadAction<{name: keyof LoginFormDataType, value: any}>) => {
+            const newLoginFormData = { ...state.LoginFormData }
+            newLoginFormData[action.payload.name] = action.payload.value
+            state.LoginFormData = newLoginFormData
         }
     }
 })
 
-export const { setCurrentDoctorSignupPage, setCurrentSignupPage, setSignupFormData } = authSlice.actions
+export const { setCurrentDoctorSignupPage, setCurrentSignupPage, setSignupFormDataDoctor } = authSlice.actions
 
 export default authSlice.reducer
