@@ -25,6 +25,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentDoctorSignupPage, setSignupFormDataDoctor } from '@/Store/auth/authSlice';
 
 export default() => {
+    const Errors = useSelector((state: RootState) => state.Authentication.DoctorSignupErrors)
     const SignupFormData = useSelector((state: RootState) => state.Authentication.SignupFormDataDoctor)
     const dispatch = useDispatch<AppDispatch>()
     return(
@@ -33,24 +34,30 @@ export default() => {
                 <div className="w-full">
                     <span className="text-sickness-gray text-lg"> Firstname </span>
                     <input type="text" value={SignupFormData.name} onChange={(e)=>dispatch(setSignupFormDataDoctor({name: "name", value: e.target.value}))} className="outline-none border focus:border-sickness-primary text-sickness-gray text- pl-2 py-2 rounded-md w-full border-sickness-border" />
+                    <p className='text-sm text-red-500 break-words'> { Errors.name } </p>
                 </div>
                 <div className="w-full">
                     <span className="text-sickness-gray text-lg"> Lastname </span>
                     <input type="text" value={SignupFormData.lastname} onChange={(e)=>dispatch(setSignupFormDataDoctor({name: "lastname", value: e.target.value}))} className="outline-none border focus:border-sickness-primary text-sickness-gray text- pl-2 py-2 rounded-md w-full border-sickness-border" />
+                    <p className='text-sm text-red-500 break-words'> { Errors.lastname } </p>
                 </div>
             </div>
             <div className="w-full">
                 <span className="text-sickness-gray text-lg"> Email </span>
                 <input type="text" value={SignupFormData.email} onChange={(e)=>dispatch(setSignupFormDataDoctor({name: "email", value: e.target.value}))} className="outline-none border focus:border-sickness-primary text-sickness-gray text- pl-2 py-2 rounded-md w-full border-sickness-border" />
+                <p className='text-sm text-red-500 break-words'> { Errors.email } </p>
             </div>
             <PhoneInput country='tn' value={SignupFormData.phone} onChange={(e)=>dispatch(setSignupFormDataDoctor({name: "phone", value: e}))} inputStyle={InputStyle} buttonStyle={ButtonStyle} containerStyle={ContainerStyle}/>
+            <p className='text-sm text-red-500 break-words'> { Errors.phone } </p>
             <div className="w-full mt-4">
-                    <span className="text-sickness-gray text-lg"> Password </span>
-                    <input type="password" value={SignupFormData.password} onChange={(e)=>dispatch(setSignupFormDataDoctor({name: "password", value: e.target.value}))} className="outline-none border focus:border-sickness-primary text-sickness-gray text- pl-2 py-2 rounded-md w-full border-sickness-border" placeholder="●●●●●●●●" />
+                <span className="text-sickness-gray text-lg"> Password </span>
+                <input type="password" value={SignupFormData.password} onChange={(e)=>dispatch(setSignupFormDataDoctor({name: "password", value: e.target.value}))} className="outline-none border focus:border-sickness-primary text-sickness-gray text- pl-2 py-2 rounded-md w-full border-sickness-border" placeholder="●●●●●●●●" />
+                <p className='text-sm text-red-500 break-words'> { Errors.password } </p>
             </div>
             <div className="w-full mt-4">
                 <span className="text-sickness-gray text-lg"> Confirm Password </span>
                 <input type="password" value={SignupFormData.confirmPassword} onChange={(e)=>dispatch(setSignupFormDataDoctor({name: "confirmPassword", value: e.target.value}))} className="outline-none border focus:border-sickness-primary text-sickness-gray text- pl-2 py-2 rounded-md w-full border-sickness-border" placeholder="●●●●●●●●" />
+                <p className='text-sm text-red-500 break-words'> { Errors.confirmPassword } </p>
             </div>
             <button className="mt-4 w-full rounded-md text-white border-2 border-sickness-primary hover:border-inherit bg-sickness-primary hover:bg-sickness-primaryText/70 active:bg-sickness-primaryText transition delay-75 duration-100 py-2 font-semibold flex justify-center items-center gap-2" onClick={()=>dispatch(setCurrentDoctorSignupPage(2))} > Next <ChevronsRightIcon className="h-5 w-5" /> </button>
         </>

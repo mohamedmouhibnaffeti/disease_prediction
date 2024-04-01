@@ -10,6 +10,7 @@ import Image from 'next/image'
 export default () => {
 
     const dispatch = useDispatch<AppDispatch>()
+    const errors = useSelector((state: RootState) => state.Authentication.DoctorSignupErrors)
     const SignupFormData = useSelector((state: RootState) => state.Authentication.SignupFormDataDoctor)
     const onDrop = useCallback((acceptedFiles: any) => {
         const imageFiles = acceptedFiles.filter((file: any) => file.type.startsWith('image/'));
@@ -26,11 +27,12 @@ export default () => {
             <p className='text-sm text-sickness-gray text-center'> Afer creating your account you'll need to wait for us verify your profile before you can create appointments, meanwhile checkout our website 😊 </p>
             <div>   
                 <div {...getRootProps()} className="cursor-pointer w-full h-fit mt-2 bg-[#D9D9D9]/50 hover:bg-[#D9D9D9]/70 flex justify-center items-center border-black border rounded-md flex-col py-2 gap-2 px-4">
-                    <input {...getInputProps()} value={SignupFormData.images} />
+                    <input {...getInputProps()} />
                     <ImagePlusIcon className='w-12 h-12' />
                     <p className='text-center'>Drag 'n' drop your <span className='font-semibold'> Service and Identity Cards</span> here, or click to select files</p>
                 </div>
             </div>
+            <p className='text-sm text-red-500 break-words'> { errors.name } </p>
             <div className='flex gap-2 flex-wrap w-full justify-start'>
                 {
                     SignupFormData.images?.map((image, index) => {
