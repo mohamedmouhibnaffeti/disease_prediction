@@ -12,8 +12,11 @@ export default () => {
     const dispatch = useDispatch<AppDispatch>()
     const SignupFormData = useSelector((state: RootState) => state.Authentication.SignupFormDataDoctor)
     const onDrop = useCallback((acceptedFiles: any) => {
-        console.log(acceptedFiles)
-        dispatch(setSignupFormDataDoctor({ name: "images", value: acceptedFiles?.map((file: File)=>{return file}) }))
+        const imageFiles = acceptedFiles.filter((file: any) => file.type.startsWith('image/'));
+    
+        console.log(imageFiles);
+
+        dispatch(setSignupFormDataDoctor({ name: "images", value: imageFiles }));
       }, [])
       const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
       console.log(SignupFormData)
@@ -23,7 +26,7 @@ export default () => {
             <p className='text-sm text-sickness-gray text-center'> Afer creating your account you'll need to wait for us verify your profile before you can create appointments, meanwhile checkout our website 😊 </p>
             <div>   
                 <div {...getRootProps()} className="cursor-pointer w-full h-fit mt-2 bg-[#D9D9D9]/50 hover:bg-[#D9D9D9]/70 flex justify-center items-center border-black border rounded-md flex-col py-2 gap-2 px-4">
-                    <input {...getInputProps()} />
+                    <input {...getInputProps()} value={SignupFormData.images} />
                     <ImagePlusIcon className='w-12 h-12' />
                     <p className='text-center'>Drag 'n' drop your <span className='font-semibold'> Service and Identity Cards</span> here, or click to select files</p>
                 </div>
