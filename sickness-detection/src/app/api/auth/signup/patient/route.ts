@@ -3,7 +3,7 @@ import { isValidEmail } from "@/lib/functions/strings"
 import connectMongoDB from "@/lib/mongodb"
 import { NextResponse } from "next/server"
 import bcrypt from "bcryptjs"
-import { createToken } from "@/lib/functions/auth"
+import { createAccessToken, createRefreshToken } from "@/lib/functions/auth"
 
 export async function POST(request: Request){
     try{
@@ -15,13 +15,14 @@ export async function POST(request: Request){
         }
         const existingPatient = await User.findOne({email: email})
         if(existingPatient){
-            return NextResponse.json({message: "Patient already exists" }, { status: 400 })
+            return NextResponse.json({message: "Email already exists in database." }, { status: 400 })
         }else{
             const hashedPassword = await bcrypt.hash(password, salt)
             const createdPatient = await Patient.create({ name, lastname, email, password: hashedPassword, phone })
             if(createdPatient){
-                const token = createToken(createdPatient._id)
-                return NextResponse.json({ message: "Patient Created", doctor: createdPatient, token: token }, { status: 201 })
+                const RefreshToken = createRefreshToken(createdPatient._id)
+                const AccessToken = createAccessToken(createdPatient._id)
+                return NextResponse.json({ message: "Patient Created", user: createdPatient, AccessToken: AccessToken, RefreshToken: RefreshToken }, { status: 201 })
             }else{
                 return NextResponse.json({ message: "Patient not created" }, { status: 500 })
             }

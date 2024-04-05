@@ -1,5 +1,8 @@
 import { LoginFormDataType, DoctorSignupformDataType, PatientSignupformDataType, PatientSignupErrorsType, DoctorSignupErrorsType, LoginErrorsType } from "@/app/interfaces/interfaces";
+import { next_backend_route } from "@/lib/statics/ApiRoutes";
 import { PayloadAction, createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { RootState } from "../store";
+import { areAllStringsEmpty } from "@/lib/functions/objects";
 
 interface authSliceType {
     currentSignUpPage: string,
@@ -7,9 +10,6 @@ interface authSliceType {
     SignupFormDataDoctor: DoctorSignupformDataType,
     PatientSignupFormData: PatientSignupformDataType,
     LoginFormData: LoginFormDataType,
-    PatientSignupErrors: PatientSignupErrorsType,
-    DoctorSignupErrors: DoctorSignupErrorsType,
-    LoginErrors: LoginErrorsType
 }
 
 const initialState: authSliceType = {
@@ -18,9 +18,6 @@ const initialState: authSliceType = {
     SignupFormDataDoctor: { name: "", lastname: "", email: "", phone: "",password: "", confirmPassword: "", images: [] },
     PatientSignupFormData: { name: "", lastname: "", email: "", phone: "",password: "", confirmPassword: "" },
     LoginFormData: { email: "", password: "" },
-    PatientSignupErrors: { name: "", lastname: "", email: "", phone: "",password: "", confirmPassword: "" },
-    DoctorSignupErrors: { name: "", lastname: "", email: "", phone: "",password: "", confirmPassword: "", images: "" },
-    LoginErrors: { email: "", password: "" }
 }
 
 const authSlice = createSlice({
@@ -34,35 +31,108 @@ const authSlice = createSlice({
             state.currentDoctorSignupPage = action.payload
         },
         setSignupFormDataDoctor: (state, action: PayloadAction<{name: keyof DoctorSignupformDataType, value: any}>) => {
-            const newErrorMessages = { ...state.DoctorSignupErrors }
-            newErrorMessages[action.payload.name] = ""
-            state.DoctorSignupErrors = newErrorMessages
             const newSignupFormDatastate = {...state.SignupFormDataDoctor}
             newSignupFormDatastate[action.payload.name] = action.payload.value
             state.SignupFormDataDoctor = newSignupFormDatastate
         },
         setPatientSignupFormData: (state, action: PayloadAction<{name: keyof PatientSignupformDataType, value: any}>) => {
-            const newErrorMessages = { ...state.PatientSignupErrors }
-            newErrorMessages[action.payload.name] = ""
-            state.PatientSignupErrors = newErrorMessages
             const newSignupFormDatastate = {...state.PatientSignupFormData}
             newSignupFormDatastate[action.payload.name] = action.payload.value
             state.PatientSignupFormData = newSignupFormDatastate
         },
         setLoginFormData: (state, action: PayloadAction<{name: keyof LoginFormDataType, value: any}>) => {
-            const newErrorMessages = { ...state.LoginErrors }
-            newErrorMessages[action.payload.name] = ""
-            state.LoginErrors = newErrorMessages
             const newLoginFormData = { ...state.LoginFormData }
             newLoginFormData[action.payload.name] = action.payload.value
             state.LoginFormData = newLoginFormData
-        },
-        handleLoginSendRequest: (state) => {
-            console.log("state: ", JSON.stringify(state.PatientSignupFormData))
         }
+    },
+    /*
+    extraReducers: (builder) => {
+        builder.addCase(Login.fulfilled, (state, action: PayloadAction<any>) => {
+            state.LoginResponse = action.payload
+            if(action.payload?.user){
+                localStorage.setItem("user", JSON.stringify(action.payload.user))
+                localStorage.setItem("token", action.payload.token)
+                
+            }
+        })
     }
+    */
 })
 
-export const { setCurrentDoctorSignupPage, setCurrentSignupPage, setSignupFormDataDoctor, setPatientSignupFormData, setLoginFormData, handleLoginSendRequest } = authSlice.actions
+export const Login = createAsyncThunk(
+    "Auth/login",
+    async(_, { getState })=>{
+        const state: RootState = getState() as RootState
+        const { LoginFormData } = state.Authentication
+        const etat = areAllStringsEmpty(LoginFormData)
+        if(!etat){
+            const response = await fetch(`${next_backend_route}/auth/login`, {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(LoginFormData)
+            })
+            const data = await response.json()
+            const dataWithResponse = {...data, status: response.status}
+            return dataWithResponse
+        }else{
+            return {message: "Please check form data"}
+        }
+    }
+)
+
+export const DoctorSignup = createAsyncThunk(
+    "Auth/DoctorSignup",
+    async(_, { getState })=>{
+        const state: RootState = getState() as RootState
+        const { SignupFormDataDoctor } = state.Authentication
+        const formData = new FormData()
+        SignupFormDataDoctor.images.forEach((image: File, index: number) => {
+            formData.append(`image${index}`, image)
+        });
+        Object.entries(SignupFormDataDoctor).forEach(([key, value]) => {
+            if(typeof value === "string"){
+                formData.append(key, value);
+            }
+        });
+        
+        const etat = areAllStringsEmpty(SignupFormDataDoctor)
+        if(!etat){
+            const response = await fetch(`${next_backend_route}/auth/signup/doctor`, {
+                method: 'POST',
+                body: formData
+            })
+            const data = await response.json()
+            const dataWithResponse = {...data, status: response.status}
+            return dataWithResponse
+        }else{
+            return {message: "Please check form data"}
+        }
+    }
+)
+
+export const PatientSignup = createAsyncThunk(
+    "Auth/PatientSignup",
+    async(_, { getState })=>{
+        const state: RootState = getState() as RootState
+        const { PatientSignupFormData } = state.Authentication
+        
+        const etat = areAllStringsEmpty(PatientSignupFormData)
+        if(!etat){
+            const response = await fetch(`${next_backend_route}/auth/signup/patient`, {
+                method: 'POST',
+                body: JSON.stringify(PatientSignupFormData)
+            })
+            const data = await response.json()
+            const dataWithResponse = {...data, status: response.status}
+            return dataWithResponse
+        }else{
+            return {message: "Please check form data"}
+        }
+    }
+)
+export const { setCurrentDoctorSignupPage, setCurrentSignupPage, setSignupFormDataDoctor, setPatientSignupFormData, setLoginFormData } = authSlice.actions
 
 export default authSlice.reducer

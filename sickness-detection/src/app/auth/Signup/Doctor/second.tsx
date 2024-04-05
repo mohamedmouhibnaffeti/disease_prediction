@@ -1,26 +1,48 @@
 "use client"
 import { ChevronsLeftIcon, ImagePlusIcon, UserPlusIcon } from 'lucide-react'
-import React, {useCallback} from 'react'
+import React, {useCallback, useState} from 'react'
 import {useDropzone} from 'react-dropzone'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '@/Store/store'
-import { setCurrentDoctorSignupPage, setSignupFormDataDoctor } from '@/Store/auth/authSlice'
+import { setCurrentDoctorSignupPage, setSignupFormDataDoctor, DoctorSignup } from '@/Store/auth/authSlice'
 import Image from 'next/image'
+import { DoctorSignupErrorsType } from '@/app/interfaces/interfaces'
+import { useRouter } from 'next/navigation'
 
-export default () => {
+export default ({ Errors, setErrors }: { Errors: DoctorSignupErrorsType, setErrors: any }) => {
 
     const dispatch = useDispatch<AppDispatch>()
-    const errors = useSelector((state: RootState) => state.Authentication.DoctorSignupErrors)
+    const [isLoading, setIsLoading] = useState(false)
     const SignupFormData = useSelector((state: RootState) => state.Authentication.SignupFormDataDoctor)
     const onDrop = useCallback((acceptedFiles: any) => {
-        const imageFiles = acceptedFiles.filter((file: any) => file.type.startsWith('image/'));
+        const imageFiles = acceptedFiles.filter((file: any, index: number) => file.type.startsWith('image/') && index < 2);
     
         console.log(imageFiles);
 
         dispatch(setSignupFormDataDoctor({ name: "images", value: imageFiles }));
       }, [])
       const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
-      console.log(SignupFormData)
+      const Router = useRouter()
+      const [SignupResponse, setSignupResponse] = useState<any>({})
+      const handleDoctorSignup = async() => {
+        if(SignupFormData.images.length !== 2){
+            setErrors((prevErrors: DoctorSignupErrorsType) => ({ ...prevErrors, images: "Images should be exactly 2" }))
+        }
+        else{
+            setIsLoading(true)
+            const response = await dispatch(DoctorSignup())
+            setSignupResponse(response.payload)
+            if(response.payload.status === 201){
+                const userString = JSON.stringify(response.payload.user)
+                localStorage.setItem("user", userString)
+                localStorage.setItem("AccessToken", response.payload?.AccessToken)
+                localStorage.setItem("RefreshToken", response.payload?.RefreshToken)
+                Router.push("/")
+            }
+            setIsLoading(false)
+        }
+      }
+
     return (
         <>
             <p className='text-sm text-sickness-gray text-center'> In this step you'll need to insert your <span className="text-sickness-primary font-semibold"> Service card </span> and your <span className="text-sickness-primary font-semibold"> Identity Card </span> to verify your identity </p>
@@ -32,10 +54,10 @@ export default () => {
                     <p className='text-center'>Drag 'n' drop your <span className='font-semibold'> Service and Identity Cards</span> here, or click to select files</p>
                 </div>
             </div>
-            <p className='text-sm text-red-500 break-words'> { errors.name } </p>
+            <p className='text-sm text-red-500 break-words'> { Errors.images } </p>
             <div className='flex gap-2 flex-wrap w-full justify-start'>
                 {
-                    SignupFormData.images?.map((image, index) => {
+                    SignupFormData.images?.map((image :any, index: boolean) => {
                         const imageUrl = URL.createObjectURL(image);
                         return(
                             <Image src={imageUrl} alt='' width={100} height={100} className="rounded-md border-sickness-border border w-[8rem] h-[6rem] object-cover" />
@@ -45,7 +67,8 @@ export default () => {
             </div>
             <div className='flex flex-col gap-2 w-full mt-4'>
                 <button className="w-full rounded-md text-sickness-primary hover:text-white bg-none border-2 border-sickness-primary hover:border-inherit hover:bg-sickness-primaryText/70 active:bg-sickness-primaryText transition delay-75 duration-100 py-2 font-semibold flex justify-center items-center gap-2" onClick={()=>dispatch(setCurrentDoctorSignupPage(1))} > <ChevronsLeftIcon /> Back  </button>
-                <button className="w-full rounded-md text-white bg-sickness-primary border-2 border-sickness-primary hover:border-inherit hover:bg-sickness-primaryText/70 active:bg-sickness-primaryText transition delay-75 duration-100 py-2 font-semibold flex justify-center items-center gap-2"> Create Account <UserPlusIcon className="h-5 w-5" /> </button>
+                <button className={`w-full rounded-md text-white ${isLoading ? "bg-sickness-primary/70" : "bg-sickness-primary hover:border-inherit hover:bg-sickness-primaryText/70 active:bg-sickness-primaryText"} border-2 border-sickness-primary transition delay-75 duration-100 py-2 font-semibold flex justify-center items-center gap-2`} onClick={handleDoctorSignup} disabled={isLoading} > Create Account { isLoading ? <div className="small-white-loader" /> : <UserPlusIcon className="h-5 w-5" /> } </button>
+                <p className="text-center self-center text-sm text-red-500"> { SignupResponse?.message !== "Doctor Created" && SignupResponse?.message } </p>
             </div>
         </>
       );

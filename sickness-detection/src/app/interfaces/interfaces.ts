@@ -18,7 +18,7 @@ export interface DoctorSignupformDataType {
     phone: string,
     password: string,
     confirmPassword: string,
-    images: Array<any>
+    images: any
 }
 
 export interface PatientSignupformDataType {

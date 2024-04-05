@@ -79,7 +79,7 @@ def preprocess_and_save(csv_files):
 
 def main():
     # Specify CSV files
-    csv_files = ["sicknesses.csv"]  # Add more file paths as needed
+    csv_files = ["C:/Users/mouha/OneDrive/Desktop/PFE/FlaskBackend/machineLearningModel/DataNormalization/sicknesses.csv"]  # Add more file paths as needed
     
     # Preprocess and save data
     preprocess_and_save(csv_files)
