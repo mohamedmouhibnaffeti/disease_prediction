@@ -1,4 +1,4 @@
-// File: C:\Users\mouha\OneDrive\Desktop\PFE\sickness-detection\src\app\page.tsx
+// File: C:\Users\mouss\OneDrive\Bureau\PFE\disease_prediction\sickness-detection\src\app\page.tsx
 import * as entry from '../../../src/app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

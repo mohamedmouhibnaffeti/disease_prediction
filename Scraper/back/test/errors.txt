@@ -1,0 +1,2 @@
+Error in main_webmd: ('Connection aborted.', ConnectionResetError(10054, 'Une connexion existante a dû être fermée par l’hôte distant', None, 10054, None))
+Error in main_mayoclinic: 0
