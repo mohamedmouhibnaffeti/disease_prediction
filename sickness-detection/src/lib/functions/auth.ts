@@ -33,9 +33,8 @@ export const refreshToken = async() => {
             }
         }
         const data = await response.json()
-        const { accessToken, expiryTime } = data
+        const { accessToken } = data
         localStorage.setItem('accessToken', accessToken)
-        localStorage.setItem('expiryTime', expiryTime)
     }catch(err){
         console.log(err)
     }

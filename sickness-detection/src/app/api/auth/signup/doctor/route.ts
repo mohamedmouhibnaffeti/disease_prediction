@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
                 path.join(process.cwd(), "src/uploads/" + imageName),
                 buffer
             )
-            imagepaths.push(process.cwd() + "src/uploads/" + imageName)
+            imagepaths.push("src/uploads/" + imageName)
         }
         await connectMongoDB()
         const exisingDoctor = await User.findOne({email: email})
@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
         }else{
             const salt = await bcrypt.genSalt(10)
             const hashedPassword = await bcrypt.hash(password, salt)
-            const CreatedDoctor = await Doctor.create({ name, lastname, phone, email, password: hashedPassword })
+            const CreatedDoctor = await Doctor.create({ name, lastname, phone, email, password: hashedPassword, id_images: imagepaths })
             if(CreatedDoctor){
                 const RefreshToken = createRefreshToken(CreatedDoctor._id)
                 const AccessToken = createAccessToken(CreatedDoctor._id)
