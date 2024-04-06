@@ -1,3 +1,4 @@
 {
-  "/admin/scraper/page": "app/admin/scraper/page.js"
+  "/page": "app/page.js",
+  "/admin/file-insert/page": "app/admin/file-insert/page.js"
 }

@@ -1,10 +1,30 @@
 import os
-from flask import Flask, jsonify, render_template, request
+import threading
+from flask import Flask, jsonify, render_template, request, send_file
 from flask_cors import CORS
 from flask_socketio import SocketIO
 from scrapers.mayoclinic import MayoClinicScraper
 import settings
+running = True
 
+def stop_thread():
+    global running
+    running = False
+
+
+
+def main():
+    thread = threading.Thread(target= MayoClinic.main_MayoClinicScraper())
+    thread.start()
+
+    while True:
+        print("Press '1' to stop the thread:")
+        choice = input()
+        if choice == '1':
+            stop_thread()
+            thread.join()  # Wait for the thread to finish
+            print("Thread stopped.")
+            break
 
 def extract_file_names(files_list):
     file_names = set()
@@ -21,34 +41,45 @@ def find_file_or_class(file_name, class_name, python_files):
 
 
 
-#app = Flask(__name__, template_folder='./')
+
+
+
 app = Flask(__name__)
 cors = CORS(app)
 socketio = SocketIO(app, cors_allowed_origins="*")
+totaldata=0
 MayoClinic = MayoClinicScraper(socketio)
+
 
 
 
 @app.route('/api/dataget', methods=['GET'])
 def get_data():
     x=settings.python_files
+    print(x)
     return jsonify(extract_file_names(x))
 
 
-"""@app.route('/')
-def index():
-    return render_template('index.html')"""
+
 
 @app.route('/api/start-scraping', methods=['POST'])
 def start_collecting():
-        MayoClinic.main_MayoClinicScraper()
+    global running
+    thread = threading.Thread(target= MayoClinic.main_MayoClinicScraper())
+    thread.start()
+    if running:
+        return jsonify('scraper completed !')
+    return jsonify('scraper stopped !')
 
 
-@app.route('/stop_collecting')
+@app.route('/api/stop-scraping', methods=['Get'])
 def stop_collecting():
-     pass
+    global running
+    running = False
+    return jsonify('scraper stopped !')
 
-@app.route('/upload_scraper', methods=['POST'])
+
+@app.route('/api/upload-scraper', methods=['POST'])
 def upload_scraper():
     file = request.files['file']
     class_name = request.form['className']
@@ -67,8 +98,37 @@ def upload_scraper():
     file.save(os.path.join("./scrapers/", file.filename))
     return 'File uploaded successfully'
 
+@app.route('/api/download-documentation')
+def download_documentation():
+    documentation_path = 'scrapers/book.py'
+    return send_file(documentation_path, as_attachment=True)
+
+@app.route('/api/delete-scraper', methods=['POST'])
+def delete_scraper_route():
+    try:
+        file_name = request.json['fileName']
+        python_files = settings.python_files
+        updated_files = [file for file in python_files if file['file name'] != file_name]
+        with open('settings.py', 'w') as f:
+            f.write(f'python_files={updated_files}')
+        scraper_path = os.path.join("./scrapers/", file_name + ".py")
+        os.remove(scraper_path)
+        return 'Scraper deleted successfully', 200
+    except Exception as e:
+        return str(e), 400
 
 
+@app.route('/api/modify-scraper', methods=['POST'])
+def modify_scraper():
+    file_name = request.json['file']
+    new_content = request.json['content']
+    try:
+        with open(os.path.join("./scrapers/", f'{file_name}.py'), 'w') as f:
+            f.write(new_content)
+        return 'Scraper modified successfully', 200
+    except Exception as e:
+        return str(e), 400
+    
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True, port=5002, allow_unsafe_werkzeug=True)
+    socketio.run(app, debug=True, port=5006, allow_unsafe_werkzeug=True)

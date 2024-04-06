@@ -1,5 +1,1 @@
-python_files=[{'file name': 'file3', 'class name': 'vghjghk', 'function name': 'hjgvhjv'}, 
-              {'file name': 'file3', 'class name': '77f', 'function name': 'hjgvhjv'}, 
-              {'file name': 'file3', 'class name': 'kkk', 'function name': 'hjgvhjv'}, 
-              {'file name': 'file2', 'class name': 'kkk2', 'function name': '777i'}, 
-              {'file name': 'file2', 'class name': 'kkk2tj', 'function name': '777i'}]
+python_files=[{'file name': 'mayoclinic', 'class name': 'MayoClinicScraper', 'function name': 'main_MayoClinicScraper'}, {'file name': 'nhs', 'class name': 'NHSScraper', 'function name': 'main_nhs'}, {'file name': 'nhsinform', 'class name': 'NHSInformScraper', 'function name': 'main_nhsinform'}, {'file name': 'webmd', 'class name': 'WebMDScraper', 'function name': 'main_webmd'}, {'file name': 'file1', 'class name': 'sdf', 'function name': 'qfd'}]

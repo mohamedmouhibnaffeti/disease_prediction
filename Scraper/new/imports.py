@@ -1,9 +1,118 @@
-data= {"file name": "file.filename[:(file.filename.rfind('.'))]" , "class name": "class_name", "function name": "class_Function"}
-x=settings.python_files
-x.append(data)
-with open('settings.py', 'w') as f:
-        f.write(f'python_files={x}')
-file.save(file_path)
+import threading
+import time
+
+# Global variable to control thread 1
+stop_thread_1 = False
+
+# Function to simulate a task that takes some time to complete
+def task(name, delay):
+    global stop_thread_1
+    print(f"Task '{name}' started")
+    for i in range(delay):
+        if name == "Thread 1" and stop_thread_1:
+            print(f"Task '{name}' stopped")
+            return
+        time.sleep(20)
+    print(f"Task '{name}' completed")
+
+# Function to stop thread 1 when user input is provided
+def stop_thread():
+    global stop_thread_1
+    input("Press enter to stop Thread 1: ")
+    stop_thread_1 = True
+
+# Creating threads
+thread1 = threading.Thread(target=task, args=("Thread 1", 5))  # task with name "Thread 1" and delay 5 seconds
+thread2 = threading.Thread(target=task, args=("Thread 2", 3))  # task with name "Thread 2" and delay 3 seconds
+stop_thread_func = threading.Thread(target=stop_thread)
+
+# Starting threads
+thread1.start()
+thread2.start()
+stop_thread_func.start()
+
+# Waiting for threads to finish
+thread1.join()
+thread2.join()
+stop_thread_func.join()
+
+print("All tasks completed")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
