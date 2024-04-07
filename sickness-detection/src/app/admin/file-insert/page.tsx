@@ -50,31 +50,7 @@ const File_Insert = () => {
     //preparing request
     const [LoaderTrue, setLoaderTrue] = useState<boolean>(false)
     const [CSVfileContent, setCSVFileContent] = useState<string>()
-    const sendCSV = async () => {
-        const formData = new FormData()
-        CSVFilesKeys.map((key: number)=>{
-            if(CSVFiles[key] instanceof File){
-                formData.append(`file${key}`, CSVFiles[key])
-            }
-        })
-        try{
-            setLoaderTrue(true)
-            const response = await fetch('http://127.0.0.1:5000/api/file-upload/csv', {
-            method: 'POST',
-            body: formData
-            })
-            const content = await response.blob()
-            const url = window.URL.createObjectURL(content)
-            setCSVFileContent(url)
-            setLoadingStatus([0])
-        }catch(err){
-            console.log("Error uploading files : ", err)
-        }
-        setCSVFiles(null)
-        CSVInputRef.current.value = null
-        setLoaderTrue(false)
-    }
-    //sending text files
+
 
     const scrollReference = useRef()
     
