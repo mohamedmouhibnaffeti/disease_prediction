@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input"
 import { FileCheck, X, FileX, FileUp } from "lucide-react"
 import DataLoader from "./Loading"
 import { io } from "socket.io-client"
+import { sendCSV } from "@/vendors/insertFile/insert"
 
 const socket = io('http://127.0.0.1:5000')
 
@@ -74,7 +75,7 @@ const File_Insert = () => {
                     setCSVErrorMessageShow(true)
                     break;
                 }
-                sendCSV()
+                sendCSV(CSVFilesKeys, CSVFiles, setCSVFileContent, setLoadingStatus, setCSVFiles, CSVInputRef);
             }            
         }
 
