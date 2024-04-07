@@ -11,7 +11,7 @@ async function sendOTPToEmail(email: string, otp: any) {
     // Create a nodemailer transporter with your SMTP settings
     let transporter = nodemailer.createTransport({
         host: process.env.SMTP_HOST,
-        port: 587,
+        port: process.env.SMTP_PORT,
         secure: false,
         auth: {
             user: process.env.SMTP_USER,
@@ -23,10 +23,60 @@ async function sendOTPToEmail(email: string, otp: any) {
         from: `"${process.env.SENDER_NAME}" <${process.env.SMTP_USER}>`,
         to: email,
         subject: "Signup verification code",
-        text: `Your verification code is: ${otp}.
-        
-        SymptoSense technical support.
-        `,
+        html: `
+        <html>
+            <head>
+                <style>
+                    /* Add your CSS styles here */
+                    body {
+                        font-family: Arial, sans-serif;
+                        background-color: #f4f4f4;
+                        color: #333;
+                        margin: 0;
+                        padding: 0;
+                    }
+                    .container {
+                        max-width: 600px;
+                        margin: 0 auto;
+                        padding: 20px;
+                        background-color: #fff;
+                        border-radius: 5px;
+                        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+                    }
+                    .header {
+                        background-color: #007bff;
+                        color: #fff;
+                        text-align: center;
+                        padding: 10px 0;
+                        border-top-left-radius: 5px;
+                        border-top-right-radius: 5px;
+                    }
+                    .content {
+                        padding: 20px;
+                    }
+                    .footer {
+                        text-align: center;
+                        padding-top: 20px;
+                        color: #888;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="container">
+                    <div class="header">
+                        <h2>Signup Verification Code</h2>
+                    </div>
+                    <div class="content">
+                        <p>Your verification code is: <strong>${otp}</strong>.</p>
+                        <p><em>SymptoSense technical support.</em></p>
+                    </div>
+                    <div class="footer">
+                        <p>This email was sent by SymptoSense. Please do not reply to this email.</p>
+                    </div>
+                </div>
+            </body>
+        </html>
+    `,
         headers: {
             'Brand-Indicators': 'bimi validate',
           },
@@ -60,6 +110,8 @@ export async function POST(request: Request){
         });
 
         // Send OTP to user's email
+        console.log(email)
+        
         await sendOTPToEmail(email, otp);
         
         return NextResponse.json({ message: "OTP generated successfully and sent to email" }, { status: 200, headers: { 'Set-Cookie': setCookie } });
