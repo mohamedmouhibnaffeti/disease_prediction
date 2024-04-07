@@ -1,14 +1,108 @@
 "use client"
+import { useState, useRef, useEffect } from "react"
 import { Input } from "@/components/ui/input"
 import { FileCheck, X, FileX, FileUp } from "lucide-react"
 import DataLoader from "./Loading"
-import {RemoveLongChars, FilesExtensionChecking, CSVInputRef, CSVFiles, } from "@/vendors/insertFile/insert"
+import { io } from "socket.io-client"
 
-
+const socket = io('http://127.0.0.1:5000')
 
 const File_Insert = () => {
 
+    //messaging server
+    const [statusLoading, setLoadingStatus] = useState<Array<number>>([0])
+    useEffect(() => {
+        socket.on('connect', () => {
+            console.log('Connected to server');
+        });
+        socket.on('message', (data)=>{
+            console.log(data)
+            setLoadingStatus([...statusLoading, data])
+        })
+    }, []);
 
+    const RemoveLongChars = (str: string, maxlen: number) => {
+        if(str.length <= maxlen){
+            return str
+        }
+        const filteredstr = str.split('.');
+        const extension: any = filteredstr.pop();
+        const truncatedName = str.slice(0, maxlen - (extension.length + 1));
+
+        return truncatedName + '....' + extension;
+    }
+    const [CSVErrorMessageShow, setCSVErrorMessageShow] = useState<boolean>(false)
+    const CSVInputRef = useRef<any>()
+    // CSV files states
+    const [CSVFiles, setCSVFiles] = useState<any>()
+    let CSVFilesKeys: any = []
+    if (CSVFiles){
+        CSVFilesKeys = Object.keys(CSVFiles)
+    }
+    const removeCSVFile = (key: number) => {
+        const updatedFiles = [...CSVFiles]
+        updatedFiles.splice(key, 1)
+        setCSVFiles(updatedFiles)
+        setCSVErrorMessageShow(false)
+    }
+    // text files states 
+
+    //preparing request
+    const [LoaderTrue, setLoaderTrue] = useState<boolean>(false)
+    const [CSVfileContent, setCSVFileContent] = useState<string>()
+    const sendCSV = async () => {
+        const formData = new FormData()
+        CSVFilesKeys.map((key: number)=>{
+            if(CSVFiles[key] instanceof File){
+                formData.append(`file${key}`, CSVFiles[key])
+            }
+        })
+        try{
+            setLoaderTrue(true)
+            const response = await fetch('http://127.0.0.1:5000/api/file-upload/csv', {
+            method: 'POST',
+            body: formData
+            })
+            const content = await response.blob()
+            const url = window.URL.createObjectURL(content)
+            setCSVFileContent(url)
+            setLoadingStatus([0])
+        }catch(err){
+            console.log("Error uploading files : ", err)
+        }
+        setCSVFiles(null)
+        CSVInputRef.current.value = null
+        setLoaderTrue(false)
+    }
+    //sending text files
+
+    const scrollReference = useRef()
+    
+    const Scroll = () => {const element = scrollReference.current as any; element.scrollIntoView()}
+    
+    // reset files to null
+    if(CSVFiles?.length === 0) {
+        CSVInputRef.current.value = null
+    }
+    
+    const CSVCancelBtn = () => {
+        setCSVFiles(null)
+        CSVInputRef.current.value = null
+        setCSVErrorMessageShow(false)
+    }
+    const FilesExtensionChecking = (file: string) => {
+        if(file === 'CSV'){
+            for (let key = 0; key < CSVFilesKeys.length; key++ ){
+                const file = CSVFiles[key]
+                if(file.type !== 'text/csv'){
+                    setCSVErrorMessageShow(true)
+                    break;
+                }
+                sendCSV()
+            }            
+        }
+
+    }
     return(
         <div className="flex flex-col justify-center items-center min-h-screen w-screen">        
             <div className="flex flex-col items-center justify-center gap-12 px-8 xl:flex-row ">
@@ -54,10 +148,9 @@ const File_Insert = () => {
                         </div>
                     }
                 </div>
-                { LoaderTrue && <DataLoader status={statusLoading[statusLoading.length-1]} /> }
             </div>
-            {CSVErrorMessageShow && (<p className="text-red-500 text-xl mt-2">Only specific files are accepted!</p>)}
-            {CSVfileContent && (<a href={CSVfileContent} download="Result.csv" target="_blank" rel="noopener noreferrer" className="flex mt-6 items-center justify-center bg-[#0D1821] border-2 border-[#0D1821] text-white p-4 rounded-md transition duration-100 hover:bg-slate-800 gap-2 h-fit"><button>Download Result</button></a>)}
+            { (CSVErrorMessageShow) ? <p className="text-red-500 text-xl mt-2">Only specific files are accepted !</p> : "" }
+            { ( CSVfileContent) ? <a href={ CSVfileContent} download={"Result.csv"} target="_blank" rel="noopener noreferrer" className="flex mt-6 items-center justify-center bg-[#0D1821] border-2 border-[#0D1821] text-white p-4 rounded-md tranition duration-100 hover:bg-slate-800 gap-2 h-fit"> <button> Download Result </button> </a> : "" }
         </div>   
     )
 }
