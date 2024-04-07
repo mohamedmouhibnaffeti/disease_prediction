@@ -1,10 +1,10 @@
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from 'next/server'
 import connectMongoDB from "@/lib/mongodb";
 import { User } from "@/Models/UserModel/UserModel";
 import otpGn from "otp-generator";
 import nodemailer from "nodemailer";
-import { serialize } from "cookie"; // Import serialize from cookie package to set cookie
 import { parse } from "cookie"; // Import parse from cookie package to parse cookie
+import { cookies } from 'next/headers';
 
 // Function to send OTP to user's email
 async function sendOTPToEmail(email: string, otp: any) {
@@ -68,6 +68,7 @@ async function sendOTPToEmail(email: string, otp: any) {
                     </div>
                     <div class="content">
                         <p>Your verification code is: <strong>${otp}</strong>.</p>
+                        <p> The code expires in <strong> 2 minutes </strong>. </p>
                         <p><em>SymptoSense technical support.</em></p>
                     </div>
                     <div class="footer">
@@ -81,11 +82,45 @@ async function sendOTPToEmail(email: string, otp: any) {
             'Brand-Indicators': 'bimi validate',
           },
     });
-
-    console.log("Message sent: %s", info.messageId);
 }
+function serialize(name, value, options) {
+    options = options || {};
+  
+    var str = encodeURIComponent(name) + '=' + encodeURIComponent(value);
+  
+    if (options.maxAge) {
+      str += '; Max-Age=' + Math.floor(options.maxAge);
+    }
+  
+    if (options.domain) {
+      str += '; Domain=' + options.domain;
+    }
+  
+    if (options.path) {
+      str += '; Path=' + options.path;
+    }
+  
+    if (options.expires) {
+      str += '; Expires=' + options.expires.toUTCString();
+    }
+  
+    if (options.httpOnly) {
+      str += '; HttpOnly';
+    }
+  
+    if (options.secure) {
+      str += '; Secure';
+    }
+  
+    if (options.sameSite) {
+      str += '; SameSite=' + options.sameSite;
+    }
+  
+    return str;
+  }
+  
 
-export async function POST(request: Request){
+export async function POST(request: NextRequest, response: NextResponse){
     try{
         const { email } = await request.json();
         /*
@@ -103,18 +138,18 @@ export async function POST(request: Request){
         });
         const encodedOtp = encodeURIComponent(otp);
 
-        const setCookie = serialize('otp', encodedOtp, {
+        const OTPCookie = serialize('otp', otp, {
             httpOnly: true,
             maxAge: 60 * 2,
             path: '/auth/signup',
         });
 
-        // Send OTP to user's email
-        console.log(email)
+        console.log(otp)
+        console.log(encodedOtp)
+
+        //await sendOTPToEmail(email, otp);
         
-        await sendOTPToEmail(email, otp);
-        
-        return NextResponse.json({ message: "OTP generated successfully and sent to email" }, { status: 200, headers: { 'Set-Cookie': setCookie } });
+        return NextResponse.json({ message: "OTP generated successfully and sent to email" }, { status: 200, headers: { "Set-Cookie": OTPCookie } });
         
     } catch(err) {
         return NextResponse.json({ message: `Internal server error: ${err}` }, { status: 500 });

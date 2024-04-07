@@ -4,7 +4,7 @@ import React, {useCallback, useState} from 'react'
 import {useDropzone} from 'react-dropzone'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '@/Store/store'
-import { setCurrentDoctorSignupPage, setSignupFormDataDoctor, DoctorSignup } from '@/Store/auth/authSlice'
+import { setCurrentDoctorSignupPage, setSignupFormDataDoctor, DoctorSignup, RegisterOTP } from '@/Store/auth/authSlice'
 import Image from 'next/image'
 import { DoctorSignupErrorsType } from '@/app/interfaces/interfaces'
 import { useRouter } from 'next/navigation'
@@ -25,6 +25,7 @@ export default ({ Errors, setErrors }: { Errors: DoctorSignupErrorsType, setErro
       const Router = useRouter()
       const [SignupResponse, setSignupResponse] = useState<any>({})
       const handleDoctorSignup = async() => {
+        /*
         if(SignupFormData.images.length !== 2){
             setErrors((prevErrors: DoctorSignupErrorsType) => ({ ...prevErrors, images: "Images should be exactly 2" }))
         }
@@ -41,6 +42,9 @@ export default ({ Errors, setErrors }: { Errors: DoctorSignupErrorsType, setErro
             }
             setIsLoading(false)
         }
+        */
+       const response = await dispatch(RegisterOTP())
+       console.log(response.payload)
       }
 
     return (

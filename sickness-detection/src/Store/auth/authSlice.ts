@@ -3,6 +3,7 @@ import { next_backend_route } from "@/lib/statics/ApiRoutes";
 import { PayloadAction, createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import { areAllStringsEmpty } from "@/lib/functions/objects";
+import { isValidEmail } from "@/lib/functions/strings";
 
 interface authSliceType {
     currentSignUpPage: string,
@@ -133,6 +134,26 @@ export const PatientSignup = createAsyncThunk(
         }
     }
 )
+
+export const RegisterOTP = createAsyncThunk(
+    "Auth/DoctorVerify",
+    async(_, { getState }) => {
+        const state: RootState = getState() as RootState
+        const { SignupFormDataDoctor } = state.Authentication
+        const {email} = SignupFormDataDoctor
+        if(!isValidEmail(email)){
+            return { message: "Please check email" }
+        }
+        const response = await fetch(`${next_backend_route}/auth/verify`, {
+            method: 'POST',
+            body: JSON.stringify({ email: email })
+        })
+        const data = await response.json()
+        const dataWithResponse = { ...data, status: response.status }
+        return dataWithResponse
+    }
+)
+
 export const { setCurrentDoctorSignupPage, setCurrentSignupPage, setSignupFormDataDoctor, setPatientSignupFormData, setLoginFormData } = authSlice.actions
 
 export default authSlice.reducer
