@@ -92,7 +92,7 @@ const Human = () => {
             {Side ? <MaleBack /> : <MaleFront setDialogOpen={setDialogOpen} setBodyPart={setBodyPart} />}
             <div className="flex  flex-col gap-3 mt-12">
                 <button className="px-4 py-1 h-fit bg-sickness-primary rounded-sm text-white" onClick={()=>setSide(prevside => !prevside)}> Rotate </button>
-                <button className="px-4 py-1 h-fit bg-sickness-primary rounded-sm text-white"> Skin </button>
+                <button className="px-4 py-1 h-fit bg-sickness-primary rounded-sm text-white" onClick={()=>{ setDialogOpen(true); setBodyPart("Skin") }} > Skin </button>
             </div>
         </div>
     )

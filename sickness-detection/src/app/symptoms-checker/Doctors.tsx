@@ -58,7 +58,7 @@ let doctors = [
 export default () => {
     const dispatch = useDispatch()
     return(
-        <div className="w-full mt-[2rem] md:px-[16rem] px-4 pb-12 flex flex-col md:ml-0 ml-[12rem]">
+        <div className="w-full mt-[2rem] px-8 py-4 flex flex-col">
             <h1 className="md:text-3xl text-xl font-bold text-sickness-primaryText md:self-start self-center"> Doctors for your sickness : </h1>
             <div className="w-full flex flex-wrap justify-center items-center mt-4 gap-6 px-4">
                 {doctors.map((doctor, index)=>{
