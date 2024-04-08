@@ -12,7 +12,7 @@ export async function POST(request: Request){
         connectMongoDB()
         const user = await User.findOne({ email });
         if(!user){
-            return NextResponse.json({ message: "User not found, Signup." }, { status: 400 });
+            return NextResponse.json({ message: "User not found, create an account first." }, { status: 400 });
         }
         const otp = otpGn.generate(6, {
             upperCaseAlphabets: false,
