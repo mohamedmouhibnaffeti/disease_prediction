@@ -144,7 +144,7 @@ export const RegisterOTP = createAsyncThunk(
         if(!isValidEmail(email)){
             return { message: "Please check email" }
         }
-        const response = await fetch(`${next_backend_route}/auth/verify`, {
+        const response = await fetch(`${next_backend_route}/auth/verify/Register`, {
             method: 'POST',
             body: JSON.stringify({ email: email })
         })
