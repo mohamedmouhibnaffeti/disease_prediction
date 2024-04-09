@@ -75,7 +75,7 @@ const File_Insert = () => {
                     setCSVErrorMessageShow(true)
                     break;
                 }
-                sendCSV(CSVFilesKeys, CSVFiles, setCSVFileContent, setLoadingStatus, setCSVFiles, CSVInputRef);
+                sendCSV(CSVFilesKeys, CSVFiles, setCSVFileContent, setLoadingStatus, setCSVFiles, CSVInputRef, setLoaderTrue);
             }            
         }
 
@@ -125,6 +125,7 @@ const File_Insert = () => {
                         </div>
                     }
                 </div>
+                { LoaderTrue && <DataLoader status={statusLoading[statusLoading.length-1]} /> }
             </div>
             { (CSVErrorMessageShow) ? <p className="text-red-500 text-xl mt-2">Only specific files are accepted !</p> : "" }
             { ( CSVfileContent) ? <a href={ CSVfileContent} download={"Result.csv"} target="_blank" rel="noopener noreferrer" className="flex mt-6 items-center justify-center bg-[#0D1821] border-2 border-[#0D1821] text-white p-4 rounded-md tranition duration-100 hover:bg-slate-800 gap-2 h-fit"> <button> Download Result </button> </a> : "" }
@@ -133,3 +134,10 @@ const File_Insert = () => {
 }
 
 export default File_Insert
+
+
+
+
+
+
+

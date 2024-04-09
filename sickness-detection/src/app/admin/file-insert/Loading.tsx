@@ -7,7 +7,7 @@ const DataLoader = ({ status }: {status:number}) => {
             <div className="flex flex-col justify-center items-center bg-white w-[28rem] h-52 rounded-lg gap-6 px-2 py-7">
                 <p className="text-slate-700 text-xl text-center font-semibold">Please wait for us to clean, prepare and merge your data...</p>
                 <Progress value={status} color="bg-red-500" />
-                <span className="font-semibold text-[#072A40] text-lg">{status}% completed</span>
+                <span className="font-semibold text-[#072A40] text-lg">{status.toFixed(2)}% completed</span>
             </div>
         </div>
     )

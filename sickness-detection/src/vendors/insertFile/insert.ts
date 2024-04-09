@@ -4,9 +4,11 @@ const sendCSV = async (
     setCSVFileContent: React.Dispatch<React.SetStateAction<string | undefined>>,
     setLoadingStatus: React.Dispatch<React.SetStateAction<number[]>>,
     setCSVFiles: any,
-    CSVInputRef: any
+    CSVInputRef: any,
+    setLoaderTrue: React.Dispatch<React.SetStateAction<boolean>>
   ) => {
     const formData = new FormData();
+    setLoaderTrue(true);
     CSVFilesKeys.map((key) => {
       if (CSVFiles[key] instanceof File) {
         formData.append(`file${key}`, CSVFiles[key]);
@@ -14,7 +16,7 @@ const sendCSV = async (
     });
   
     try {
-      const response = await fetch('http://127.0.0.1:5000/api/file-upload/csv', {
+      const response = await fetch('http://127.0.0.1:5000/preprocess', {
         method: 'POST',
         body: formData
       });
@@ -24,6 +26,8 @@ const sendCSV = async (
       setLoadingStatus([0]);
     } catch (err) {
       console.log("Error uploading files : ", err);
+    }finally {
+      setLoaderTrue(false);
     }
   
     setCSVFiles(null);
