@@ -2,12 +2,11 @@ import { Doctor, User } from "@/Models/UserModel/UserModel"
 import { isValidEmail } from "@/lib/functions/strings"
 import connectMongoDB from "@/lib/mongodb"
 import bcrypt from "bcryptjs"
-import jwt from 'jsonwebtoken'
 import { createAccessToken, createRefreshToken } from "@/lib/functions/auth"
 import { NextRequest, NextResponse } from 'next/server';
-import { writeFileSync } from "fs"
 import { writeFile } from "fs/promises"
 import path from "path"
+import { checkOTP } from "@/lib/functions/otp"
 
 export async function POST(request: NextRequest) {
     try {
@@ -22,6 +21,10 @@ export async function POST(request: NextRequest) {
         const email = data.get("email") as string;
         const password = data.get("password") as string;
         const confirmPassword = data.get("confirmPassword") as string;
+        const otp = data.get("otp") as string
+        if(!otp || otp?.length < 6 ){
+            return NextResponse.json({ message: 'Verification code should be of 6 caracters long.' }, { status: 400 });
+        }
         console.log({ name, lastname, phone, email, password, confirmPassword })
         if (!images || images.length < 2) {
             return NextResponse.json({ message: 'Images were not provided' }, { status: 400 });
@@ -39,6 +42,9 @@ export async function POST(request: NextRequest) {
             imagepaths.push("src/uploads/" + imageName)
         }
         await connectMongoDB()
+        if(!checkOTP({email, otp})){
+            return NextResponse.json({ message: 'Invalid verification code.' }, { status: 400 });
+        }
         const exisingDoctor = await User.findOne({email: email})
         if(exisingDoctor){
             return NextResponse.json({message: "Email already exists in database." }, { status: 400 })
@@ -49,9 +55,9 @@ export async function POST(request: NextRequest) {
             if(CreatedDoctor){
                 const RefreshToken = createRefreshToken(CreatedDoctor._id)
                 const AccessToken = createAccessToken(CreatedDoctor._id)
-                return NextResponse.json({ message: "Doctor Created", user: CreatedDoctor, AccessToken: AccessToken, RefreshToken: RefreshToken }, { status: 201 })
+                return NextResponse.json({ message: "Doctor Created.", user: CreatedDoctor, AccessToken: AccessToken, RefreshToken: RefreshToken }, { status: 201 })
             }else{
-                return NextResponse.json({ message: "doctor not created" }, { status: 400 })
+                return NextResponse.json({ message: "doctor not created." }, { status: 400 })
             }
         }
     } catch (error) {
