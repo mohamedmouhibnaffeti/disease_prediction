@@ -1,4 +1,3 @@
-// api.ts
 const sendCSV = async (
     CSVFilesKeys: number[],
     CSVFiles: any,

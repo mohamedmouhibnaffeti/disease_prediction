@@ -16,7 +16,7 @@ const File_Insert = () => {
         socket.on('connect', () => {
             console.log('Connected to server');
         });
-        socket.on('message', (data)=>{
+        socket.on('percentage', (data)=>{
             console.log(data)
             setLoadingStatus([...statusLoading, data])
         })

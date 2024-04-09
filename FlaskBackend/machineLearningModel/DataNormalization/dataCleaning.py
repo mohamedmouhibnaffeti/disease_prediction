@@ -9,7 +9,7 @@ from bson import ObjectId
 import os
 from dotenv import load_dotenv
 
-dotenv_path = 'C:/Users/mouha/OneDrive/Desktop/PFE/FlaskBackend/.env'
+dotenv_path = 'C:/Users/mouss/OneDrive/Bureau/PFE/FlaskBackend/.env'
 load_dotenv(dotenv_path)
 db_string = os.environ['DATABASE_CONNECTION_STRING']
 
@@ -56,10 +56,21 @@ def preprocess_text(text):
 
     return symptoms_list
 
-def preprocess_and_save(csv_files):
+
+
+def calculate_percentage(processed_rows, total_rows):
+    percentage_completed = (processed_rows / total_rows) * 100 if total_rows > 0 else 0
+    return percentage_completed
+
+
+
+def preprocess_and_save(csv_files, socketio):
+    total_rows = 0
+    processed_rows = 0
     with open('./preprocessed_data.csv', 'a') as file:
         for csv_file in csv_files:
             df = pd.read_csv(csv_file)
+            total_rows += len(df)
             for index, row in df.iterrows():
                 symptoms_list = preprocess_text(str(row['Symptoms']))
                 symptoms = '"' + str(symptoms_list) + '"'  # Surround list with double quotes
@@ -73,6 +84,11 @@ def preprocess_and_save(csv_files):
                     'symptoms': symptoms
                 }
                 collection.insert_one(sickness_document)
+
+                processed_rows += 1
+                percentage_completed = calculate_percentage(processed_rows, total_rows)
+                socketio.emit('percentage', percentage_completed)
+                print("Percentage of preprocess and save data:", percentage_completed)
                 
     result_dataframe = pd.read_csv('./preprocessed_data.csv')
     return result_dataframe
@@ -84,6 +100,3 @@ def main():
     # Preprocess and save data
     preprocess_and_save(csv_files)
     
-
-if __name__ == "__main__":
-    main()
