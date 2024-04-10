@@ -1,7 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { AddWebDialog } from './components/AddWebDialog';
-import Item from './components/Item';
 import { io } from 'socket.io-client';
 import Navbar from './components/navBar/NavBar';
 import Scraper from './components/Scraper';
@@ -55,6 +54,9 @@ const stopScraping = async () => {
           <div className='w-full'>
             <h2 className='text-xl font-bold mb-2'>Data Operations</h2>
             <div className='flex flex-col justify-between sm:flex-row gap-2'>
+            <button className="flex mt-6 w-full items-center justify-center bg-red-700 border-2 border-red-900 text-white p-3 rounded-md hover:bg-red-800 gap-2" onClick={stopScraping}>
+                  Stop Scraping
+                </button>
               {isScraping && 
                 <button className="flex mt-6 w-full items-center justify-center bg-[#344966] border-2 border-[#344966] text-white p-3 rounded-md hover:bg-slate-700 gap-2" onClick={startScraping}>
                   Start Scraping
