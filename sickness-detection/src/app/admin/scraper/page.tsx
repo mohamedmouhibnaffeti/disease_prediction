@@ -4,7 +4,7 @@ import { AddWebDialog } from './components/AddWebDialog';
 import Item from './components/Item';
 import { io } from 'socket.io-client';
 import Navbar from './components/navBar/NavBar';
-import Homete from './test/t';
+import Scraper from './components/Scraper';
 
 const Page: React.FC = () => {
   const [isScraping, setIsScraping] = useState(true);
@@ -13,7 +13,7 @@ const Page: React.FC = () => {
   const [totalNewData, setTotalNewData] = useState<number>(0);
 
   useEffect(() => {
-    const socket = io('http://127.0.0.1:5002');
+    const socket = io('http://127.0.0.1:5000');
     socket.on('connect', () => {
       console.log('Connected to server');
     });
@@ -29,7 +29,7 @@ const Page: React.FC = () => {
 
   const startScraping = async () => {
     setIsScraping(false);
-    const response = await fetch('http://127.0.0.1:5002/api/start-scraping', {
+    const response = await fetch('http://127.0.0.1:5000/api/start-scraping', {
       method: 'POST'
     });
     const blob = await response.blob();
@@ -38,12 +38,12 @@ const Page: React.FC = () => {
     setIsScraping(true);
   };
 
-  {/*const stopScraping = async () => {
-    const response = await fetch('http://127.0.0.1:5002/api/stop-scraping', {
+const stopScraping = async () => {
+    const response = await fetch('http://127.0.0.1:5000/api/stop-scraping', {
       method: 'POST'
     });
     setIsScraping(true);
-  };*/}
+  };
 
   return (
     <main className="flex flex-col lg:h-screen p-4 main-bg"> 
@@ -61,7 +61,7 @@ const Page: React.FC = () => {
                 </button>
               }
               {!isScraping && 
-                <button className="flex mt-6 w-full items-center justify-center bg-red-700 border-2 border-red-900 text-white p-3 rounded-md hover:bg-red-800 gap-2" >{/*onClick={stopScraping}*/}
+                <button className="flex mt-6 w-full items-center justify-center bg-red-700 border-2 border-red-900 text-white p-3 rounded-md hover:bg-red-800 gap-2" onClick={stopScraping}>
                   Stop Scraping
                 </button>
               }
@@ -81,7 +81,7 @@ const Page: React.FC = () => {
             </div>
 
             <div className="h-5/6 overflow-y-auto p-2 border border-black">
-            <Homete />
+            <Scraper />
             </div>
           </div>
 
@@ -117,50 +117,9 @@ const Page: React.FC = () => {
     ))}
   </div>
 </div>
-
-
-
-
       </div>
     </main>
   );
 };
 
 export default Page;
-
-
-
-
-
-
-
-
-
-
-{/*
-
-
-<div className="w-full lg:w-2/3 p-4 border border-black sm:mr-2 bg-white">
-<div className='h-full overflow-y-scroll'>
-  <table>
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>disease name</th>
-        <th>symptoms</th>
-      </tr>
-    </thead>
-    <tbody>
-      {newData.map((Data, index) => (
-        <tr key={index}>
-          <td>{index + 1}</td>
-          <td>{Data.name}</td>
-          <td>{Data.symptoms}</td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
-</div>
-</div>
-*/
-}

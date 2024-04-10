@@ -24,10 +24,9 @@ class MayoClinicScraper:
                 if symptoms:
                     data={'name': name, 'symptoms': symptoms}
                     #print(data)
-                    print(name)
                     self.socketio.emit('newdata', {"name" : name, "symptoms": symptoms})
-                    with open("C:/Users/mouss/OneDrive/Bureau/disease_prediction-Scraper/Scraper/new/datawith.json", 'a') as json_file:
-                        json.dump({'name': name, 'url': url, 'symptoms': symptoms}, json_file, indent=4)
+                    """with open("C:/Users/mouss/OneDrive/Bureau/disease_prediction-Scraper/Scraper/new/datawith.json", 'a') as json_file:
+                        json.dump({'name': name, 'url': url, 'symptoms': symptoms}, json_file, indent=4)"""
 
     def extract_links(self, start_url):
         response = requests.get(start_url)

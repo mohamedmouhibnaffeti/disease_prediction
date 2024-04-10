@@ -1,30 +1,11 @@
 import os
-import threading
-from flask import Flask, jsonify, render_template, request, send_file
+from flask import Flask, jsonify, request, send_file
 from flask_cors import CORS
 from flask_socketio import SocketIO
 from scrapers.mayoclinic import MayoClinicScraper
 import settings
-running = True
-
-def stop_thread():
-    global running
-    running = False
 
 
-
-def main():
-    thread = threading.Thread(target= MayoClinic.main_MayoClinicScraper())
-    thread.start()
-
-    while True:
-        print("Press '1' to stop the thread:")
-        choice = input()
-        if choice == '1':
-            stop_thread()
-            thread.join()  # Wait for the thread to finish
-            print("Thread stopped.")
-            break
 
 def extract_file_names(files_list):
     file_names = set()
@@ -61,22 +42,17 @@ def get_data():
 
 
 
-
+running = True
 @app.route('/api/start-scraping', methods=['POST'])
 def start_collecting():
-    global running
-    thread = threading.Thread(target= MayoClinic.main_MayoClinicScraper())
-    thread.start()
-    if running:
-        return jsonify('scraper completed !')
-    return jsonify('scraper stopped !')
+    MayoClinic.main_MayoClinicScraper()
+    return jsonify('scraper completed !')
 
 
-@app.route('/api/stop-scraping', methods=['Get'])
+
+@app.route('/api/stop-scraping', methods=['POST'])
 def stop_collecting():
-    global running
-    running = False
-    return jsonify('scraper stopped !')
+    pass
 
 
 @app.route('/api/upload-scraper', methods=['POST'])
@@ -131,4 +107,7 @@ def modify_scraper():
     
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True, port=5006, allow_unsafe_werkzeug=True)
+    socketio.run(app, debug=True, port=5000, allow_unsafe_werkzeug=True)
+
+
+
