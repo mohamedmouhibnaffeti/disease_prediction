@@ -56,12 +56,9 @@ export function AddWebDialog() {
             <input type="text" id="class-name" placeholder="Enter class name" />
             <input type="text" id="class-function" placeholder="Enter class function" />
             <input type="file" id="scraper-file" name="scraper-file" />
-            <button id="upload-button" onClick={handleUpload}>Upload Scraper File</button>
+            <button className="bg-[#344966] hover:bg-slate-700 text-white font-bold py-2 px-4 rounded mx-2"onClick={handleUpload}>Upload Scraper File</button>
+            <button className="bg-[#344966] hover:bg-slate-700 text-white font-bold py-2 px-4 rounded mx-2"onClick={handleUpload}>dawload documention</button>
         </>
-          <form>
-      <button className="bg-[#344966] hover:bg-slate-700 text-white font-bold py-2 px-4 rounded mx-2">Save</button>
-      <button className="border border-black hover:bg-slate-500 font-bold py-2 px-4 rounded mx-2">Cancel</button>
-    </form>
         </DialogHeader>
       </DialogContent>
     </Dialog>

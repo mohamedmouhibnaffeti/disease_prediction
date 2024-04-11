@@ -1,4 +1,3 @@
 {
-  "/admin/scraper/page": "app/admin/scraper/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js"
+  "/admin/scraper/page": "app/admin/scraper/page.js"
 }
