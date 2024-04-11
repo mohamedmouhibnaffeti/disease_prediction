@@ -8,6 +8,7 @@ import { setCurrentDoctorSignupPage, setSignupFormDataDoctor, DoctorSignup, Regi
 import Image from 'next/image'
 import { DoctorSignupErrorsType } from '@/app/interfaces/interfaces'
 import { useRouter } from 'next/navigation'
+import VerifyEmail from './VeriyEmailModal'
 
 export default ({ Errors, setErrors }: { Errors: DoctorSignupErrorsType, setErrors: any }) => {
 
@@ -74,6 +75,7 @@ export default ({ Errors, setErrors }: { Errors: DoctorSignupErrorsType, setErro
                 <button className={`w-full rounded-md text-white ${isLoading ? "bg-sickness-primary/70" : "bg-sickness-primary hover:border-inherit hover:bg-sickness-primaryText/70 active:bg-sickness-primaryText"} border-2 border-sickness-primary transition delay-75 duration-100 py-2 font-semibold flex justify-center items-center gap-2`} onClick={handleDoctorSignup} disabled={isLoading} > Create Account { isLoading ? <div className="small-white-loader" /> : <UserPlusIcon className="h-5 w-5" /> } </button>
                 <p className="text-center self-center text-sm text-red-500"> { SignupResponse?.message !== "Doctor Created" && SignupResponse?.message } </p>
             </div>
+            <VerifyEmail />
         </>
       );
 }
