@@ -58,3 +58,10 @@ export interface LoginErrorsType {
     email: string,
     password: string
 }
+
+export interface ForgotPasswordDataType {
+    email: string,
+    otp: string,
+    passwwd: string,
+    confirmPasswd: string
+}

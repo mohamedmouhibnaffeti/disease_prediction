@@ -20,7 +20,7 @@ export async function POST(request: Request){
             specialChars: false
         });
         const encodedOtp = encryptToken(otp, process.env.SECRET_ENCRYPTION_KEY || "")
-        await sendOTPToEmail(email, otp);
+        await sendOTPToEmail(email, otp, "Forgot password verification code");
         const CreatedOtp = await Otp.create({ email, otp: encodedOtp })
         if(!CreatedOtp){
             return NextResponse.json({ message: "Error creating Otp." }, { status: 400 });

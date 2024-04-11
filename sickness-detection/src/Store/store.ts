@@ -7,7 +7,7 @@ export const store = configureStore({
     reducer: {
         counter: counterReducer,
         Predict: PredictReducer,
-        Authentication: authReducer
+        Authentication: authReducer,
     }
 })
 

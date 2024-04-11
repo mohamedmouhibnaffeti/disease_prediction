@@ -25,7 +25,6 @@ export async function POST(request: NextRequest) {
         if(!otp || otp?.length < 6 ){
             return NextResponse.json({ message: 'Verification code should be of 6 caracters long.' }, { status: 400 });
         }
-        console.log({ name, lastname, phone, email, password, confirmPassword })
         if (!images || images.length < 2) {
             return NextResponse.json({ message: 'Images were not provided' }, { status: 400 });
         }

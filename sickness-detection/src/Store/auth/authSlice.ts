@@ -1,4 +1,4 @@
-import { LoginFormDataType, DoctorSignupformDataType, PatientSignupformDataType, PatientSignupErrorsType, DoctorSignupErrorsType, LoginErrorsType } from "@/app/interfaces/interfaces";
+import { LoginFormDataType, DoctorSignupformDataType, PatientSignupformDataType, PatientSignupErrorsType, DoctorSignupErrorsType, LoginErrorsType, ForgotPasswordDataType } from "@/app/interfaces/interfaces";
 import { next_backend_route } from "@/lib/statics/ApiRoutes";
 import { PayloadAction, createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { RootState } from "../store";
@@ -11,6 +11,7 @@ interface authSliceType {
     SignupFormDataDoctor: DoctorSignupformDataType,
     PatientSignupFormData: PatientSignupformDataType,
     LoginFormData: LoginFormDataType,
+    ForgotPasswordData: ForgotPasswordDataType
 }
 
 const initialState: authSliceType = {
@@ -19,6 +20,7 @@ const initialState: authSliceType = {
     SignupFormDataDoctor: { name: "", lastname: "", email: "", phone: "",password: "", confirmPassword: "", images: [] },
     PatientSignupFormData: { name: "", lastname: "", email: "", phone: "",password: "", confirmPassword: "" },
     LoginFormData: { email: "", password: "" },
+    ForgotPasswordData: { email: "", passwwd: "", confirmPasswd: "", otp: "" }
 }
 
 const authSlice = createSlice({
@@ -45,6 +47,11 @@ const authSlice = createSlice({
             const newLoginFormData = { ...state.LoginFormData }
             newLoginFormData[action.payload.name] = action.payload.value
             state.LoginFormData = newLoginFormData
+        },
+        setForgotPasswordData: (state, action: PayloadAction<{ name: keyof ForgotPasswordDataType, value: string }> )=>{
+            const newForgotPasswordData = { ...state.ForgotPasswordData }
+            newForgotPasswordData[action.payload.name] = action.payload.value
+            state.ForgotPasswordData = newForgotPasswordData
         }
     },
     /*
@@ -154,6 +161,77 @@ export const RegisterOTP = createAsyncThunk(
     }
 )
 
-export const { setCurrentDoctorSignupPage, setCurrentSignupPage, setSignupFormDataDoctor, setPatientSignupFormData, setLoginFormData } = authSlice.actions
+export const ForgotPasswordOTP = createAsyncThunk(
+    "Auth/ForgotPasswordOTP",
+    async(_, { getState }) => {
+        const state: RootState = getState() as RootState
+        const { ForgotPasswordData } = state.Authentication
+        if(!isValidEmail(ForgotPasswordData.email)){
+            return({ message: "Invalid email" })
+        }
+        const response = await fetch(`${next_backend_route}/auth/verify/ForgotPasswd`, {
+            method: 'POST',
+            body: JSON.stringify({ email: ForgotPasswordData.email })
+        })
+        const data = await response.json()
+        const dataWithStatusCode = { ...data, status: response.status }
+        return dataWithStatusCode
+    }
+)
+
+export const VerifyOTPForForgotPasswd = createAsyncThunk(
+    "Auth/CheckOTP",
+    async(_, { getState }) => {
+        const state: RootState = getState() as RootState
+        const { ForgotPasswordData } = state.Authentication
+        if(!isValidEmail(ForgotPasswordData.email)){
+            return({ message: "Invalid email, please go back to the previous page to insert your email..." })
+        }
+        if(ForgotPasswordData.otp.length < 6){
+            return({ message: "Verification code must be of 6 caracters long. " })
+        }
+        const response = await fetch(`${next_backend_route}/auth/verify/verifyOTP`, {
+            method: 'POST',
+            body: JSON.stringify({ email: ForgotPasswordData.email ,otp: ForgotPasswordData.otp })
+        })
+        const data = await response.json()
+        const responsewithstatus = { ...data, status: response.status }
+        return responsewithstatus
+    }
+)
+
+export const updatePasswd = createAsyncThunk(
+    "Auth/updatePasswd",
+    async(_, { getState }) => {
+        const state: RootState = getState() as RootState
+        const { ForgotPasswordData } = state.Authentication
+        if(!isValidEmail(ForgotPasswordData.email)){
+            return({ message: "Invalid email, please go back to the previous page to insert your email..." })
+        }
+        if(ForgotPasswordData.otp.length !== 6){
+            return({ message: "Verification code must be of 6 caracters long, please go back to the previous page to set it." })
+        }
+        if(ForgotPasswordData.passwwd.length < 6){
+            return({ message: "Password should be of 6 caracters long minimum." })
+        }
+        if(ForgotPasswordData.confirmPasswd !== ForgotPasswordData.passwwd){
+            return({ message: "Password and confirm password should be identical." })
+        }
+        const response = await fetch(`${next_backend_route}/user/update_password`, {
+            method: 'PUT',
+            body: JSON.stringify({
+                password: ForgotPasswordData.passwwd,
+                confirmPassword: ForgotPasswordData.confirmPasswd,
+                otp: ForgotPasswordData.otp,
+                email: ForgotPasswordData.email
+            })
+        })
+        const data = await response.json()
+        const responsewithstatus = {...data, status: response.status}
+        return responsewithstatus
+    }
+)
+
+export const { setCurrentDoctorSignupPage, setCurrentSignupPage, setSignupFormDataDoctor, setPatientSignupFormData, setLoginFormData, setForgotPasswordData } = authSlice.actions
 
 export default authSlice.reducer

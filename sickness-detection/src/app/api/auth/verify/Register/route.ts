@@ -7,7 +7,7 @@ import { encryptToken } from '@/lib/functions/strings';
 import Otp from '@/Models/OtpModel/Otp';
 
 // Function to send OTP to user's email
-export async function sendOTPToEmail(email: string, otp: any) {
+export async function sendOTPToEmail(email: string, otp: any, type: string) {
     // Create a nodemailer transporter with your SMTP settings
     let transporter = nodemailer.createTransport({
         host: process.env.SMTP_HOST,
@@ -22,7 +22,7 @@ export async function sendOTPToEmail(email: string, otp: any) {
     let info = await transporter.sendMail({
         from: `"${process.env.SENDER_NAME}" <${process.env.SMTP_USER}>`,
         to: email,
-        subject: "Signup verification code",
+        subject: `${type}`,
         html: `
         <html>
             <head>
@@ -100,7 +100,7 @@ export async function POST(request: Request){
             specialChars: false
         });
         const encodedOtp = encryptToken(otp, process.env.SECRET_ENCRYPTION_KEY || "")
-        await sendOTPToEmail(email, otp);
+        await sendOTPToEmail(email, otp, "Signup verification code");
         const CreatedOtp = await Otp.create({ email, otp: encodedOtp })
         if(!CreatedOtp){
             return NextResponse.json({ message: "Error creating Otp." }, { status: 400 });
