@@ -18,7 +18,8 @@ export interface DoctorSignupformDataType {
     phone: string,
     password: string,
     confirmPassword: string,
-    images: any
+    images: any,
+    otp: string
 }
 
 export interface PatientSignupformDataType {

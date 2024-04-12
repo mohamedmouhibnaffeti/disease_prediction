@@ -17,7 +17,7 @@ interface authSliceType {
 const initialState: authSliceType = {
     currentSignUpPage: "role",
     currentDoctorSignupPage: 1,
-    SignupFormDataDoctor: { name: "", lastname: "", email: "", phone: "",password: "", confirmPassword: "", images: [] },
+    SignupFormDataDoctor: { name: "", lastname: "", email: "", phone: "",password: "", confirmPassword: "", images: [], otp: "" },
     PatientSignupFormData: { name: "", lastname: "", email: "", phone: "",password: "", confirmPassword: "" },
     LoginFormData: { email: "", password: "" },
     ForgotPasswordData: { email: "", passwwd: "", confirmPasswd: "", otp: "" }
@@ -113,6 +113,7 @@ export const DoctorSignup = createAsyncThunk(
                 body: formData
             })
             const data = await response.json()
+            console.log(data)
             const dataWithResponse = {...data, status: response.status}
             return dataWithResponse
         }else{
@@ -160,6 +161,7 @@ export const RegisterOTP = createAsyncThunk(
         return dataWithResponse
     }
 )
+
 
 export const ForgotPasswordOTP = createAsyncThunk(
     "Auth/ForgotPasswordOTP",

@@ -24,7 +24,8 @@ export default ({ Errors, setErrors }: { Errors: DoctorSignupErrorsType, setErro
       }, [])
       const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
       const Router = useRouter()
-      const [SignupResponse, setSignupResponse] = useState<any>({})
+      const [SignupResponse, setSignupResponse] = useState<string>()
+      const [open, setOpen] = useState<boolean>(false)
       const handleDoctorSignup = async() => {
         /*
         if(SignupFormData.images.length !== 2){
@@ -44,8 +45,23 @@ export default ({ Errors, setErrors }: { Errors: DoctorSignupErrorsType, setErro
             setIsLoading(false)
         }
         */
-       const response = await dispatch(RegisterOTP())
-       console.log(response.payload)
+        if(SignupFormData.images.length !== 2){
+            setErrors((prevErrors: DoctorSignupErrorsType) => ({ ...prevErrors, images: "Images should be exactly 2" }))
+        }
+        else{
+            setIsLoading(true)
+            const response = await dispatch(RegisterOTP())
+            console.log(response.payload)
+            if(response.payload.status === 200){
+                setIsLoading(false)
+                setOpen(true)
+            }
+            else{
+                setSignupResponse(response.payload.message)
+                setIsLoading(false)
+            }
+            setIsLoading(false)
+        }
       }
 
     return (
@@ -71,11 +87,11 @@ export default ({ Errors, setErrors }: { Errors: DoctorSignupErrorsType, setErro
                 }
             </div>
             <div className='flex flex-col gap-2 w-full mt-4'>
-                <button className="w-full rounded-md text-sickness-primary hover:text-white bg-none border-2 border-sickness-primary hover:border-inherit hover:bg-sickness-primaryText/70 active:bg-sickness-primaryText transition delay-75 duration-100 py-2 font-semibold flex justify-center items-center gap-2" onClick={()=>dispatch(setCurrentDoctorSignupPage(1))} > <ChevronsLeftIcon /> Back  </button>
+                <button className="w-full rounded-md text-sickness-primary hover:text-white bg-none border-2 border-sickness-primary hover:border-inherit hover:bg-sickness-primaryText/70 active:bg-sickness-primaryText transition delay-75 duration-100 py-2 font-semibold flex justify-center items-center gap-2" onClick={()=>dispatch(setCurrentDoctorSignupPage(1))} disabled={isLoading} > <ChevronsLeftIcon /> Back  </button>
                 <button className={`w-full rounded-md text-white ${isLoading ? "bg-sickness-primary/70" : "bg-sickness-primary hover:border-inherit hover:bg-sickness-primaryText/70 active:bg-sickness-primaryText"} border-2 border-sickness-primary transition delay-75 duration-100 py-2 font-semibold flex justify-center items-center gap-2`} onClick={handleDoctorSignup} disabled={isLoading} > Create Account { isLoading ? <div className="small-white-loader" /> : <UserPlusIcon className="h-5 w-5" /> } </button>
-                <p className="text-center self-center text-sm text-red-500"> { SignupResponse?.message !== "Doctor Created" && SignupResponse?.message } </p>
+                <p className="text-center self-center text-sm text-red-500"> { SignupResponse} </p>
             </div>
-            <VerifyEmail />
+            <VerifyEmail open={open} setOpen={setOpen} />
         </>
       );
 }

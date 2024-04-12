@@ -22,6 +22,7 @@ export async function POST(request: NextRequest) {
         const password = data.get("password") as string;
         const confirmPassword = data.get("confirmPassword") as string;
         const otp = data.get("otp") as string
+        console.log(data)
         if(!otp || otp?.length < 6 ){
             return NextResponse.json({ message: 'Verification code should be of 6 caracters long.' }, { status: 400 });
         }
@@ -31,6 +32,10 @@ export async function POST(request: NextRequest) {
         if(name.length < 5 || lastname.length < 5 || !isValidEmail(email) || password.length < 5 || confirmPassword !== password ||  phone.length < 9 ){
             return NextResponse.json({ message: "Please check form data" }, { status: 400 })
         }
+        await connectMongoDB()
+        if(await checkOTP({email, otp}) === false){
+            return NextResponse.json({ message: 'Invalid verification code.' }, { status: 400 });
+        }
         for(const image of images){
             const buffer = Buffer.from(await image.arrayBuffer())
             const imageName = name + "_" + lastname + "_" + Date.now() + "_" + image.name.replaceAll(/\s+/g, "_")
@@ -39,10 +44,6 @@ export async function POST(request: NextRequest) {
                 buffer
             )
             imagepaths.push("src/uploads/" + imageName)
-        }
-        await connectMongoDB()
-        if(!checkOTP({email, otp})){
-            return NextResponse.json({ message: 'Invalid verification code.' }, { status: 400 });
         }
         const exisingDoctor = await User.findOne({email: email})
         if(exisingDoctor){
