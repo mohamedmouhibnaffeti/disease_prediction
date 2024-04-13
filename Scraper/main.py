@@ -1,6 +1,5 @@
 import threading
 import ctypes
-import time
 import csv
 import os
 from flask import Flask, jsonify, request, send_file
@@ -65,14 +64,13 @@ def get_running_status():
     return jsonify({"running": running})
 
 @app.route('/api/dataget', methods=['GET'])
-def get_data():
+def send_scrapes():
     x=settings.python_files
     print(x)
     return jsonify(extract_file_names(x))
 
 
 
-running = True
 @app.route('/api/start-scraping', methods=['POST'])
 def start_collecting():
     write_csv_header()
