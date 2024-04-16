@@ -7,7 +7,7 @@ import { changeEtatByNom } from "@/Store/Predict/PredictSlice"
 export default () => {
     const dispatch = useDispatch()
     return (
-        <div className="md:w-[44rem] w-[30rem] flex flex-col bg-white border-[1px] border-sickness-border shadow-md rounded-lg md:mt-[8rem] mt-[2rem] py-8 px-4 md:ml-0 ml-[12.8rem]">
+        <div className="w-fit flex flex-col bg-white border-[1px] border-sickness-border shadow-md rounded-lg md:mt-[8rem] mt-[2rem] py-4 px-8">
             <p className="text-center text-sickness-primaryText font-semibold">Identify possible conditions and treatment related to your symptoms.</p>
             <AlertOctagon  className="text-sickness-ashGray font-semibold self-center h-12 w-12 mt-3"/>
             <div className="flex gap-1 text-sickness-ashGray font-semibold w-full justify-center items-center mt-2"> <p>Please note that this tool doesn't replace a medical professional</p> </div>
