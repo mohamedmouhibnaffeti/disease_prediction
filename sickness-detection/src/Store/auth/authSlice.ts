@@ -96,6 +96,27 @@ export const DoctorSignup = createAsyncThunk(
     async(_, { getState })=>{
         const state: RootState = getState() as RootState
         const { SignupFormDataDoctor } = state.Authentication
+
+        if(isValidEmail(SignupFormDataDoctor.email)){
+            return ({message: "Invalid email."})
+        }
+        if(SignupFormDataDoctor.name.length < 5){
+            return ({message: "Name should be of 5 caracters long minimum."})
+        }
+        if(SignupFormDataDoctor.lastname.length < 5){
+            return ({message: "Lastname should be of 5 caracters long minimum."})
+        }
+        if(SignupFormDataDoctor.password.length < 5){
+            return ({message: "Password should be of 5 caracters long minimum."})
+        }
+        if(SignupFormDataDoctor.password !== SignupFormDataDoctor.confirmPassword){
+            return ({message: "Name should be of 5 caracters long minimum."})
+        }
+        if(SignupFormDataDoctor.phone.length < 9){
+            return ({message: "Phone number should be of 9 caracters long minimum."})
+        }
+        
+
         const formData = new FormData()
         SignupFormDataDoctor.images.forEach((image: File, index: number) => {
             formData.append(`image${index}`, image)
@@ -127,6 +148,25 @@ export const PatientSignup = createAsyncThunk(
     async(_, { getState })=>{
         const state: RootState = getState() as RootState
         const { PatientSignupFormData } = state.Authentication
+
+        if(isValidEmail(PatientSignupFormData.email)){
+            return ({message: "Invalid email."})
+        }
+        if(PatientSignupFormData.name.length < 5){
+            return ({message: "Name should be of 5 caracters long minimum."})
+        }
+        if(PatientSignupFormData.lastname.length < 5){
+            return ({message: "Lastname should be of 5 caracters long minimum."})
+        }
+        if(PatientSignupFormData.password.length < 5){
+            return ({message: "Password should be of 5 caracters long minimum."})
+        }
+        if(PatientSignupFormData.password !== PatientSignupFormData.confirmPassword){
+            return ({message: "Name should be of 5 caracters long minimum."})
+        }
+        if(PatientSignupFormData.phone.length < 9){
+            return ({message: "Phone number should be of 9 caracters long minimum."})
+        }
         
         const etat = areAllStringsEmpty(PatientSignupFormData)
         if(!etat){

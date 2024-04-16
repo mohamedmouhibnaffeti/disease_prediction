@@ -73,6 +73,7 @@ export default ({ Errors, setErrors }: { Errors: DoctorSignupErrorsType, setErro
                     <input {...getInputProps()} />
                     <ImagePlusIcon className='w-12 h-12' />
                     <p className='text-center'>Drag 'n' drop your <span className='font-semibold'> Service and Identity Cards</span> here, or click to select files</p>
+                    <p className='text-center text-xs'> You should drop exactly <strong>2 pictures</strong> of type <strong>(JPEG, PNG, JPG, ...)</strong> </p>
                 </div>
             </div>
             <p className='text-sm text-red-500 break-words'> { Errors.images } </p>
