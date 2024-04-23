@@ -1,0 +1,67 @@
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+from keras.preprocessing.text import Tokenizer
+from keras.preprocessing.sequence import pad_sequences
+from keras.models import Sequential
+from keras.layers import Embedding, LSTM, Dense
+import joblib
+
+#load data
+from pymongo import MongoClient
+import pandas as pd
+client = MongoClient("mongodb+srv://mouhib:mouhib@medicaledb.nltr2yw.mongodb.net")
+db = client["SicknessDetection"]
+Sicknesses = db["sicknesses"]
+SicknessesCursor = Sicknesses.find()
+SicknessesData = list(SicknessesCursor)
+df = pd.DataFrame(SicknessesData)
+
+#preprocessing symptoms
+def preprocess_symptoms(symptoms):
+    symptoms_result = []
+    for symptom in symptoms:
+        symptoms_result.append(symptom['title'].lower())
+    return symptoms_result
+
+df['symptom_names'] = df['symptoms'].apply(preprocess_symptoms)
+df.drop(df.columns[[0,2]], axis=1, inplace=True)
+
+label_encoder = LabelEncoder()
+classes = df['title'].tolist()
+label_encoder.fit(classes)
+
+joblib.dump(label_encoder, 'SavedModel/label_encoder.joblib')
+
+tokenizer = Tokenizer()
+tokenizer.fit_on_texts(df['symptom_names'])
+vocab_size = len(tokenizer.word_index) + 1
+
+joblib.dump(tokenizer, 'SavedModel/tokenizer.joblib')
+
+sequences = tokenizer.texts_to_sequences(df['symptom_names'])
+maxlen = max(len(seq) for seq in sequences)
+padded_sequences = pad_sequences(sequences, maxlen=maxlen)
+joblib.dump(maxlen, 'SavedModel/maxlen.joblib')
+
+X_train, X_val, y_train, y_val = train_test_split(padded_sequences, classes, test_size=0.2, random_state=42)
+
+y_train_encoded = label_encoder.transform(y_train)
+y_val_encoded = label_encoder.transform(y_val)
+num_classes = len(label_encoder.classes_)
+
+model = Sequential()
+model.add(Embedding(input_dim=vocab_size, output_dim=1165, input_length=maxlen))
+model.add(LSTM(units=64))
+model.add(Dense(units=num_classes, activation='softmax'))
+
+model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+
+history = model.fit(X_train, y_train_encoded, validation_data=(X_val, y_val_encoded), epochs=50, batch_size=32)
+
+model.save("SavedModel/model.h5")
+
+loss, accuracy = model.evaluate(X_val, y_val_encoded)
+print(f"Validation Loss: {loss:.4f}, Validation Accuracy: {accuracy:.4f}")
+
