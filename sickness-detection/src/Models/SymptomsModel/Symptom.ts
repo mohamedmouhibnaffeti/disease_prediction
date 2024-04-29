@@ -3,6 +3,9 @@ import mongoose, {Schema, model, models} from "mongoose"
 const SymptomSchema = new Schema({
     title: {
         type: String
+    },
+    body_part: {
+        type: String
     }
 })
 

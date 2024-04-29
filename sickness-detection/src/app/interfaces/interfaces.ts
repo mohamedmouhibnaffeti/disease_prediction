@@ -9,6 +9,7 @@ export interface Tip {
 export interface Symptom {
     _id: Types.ObjectId;
     title: string;
+    body_part: string;
 }
 
 export interface DoctorSignupformDataType {
