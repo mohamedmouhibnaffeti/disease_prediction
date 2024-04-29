@@ -97,10 +97,12 @@ export const fetchSymptoms = createAsyncThunk(
         }
     }
 )
+/*
 
 export const fetchSymptomsByFilter = createAsyncThunk(
     "Predict"
 )
+*/
 
 export const { changeEtatByNom, selectSymptoms, setPredictionResult, setPredictingState } = PredictSlice.actions
 
