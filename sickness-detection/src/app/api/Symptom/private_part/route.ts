@@ -4,15 +4,19 @@ import connectMongoDB from "@/lib/mongodb";
 import { NextResponse } from "next/server";
 
 export async function GET(){
-    await connectMongoDB()
-    const sicknesses = await Sickness.find()
-    const PrivatePartSymptoms: Array<Symptom> = []
-    sicknesses?.forEach((sickness) => {
-        sickness?.symptoms.forEach((symptom: Symptom) => {
-            if(symptom.body_part === "private_part"){
-                PrivatePartSymptoms.push(symptom)
-            }
+    try{
+        await connectMongoDB()
+        const sicknesses = await Sickness.find()
+        const PrivatePartSymptoms: Array<Symptom> = []
+        sicknesses?.forEach((sickness) => {
+            sickness?.symptoms.forEach((symptom: Symptom) => {
+                if(symptom.body_part === "private_part"){
+                    PrivatePartSymptoms.push(symptom)
+                }
+            })
         })
-    })
-    return NextResponse.json({ Symptoms: PrivatePartSymptoms }, { status: 200 })
+        return NextResponse.json({ Symptoms: PrivatePartSymptoms }, { status: 200 })
+    }catch(err){
+        return NextResponse.json({ message: `Internal Server Error: ${err}` }, { status: 500 })
+    }
 }
