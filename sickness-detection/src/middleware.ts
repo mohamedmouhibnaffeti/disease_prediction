@@ -8,9 +8,11 @@ export function middleware(request: Request){
     */
     const allowedOrigin = 'http://localhost:3030/'
     const origin = request.headers.get('referer')
+    /*
     if(!origin?.startsWith(allowedOrigin)){
         return NextResponse.json("Error fetching resource", {status: 403})
     }
+    */
     return NextResponse.next()
 }
 

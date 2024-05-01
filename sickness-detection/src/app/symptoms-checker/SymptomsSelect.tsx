@@ -18,7 +18,7 @@ export default () => {
         <div className="mt-[1rem] flex flex-col justify-center w-full px-8 py-4">
             <h1 className="text-center md:text-lg text-md text-sickness-primaryText font-semibold"> Select your symptoms from the human model below </h1>
             <p className="text-center text-sm text-sickness-ashGray font-semibold mt-2"> This model will help you select your symptoms accurately </p>
-            <p className="text-center text-sm text-sickness-ashGray font-semibold"> Please provide accurate symptoms so we can predict your sickness perfectly </p>
+            <p className="text-center text-sm text-sickness-ashGray font-semibold sm:flex justify-center items-center hidden"> Please provide accurate symptoms so we can predict your sickness perfectly </p>
             <div className="flex justify-center gap-4 px-8 py-4 mt-[2rem] flex-wrap-reverse">
                 <div className="bg-white shadow-md rounded-lg border-sickness-border border-[1px] md:flex-[0.5] w-fit flex-1 flex justify-around items-center px-8 py-6 flex-col">
                     <h1 className="text-3xl font-semibold uppercase"> Your <span className="text-sickness-primary">Symptoms</span> </h1>

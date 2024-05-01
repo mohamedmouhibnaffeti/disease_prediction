@@ -13,7 +13,9 @@ interface PredictType {
     Symptoms: Array<Symptom>,
     SelectedSymptoms: Array<string>,
     PredictionResult: Array<any>,
-    predicting: boolean
+    predicting: boolean,
+    sex: string,
+    age: number
 }
 
 const initialState: PredictType = {
@@ -29,7 +31,9 @@ const initialState: PredictType = {
     Symptoms: [],
     SelectedSymptoms: [],
     PredictionResult: [],
-    predicting: true
+    predicting: true,
+    sex: "",
+    age: NaN
 }
 
 const PredictSlice = createSlice({
@@ -68,6 +72,14 @@ const PredictSlice = createSlice({
         setPredictingState: (state, action: PayloadAction<boolean> )=>{
             console.log(action.payload)
             state.predicting = action.payload
+        },
+        selectAge: (state, action: PayloadAction<number>) => {
+            console.log(action.payload)
+            state.age = action.payload
+        },
+        selectSex: (state, action: PayloadAction<string>) => {
+            console.log(action.payload)
+            state.sex = action.payload
         }
     },
     extraReducers: (builder) => {
@@ -97,13 +109,27 @@ export const fetchSymptoms = createAsyncThunk(
         }
     }
 )
-/*
 
 export const fetchSymptomsByFilter = createAsyncThunk(
-    "Predict"
+    // when searching for jaw get this also : Temporomandibular Joint (TMJ)
+    "Predict/fetchSymptomsByBodyPart",
+    async(filter: string) => {
+        try{
+            const response = await fetch(`${next_backend_route}/Symptom/SymptomsByBodyPart?filter=${filter}`)
+            if(response.ok){
+                const data = await response.json()
+                return data
+            }else{
+                throw new Error('Failed to fetch symptoms')
+            }
+        }catch(err){
+            console.error('Error fetching symptoms: ', err)
+            throw err
+        }
+    }
 )
-*/
 
-export const { changeEtatByNom, selectSymptoms, setPredictionResult, setPredictingState } = PredictSlice.actions
+
+export const { changeEtatByNom, selectSymptoms, setPredictionResult, setPredictingState, selectAge, selectSex } = PredictSlice.actions
 
 export default PredictSlice.reducer

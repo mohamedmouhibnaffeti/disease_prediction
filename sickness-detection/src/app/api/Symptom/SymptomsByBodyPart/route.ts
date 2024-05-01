@@ -1,17 +1,17 @@
 import Sickness from "@/Models/SicknessModel/Sickness";
 import { Symptom } from "@/app/interfaces/interfaces";
 import connectMongoDB from "@/lib/mongodb";
-import { NextResponse } from "next/server";
-
-export async function GET(request: Request){
+import { NextRequest, NextResponse } from "next/server";
+import qs from 'querystring'
+export async function GET(request: NextRequest){
     try{
-        const filter = ""
+        const filter = request.nextUrl.searchParams.get('filter')
         await connectMongoDB()
         const sicknesses = await Sickness.find()
         const FilteredSymptoms: Array<Symptom> = []
         sicknesses?.forEach((sickness) => {
             sickness?.symptoms.forEach((symptom: Symptom) => {
-                if(symptom.body_part === filter){
+                if(symptom.body_part === filter && symptom.title){
                     FilteredSymptoms.push(symptom)
                 }
             })

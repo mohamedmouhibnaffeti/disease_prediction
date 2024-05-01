@@ -2,7 +2,6 @@ import Sickness from "@/Models/SicknessModel/Sickness";
 import { Symptom } from "@/app/interfaces/interfaces";
 import connectMongoDB from "@/lib/mongodb";
 import { NextResponse } from "next/server";
-
 export async function GET(){
     try{
         await connectMongoDB()
