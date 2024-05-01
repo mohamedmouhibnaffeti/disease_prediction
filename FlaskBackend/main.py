@@ -4,6 +4,14 @@ from machineLearningModel.DataNormalization import *
 from machineLearningModel.Model.predictor import predict_disease
 from pymongo import MongoClient
 from bson import json_util
+from machineLearningModel.Model.predict import predict_top_sickness
+
+
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+from flask_socketio import SocketIO
+
+
 
 
 
@@ -47,7 +55,7 @@ def predict():
         return jsonify({"message": "Symptoms not provided"}), 400
     
     # Predict diseases for the given symptoms
-    predicted_diseases = predict_disease(symptoms=symptoms)
+    predicted_diseases = predict_top_sickness(symptoms=symptoms)
     
     # Convert any non-serializable data types to serializable format
     predicted_diseases_serializable = [str(disease) for disease in predicted_diseases]

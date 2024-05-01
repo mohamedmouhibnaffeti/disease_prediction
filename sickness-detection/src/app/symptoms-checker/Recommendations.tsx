@@ -19,8 +19,8 @@ export default () => {
     }, [])
     const dispatch = useDispatch()
     return (
-        <div className="flex flex-wrap md:ml-0 ml-[12rem] md:py-0 pb-4">
-            <div className="md:w-[44rem] w-[30rem] flex flex-col bg-white border-[1px] border-sickness-border shadow-md md:rounded-l-lg rounded-lg md:mt-[6rem] mt-[2rem] py-8 px-4">
+        <div className="flex flex-wrap md:py-4 pb-4">
+            <div className="w-fit flex flex-col bg-white border-[1px] border-sickness-border shadow-md md:rounded-l-lg rounded-lg md:mt-[6rem] mt-[2rem] py-8 px-4">
                 <p className="text-center text-2xl text-sickness-primaryText font-semibold self-start">
                     Our Recommendations :
                 </p>

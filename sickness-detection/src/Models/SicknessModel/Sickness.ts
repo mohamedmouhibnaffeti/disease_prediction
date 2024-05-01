@@ -1,5 +1,5 @@
 import mongoose, { Schema, model, models } from "mongoose"
-import Symptom from "./Symptom"
+import Symptom from "../SymptomsModel/Symptom"
 
 const SicknessSchema = new Schema({
     title: {

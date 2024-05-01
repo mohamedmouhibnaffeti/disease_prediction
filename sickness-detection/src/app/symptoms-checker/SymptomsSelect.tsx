@@ -15,12 +15,12 @@ export default () => {
         dispatch(changeEtatByNom('result'))
     }
     return (
-        <div className="mt-[1rem] flex flex-col justify-center md:ml-0 ml-[12rem]">
+        <div className="mt-[1rem] flex flex-col justify-center w-full px-8 py-4">
             <h1 className="text-center md:text-lg text-md text-sickness-primaryText font-semibold"> Select your symptoms from the human model below </h1>
             <p className="text-center text-sm text-sickness-ashGray font-semibold mt-2"> This model will help you select your symptoms accurately </p>
             <p className="text-center text-sm text-sickness-ashGray font-semibold"> Please provide accurate symptoms so we can predict your sickness perfectly </p>
-            <div className="flex justify-center gap-4 md:px-20 px-4 mt-[2rem] flex-wrap-reverse">
-                <div className="bg-white shadow-md rounded-lg border-sickness-border border-[1px] md:flex-[0.5] md:w-[36rem] flex-1 flex justify-around items-center md:px-8 px-2 py-6 flex-col">
+            <div className="flex justify-center gap-4 px-8 py-4 mt-[2rem] flex-wrap-reverse">
+                <div className="bg-white shadow-md rounded-lg border-sickness-border border-[1px] md:flex-[0.5] w-fit flex-1 flex justify-around items-center px-8 py-6 flex-col">
                     <h1 className="text-3xl font-semibold uppercase"> Your <span className="text-sickness-primary">Symptoms</span> </h1>
                     <div className="mt-8 flex gap-2 flex-wrap justify-center">
                     {

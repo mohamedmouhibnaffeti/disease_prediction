@@ -15,7 +15,7 @@ export default () => {
     const ListItems = useSelector((state: RootState)=>state.Predict.listItems)
     const currentItem = useSelector((state: RootState)=>state.Predict.currentItem)
     return (
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center justify-center w-full px-8 py-4">
             <div className="flex gap-8 mt-[8rem]"> 
                 { ListItems.map((item: any, index: number)=>{
                     return(
@@ -26,7 +26,7 @@ export default () => {
                     )
                 }) } 
             </div>
-            <div className="w-full h-[2px] bg-sickness-border -z-50" />
+            <div className="w-screen overflow-x-hidden h-[2px] bg-sickness-border -z-50" />
             { currentItem === 'informations' && <Informations />}
             { currentItem === 'Symptoms' && <SymptomsSelect />}
             { currentItem === 'Conditions' && <Conditions />}

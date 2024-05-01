@@ -1,4 +1,4 @@
-import Symptom from "@/Models/Symptom";
+import Symptom from "@/Models/SymptomsModel/Symptom";
 import { NextResponse } from "next/server";
 import connectMongoDB from "@/lib/mongodb";
 

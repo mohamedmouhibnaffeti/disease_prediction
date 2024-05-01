@@ -83,8 +83,8 @@ export const fetchSymptoms = createAsyncThunk(
     "Predict/fetchSymptoms",
     async () => {
         try {
-            const resp = await fetch(`${next_backend_route}/symptom/sicknesses_symptoms`);
-            
+            const resp = await fetch(`${next_backend_route}/Symptom/sicknesses_symptoms`);
+            console.log(resp)
             if (resp.ok) {
                 const data = await resp.json();
                 return data.Symptoms
