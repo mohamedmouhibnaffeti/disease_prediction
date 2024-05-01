@@ -48,8 +48,8 @@ export default () => {
                 </RadioGroup>
                 </div>
             </div>
-            {Object.keys(errMsgs).map((key) => (
-                <div className="flex gap-2 self-center items-center justify-center">
+            {Object.keys(errMsgs).map((key, index) => (
+                <div className="flex gap-2 self-center items-center justify-center" key={index}>
                     { errMsgs[key as keyof typeof errMsgs] && <div className="w-2 h-2 rounded-full bg-red-500" /> }
                     <p key={key as keyof typeof errMsgs} className="text-sm text-red-500">{errMsgs[key as keyof typeof errMsgs]}</p>
                 </div>

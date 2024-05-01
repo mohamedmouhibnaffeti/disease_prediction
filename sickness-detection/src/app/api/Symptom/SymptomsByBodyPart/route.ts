@@ -11,7 +11,7 @@ export async function GET(request: NextRequest){
         const FilteredSymptoms: Array<Symptom> = []
         sicknesses?.forEach((sickness) => {
             sickness?.symptoms.forEach((symptom: Symptom) => {
-                if(symptom.body_part === filter && symptom.title){
+                if(symptom.body_part === filter && symptom.title && !FilteredSymptoms.some(e => e.title === symptom.title)){
                     FilteredSymptoms.push(symptom)
                 }
             })

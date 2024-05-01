@@ -59,6 +59,9 @@ const PredictSlice = createSlice({
                 
             }
         },
+        resetSymptomsArray: (state) => {
+            state.Symptoms = []
+        },
         setPredictionResult: (state, action: PayloadAction<Array<any>>)=>{
             console.log(action.payload)
             const Predictions: Array<any> = []
@@ -85,6 +88,10 @@ const PredictSlice = createSlice({
     extraReducers: (builder) => {
         builder
         .addCase(fetchSymptoms.fulfilled, (state, action: PayloadAction<Array<Symptom>>)=>{
+            console.log('fetched...')
+            state.Symptoms = action.payload
+        })
+        .addCase(fetchSymptomsByFilter.fulfilled, (state, action: PayloadAction<Array<Symptom>>)=>{
             console.log('fetched...')
             state.Symptoms = action.payload
         })
@@ -118,7 +125,7 @@ export const fetchSymptomsByFilter = createAsyncThunk(
             const response = await fetch(`${next_backend_route}/Symptom/SymptomsByBodyPart?filter=${filter}`)
             if(response.ok){
                 const data = await response.json()
-                return data
+                return data.Symptoms
             }else{
                 throw new Error('Failed to fetch symptoms')
             }
@@ -130,6 +137,6 @@ export const fetchSymptomsByFilter = createAsyncThunk(
 )
 
 
-export const { changeEtatByNom, selectSymptoms, setPredictionResult, setPredictingState, selectAge, selectSex } = PredictSlice.actions
+export const { changeEtatByNom, selectSymptoms, setPredictionResult, setPredictingState, selectAge, selectSex, resetSymptomsArray } = PredictSlice.actions
 
 export default PredictSlice.reducer

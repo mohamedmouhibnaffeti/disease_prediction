@@ -16,14 +16,30 @@ import FemaleBack from "./FemaleBack"
 import FemaleFront from "./FemaleFront"
 import { Symptom } from "@/app/interfaces/interfaces"
 import { useDispatch, useSelector } from "react-redux"
-import { changeEtatByNom, fetchSymptoms, selectSymptoms } from "@/Store/Predict/PredictSlice"
+import { changeEtatByNom, fetchSymptoms, fetchSymptomsByFilter, resetSymptomsArray, selectSymptoms } from "@/Store/Predict/PredictSlice"
 import { AppDispatch, RootState } from "@/Store/store"
 import { returnSpecificBodyParts } from "@/lib/functions/strings"
 
 const DialogItem = (props: {etat: boolean, setDialogOpen: any, BodyPart: string, Symptoms: Array<Symptom>, selectedSymptoms: Array<string>, sex: string}) => {
     const {etat, setDialogOpen, BodyPart, Symptoms, selectedSymptoms, sex} = props
-    const dispatch = useDispatch<AppDispatch>()
     const [selectedSpecificPart, selectSpecificPart] = useState("")
+    const dispatch = useDispatch<AppDispatch>()
+    const fetchSymptoms = async(filter: string) => {
+        setSymptomsLoading(prevState => true)
+        const response = await dispatch(fetchSymptomsByFilter(filter))
+        console.log(response.payload)
+        setSymptomsLoading(prevState => false)
+    }
+    const [symptomsLoading, setSymptomsLoading] = useState(false)
+    const handleSpecificBodyPartClick = async(part: string) => {
+        selectSpecificPart(prevState => part)
+        fetchSymptoms(part)
+    }
+    const handleFinish = () => {
+        resetSymptomsArray()
+        selectSpecificPart(prevState => "")
+        setDialogOpen(false)
+    }
     return(
         <Dialog open={etat}>
             <DialogContent className="sm:max-w-[425px]">
@@ -39,7 +55,7 @@ const DialogItem = (props: {etat: boolean, setDialogOpen: any, BodyPart: string,
                             <div className="w-full h-[14rem] overflow-y-auto grid grid-cols-2 gap-2 self-center">
                             {
                                 returnSpecificBodyParts(BodyPart, sex).map((specific_body_part, index) => (
-                                    <button className="text-white bg-sickness-primaryText h- py-2 px-2 rounded-md hover:bg-sickness-primaryText/80" key={index}> {specific_body_part} </button>
+                                    <button className="text-white bg-sickness-primaryText h- py-2 px-2 rounded-md hover:bg-sickness-primaryText/80" key={index} onClick={()=>handleSpecificBodyPartClick(specific_body_part)} > {specific_body_part} </button>
                                 ))
                             }
                             </div>
@@ -57,7 +73,12 @@ const DialogItem = (props: {etat: boolean, setDialogOpen: any, BodyPart: string,
                             </DialogHeader>
                             <div className="w-full h-[14rem] overflow-y-auto">
                             {
-                                Symptoms.map((symptom: Symptom, index: number)=>{
+                                symptomsLoading ?
+                                <div className="flex justify-center items-center w-full h-full" >
+                                    <div className="dialog-loader-primary self-center" />
+                                </div>
+                                :
+                                Symptoms?.map((symptom: Symptom, index: number)=>{
                                     return(
                                         <div className="flex items-center space-x-2 mt-2 gap-2 text-sickness-primaryText ml-6" key={index}>
                                                 <Checkbox id={symptom._id.toString()} 
@@ -93,7 +114,7 @@ const DialogItem = (props: {etat: boolean, setDialogOpen: any, BodyPart: string,
                             }
                             </div>
                             <DialogFooter>
-                                <button className="px-4 py-2 bg-sickness-primary border-[1px] border-white text-white font-semibold rounded-md focus:outline-none active:bg-sickness-primary/70" onClick={()=>{setDialogOpen(false)}}>Validate symptoms</button>
+                                <button className="px-4 py-2 bg-sickness-primary border-[1px] border-white text-white font-semibold rounded-md focus:outline-none active:bg-sickness-primary/70" onClick={handleFinish}>Validate symptoms</button>
                             </DialogFooter>
                         </>
                 }
@@ -109,9 +130,11 @@ const Human = () => {
     const {Symptoms, sex} = useSelector((state: RootState)=>state.Predict)
     const SelectedSymptoms = useSelector((state: RootState)=>state.Predict.SelectedSymptoms)
     const dispatch = useDispatch<AppDispatch>()
+    /*
     useEffect(()=>{
         dispatch(fetchSymptoms())
     }, [])
+    */
     return (
         <div className="md:w-[34rem] w-[28rem] flex sm:flex-row flex-col">
             <DialogItem sex={sex} etat={DialogOpen} BodyPart={BodyPart} setDialogOpen={setDialogOpen} Symptoms={Symptoms} selectedSymptoms={SelectedSymptoms} />
