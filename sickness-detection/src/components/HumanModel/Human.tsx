@@ -24,16 +24,15 @@ const DialogItem = (props: {etat: boolean, setDialogOpen: any, BodyPart: string,
     const {etat, setDialogOpen, BodyPart, Symptoms, selectedSymptoms, sex} = props
     const [selectedSpecificPart, selectSpecificPart] = useState("")
     const dispatch = useDispatch<AppDispatch>()
-    const fetchSymptoms = async(filter: string) => {
+    const fetchSymptoms = async(filter: string, gender: string) => {
         setSymptomsLoading(prevState => true)
-        const response = await dispatch(fetchSymptomsByFilter(filter))
-        console.log(response.payload)
+        const response = await dispatch(fetchSymptomsByFilter({filter, gender}))
         setSymptomsLoading(prevState => false)
     }
     const [symptomsLoading, setSymptomsLoading] = useState(false)
     const handleSpecificBodyPartClick = async(part: string) => {
         selectSpecificPart(prevState => part)
-        fetchSymptoms(part)
+        fetchSymptoms(part, sex)
     }
     const handleFinish = () => {
         resetSymptomsArray()
@@ -78,22 +77,30 @@ const DialogItem = (props: {etat: boolean, setDialogOpen: any, BodyPart: string,
                                     <div className="dialog-loader-primary self-center" />
                                 </div>
                                 :
-                                Symptoms?.map((symptom: Symptom, index: number)=>{
-                                    return(
-                                        <div className="flex items-center space-x-2 mt-2 gap-2 text-sickness-primaryText ml-6" key={index}>
-                                                <Checkbox id={symptom._id.toString()} 
-                                                    onCheckedChange={(state)=>dispatch(selectSymptoms({etat: state, symptom: symptom.title}))} 
-                                                    checked={selectedSymptoms.includes(symptom.title)}
-                                                    />
-                                                <label
-                                                    htmlFor={symptom._id.toString()}
-                                                    className="text-sm font-medium leading-none"
-                                                >
-                                                    {symptom.title}
-                                                </label>
-                                        </div>
-                                    )
-                                })
+                                (
+                                    Symptoms?.length > 0
+                                    ?
+                                    Symptoms?.map((symptom: Symptom, index: number)=>{
+                                        return(
+                                            <div className="flex items-center space-x-2 mt-2 gap-2 text-sickness-primaryText ml-6" key={index}>
+                                                    <Checkbox id={symptom._id.toString()} 
+                                                        onCheckedChange={(state)=>dispatch(selectSymptoms({etat: state, symptom: symptom.title}))} 
+                                                        checked={selectedSymptoms.includes(symptom.title)}
+                                                        />
+                                                    <label
+                                                        htmlFor={symptom._id.toString()}
+                                                        className="text-sm font-medium leading-none"
+                                                    >
+                                                        {symptom.title}
+                                                    </label>
+                                            </div>
+                                        )
+                                    })
+                                    :
+                                    <div className="flex justify-center items-center w-full h-full" >
+                                        <p className="text-sickness-primary font-semibold text-lg self-center text-center"> No symptoms found for <span>{selectedSpecificPart}</span> </p>
+                                    </div>
+                                )
                                 /*
                                 data.map(([bodyPart, symptomsArray]) => (
                                         <ul className="flex flex-col gap-2" key={bodyPart}>

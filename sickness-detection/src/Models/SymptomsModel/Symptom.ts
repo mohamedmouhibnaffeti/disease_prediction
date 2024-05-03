@@ -6,6 +6,9 @@ const SymptomSchema = new Schema({
     },
     body_part: {
         type: String
+    },
+    gender: {
+        type: String
     }
 })
 

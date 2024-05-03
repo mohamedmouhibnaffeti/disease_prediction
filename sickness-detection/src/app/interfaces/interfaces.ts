@@ -10,6 +10,7 @@ export interface Symptom {
     _id: Types.ObjectId;
     title: string;
     body_part: string;
+    gender: string;
 }
 
 export interface DoctorSignupformDataType {

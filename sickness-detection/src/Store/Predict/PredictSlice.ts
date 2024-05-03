@@ -120,9 +120,9 @@ export const fetchSymptoms = createAsyncThunk(
 export const fetchSymptomsByFilter = createAsyncThunk(
     // when searching for jaw get this also : Temporomandibular Joint (TMJ)
     "Predict/fetchSymptomsByBodyPart",
-    async(filter: string) => {
+    async({filter, gender}: {filter: string, gender: string}) => {
         try{
-            const response = await fetch(`${next_backend_route}/Symptom/SymptomsByBodyPart?filter=${filter}`)
+            const response = await fetch(`${next_backend_route}/Symptom/SymptomsByBodyPart?filter=${filter}&gender=${gender}`)
             if(response.ok){
                 const data = await response.json()
                 return data.Symptoms
