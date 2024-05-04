@@ -12,13 +12,15 @@ export default () => {
     const PredictionResult = useSelector((state: RootState) => state.Predict.PredictionResult)
     const FetchPredictionResult = async() =>{
         setPredictingState(true)
-        const resultArray = await Predict({ Symptoms: SelectedSymptoms })
+        const result = await Predict({ Symptoms: SelectedSymptoms })
         const PredictionResult = [];
+        /*
         for (let i = 0; i < 4; i++) {
             const [nom, res] = resultArray[i].slice(1, -1).split("', ");
             PredictionResult.push({ nom: nom.slice(1), res: parseFloat(res) });
         }
-        dispatch(setPredictionResult(PredictionResult))
+        */
+        dispatch(setPredictionResult(result))
         dispatch(setPredictingState(false))
     }
 
@@ -37,7 +39,12 @@ export default () => {
                     </>
                     : 
                     <ul className="flex flex-col w-full gap-2 justify-center">
-                        { PredictionResult.map((result: {nom: string, res: number}, index: number)=> {
+                        <li>
+                            <p className="font-semibold text-sickness-primaryText">{PredictionResult}</p>
+                        </li>
+                        {
+                            /*
+                            { PredictionResult.map((result: {nom: string, res: number}, index: number)=> {
                             return(
                                 <li className="flex flex-col gap-2 w-full" key={index}>
                                     <p className="font-semibold text-sickness-primaryText">{result.nom}</p>
@@ -48,7 +55,13 @@ export default () => {
                                 </li>
                             )
                         }) }
-                        <p className="font-medium self-center mt-4"> You have <span className="text-sickness-yellow font-semibold">{parseFloat((PredictionResult[0]?.res * 100).toFixed(2))}%</span> chance of having <span className="text-sickness-yellow font-semibold">{PredictionResult[0]?.nom}</span> </p>
+                            */
+                        }
+                        {
+                            /*
+                            <p className="font-medium self-center mt-4"> You have <span className="text-sickness-yellow font-semibold">{parseFloat((PredictionResult[0]?.res * 100).toFixed(2))}%</span> chance of having <span className="text-sickness-yellow font-semibold">{PredictionResult[0]?.nom}</span> </p>
+                            */
+                        }
                         <p className="text-sickness-gray self-center font-medium text-center"> Please click on <span className="font-bold"> Continue </span> to get the possible recommendations for your sickness. </p>
                     </ul>
                     

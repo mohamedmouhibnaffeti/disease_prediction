@@ -12,7 +12,7 @@ interface PredictType {
     currentItem: string,
     Symptoms: Array<Symptom>,
     SelectedSymptoms: Array<string>,
-    PredictionResult: Array<any>,
+    PredictionResult: string,
     predicting: boolean,
     sex: string,
     age: number
@@ -30,7 +30,7 @@ const initialState: PredictType = {
     currentItem: 'informations',
     Symptoms: [],
     SelectedSymptoms: [],
-    PredictionResult: [],
+    PredictionResult: "",
     predicting: true,
     sex: "",
     age: NaN
@@ -62,15 +62,8 @@ const PredictSlice = createSlice({
         resetSymptomsArray: (state) => {
             state.Symptoms = []
         },
-        setPredictionResult: (state, action: PayloadAction<Array<any>>)=>{
-            console.log(action.payload)
-            const Predictions: Array<any> = []
-            action.payload.map((prediction: any, index: number)=>{
-                if(index < 4){
-                    Predictions.push(prediction)
-                }
-            })
-            state.PredictionResult = Predictions
+        setPredictionResult: (state, action: PayloadAction<string>)=>{
+            state.PredictionResult = action.payload
         },
         setPredictingState: (state, action: PayloadAction<boolean> )=>{
             console.log(action.payload)

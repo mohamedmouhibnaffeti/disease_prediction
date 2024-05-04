@@ -13,7 +13,7 @@ export default async function Predict ({Symptoms}: {Symptoms?: Array<string>}){
         if (PredictionResponse.ok) {
             const data = await PredictionResponse.json();
             console.log(data)
-            return data.predicted_diseases
+            return data.predicted_disease
         } else {
             throw new Error('Failed to fetch');
         }

@@ -1,5 +1,6 @@
 import os
 import pandas as pd
+from llamaModel.Predict import predict_disease_llama
 from machineLearningModel.DataNormalization import *
 from machineLearningModel.Model.predictor import predict_disease
 from pymongo import MongoClient
@@ -45,14 +46,11 @@ def predict():
     symptoms = request.json.get('symptoms')
     if not symptoms:
         return jsonify({"message": "Symptoms not provided"}), 400
+    symptomsString = " ".join(symptoms)
+    # Predict disease for the given symptoms
+    predicted_disease = predict_disease_llama(symptomsString)
     
-    # Predict diseases for the given symptoms
-    predicted_diseases = predict_top_sickness(symptoms=symptoms)
-    
-    # Convert any non-serializable data types to serializable format
-    predicted_diseases_serializable = [str(disease) for disease in predicted_diseases]
-    
-    return jsonify({"predicted_diseases": predicted_diseases_serializable}), 200
+    return jsonify({"predicted_disease": predicted_disease}), 200
 
 #preprocess csv file endpoint
 @app.route('/preprocess', methods=['POST'])
