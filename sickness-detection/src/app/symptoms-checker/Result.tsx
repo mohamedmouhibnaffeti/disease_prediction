@@ -20,7 +20,9 @@ export default () => {
             PredictionResult.push({ nom: nom.slice(1), res: parseFloat(res) });
         }
         */
-        pushDisease()
+        if(result){
+            pushDisease()
+        }
         dispatch(setPredictionResult(result))
         dispatch(setPredictingState(false))
     }
@@ -78,7 +80,7 @@ export default () => {
             {!PredictionState && 
             <div className="flex justify-between w-full">
                 <button className="bg-none py-2 px-14 transition ease-in duration-100 delay-100 hover:bg-sickness-primary/90 hover:text-white text-sickness-primary border-2 border-sickness-primary rounded-md font-semibold mt-6" onClick={()=>dispatch(changeEtatByNom('Conditions'))} disabled={pushingLoading}> Back </button>
-                <button className="bg-sickness-primary/70 border-2 transition ease-in duration-100 delay-100 hover:bg-sickness-primary/90 border-sickness-primary py-2 px-14 text-white rounded-md font-semibold mt-6" onClick={()=>dispatch(changeEtatByNom('recommendations'))} disabled={pushingLoading}> Continue </button>
+                <button className="bg-sickness-primary border-2 transition ease-in duration-100 delay-100 hover:bg-sickness-primary/90 border-sickness-primary py-2 px-14 text-white rounded-md font-semibold mt-6" onClick={()=>dispatch(changeEtatByNom('recommendations'))} disabled={pushingLoading}> Continue </button>
             </div>
             }
         </div>

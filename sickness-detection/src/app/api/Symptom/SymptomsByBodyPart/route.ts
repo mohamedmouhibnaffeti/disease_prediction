@@ -42,7 +42,11 @@ export async function GET(request: NextRequest) {
                         )
                     )
                 ) {
-                    FilteredSymptoms.push(symptom)
+                    const singularTitle = pluralize.singular(symptom.title)
+                    const symptomExists = FilteredSymptoms.some((existingSymptom) => ((existingSymptom.title.toLowerCase().includes(singularTitle)) || (existingSymptom.title.toLowerCase().split(/[ ,\n]+/).includes(singularTitle)) || (symptom.title === existingSymptom.title) ))
+                    if(!symptomExists){
+                        FilteredSymptoms.push(symptom)
+                    }
                 }
             })
         })
