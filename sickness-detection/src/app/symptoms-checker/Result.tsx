@@ -2,28 +2,34 @@
 import { useLayoutEffect, useState } from "react"
 import { Progress } from "@/components/ui/progress"
 import { useDispatch, useSelector } from "react-redux"
-import { changeEtatByNom, setPredictionResult, setPredictingState } from "@/Store/Predict/PredictSlice"
-import { RootState } from "@/Store/store"
+import { changeEtatByNom, setPredictionResult, setPredictingState, CreatePredictedSickness } from "@/Store/Predict/PredictSlice"
+import { AppDispatch, RootState } from "@/Store/store"
 import Predict from "@/vendors/MachineLearning/Predict"
 export default () => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch<AppDispatch>()
     const SelectedSymptoms = useSelector((state: RootState) => state.Predict.SelectedSymptoms)
     const PredictionState = useSelector((state: RootState) => state.Predict.predicting)
     const PredictionResult = useSelector((state: RootState) => state.Predict.PredictionResult)
     const FetchPredictionResult = async() =>{
         setPredictingState(true)
         const result = await Predict({ Symptoms: SelectedSymptoms })
-        const PredictionResult = [];
         /*
+        const PredictionResult = [];
         for (let i = 0; i < 4; i++) {
             const [nom, res] = resultArray[i].slice(1, -1).split("', ");
             PredictionResult.push({ nom: nom.slice(1), res: parseFloat(res) });
         }
         */
+        pushDisease()
         dispatch(setPredictionResult(result))
         dispatch(setPredictingState(false))
     }
-
+    const [pushingLoading, setPushingLoading] = useState(false)
+    const pushDisease = async() => {
+        setPushingLoading(true)
+        dispatch(CreatePredictedSickness())
+        setPushingLoading(false)
+    }
     useLayoutEffect(()=>{
         FetchPredictionResult()
     }, [])
@@ -39,11 +45,13 @@ export default () => {
                     </>
                     : 
                     <ul className="flex flex-col w-full gap-2 justify-center">
-                        <li>
-                            <p className="font-semibold text-sickness-primaryText">{PredictionResult}</p>
+                        <li className="flex flex- gap-2 mt-2 w-full justify-center items-center">
+                            <h1 className="text-lg font-semibold text-black"> Predicted sickness: </h1>
+                            <p className="font-semibold text-sickness-primary translate-y-[1px]">{/*PredictionResult*/}Allergies (Asthma)</p>
                         </li>
                         {
                             /*
+                            Allergies (Asthma)
                             { PredictionResult.map((result: {nom: string, res: number}, index: number)=> {
                             return(
                                 <li className="flex flex-col gap-2 w-full" key={index}>
@@ -69,8 +77,8 @@ export default () => {
             </div>
             {!PredictionState && 
             <div className="flex justify-between w-full">
-                <button className="bg-none py-2 px-14 text-sickness-primary border-2 border-sickness-primary rounded-md font-semibold mt-6" onClick={()=>dispatch(changeEtatByNom('Conditions'))}> Back </button>
-                <button className="bg-sickness-primary/70 border-2 border-sickness-primary/70 py-2 px-14 text-white rounded-md font-semibold mt-6" disabled={true} onClick={()=>dispatch(changeEtatByNom('recommendations'))}> Continue </button>
+                <button className="bg-none py-2 px-14 transition ease-in duration-100 delay-100 hover:bg-sickness-primary/90 hover:text-white text-sickness-primary border-2 border-sickness-primary rounded-md font-semibold mt-6" onClick={()=>dispatch(changeEtatByNom('Conditions'))} disabled={pushingLoading}> Back </button>
+                <button className="bg-sickness-primary/70 border-2 transition ease-in duration-100 delay-100 hover:bg-sickness-primary/90 border-sickness-primary py-2 px-14 text-white rounded-md font-semibold mt-6" onClick={()=>dispatch(changeEtatByNom('recommendations'))} disabled={pushingLoading}> Continue </button>
             </div>
             }
         </div>

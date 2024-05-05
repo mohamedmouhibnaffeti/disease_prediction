@@ -12,7 +12,7 @@ export default () => {
     const dispatch = useDispatch<AppDispatch>()
     const SelectedSymptoms = useSelector((state: RootState)=>state.Predict.SelectedSymptoms)
     const ClickContinue = async() => {
-        dispatch(changeEtatByNom('result'))
+        dispatch(changeEtatByNom('Conditions'))
     }
     return (
         <div className="mt-[1rem] flex flex-col justify-center w-full px-8 py-4">
@@ -56,8 +56,8 @@ export default () => {
                     }
                     </div>
                     <div className="flex justify-between w-full">
-                        <button className="bg-none py-2 px-14 text-sickness-primary border-2 border-sickness-primary rounded-md font-semibold mt-6" onClick={()=>dispatch(changeEtatByNom('informations'))}> Back </button>
-                        <button className={` ${SelectedSymptoms.length === 0 ? "bg-sickness-primary/70 border-sickness-primary/60" : "bg-sickness-primary border-sickness-primary"} border-2  py-2 px-14 text-white rounded-md font-semibold mt-6`} disabled={SelectedSymptoms.length === 0} onClick={()=>ClickContinue()}> Continue </button>
+                        <button className="bg-none py-2 px-14 transition ease-in duration-100 delay-100 hover:bg-sickness-primary/90 hover:text-white text-sickness-primary border-2 border-sickness-primary rounded-md font-semibold mt-6" onClick={()=>dispatch(changeEtatByNom('informations'))}> Back </button>
+                        <button className={` ${SelectedSymptoms.length === 0 ? "bg-sickness-primary/70 border-sickness-primary/60" : "bg-sickness-primary transition ease-in duration-100 delay-100 hover:bg-sickness-primary/90 border-sickness-primary"} border-2  py-2 px-14 text-white rounded-md font-semibold mt-6`} disabled={SelectedSymptoms.length === 0} onClick={()=>ClickContinue()}> Continue </button>
                     </div>
                 </div>
                 <div className="flex-[0.5]">

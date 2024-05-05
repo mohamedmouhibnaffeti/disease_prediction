@@ -1,6 +1,7 @@
 import { Symptom } from "@/app/interfaces/interfaces";
 import { next_backend_route } from "@/lib/statics/ApiRoutes";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "../store";
 
 type listItemType = {
     nom: string, 
@@ -15,12 +16,14 @@ interface PredictType {
     PredictionResult: string,
     predicting: boolean,
     sex: string,
-    age: number
+    age: number,
+    sicknessDetails: any,
+    SicknessToPush: {age: number, sex: string, conditions: Array<any>, sickness: string, symptoms: Array<string>}
 }
 
 const initialState: PredictType = {
     listItems: [
-        { nom: 'informations', etat: true },
+        { nom: 'informations', etat: false },
         { nom: 'Symptoms', etat: false },
         { nom: 'Conditions', etat: false },
         { nom: 'result', etat: false },
@@ -33,7 +36,9 @@ const initialState: PredictType = {
     PredictionResult: "",
     predicting: true,
     sex: "",
-    age: NaN
+    age: NaN,
+    sicknessDetails: {},
+    SicknessToPush: {age: NaN, sex: "", conditions: [], sickness: "", symptoms: []}
 }
 
 const PredictSlice = createSlice({
@@ -53,40 +58,46 @@ const PredictSlice = createSlice({
         selectSymptoms: (state, action: PayloadAction<{etat: any, symptom: string}>) => {
             if(action.payload.etat){
                 state.SelectedSymptoms.push(action.payload.symptom)
+                state.SicknessToPush.symptoms.push(action.payload.symptom)
             }else{
                 const updatedSymptoms = state.SelectedSymptoms.filter((i)=> i !== action.payload.symptom)
                 state.SelectedSymptoms = updatedSymptoms
-                
+                state.SicknessToPush.symptoms = updatedSymptoms
             }
         },
         resetSymptomsArray: (state) => {
             state.Symptoms = []
+            state.SicknessToPush.symptoms = []
         },
         setPredictionResult: (state, action: PayloadAction<string>)=>{
             state.PredictionResult = action.payload
+            state.SicknessToPush.sickness = action.payload
         },
         setPredictingState: (state, action: PayloadAction<boolean> )=>{
-            console.log(action.payload)
             state.predicting = action.payload
         },
         selectAge: (state, action: PayloadAction<number>) => {
-            console.log(action.payload)
             state.age = action.payload
+            state.SicknessToPush.age = action.payload
         },
         selectSex: (state, action: PayloadAction<string>) => {
-            console.log(action.payload)
             state.sex = action.payload
+            state.SicknessToPush.sex = action.payload
+        },
+        addConditionsToSickness: (state, action: PayloadAction<Array<any>>) => {
+            state.SicknessToPush.conditions = action.payload
         }
     },
     extraReducers: (builder) => {
         builder
         .addCase(fetchSymptoms.fulfilled, (state, action: PayloadAction<Array<Symptom>>)=>{
-            console.log('fetched...')
             state.Symptoms = action.payload
         })
         .addCase(fetchSymptomsByFilter.fulfilled, (state, action: PayloadAction<Array<Symptom>>)=>{
-            console.log('fetched...')
             state.Symptoms = action.payload
+        })
+        .addCase(fetchSicknessForPredictedSickness.fulfilled, (state, action: PayloadAction<any>) => {
+            state.sicknessDetails = action.payload
         })
     },
 })
@@ -129,7 +140,48 @@ export const fetchSymptomsByFilter = createAsyncThunk(
     }
 )
 
+export const fetchSicknessForPredictedSickness = createAsyncThunk(
+    "Predict/fetchSicknessDetails",
+    async({sicknessName}: {sicknessName: string}) => {
+        try{
+            const response = await fetch(`${next_backend_route}/Sickness/get_sickness_details?sickness=${sicknessName}`)
+            if(response.ok){
+                const data = await response.json()
+                return {...data, status: 200}
+            }else{
+                const data = await response.json()
+                return {...data, status: 400}
+            }
+        }catch(err){
+            return {error: err, status: 500}
+        }
+    }
+)
 
-export const { changeEtatByNom, selectSymptoms, setPredictionResult, setPredictingState, selectAge, selectSex, resetSymptomsArray } = PredictSlice.actions
+export const CreatePredictedSickness = createAsyncThunk(
+    "Predict/PushSickness",
+    async(_, {getState}) => {
+        try{
+            const state: RootState = getState() as RootState
+            const {SicknessToPush} = state.Predict 
+            const response = await fetch(`${next_backend_route}/Sickness/add_new_sickness`, {
+                method: 'POST',
+                body: JSON.stringify(SicknessToPush)
+            })    
+            if(response.ok){
+                const data = await response.json()
+                return {...data, status: 200}
+            }else{
+                const data = await response.json()
+                return {...data, status: 400}
+            }
+        }catch(err){
+            return {error: err, status: 400}
+        }
+    }
+)
+
+
+export const { changeEtatByNom, selectSymptoms, setPredictionResult, setPredictingState, selectAge, selectSex, resetSymptomsArray, addConditionsToSickness } = PredictSlice.actions
 
 export default PredictSlice.reducer

@@ -14,7 +14,7 @@ import { useContext, useEffect, useState } from "react"
 import React from "react"
 import { PlusIcon } from "lucide-react"
 import { useDispatch } from "react-redux"
-import { changeEtatByNom } from "@/Store/Predict/PredictSlice"
+import { addConditionsToSickness, changeEtatByNom } from "@/Store/Predict/PredictSlice"
 
 const CalendarComponent = (props: {date: any, setDate: any}) => {
     const { date, setDate } = props
@@ -90,10 +90,10 @@ export default () => {
     })
   }
 
-  useEffect(()=>{
-    console.log(selectedConditions)
-  }, [selectedConditions])
-  
+  const handleClickContinue = () => {
+    dispatch(addConditionsToSickness(selectedConditions))
+    dispatch(changeEtatByNom('result'))
+  }
   return (
       <div className="w-fit flex flex-col bg-white border-[1px] border-sickness-border shadow-md rounded-lg mt-[8rem] py-8 px-4">
           <p className="text-center text-sickness-primaryText font-semibold">Please provide details of your current and past medical conditions to help us understand your health history better and enhance our ability to make accurate predictions.</p>
@@ -109,8 +109,8 @@ export default () => {
           </div>
           <button className="text-white bg-sickness-rosyBrown/70 flex justify-center items-center py-2 mt-3 font-semibold rounded-md" onClick={()=>handleAjouterMaladie()}> <PlusIcon /> Add Condition </button>
           <div className="flex justify-between w-full">
-              <button className="bg-none py-2 px-14 text-sickness-primary border-2 border-sickness-primary rounded-md font-semibold mt-6" onClick={()=>dispatch(changeEtatByNom('Symptoms'))}> Back </button>
-              <button className="bg-sickness-primary border-2 border-sickness-primary py-2 px-14 text-white rounded-md font-semibold mt-6" onClick={()=>dispatch(changeEtatByNom('result'))}> Continue </button>
+              <button className="bg-none py-2 px-14 transition ease-in duration-100 delay-100 hover:bg-sickness-primary/90 hover:text-white text-sickness-primary border-2 border-sickness-primary rounded-md font-semibold mt-6" onClick={()=>dispatch(changeEtatByNom('Symptoms'))}> Back </button>
+              <button className="bg-sickness-primary transition ease-in duration-100 delay-100 border-2 border-sickness-primary hover:bg-sickness-primary/90 py-2 px-14 text-white rounded-md font-semibold mt-6" onClick={handleClickContinue}> Continue </button>
           </div>
       </div>
   )

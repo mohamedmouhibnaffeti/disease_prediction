@@ -54,7 +54,7 @@ export default () => {
                     <p key={key as keyof typeof errMsgs} className="text-sm text-red-500">{errMsgs[key as keyof typeof errMsgs]}</p>
                 </div>
             ))}
-            <button className="bg-sickness-primary border-2 border-sickness-primary py-2 px-14 text-white rounded-md font-semibold mt-6 md:self-end self-center" onClick={ClickNext}> Continue </button>
+            <button className="bg-sickness-primary border-2 border-sickness-primary py-2 px-14 text-white rounded-md font-semibold mt-6 md:self-end self-center transition ease-in duration-100 delay-100 hover:bg-sickness-primary/90" onClick={ClickNext}> Continue </button>
         </div>
     )
 }
