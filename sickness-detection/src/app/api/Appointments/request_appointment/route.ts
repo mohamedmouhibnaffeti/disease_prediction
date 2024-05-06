@@ -20,7 +20,7 @@ export async function POST(request: Request){
 export async function GET(request: Request){
     try {
         connectMongoDB();
-        const Appointments = await Appointment.find().populate({path: 'doctor', model: User}).populate({path: 'patient', model: User}) // Populate patient with name and lastname
+        const Appointments = await Appointment.find().populate({path: 'doctor', model: User}).populate({path: 'patient', model: User})
         return NextResponse.json({ Appointments: Appointments }, { status: 200 });
     } catch (err) {
         return NextResponse.json({ message: `Internal server error: ${err}` }, { status: 500 });
