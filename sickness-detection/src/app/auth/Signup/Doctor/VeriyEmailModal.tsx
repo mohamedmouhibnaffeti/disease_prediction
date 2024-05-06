@@ -40,10 +40,6 @@ export default function VerifyEmail({open, setOpen}: {open: boolean, setOpen :an
         setLoading(false)
     }
 
-    useEffect(()=>{
-        console.log(SignupFormDataDoctor)
-    }, [SignupFormDataDoctor])
-
     return(
         <AlertDialog open={open}>
             <AlertDialogContent className='w-full flex justify-center flex-col'>

@@ -17,7 +17,7 @@ interface authSliceType {
 const initialState: authSliceType = {
     currentSignUpPage: "role",
     currentDoctorSignupPage: 1,
-    SignupFormDataDoctor: { name: "", lastname: "", email: "", phone: "",password: "", confirmPassword: "", images: [], otp: "", location: [], speciality: "" },
+    SignupFormDataDoctor: { name: "", lastname: "", email: "", phone: "",password: "", confirmPassword: "", images: [], otp: "", location: [35.632401, 10.8959568], speciality: "" },
     PatientSignupFormData: { name: "", lastname: "", email: "", phone: "",password: "", confirmPassword: "" },
     LoginFormData: { email: "", password: "" },
     ForgotPasswordData: { email: "", passwwd: "", confirmPasswd: "", otp: "" }
@@ -97,7 +97,7 @@ export const DoctorSignup = createAsyncThunk(
         const state: RootState = getState() as RootState
         const { SignupFormDataDoctor } = state.Authentication
 
-        if(isValidEmail(SignupFormDataDoctor.email)){
+        if(!isValidEmail(SignupFormDataDoctor.email)){
             return ({message: "Invalid email."})
         }
         if(SignupFormDataDoctor.name.length < 5){
@@ -124,7 +124,9 @@ export const DoctorSignup = createAsyncThunk(
         Object.entries(SignupFormDataDoctor).forEach(([key, value]) => {
             if(typeof value === "string"){
                 formData.append(key, value);
-            }
+            }if (Array.isArray(value) && value.length === 2 && typeof value[0] === 'number' && typeof value[1] === 'number') {
+                formData.append(key, JSON.stringify(value));
+            }            
         });
         
         const etat = areAllStringsEmpty(SignupFormDataDoctor)
@@ -134,7 +136,6 @@ export const DoctorSignup = createAsyncThunk(
                 body: formData
             })
             const data = await response.json()
-            console.log(data)
             const dataWithResponse = {...data, status: response.status}
             return dataWithResponse
         }else{
@@ -149,7 +150,7 @@ export const PatientSignup = createAsyncThunk(
         const state: RootState = getState() as RootState
         const { PatientSignupFormData } = state.Authentication
 
-        if(isValidEmail(PatientSignupFormData.email)){
+        if(!isValidEmail(PatientSignupFormData.email)){
             return ({message: "Invalid email."})
         }
         if(PatientSignupFormData.name.length < 5){
