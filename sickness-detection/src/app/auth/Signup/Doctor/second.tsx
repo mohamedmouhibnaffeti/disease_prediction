@@ -48,6 +48,9 @@ export default ({ Errors, setErrors }: { Errors: DoctorSignupErrorsType, setErro
         if(SignupFormData.images.length !== 2){
             setErrors((prevErrors: DoctorSignupErrorsType) => ({ ...prevErrors, images: "Images should be exactly 2" }))
         }
+        if(SignupFormData.speciality.length < 2){
+            setErrors((prevErrors: DoctorSignupErrorsType) => ({ ...prevErrors, speciality: "Invalid speciality" }))
+        }
         else{
             setIsLoading(true)
             const response = await dispatch(RegisterOTP())
@@ -68,6 +71,11 @@ export default ({ Errors, setErrors }: { Errors: DoctorSignupErrorsType, setErro
         <>
             <p className='text-sm text-sickness-gray text-center'> In this step you'll need to insert your <span className="text-sickness-primary font-semibold"> Service card </span> and your <span className="text-sickness-primary font-semibold"> Identity Card </span> to verify your identity </p>
             <p className='text-sm text-sickness-gray text-center'> Afer creating your account you'll need to wait for us verify your profile before you can create appointments, meanwhile checkout our website 😊 </p>
+            <div className="w-full">
+                <span className="text-sickness-gray text-lg"> Speciality </span>
+                <input type="text" value={SignupFormData.speciality} onChange={(e)=>{dispatch(setSignupFormDataDoctor({name: "speciality", value: e.target.value})); setErrors((prevErrors: DoctorSignupErrorsType) => ({ ...prevErrors,  speciality: ""}))}} className="outline-none border focus:border-sickness-primary text-sickness-gray text- pl-2 py-2 rounded-md w-full border-sickness-border" />
+                <p className='text-sm text-red-500 break-words self-center text-center'> { Errors.lastname } </p>
+            </div>
             <div>   
                 <div {...getRootProps()} className="cursor-pointer w-full h-fit mt-2 bg-[#D9D9D9]/50 hover:bg-[#D9D9D9]/70 flex justify-center items-center border-black border rounded-md flex-col py-2 gap-2 px-4">
                     <input {...getInputProps()} />

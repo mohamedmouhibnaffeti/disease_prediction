@@ -7,6 +7,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { writeFile } from "fs/promises"
 import path from "path"
 import { checkOTP } from "@/lib/functions/otp"
+import Location from "@/Models/LocationModel/Location"
 
 export async function POST(request: NextRequest) {
     try {
@@ -22,7 +23,15 @@ export async function POST(request: NextRequest) {
         const password = data.get("password") as string;
         const confirmPassword = data.get("confirmPassword") as string;
         const otp = data.get("otp") as string
-        console.log(data)
+        const location = data.get("location") as string
+        const parsedLocation: Array<any> = JSON.parse(location)
+        const speciality = data.get("speciality") as string
+        if(!parsedLocation || parsedLocation.length < 2){
+            return NextResponse.json({ message: 'Please provide a location' }, { status: 400 });
+        }
+        if(!speciality || speciality.length < 2){
+            return NextResponse.json({ message: 'Please provide a speciality' }, { status: 400 });
+        }
         if(!otp || otp?.length < 6 ){
             return NextResponse.json({ message: 'Verification code should be of 6 caracters long.' }, { status: 400 });
         }
@@ -36,6 +45,7 @@ export async function POST(request: NextRequest) {
         if(await checkOTP({email, otp}) === false){
             return NextResponse.json({ message: 'Invalid verification code.' }, { status: 400 });
         }
+        const locationObject = await Location.create({cordonnees: parsedLocation})
         for(const image of images){
             const buffer = Buffer.from(await image.arrayBuffer())
             const imageName = name + "_" + lastname + "_" + Date.now() + "_" + image.name.replaceAll(/\s+/g, "_")
@@ -51,7 +61,7 @@ export async function POST(request: NextRequest) {
         }else{
             const salt = await bcrypt.genSalt(10)
             const hashedPassword = await bcrypt.hash(password, salt)
-            const CreatedDoctor = await Doctor.create({ name, lastname, phone, email, password: hashedPassword, id_images: imagepaths })
+            const CreatedDoctor = await Doctor.create({ name, lastname, phone, email, password: hashedPassword, id_images: imagepaths, speciality: speciality, location: locationObject })
             if(CreatedDoctor){
                 const RefreshToken = createRefreshToken(CreatedDoctor._id)
                 const AccessToken = createAccessToken(CreatedDoctor._id)

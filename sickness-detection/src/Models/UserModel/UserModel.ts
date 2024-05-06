@@ -1,5 +1,5 @@
 import mongoose, { Schema, model, models } from "mongoose";
-
+import Location from "../LocationModel/Location";
 const UserSchema = new Schema({
     name: {
         type: String,
@@ -18,7 +18,7 @@ const UserSchema = new Schema({
         type: String,
         required: true
     }
-}, { strict: 'throw' }); // Enforce strict schema mode
+}, { strict: 'throw' });
 
 const AdminSchema = new Schema({
     role: {
@@ -41,7 +41,12 @@ const DoctorSchema = new Schema({
         default: "doctor"
     },
     phone: String,
-    id_images: Array
+    id_images: Array,
+    speciality: String,
+    location: {
+        type: [Location.schema],
+        required: true
+    }
 });
 
 const User = models.User || model("User", UserSchema);

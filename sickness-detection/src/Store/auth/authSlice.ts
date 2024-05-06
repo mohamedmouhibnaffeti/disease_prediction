@@ -17,7 +17,7 @@ interface authSliceType {
 const initialState: authSliceType = {
     currentSignUpPage: "role",
     currentDoctorSignupPage: 1,
-    SignupFormDataDoctor: { name: "", lastname: "", email: "", phone: "",password: "", confirmPassword: "", images: [], otp: "" },
+    SignupFormDataDoctor: { name: "", lastname: "", email: "", phone: "",password: "", confirmPassword: "", images: [], otp: "", location: [], speciality: "" },
     PatientSignupFormData: { name: "", lastname: "", email: "", phone: "",password: "", confirmPassword: "" },
     LoginFormData: { email: "", password: "" },
     ForgotPasswordData: { email: "", passwwd: "", confirmPasswd: "", otp: "" }

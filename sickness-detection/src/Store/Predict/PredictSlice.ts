@@ -23,7 +23,7 @@ interface PredictType {
 
 const initialState: PredictType = {
     listItems: [
-        { nom: 'informations', etat: false },
+        { nom: 'informations', etat: true },
         { nom: 'Symptoms', etat: false },
         { nom: 'Conditions', etat: false },
         { nom: 'result', etat: false },

@@ -21,7 +21,9 @@ export interface DoctorSignupformDataType {
     password: string,
     confirmPassword: string,
     images: any,
-    otp: string
+    otp: string,
+    location: Array<number>,
+    speciality: string
 }
 
 export interface PatientSignupformDataType {
@@ -45,7 +47,9 @@ export interface DoctorSignupErrorsType {
     phone: string,
     password: string,
     confirmPassword: string,
-    images: string
+    images: string,
+    location: [], 
+    speciality: ""
 }
 
 export interface PatientSignupErrorsType {
