@@ -7,6 +7,15 @@ import { AppDispatch, RootState } from '@/Store/store'
 import { setCurrentDoctorSignupPage, setSignupFormDataDoctor } from '@/Store/auth/authSlice'
 import Image from 'next/image'
 import { DoctorSignupErrorsType } from '@/app/interfaces/interfaces'
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+  } from "@/components/ui/select"
+import { specialities_array } from '@/lib/statics/specialities'
+  
 
 export default ({ Errors, setErrors }: { Errors: DoctorSignupErrorsType, setErrors: any }) => {
 
@@ -48,13 +57,23 @@ export default ({ Errors, setErrors }: { Errors: DoctorSignupErrorsType, setErro
             dispatch(setCurrentDoctorSignupPage(3))
         }
       }
-
     return (
         <>
             <p className='text-sm text-sickness-gray text-center'> In this step you'll need to insert your <span className="text-sickness-primary font-semibold"> Service card </span> and your <span className="text-sickness-primary font-semibold"> Identity Card </span> to verify your identity </p>
             <div className="w-full">
                 <span className="text-sickness-gray text-lg"> Speciality </span>
-                <input type="text" value={SignupFormData.speciality} onChange={(e)=>{dispatch(setSignupFormDataDoctor({name: "speciality", value: e.target.value})); setErrors((prevErrors: DoctorSignupErrorsType) => ({ ...prevErrors,  speciality: ""}))}} className="outline-none border focus:border-sickness-primary text-sickness-gray text- pl-2 py-2 rounded-md w-full border-sickness-border" />
+                <Select onValueChange={(e)=>{dispatch(setSignupFormDataDoctor({name: "speciality", value: e})); setErrors((prevErrors: DoctorSignupErrorsType) => ({ ...prevErrors,  speciality: ""}))}}>
+                    <SelectTrigger className="outline-none border focus:border-sickness-primary text-sickness-primaryText font-semibold pl-2 py-2 rounded-md w-full border-sickness-border">
+                    <SelectValue placeholder="-- Select speciality" className="text-sickness-gray font-semibold" />
+                    </SelectTrigger>
+                    <SelectContent>
+                         {
+                            specialities_array.map((speciality, index) => (
+                                <SelectItem className="text-sickness-gray font-semibold cursor-pointer" value={speciality} key={index}>{speciality}</SelectItem>
+                            ))
+                         }
+                    </SelectContent>
+                </Select>
                 <p className='text-sm text-red-500 break-words self-center text-center'> { Errors.speciality } </p>
             </div>
             <div>   
