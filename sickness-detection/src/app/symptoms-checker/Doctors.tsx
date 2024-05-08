@@ -1,67 +1,35 @@
-import { lazy } from "react"
+import { lazy, useEffect, useLayoutEffect, useState } from "react"
 import { getRandomColor } from "@/lib/statics/Colors"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { changeEtatByNom } from "@/Store/Predict/PredictSlice"
+import { AppDispatch, RootState } from "@/Store/store"
+import { fetchDoctorsBySpeciality } from "@/Store/doctor/doctorSlice"
 const DoctorCard = lazy(()=>import('@/components/DoctorCard'))
 
-let doctors = [
-    {
-        "first_name": "John",
-        "last_name": "Smith",
-        "specialty": "Cardiologist",
-        "years_of_experience": 15,
-        "rating": 4.8
-    },
-    {
-        "first_name": "Emily",
-        "last_name": "Johnson",
-        "specialty": "Pediatrician",
-        "years_of_experience": 10,
-        "rating": 4.5
-    },
-    {
-        "first_name": "Michael",
-        "last_name": "Brown",
-        "specialty": "Dermatologist",
-        "years_of_experience": 20,
-        "rating": 4.9
-    },
-    {
-        "first_name": "John",
-        "last_name": "Smith",
-        "specialty": "Cardiologist",
-        "years_of_experience": 15,
-        "rating": 4.8
-    },
-    {
-        "first_name": "Emily",
-        "last_name": "Johnson",
-        "specialty": "Pediatrician",
-        "years_of_experience": 10,
-        "rating": 4.5
-    },
-    {
-        "first_name": "John",
-        "last_name": "Smith",
-        "specialty": "Cardiologist",
-        "years_of_experience": 15,
-        "rating": 4.8
-    },
-    {
-        "first_name": "Emily",
-        "last_name": "Johnson",
-        "specialty": "Pediatrician",
-        "years_of_experience": 10,
-        "rating": 4.5
-    },
-];
 export default () => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch<AppDispatch>()
+    const { doctors } = useSelector((state: RootState) => state.Doctor)
+    const [sickness, setSickness] = useState<any>()
+    const fetchDoctors = async() => {
+        await dispatch(fetchDoctorsBySpeciality({speciality: sickness?.Sickness?.speciality}))
+    }
+    useLayoutEffect(()=>{
+        const stringSickness = localStorage.getItem("sickness") || ""
+        console.log(stringSickness)
+        setSickness((prevSickness: any) => JSON.parse(stringSickness))
+    }, [])
+    useEffect(()=>{
+        console.log(sickness)
+        if(sickness){
+            fetchDoctors()
+        }
+    }, [sickness])
+    console.log(doctors)
     return(
         <div className="w-full mt-[2rem] px-8 py-4 flex flex-col">
             <h1 className="md:text-3xl text-xl font-bold text-sickness-primaryText md:self-start self-center"> Doctors for your sickness : </h1>
             <div className="w-full flex flex-wrap justify-center items-center mt-4 gap-6 px-4">
-                {doctors.map((doctor, index)=>{
+            {doctors.map((doctor, index)=>{
                     return(
                         <DoctorCard doctor={doctor} color={getRandomColor()} key={index} />
                     )

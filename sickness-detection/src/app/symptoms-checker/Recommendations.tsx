@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from "react"
+import { useEffect, useLayoutEffect, useState } from "react"
 import { RecommendationsData } from "./data"
 import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch, RootState } from "@/Store/store"
@@ -17,8 +17,9 @@ export default () => {
     useLayoutEffect(()=>{
         FetchSicknessDetails()
     }, [])
-    console.log(sicknessDetails)
-    console.log(ResultLoading)
+    useEffect(()=>{
+        localStorage.setItem("sickness", JSON.stringify(sicknessDetails))
+    }, [sicknessDetails])
     return (
         <div className="flex flex-wrap md:py-4 pb-4">
             <div className="md:w-fit w-full flex flex-col bg-white border-[1px] border-sickness-border shadow-md md:rounded-l-lg rounded-lg md:mt-[6rem] mt-[2rem] py-8 px-4">
