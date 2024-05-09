@@ -3,18 +3,33 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
 interface doctorSliceType {
-    doctors: Array<any>
+    doctors: Array<any>,
+    updatedDoctors: Array<any>
 }
 
 const initialState: doctorSliceType = {
-    doctors: []
+    doctors: [],
+    updatedDoctors: []
 }
 
 const doctorSlice = createSlice({
     name: "doctor",
     initialState,
     reducers: {
-
+        updateDoctorsArray : (state, action:PayloadAction<Array<any>>) => {
+            const sortedArray = action.payload.sort((a, b) => {
+                if (isNaN(a.distance) && isNaN(b.distance)) {
+                    return 0
+                } else if (isNaN(a.distance)) {
+                    return 1
+                } else if (isNaN(b.distance)) {
+                    return -1
+                } else {
+                    return a.distance - b.distance
+                }
+            });
+            state.updatedDoctors = [...sortedArray]
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -41,6 +56,6 @@ export const fetchDoctorsBySpeciality = createAsyncThunk(
     }
 )
 
-export const { } = doctorSlice.actions
+export const { updateDoctorsArray } = doctorSlice.actions
 
 export default doctorSlice.reducer
