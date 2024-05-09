@@ -37,6 +37,7 @@ export default () => {
                 navigator.geolocation.getCurrentPosition(function(position) {
                     const latitude = position.coords.latitude;
                     const longitude = position.coords.longitude;
+                    console.log({latitude, longitude})
                     const updatedDoctorsArray = doctors.map((doctor) => {
                         if (doctor.location) {
                             const distance = DistanceEuclidienne({

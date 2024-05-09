@@ -13,7 +13,6 @@ import {
 export default (props: {doctor: any, color: any}) => {
     const Router = useRouter()
     const {doctor, color} = props
-    console.log(doctor)
     return(
         <div className="w-[20rem] min-h-[18rem] rounded-xl shadow-md border border-sickness-border flex flex-col pb-4 hover:shadow-xl shad hover:shadow-sickness-primary/70 transition delay-100 ease-in">
             <div className={`rounded-t-xl flex justify-end h-28`} style={{backgroundColor: `${color.bg}`}}>
@@ -24,7 +23,7 @@ export default (props: {doctor: any, color: any}) => {
                 <DropdownMenuContent className="w-56">
                     <DropdownMenuLabel>Dr.{` ${doctor.name[0]}.${doctor.lastname[0]}`.toUpperCase()}</DropdownMenuLabel>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem className="cursor-pointer text-sickness-primaryText font-[510]" onClick={()=>Router.push(`/doctor?name=${doctor.name}&lastname=${doctor.lastname}&distance=${doctor.distance}&location=${JSON.stringify(doctor?.location[0]?.cordonnees || [0, 0])}&phone=${doctor.phone}&email=${doctor.email}`)}>
+                    <DropdownMenuItem className="cursor-pointer text-sickness-primaryText font-[510]" onClick={()=>Router.push(`/doctor?name=${doctor.name}&lastname=${doctor.lastname}&distance=${doctor.distance}&location=${JSON.stringify(doctor?.location[0]?.cordonnees || [0, 0])}&phone=${doctor.phone}&email=${doctor.email}&speciality=${doctor.speciality}`)}>
                         View Profile
                     </DropdownMenuItem>
                     <DropdownMenuItem className="cursor-pointer text-sickness-primaryText font-[510]">
