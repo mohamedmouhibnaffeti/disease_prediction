@@ -4,12 +4,16 @@ import { RootState } from "../store";
 
 interface doctorSliceType {
     doctors: Array<any>,
-    updatedDoctors: Array<any>
+    updatedDoctors: Array<any>,
+    appointmentResponse: any,
+    requestLoading: boolean
 }
 
 const initialState: doctorSliceType = {
     doctors: [],
-    updatedDoctors: []
+    updatedDoctors: [],
+    appointmentResponse: {},
+    requestLoading: false
 }
 
 const doctorSlice = createSlice({
@@ -29,6 +33,9 @@ const doctorSlice = createSlice({
                 }
             });
             state.updatedDoctors = [...sortedArray]
+        },
+        setRequestLoading: (state, action: PayloadAction<boolean>) => {
+            state.requestLoading = action.payload
         }
     },
     extraReducers: (builder) => {
@@ -37,6 +44,9 @@ const doctorSlice = createSlice({
             if(action.payload.status === 200){
                 state.doctors = action.payload.doctors
             }
+        })
+        .addCase(requestAppointment.fulfilled, (state, action: PayloadAction<any>)=>{
+            state.appointmentResponse = action.payload
         })
     }
 })
@@ -56,6 +66,27 @@ export const fetchDoctorsBySpeciality = createAsyncThunk(
     }
 )
 
-export const { updateDoctorsArray } = doctorSlice.actions
+export const requestAppointment = createAsyncThunk(
+    "doctor/requestAppointment",
+    async({ doctorID, patientID }: { doctorID: string, patientID: string }) => {
+        try{
+            const response = await fetch(`${next_backend_route}/Appointments/request_appointment`, {
+                method: "POST",
+                body: JSON.stringify({
+                    doctorID: doctorID,
+                    patientID: patientID
+                })
+            })
+            if(response.ok){
+                const data = await response.json()
+                return { ...data, status: 201 } 
+            }
+        }catch(err){
+            return { error: err, status: 500 }
+        }
+    }
+)
+
+export const { updateDoctorsArray, setRequestLoading } = doctorSlice.actions
 
 export default doctorSlice.reducer

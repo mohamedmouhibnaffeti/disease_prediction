@@ -10,7 +10,7 @@ const DoctorCard = lazy(()=>import('@/components/DoctorCard'))
 
 export default () => {
     const dispatch = useDispatch<AppDispatch>()
-    const { doctors, updatedDoctors } = useSelector((state: RootState) => state.Doctor)
+    const { doctors, updatedDoctors, requestLoading } = useSelector((state: RootState) => state.Doctor)
     const [sickness, setSickness] = useState<any>()
     const [loading, setLoading] = useState(false)
     const [rendered, setRendered] = useState(false)
@@ -59,26 +59,36 @@ export default () => {
     }, [doctors]);
 
     return(
-        <div className="w-full mt-[2rem] px-8 py-4 flex flex-col gap-4">
-            <h1 className="md:text-3xl text-xl font-bold text-sickness-primaryText self-center text-center"> Doctors for your sickness : </h1>
-            <div className="w-full flex flex-wrap justify-center items-center mt-8 gap-6 px-4">
-                {
-                    loading ?
-                        <div className="flex flex-col justify-center items-center gap-8">    
-                            <div className="ModelLoader mt-4" />
-                            <p className="font-semibold text-sickness-primary mt-2 text-center"> We're fetching doctors for your specific disease... </p>
-                        </div>
-                    :
-                    updatedDoctors.map((doctor: any, index: number)=>{
-                            return(
-                                <DoctorCard doctor={doctor} color={getRandomColor()} key={index} />
-                            )
-                        })
-                }
-                
-            </div>
-            
-            { !loading && <button className="bg-none py-2 px-14 text-sickness-primary border-2 border-sickness-primary rounded-md font-semibold mt-6 self-center" onClick={()=>dispatch(changeEtatByNom('recommendations'))}> Back </button> }
-        </div>
+        <>
+            {
+                requestLoading
+                ?
+                    <div className="px-4 py-8 bg-white w-fit flex justify-center mt-[12rem] items-center border shadow-md rounded-md border-sickness-border">
+                        <p className="font-medium text-lg text-sickness-orange text-center"> Your appointment request is being processed please wait for us to pass it. </p>
+                    </div>
+                :
+                <div className="w-full mt-[2rem] sm:px-8 px-2 py-4 flex flex-col gap-4">
+                    <h1 className="md:text-3xl text-xl font-bold text-sickness-primaryText self-center text-center"> Doctors for your sickness : </h1>
+                    <div className="w-full flex flex-wrap justify-center items-center mt-8 gap-6">
+                        {
+                            loading ?
+                                <div className="flex flex-col justify-center items-center gap-8">    
+                                    <div className="ModelLoader mt-4" />
+                                    <p className="font-semibold text-sickness-primary mt-2 text-center"> We're fetching doctors for your specific disease... </p>
+                                </div>
+                            :
+                            updatedDoctors.map((doctor: any, index: number)=>{
+                                    return(
+                                        <DoctorCard doctor={doctor} color={getRandomColor()} key={index} />
+                                    )
+                                })
+                        }
+                        
+                    </div>
+                    
+                    { !loading && <button className="bg-none py-2 px-14 text-sickness-primary border-2 border-sickness-primary rounded-md font-semibold mt-6 self-center" onClick={()=>dispatch(changeEtatByNom('recommendations'))}> Back </button> }
+                </div>
+            }
+        </>
     )
 }
