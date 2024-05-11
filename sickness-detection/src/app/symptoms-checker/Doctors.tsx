@@ -61,10 +61,11 @@ export default () => {
     return(
         <>
             {
-                requestLoading
+                true
                 ?
-                    <div className="px-4 py-8 bg-white w-fit flex justify-center mt-[12rem] items-center border shadow-md rounded-md border-sickness-border">
-                        <p className="font-medium text-lg text-sickness-orange text-center"> Your appointment request is being processed please wait for us to pass it. </p>
+                    <div className="px-4 py-8 bg-white w-fit flex flex-col justify-center mt-[12rem] items-center border shadow-md rounded-md border-sickness-border">
+                        <p className="font-semibold text-lg text-sickness-orange text-center"> Your appointment request is being processed please wait for us to pass it. </p>
+                        <div className="three-dots-loader mt-4" />
                     </div>
                 :
                 <div className="w-full mt-[2rem] sm:px-8 px-2 py-4 flex flex-col gap-4">
