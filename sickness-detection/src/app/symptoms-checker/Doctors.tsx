@@ -61,7 +61,7 @@ export default () => {
     return(
         <>
             {
-                true
+                requestLoading
                 ?
                     <div className="px-4 py-8 bg-white w-fit flex flex-col justify-center mt-[12rem] items-center border shadow-md rounded-md border-sickness-border">
                         <p className="font-semibold text-lg text-sickness-orange text-center"> Your appointment request is being processed please wait for us to pass it. </p>
