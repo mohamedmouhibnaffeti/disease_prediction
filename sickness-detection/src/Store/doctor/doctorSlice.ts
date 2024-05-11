@@ -5,14 +5,12 @@ import { RootState } from "../store";
 interface doctorSliceType {
     doctors: Array<any>,
     updatedDoctors: Array<any>,
-    appointmentResponse: any,
     requestLoading: boolean
 }
 
 const initialState: doctorSliceType = {
     doctors: [],
     updatedDoctors: [],
-    appointmentResponse: {},
     requestLoading: false
 }
 
@@ -44,9 +42,6 @@ const doctorSlice = createSlice({
             if(action.payload.status === 200){
                 state.doctors = action.payload.doctors
             }
-        })
-        .addCase(requestAppointment.fulfilled, (state, action: PayloadAction<any>)=>{
-            state.appointmentResponse = action.payload
         })
     }
 })

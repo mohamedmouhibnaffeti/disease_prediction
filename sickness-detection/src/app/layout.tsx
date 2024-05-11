@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import Nav from "@/components/Nav";
 import { Providers } from "./Providers";
 import { Suspense } from "react";
+import { Toaster } from "@/components/ui/toaster"
 import Loader from "@/components/Loader";
 
 export const inter = Inter({ 
@@ -32,6 +33,7 @@ export default function RootLayout({
           <Providers>
             <Suspense fallback={<Loader />}>
               {children}
+              <Toaster />
             </Suspense>
           </Providers>
       </body>

@@ -8,11 +8,13 @@ import { AppDispatch, RootState } from "@/Store/store"
 import { requestAppointment, setRequestLoading } from "@/Store/doctor/doctorSlice"
 const Calendar = lazy(()=>import("@/components/Calendar"))
 const Map = lazy(()=>import("@/components/Map"))
+import { useToast } from "@/components/ui/use-toast"
 
 export default () => {
+    const { toast } = useToast()
 
     const dispatch = useDispatch<AppDispatch>()
-    const { appointmentResponse, requestLoading } = useSelector((state: RootState) => state.Doctor)
+    const { requestLoading } = useSelector((state: RootState) => state.Doctor)
 
     const params = useSearchParams()
     const doctorID = params.get("id") || ""
@@ -34,8 +36,20 @@ export default () => {
     
     const RequestAppointment = async() => {
         dispatch(setRequestLoading(true))
-        await dispatch(requestAppointment({doctorID: doctorID, patientID: user?._id}))
+        const response = await dispatch(requestAppointment({doctorID: doctorID, patientID: user?._id}))
         dispatch(setRequestLoading(false))
+        if(response.payload.status === 201){
+            toast({
+                title: "Congratulations !",
+                description: <p> You've requested an appointment with doctor <span className="font-semibold">{name} {lastname}</span> </p>,
+              })
+        }else if(response.payload.status === 500){
+            toast({
+                variant: "destructive",
+                title: "Sorry.",
+                description: <p> Couldn't request an appointment with doctor <span className="font-semibold"> {name} {lastname} </span>.Please try again later. </p>,
+              })
+        }
     }
 
     useEffect(()=>{
@@ -73,7 +87,7 @@ export default () => {
                     </div>
                     <div className="flex flex-col text-sm">
                         <p className="text-sickness-gray mt-4"> Phone number </p>
-                        <p className="text-sickness-primaryText self-end font-semibold flex items-center"> <Plus className="text-sickness-primaryText w-4 h-4" /> {phone} </p>
+                        <p className="text-sickness-primaryText self-end font-semibold flex items-center"> <Plus className="text-sickness-primaryText w-[0.8rem] h-[0.8rem]" /> {phone} </p>
                     </div>
                 </div>
                 <div className="h-[30rem] mt-4">

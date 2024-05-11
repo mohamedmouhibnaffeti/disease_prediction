@@ -14,13 +14,14 @@ import { requestAppointment, setRequestLoading } from "@/Store/doctor/doctorSlic
 import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch, RootState } from "@/Store/store"
 import { useLayoutEffect, useState } from "react"
+import { useToast } from "./ui/use-toast"
   
 export default (props: {doctor: any, color: any}) => {
     const Router = useRouter()
     const dispatch = useDispatch<AppDispatch>()
-    const { appointmentResponse } = useSelector((state: RootState) => state.Doctor)
     const [user, setUser] = useState<any>({})
     const {doctor, color} = props
+    const { toast } = useToast()
     useLayoutEffect(()=>{
         const userString = localStorage.getItem("user") || ""
         setUser((prev: any) => JSON.parse(userString))
@@ -28,8 +29,20 @@ export default (props: {doctor: any, color: any}) => {
     console.log(user)
     const RequestAppointment = async() => {
         dispatch(setRequestLoading(true))
-        await dispatch(requestAppointment({doctorID: doctor?._id, patientID: user?._id}))
+        const response = await dispatch(requestAppointment({doctorID: doctor?._id, patientID: user?._id}))
         dispatch(setRequestLoading(false))
+        if(response.payload.status === 201){
+            toast({
+                title: "Congratulations !",
+                description: <p> You've requested an appointment with doctor <span className="font-semibold">{doctor?.name} {doctor?.lastname}</span> </p>,
+              })
+        }else if(response.payload.status === 500){
+            toast({
+                variant: "destructive",
+                title: "Sorry.",
+                description: <p> Couldn't request an appointment with doctor <span className="font-semibold"> {doctor?.name} {doctor?.lastname} </span>.Please try again later. </p>,
+              })
+        }
     }
 
     return(
