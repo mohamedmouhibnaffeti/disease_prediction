@@ -26,6 +26,10 @@ const AppointmentSchema = new Schema({
     },
     to: {
         type: Date
+    },
+    requestedAt: {
+        type: Date,
+        default: Date.now()
     }
 });
 

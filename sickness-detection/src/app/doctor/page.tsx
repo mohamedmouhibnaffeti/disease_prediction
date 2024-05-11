@@ -1,15 +1,21 @@
 "use client"
-import { lazy, useEffect, useState } from "react"
+import { lazy, useEffect, useLayoutEffect, useState } from "react"
 import { NotebookPen } from "lucide-react"
 import { useSearchParams } from "next/navigation"
 import { Plus } from "lucide-react"
-
+import { useSelector, useDispatch } from "react-redux"
+import { AppDispatch, RootState } from "@/Store/store"
+import { requestAppointment, setRequestLoading } from "@/Store/doctor/doctorSlice"
 const Calendar = lazy(()=>import("@/components/Calendar"))
 const Map = lazy(()=>import("@/components/Map"))
 
 export default () => {
 
+    const dispatch = useDispatch<AppDispatch>()
+    const { appointmentResponse, requestLoading } = useSelector((state: RootState) => state.Doctor)
+
     const params = useSearchParams()
+    const doctorID = params.get("id") || ""
     const name = params.get("name") || ""
     const lastname = params.get("lastname") || ""
     const distance = parseFloat(params.get("distance") || "")
@@ -19,6 +25,18 @@ export default () => {
     const speciality = params.get("speciality") || ""
 
     const [rendered, setRendered] = useState(false)
+
+    const [user, setUser] = useState<any>({})
+    useLayoutEffect(()=>{
+        const userString = localStorage.getItem("user") || ""
+        setUser((prev: any) => JSON.parse(userString))
+    }, [])
+    
+    const RequestAppointment = async() => {
+        dispatch(setRequestLoading(true))
+        await dispatch(requestAppointment({doctorID: doctorID, patientID: user?._id}))
+        dispatch(setRequestLoading(false))
+    }
 
     useEffect(()=>{
         setRendered(prev => true)
@@ -61,7 +79,7 @@ export default () => {
                 <div className="h-[30rem] mt-4">
                     <Map location={location} />
                 </div>
-                <button className="w-full py-2 text-white bg-sickness-primary rounded-md flex gap-2 font-semibold mt-8 items-center justify-center"> Request Appointment <NotebookPen className="h-5 w-5" /> </button>
+                <button className={` ${requestLoading ? "bg-sickness-primary/70" : "bg-sickness-primary"} w-full py-2 text-white rounded-md flex gap-2 font-semibold mt-8 items-center justify-center`} disabled={requestLoading} onClick={RequestAppointment} > Request Appointment { requestLoading ? <div className="small-white-loader" /> : <NotebookPen className="h-5 w-5" /> } </button>
             </div>
         </div>
     )

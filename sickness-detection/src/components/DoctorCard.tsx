@@ -42,7 +42,7 @@ export default (props: {doctor: any, color: any}) => {
                     <DropdownMenuContent className="w-56">
                         <DropdownMenuLabel>Dr.{` ${doctor.name[0]}.${doctor.lastname[0]}`.toUpperCase()}</DropdownMenuLabel>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem className="cursor-pointer text-sickness-primaryText font-[510]" onClick={()=>Router.push(`/doctor?name=${doctor.name}&lastname=${doctor.lastname}&distance=${doctor.distance}&location=${JSON.stringify(doctor?.location[0]?.cordonnees || [0, 0])}&phone=${doctor.phone}&email=${doctor.email}&speciality=${doctor.speciality}`)}>
+                        <DropdownMenuItem className="cursor-pointer text-sickness-primaryText font-[510]" onClick={()=>Router.push(`/doctor?name=${doctor.name}&lastname=${doctor.lastname}&distance=${doctor.distance}&location=${JSON.stringify(doctor?.location[0]?.cordonnees || [0, 0])}&phone=${doctor.phone}&email=${doctor.email}&speciality=${doctor.speciality}&id=${doctor._id}`)}>
                             View Profile
                         </DropdownMenuItem>
                         <DropdownMenuItem className="cursor-pointer text-sickness-primaryText font-[510]" onClick={RequestAppointment}>
