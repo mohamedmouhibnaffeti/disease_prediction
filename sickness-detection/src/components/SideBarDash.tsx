@@ -1,14 +1,18 @@
 "use client"
 import Link from "next/link"
 import { FileIcon, HeartIcon, Settings2Icon, Clock, LogOutIcon, CreditCardIcon } from "lucide-react"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
+import Image from "next/image"
+import Logo from "./Images/SymptoSense.png"
 
 const SideBarDash = () => {
     const pathname = usePathname()
+    const Router = useRouter()
     return(
         <div className="hidden border-r border-sickness-border bg-gray-200/40 text-sickness-primaryText md:block">
             <div className="flex flex-col gap-2">
             <div className="flex h-[60px] items-center px-6">
+                <Image src={Logo} alt="" className="h-[70px] w-96 cursor-pointer" onClick={()=>{Router.push("/")}} />
             </div>
             <div className="flex-1">
                 <nav className="grid items-start px-4 text-sm font-medium">
