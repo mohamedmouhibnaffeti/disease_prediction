@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation"
 export default () => {
     const Router = useRouter()
     const pathname = usePathname()
-    if(pathname.startsWith("/admin")){
+    if(pathname.startsWith("/admin") || pathname.startsWith("/dashboard")){
         return null
     }
     return (
