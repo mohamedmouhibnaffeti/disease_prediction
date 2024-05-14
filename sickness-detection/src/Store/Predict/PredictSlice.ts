@@ -30,7 +30,7 @@ const initialState: PredictType = {
         { nom: 'recommendations', etat: false },
         { nom: 'doctors', etat: false }
     ],
-    currentItem: 'doctors',
+    currentItem: 'informations',
     Symptoms: [],
     SelectedSymptoms: [],
     PredictionResult: "",
