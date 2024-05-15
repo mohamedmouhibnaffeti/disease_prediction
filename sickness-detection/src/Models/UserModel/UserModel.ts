@@ -17,7 +17,11 @@ const UserSchema = new Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    role: {
+        type: String
+    },
+    phone: String,
 }, { strict: 'throw' });
 
 const AdminSchema = new Schema({
@@ -28,19 +32,9 @@ const AdminSchema = new Schema({
 });
 
 const PatientSchema = new Schema({
-    role: {
-        type: String,
-        default: "patient"
-    },
-    phone: String,
 });
 
 const DoctorSchema = new Schema({
-    role: {
-        type: String,
-        default: "doctor"
-    },
-    phone: String,
     id_images: Array,
     speciality: String,
     location: {

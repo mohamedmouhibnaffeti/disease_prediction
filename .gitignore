@@ -4,6 +4,10 @@ node_modules/
 # Ignore .env files
 venv/
 
+Diagrammes/
+
+FlaskBackend/llamaModel
+
 # Ignore .vscode folder
 .vscode/
 
