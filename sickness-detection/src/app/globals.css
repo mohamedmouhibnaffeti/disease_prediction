@@ -234,3 +234,9 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#E7E6F7", en
     60%{background-position:0%  50%, 50% 100%,100%   0%}
     80%{background-position:0%  50%, 50%  50%,100% 100%}
 }
+
+.stats-card-glassmorphism {
+  background: rgba( 0, 211, 255, 0.15 );
+  backdrop-filter: blur( 5px );
+  -webkit-backdrop-filter: blur( 5px );
+}
