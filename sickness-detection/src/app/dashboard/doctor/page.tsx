@@ -3,8 +3,10 @@ import SideBarDash from "@/components/SideBarDash"
 import NavBarDash from "@/components/NavBarDash"
 import StatsCard from "@/components/StatsCard"
 import PendingAppointmentCard from "@/components/PendingAppointmentCard"
+import { useState } from "react"
 
 export default function Dashboard(){
+    const [maxLen, setMaxLen] = useState(3)
     return (
         <div className="grid min-h-screen w-full overflow-hidden md:grid-cols-[280px_1fr]">
             <SideBarDash /> 
@@ -25,8 +27,16 @@ export default function Dashboard(){
                     </div>
                 </div>
                 <h1 className="md:text-xl text-lg font-semibold text-sickness-gray mt-4"> Pending Appointments </h1>
-                <div className="flex flex-col gap-2 mt-2">
-                    <PendingAppointmentCard />
+                <div className="flex flex-col gap-2 mt-2 w-fit">
+                    <div className="grid lg:grid-cols-3 gap-2">
+                    {
+                        Array.from({ length: maxLen }).map((_, index) => (
+                            <PendingAppointmentCard key={index} />
+                        ))
+                    }
+
+                    </div>
+                    <button className="w-fit h-fit px-4 py-2 text-sm font-semibold bg-sickness-gray/30 rounded-md hover:bg-sickness-gray/50 transition delay-100 ease-in self-center" onClick={()=>{setMaxLen(9)}}> See All </button>
                 </div>
             </main>
         </div>

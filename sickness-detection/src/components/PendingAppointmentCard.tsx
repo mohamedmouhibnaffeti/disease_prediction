@@ -1,6 +1,6 @@
 export default function PendingAppointmentCard() {
     return(
-        <div className="flex gap-2 max-w-screen-sm border border-sickness-border shadow-md rounded-md p-2 cursor-pointer hover:bg-sickness-primary/10 transition ease-in delay-100">
+        <div className="flex gap-2 border border-sickness-border shadow-md rounded-md p-2 cursor-pointer hover:bg-sickness-primary/10 transition ease-in delay-100">
             <div className="border border-sickness-border rounded-full p-2 text-xl bg-sickness-orange text-white w-fit h-fit">
                 <p> MN </p>
             </div>
