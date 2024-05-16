@@ -2,6 +2,7 @@
 import SideBarDash from "@/components/SideBarDash"
 import NavBarDash from "@/components/NavBarDash"
 import GenderLineChart from "@/components/Charts/GenderPatients"
+import AgeLineChart from "@/components/Charts/AgePatients"
 
 export default function Dashboard(){
     return (
@@ -10,7 +11,10 @@ export default function Dashboard(){
         <div className="flex flex-col">
             <NavBarDash />
             <main className="flex-1 p-4 md:p-6">
-                <GenderLineChart />
+                <div className="grid lg:grid-cols-2 grid-cols-1">
+                    <GenderLineChart />
+                    <AgeLineChart />
+                </div>
             </main>
         </div>
         </div>

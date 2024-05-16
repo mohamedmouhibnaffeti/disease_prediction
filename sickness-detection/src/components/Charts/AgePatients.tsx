@@ -22,22 +22,7 @@ ChartJS.register(
   Filler
 );
 
-const femaleData = [
-  { month: "January", patients: 150 },
-    { month: "February", patients: 200 },
-    { month: "March", patients: 220 },
-    { month: "April", patients: 190 },
-    { month: "May", patients: 250 },
-    { month: "June", patients: 280 },
-    { month: "July", patients: 280 },
-    { month: "August", patients: 280 },
-    { month: "September", patients: 280 },
-    { month: "October", patients: 280 },
-    { month: "November", patients: 280 },
-    { month: "December", patients: 280 },
-];
-
-const maleData = [
+const patientsData = [
     { month: "January", patients: 120 },
     { month: "February", patients: 130 },
     { month: "March", patients: 180 },
@@ -52,40 +37,23 @@ const maleData = [
     { month: "December", patients: 280 },
   ];
 
-function GenderLineChart() {
+function AgeLineChart() {
   const data = {
-    labels: femaleData.map((data) => data.month),
+    labels: patientsData.map((data) => data.month),
     datasets: [
       {
-        label: "Females",
-        data: femaleData.map((data) => data.patients),
-        borderColor: "#cb0c9f",
+        label: "Patients",
+        data: patientsData.map((data) => data.patients),
+        borderColor: "#D3D3D3",
         borderWidth: 3,
-        pointBorderColor: "#cb0c9f",
+        pointBorderColor: "#D3D3D3",
         pointBorderWidth: 3,
         tension: 0.5,
         fill: true,
         backgroundColor: (context: any) => {
           const ctx = context.chart.ctx;
           const gradient = ctx.createLinearGradient(0, 0, 0, 300);
-          gradient.addColorStop(0, "rgba(247, 151, 225, 1)");
-          gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
-          return gradient;
-        },
-      },
-      {
-        label: "Males",
-        data: maleData.map((data) => data.patients),
-        borderColor: "#00FFFF",
-        borderWidth: 3,
-        pointBorderColor: "#00FFFF",
-        pointBorderWidth: 3,
-        tension: 0.5,
-        fill: true,
-        backgroundColor: (context: any) => {
-          const ctx = context.chart.ctx;
-          const gradient = ctx.createLinearGradient(0, 0, 0, 300);
-          gradient.addColorStop(0, "rgba(125, 249, 255, 1)");
+          gradient.addColorStop(0, "rgba(211, 211, 211, 1)");
           gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
           return gradient;
         },
@@ -158,7 +126,7 @@ function GenderLineChart() {
   return (
     <div>
       <h1 className="font-semibold text-gray-700 text-2xl text-start mt-10">
-        Number of Recent Patients per Gender
+        Number of Recent Patients per Age
       </h1>
       <div className="w-full mx-2 h-[400px] cursor-pointer p-[20px]">
         <Line data={data} options={options}></Line>
@@ -167,4 +135,4 @@ function GenderLineChart() {
   );
 }
 
-export default GenderLineChart;
+export default AgeLineChart;
