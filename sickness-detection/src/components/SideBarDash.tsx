@@ -1,6 +1,6 @@
 "use client"
 import Link from "next/link"
-import { FileIcon, HeartIcon, Settings2Icon, Clock, LogOutIcon, CreditCardIcon } from "lucide-react"
+import { FileIcon, HeartIcon, Settings2Icon, Clock, LogOutIcon, CreditCardIcon,LineChartIcon, CalendarCheckIcon } from "lucide-react"
 import { usePathname, useRouter } from "next/navigation"
 import Image from "next/image"
 import Logo from "./Images/SymptoSense.png"
@@ -19,36 +19,36 @@ const SideBarDash = () => {
                     <p className="text-[#999999] font-semibold"> General </p>
                     <Link
                         className={`font-dashfont transition ease-in delay-100 flex items-center gap-3 px-3 py-2 ${pathname === "/dashboard/doctor" ? "bg-sickness-primaryText/50 text-white border-2 border-sickness-primaryText/50 " : "hover:bg-sickness-primaryText/30 "} rounded-lg mt-2`}
-                        href="/dashboard"
+                        href="/dashboard/doctor"
                     >
                         <ApercuIcon />
-                        Preview
+                        Overview
                     </Link>
                     <Link
-                        className={`font-dashfont transition ease-in delay-100 flex items-center gap-3 rounded-lg px-3 py-2 mt-2 ${pathname.startsWith("/dashboard/MesProjets") ? "bg-settaPrimary/20 border-2 border-settaPrimary " : "hover:bg-sickness-primaryText/30 "}`}
-                        href="/dashboard/MesProjets"
+                        className={`font-dashfont transition ease-in delay-100 flex items-center gap-3 rounded-lg px-3 py-2 mt-2 ${pathname.startsWith("/dashboard/doctor/statistics") ? "bg-sickness-primaryText/50 text-white border-2 border-sickness-primaryText/50 " : "hover:bg-sickness-primaryText/30 "}`}
+                        href="/dashboard/doctor/statistics"
                     >
-                        <FileIcon className="h-5 w-5" />
+                        <LineChartIcon className="h-5 w-5" />
                         Statistics
                     </Link>
                     <p className="text-[#999999] font-semibold mt-4"> Me </p>
                     <Link
-                        className={`font-dashfont transition ease-in delay-100 flex items-center gap-3 rounded-lg px-3 py-2 mt-2 ${pathname.startsWith("/dashboard/Paiement") ? "bg-settaPrimary/20 border-2 border-settaPrimary " : "hover:bg-sickness-primaryText/30 "}`}
-                        href="/dashboard/Paiement"
+                        className={`font-dashfont transition ease-in delay-100 flex items-center gap-3 rounded-lg px-3 py-2 mt-2 ${pathname.startsWith("/dashboard/doctor/appointments") ? "bg-sickness-primaryText/50 text-white border-2 border-sickness-primaryText/50 " : "hover:bg-sickness-primaryText/30 "}`}
+                        href="/dashboard/doctor/appointments"
                     >
-                        <CreditCardIcon className="h-5 w-5" />
+                        <CalendarCheckIcon className="h-5 w-5" />
                         My Appointments
                     </Link>
                     <Link
-                        className={`font-dashfont transition ease-in delay-100 flex items-center gap-3 rounded-lg px-3 py-2 mt-2 ${pathname.startsWith("/dashboard/Parametres") ? "bg-settaPrimary/20 border-2 border-settaPrimary " : "hover:bg-sickness-primaryText/30 "}`}
-                        href="/dashboard/Parametres"
+                        className={`font-dashfont transition ease-in delay-100 flex items-center gap-3 rounded-lg px-3 py-2 mt-2 ${pathname.startsWith("/dashboard/doctor/profile") ? "bg-sickness-primaryText/50 text-white border-2 border-sickness-primaryText/50 " : "hover:bg-sickness-primaryText/30 "}`}
+                        href="/dashboard/doctor/profile"
                     >
                         <Settings2Icon className="h-5 w-5" />
                         My Profile
                     </Link>
                     <Link
-                        className={`font-dashfont transition ease-in delay-100 flex items-center gap-3 rounded-lg px-3 py-2 mt-2 ${pathname.startsWith("/dashboard/Historique") ? "bg-settaPrimary/20 border-2 border-settaPrimary " : "hover:bg-sickness-primaryText/30 "}`}
-                        href="/dashboard/Historique"
+                        className={`font-dashfont transition ease-in delay-100 flex items-center gap-3 rounded-lg px-3 py-2 mt-2 ${pathname.startsWith("/dashboard/doctor/history") ? "bg-sickness-primaryText/50 text-white border-2 border-sickness-primaryText/50 " : "hover:bg-sickness-primaryText/30 "}`}
+                        href="/dashboard/doctor/history"
                     >
                         <Clock className="h-5 w-5" />
                         History
