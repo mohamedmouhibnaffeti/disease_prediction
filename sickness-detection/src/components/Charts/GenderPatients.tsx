@@ -23,21 +23,33 @@ ChartJS.register(
 );
 
 const femaleData = [
-  { month: "January", sales: 100 },
-  { month: "February", sales: 150 },
-  { month: "March", sales: 200 },
-  { month: "April", sales: 120 },
-  { month: "May", sales: 180 },
-  { month: "June", sales: 250 },
+  { month: "January", patients: 150 },
+    { month: "February", patients: 200 },
+    { month: "March", patients: 220 },
+    { month: "April", patients: 190 },
+    { month: "May", patients: 250 },
+    { month: "June", patients: 280 },
+    { month: "July", patients: 280 },
+    { month: "August", patients: 280 },
+    { month: "September", patients: 280 },
+    { month: "October", patients: 280 },
+    { month: "November", patients: 280 },
+    { month: "December", patients: 280 },
 ];
 
 const maleData = [
-    { month: "January", sales: 120 },
-    { month: "February", sales: 130 },
-    { month: "March", sales: 180 },
-    { month: "April", sales: 140 },
-    { month: "May", sales: 200 },
-    { month: "June", sales: 280 },
+    { month: "January", patients: 120 },
+    { month: "February", patients: 130 },
+    { month: "March", patients: 180 },
+    { month: "April", patients: 140 },
+    { month: "May", patients: 200 },
+    { month: "June", patients: 280 },
+    { month: "July", patients: 280 },
+    { month: "August", patients: 280 },
+    { month: "September", patients: 280 },
+    { month: "October", patients: 280 },
+    { month: "November", patients: 280 },
+    { month: "December", patients: 280 },
   ];
 
 function GenderLineChart() {
@@ -46,7 +58,7 @@ function GenderLineChart() {
     datasets: [
       {
         label: "Females",
-        data: femaleData.map((data) => data.sales),
+        data: femaleData.map((data) => data.patients),
         borderColor: "#cb0c9f",
         borderWidth: 3,
         pointBorderColor: "#cb0c9f",
@@ -56,14 +68,14 @@ function GenderLineChart() {
         backgroundColor: (context: any) => {
           const ctx = context.chart.ctx;
           const gradient = ctx.createLinearGradient(0, 0, 0, 300);
-          gradient.addColorStop(0, "rgba(247, 151, 225, 1)"); // Transparent pink
+          gradient.addColorStop(0, "rgba(247, 151, 225, 1)");
           gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
           return gradient;
         },
       },
       {
         label: "Males",
-        data: maleData.map((data) => data.sales),
+        data: maleData.map((data) => data.patients),
         borderColor: "#00FFFF",
         borderWidth: 3,
         pointBorderColor: "#00FFFF",
@@ -73,7 +85,7 @@ function GenderLineChart() {
         backgroundColor: (context: any) => {
           const ctx = context.chart.ctx;
           const gradient = ctx.createLinearGradient(0, 0, 0, 300);
-          gradient.addColorStop(0, "rgba(125, 249, 255, 1)"); // Transparent light blue
+          gradient.addColorStop(0, "rgba(125, 249, 255, 1)");
           gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
           return gradient;
         },
@@ -85,10 +97,10 @@ function GenderLineChart() {
     plugins: {
       legend: {
         display: true,
-        position: "top" as "top", // Specify the position explicitly
+        position: "top" as "top",
         labels: {
           font: {
-            size: 14, // Adjust font size as needed
+            size: 14,
             weight: "bold" as "bold",
           },
         },
@@ -110,7 +122,7 @@ function GenderLineChart() {
             bottom: 10,
           },
           font: {
-            size: 30,
+            size: 25,
             style: "italic" as "italic",
             family: "Arial",
           },
@@ -145,8 +157,8 @@ function GenderLineChart() {
 
   return (
     <div>
-      <h1 className="font-bold text-3xl text-center mt-10">
-        Line Chart using ChartJS
+      <h1 className="font-semibold text-gray-700 text-2xl text-start mt-10">
+        Number of recent patients per gender
       </h1>
       <div
         style={{

@@ -32,6 +32,12 @@ const AdminSchema = new Schema({
 });
 
 const PatientSchema = new Schema({
+    gender: {
+        type: String
+    },
+    age: {
+        type: Number
+    }
 });
 
 const DoctorSchema = new Schema({
