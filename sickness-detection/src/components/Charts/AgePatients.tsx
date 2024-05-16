@@ -125,7 +125,7 @@ function AgeLineChart() {
 
   return (
     <div>
-      <h1 className="font-semibold text-gray-700 text-2xl text-start mt-10">
+      <h1 className="font-semibold text-gray-700 text-2xl text-start">
         Number of Recent Patients per Age
       </h1>
       <div className="w-full mx-2 h-[400px] cursor-pointer p-[20px]">
