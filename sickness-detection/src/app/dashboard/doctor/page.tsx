@@ -4,6 +4,8 @@ import NavBarDash from "@/components/NavBarDash"
 import StatsCard from "@/components/StatsCard"
 import PendingAppointmentCard from "@/components/PendingAppointmentCard"
 import { useState } from "react"
+import PatientsOverallChart from "@/components/Charts/PatientsOverallChart"
+import { PatientsTable } from "@/components/Tables/PatientsTable"
 
 export default function Dashboard(){
     const [maxLen, setMaxLen] = useState(3)
@@ -34,9 +36,16 @@ export default function Dashboard(){
                             <PendingAppointmentCard key={index} />
                         ))
                     }
-
                     </div>
-                    <button className="w-fit h-fit px-4 py-2 text-sm font-semibold bg-sickness-gray/30 rounded-md hover:bg-sickness-gray/50 transition delay-100 ease-in self-center" onClick={()=>{setMaxLen(9)}}> See All </button>
+                    { maxLen !== 9 && <button className="w-fit h-fit px-4 py-2 text-sm font-semibold bg-sickness-gray/30 rounded-md hover:bg-sickness-gray/50 transition delay-100 ease-in self-center" onClick={()=>{setMaxLen(9)}}> See All </button> }
+                </div>
+                <h1 className="lg:flex hidden md:text-xl text-lg font-semibold text-sickness-gray mt-4"> Patients </h1>
+                <div className="lg:flex hidden max-w-screen-sm">
+                    <PatientsOverallChart />
+                </div>
+                <h1 className="md:text-xl text-lg font-semibold text-sickness-gray mt-4"> Patients List </h1>
+                <div className="overflow-x-scroll grid max-w-screen">
+                    <PatientsTable />
                 </div>
             </main>
         </div>
