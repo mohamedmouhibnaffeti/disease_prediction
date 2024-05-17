@@ -15,7 +15,7 @@ export default function Dashboard(){
             <main className="flex-1 p-4 md:p-6">
                 <h1 className="md:text-2xl text-xl font-semibold text-sickness-primaryText"> Good Morning Dr. Mouhib </h1>
                 <div className="grid lg:grid-cols-2 grid-cols-1 gap-2">
-                    <div>
+                    <div className="flex flex-col gap-4">
                         <div className="px-4 py-2 pb-4 mt-4 flex flex-col border border-sickness-border rounded-md shadow-md gap-6 lg:w-fit lg:h-fit w-full">
                             <p className="text-sickness-primary lg:text-2xl text-xl font-semibold"> Visits for today: <span> 100 </span> </p>
                             <div className="flex flex-wrap gap-4">
