@@ -6,6 +6,8 @@ import DashboardCalendar from "@/components/DashboardCalendar"
 import TodayAppointmentsCard from "@/components/TodayAppointmentsCard"
 import AppointmentDetailsCard from "@/components/AppointmentDetailsCard"
 
+import SelectDate from "@/components/SelectDate"
+
 export default function Dashboard(){
     return (
         <div className="grid min-h-screen w-full overflow-hidden md:grid-cols-[280px_1fr]">
@@ -29,14 +31,20 @@ export default function Dashboard(){
                                 </div>
                             </div>
                         </div>
-                        <div className="grid lg:grid-cols-2 grid-cols-1 gap-2 w-full px-4 py-2 pb-4 mt-4 border border-sickness-border rounded-md shadow-md">
-                            <div className="flex flex-col gap-4">
-                                <TodayAppointmentsCard />
-                                <TodayAppointmentsCard />
-                                <TodayAppointmentsCard />
-                                <TodayAppointmentsCard />
+                        <div className="flex flex-col border border-sickness-border rounded-md shadow-md px-4 py-2 pb-4 mt-4">
+                            <div className="flex w-full gap-6 items-center">
+                                <h1 className="md:text-xl text-lg font-semibold text-sickness-primaryText"> Pending Appointments </h1>
+                                <SelectDate />
                             </div>
-                            <AppointmentDetailsCard />
+                            <div className="grid lg:grid-cols-2 grid-cols-1 gap-2 w-full mt-4">
+                                <div className="flex flex-col gap-4">
+                                    <TodayAppointmentsCard />
+                                    <TodayAppointmentsCard />
+                                    <TodayAppointmentsCard />
+                                    <TodayAppointmentsCard />
+                                </div>
+                                <AppointmentDetailsCard />
+                            </div>
                         </div>
                     </div>
                     <div className="w-full">

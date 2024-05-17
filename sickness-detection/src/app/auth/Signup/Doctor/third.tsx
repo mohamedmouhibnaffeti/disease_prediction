@@ -88,17 +88,17 @@ export default ({ Errors, setErrors }: { Errors: DoctorSignupErrorsType, setErro
             <p className='text-sm text-sickness-gray text-center'> In this step you'll need to insert your <span className="text-sickness-primary font-semibold"> Location </span> </p>
             <p className='text-sm text-sickness-gray text-center'> Afer creating your account you'll need to wait for us verify your profile before you can create appointments, meanwhile feel free checkout our website 😊 </p>
             <div className="w-full h-64">
-            <LeafletMap center={SignupFormData.location} zoom={13} scrollWheelZoom={false} className='w-full h-full border-2 border-sickness-border rounded-lg shadow-lg z-10'>
-                <TileLayer
-                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-                <Marker position={SignupFormData.location} draggable={true} eventHandlers={{ dragend: handleMarkerMove }}>
-                    <Popup>
-                        My location
-                    </Popup>
-                </Marker>
-            </LeafletMap>
+                <LeafletMap center={SignupFormData.location} zoom={13} scrollWheelZoom={false} className='w-full h-full border-2 border-sickness-border rounded-lg shadow-lg z-10'>
+                    <TileLayer
+                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    <Marker position={SignupFormData.location} draggable={true} eventHandlers={{ dragend: handleMarkerMove }}>
+                        <Popup>
+                            My location
+                        </Popup>
+                    </Marker>
+                </LeafletMap>
             </div>
             <p className='text-sm text-red-500 break-words'> { Errors.location } </p>
             <div className='flex flex-col gap-2 w-full mt-4'>
