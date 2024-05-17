@@ -2,7 +2,7 @@
 import { usePathname, useRouter } from "next/navigation"
 import Link from "next/link"
 import { ApercuIcon } from "./SideBarDash"
-import { FileIcon, HeartIcon, Settings2Icon, Clock, PlusIcon, MenuSquareIcon, MenuIcon, CreditCardIcon, LineChartIcon } from "lucide-react"
+import { Settings2Icon, Clock, MenuIcon,LineChartIcon, CalendarCheckIcon } from "lucide-react"
 
 const ConditionalNavTitle = ({pathname}: {pathname: string}) => {
     return(
@@ -23,7 +23,7 @@ const ConditionalNavTitle = ({pathname}: {pathname: string}) => {
             (
                 pathname.startsWith('/dashboard/doctor/appointments') ?
                 <h1 className="font-semibold sm:text-lg text-md flex gap-1">
-                    <div className="translate-y-[2px]"><HeartIcon /></div>
+                    <div className="translate-y-[1px]"><CalendarCheckIcon /></div>
                     Appointments
                 </h1>
             :
