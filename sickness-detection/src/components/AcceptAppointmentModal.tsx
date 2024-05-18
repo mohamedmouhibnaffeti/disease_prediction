@@ -17,14 +17,29 @@ import { DoctorSignup, RegisterOTP, setSignupFormDataDoctor } from "@/Store/auth
 import { useDispatch, useSelector } from "react-redux"
 import { useRouter } from "next/navigation";
 import { DateTimePicker } from "./DateTimePicker/DateTimePicker";
+import { acceptAppointment } from "@/Store/doctor/doctorSlice";
 
 export default function AcceptAppointment({open, setOpen}: {open: boolean, setOpen :any}) {
-    const [selectedDate, setSelectedDate] = useState<Date>()
-    console.log(selectedDate)
-    const selectDate = (e: any) => {
-        console.log(e)
-        const newDate = new Date(e.year, e.month - 1, e.day, e.hour, e.minute);
-        console.log(newDate);  // Should output: Thu Dec 14 2023 02:03:00 GMT+0100 (Central European Standard Time)
+    const [selectedStartDate, setSelectedStartDate] = useState<Date>()
+    const [selectedEndDate, setSelectedEndDate] = useState<Date>()
+
+    const selectStartDate = (e: any) => {
+        const newDate = new Date(e.year, e.month - 1, e.day, e.hour + 1, e.minute);
+        setSelectedStartDate(newDate)
+    }
+    const selectEndDate = (e: any) => {
+        const newDate = new Date(e.year, e.month - 1, e.day, e.hour + 1 , e.minute);
+        setSelectedEndDate(newDate)
+    }
+
+    const dispatch = useDispatch<AppDispatch>()
+    const [loading, setLoading] = useState(false)
+
+    const handleAcceptAppointment = async() => {
+        setLoading(true)
+        const response = await dispatch(acceptAppointment({from: selectedStartDate, to: selectedEndDate, AppointmentID: "66380c35f709c277ef1545bf"}))
+        setLoading(false)
+        console.log(response)
     }
     return(
         <AlertDialog open={open}>
@@ -41,13 +56,13 @@ export default function AcceptAppointment({open, setOpen}: {open: boolean, setOp
                     <p className="font-semibold text-sickness-primaryText text-sm"> Symptoms: <span className="text-sickness-gray"> Symptom, Symptom, Symptom, Symptom, Symptom, Symptom, Symptom, Symptom, Symptom, Symptom, Symptom, Symptom, Symptom, Symptom, Symptom</span> </p>
                     <div className="h-[1px] bg-sickness-border w-full mt-3" />
                     <p className="font-semibold mt-2 self-start"> Start Time: </p>
-                    <DateTimePicker granularity={"minute"} onChange={(e)=>selectDate(e)} hourCycle={24}  />
+                    <DateTimePicker granularity={"minute"} onChange={(e)=>selectStartDate(e)} hourCycle={24}  />
                     <p className="font-semibold mt-2 self-start"> End Time: </p>
-                    <DateTimePicker granularity={"minute"}  />
+                    <DateTimePicker granularity={"minute"} onChange={(e)=>selectEndDate(e)} hourCycle={24} />
                     <div className="h-[1px] bg-sickness-border w-full mt-3" />
                     <div className="w-full justify-between flex gap-2 mt-3 font-semibold">
                         <button className="w-fit h-fit py-2 px-4 bg-red-500 text-white hover:bg-red-600 transition delay-100 ease-in rounded-md"> Refuse </button>
-                        <button className="w-fit h-fit py-2 px-4 bg-sickness-primary text-white hover:bg-sickness-primary/80 transition delay-100 ease-in rounded-md"> Accept </button>
+                        <button className={`w-fit h-fit py-2 px-4 ${loading ? "bg-sickness-primary/70" : "bg-sickness-primary hover:bg-sickness-primary/80"} text-white text-whitetransition delay-100 ease-in rounded-md flex gap-2`} disabled={loading} onClick={handleAcceptAppointment} > Accept { loading && <div className="small-white-loader" /> } </button>
                     </div>
                 </div>
             </AlertDialogContent>

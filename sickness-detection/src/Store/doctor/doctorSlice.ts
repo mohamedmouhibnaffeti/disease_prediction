@@ -82,6 +82,28 @@ export const requestAppointment = createAsyncThunk(
     }
 )
 
+export const acceptAppointment = createAsyncThunk(
+    "doctor/acceptAppointment",
+    async({ AppointmentID, from, to }: { AppointmentID: any, from: Date | undefined, to: Date | undefined }) => {
+        try{
+            const response = await fetch(`${next_backend_route}/Appointments/accepted_appointment`, {
+                method: 'POST',
+                body: JSON.stringify({
+                    appointmentID: AppointmentID,
+                    from: from,
+                    to: to
+                })
+            })
+            if(response.ok){
+                const data = await response.json()
+                return { ...data, status: 201 } 
+            }
+        }catch(err){
+            return { error: err, status: 500 }
+        }
+    }
+)
+
 export const { updateDoctorsArray, setRequestLoading } = doctorSlice.actions
 
 export default doctorSlice.reducer

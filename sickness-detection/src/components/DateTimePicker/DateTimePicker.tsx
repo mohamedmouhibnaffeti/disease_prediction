@@ -72,6 +72,7 @@ const DateTimePicker = React.forwardRef<
               <TimeField
                 value={state.timeValue}
                 onChange={state.setTimeValue}
+                hourCycle={24}
               />
             )}
           </div>
