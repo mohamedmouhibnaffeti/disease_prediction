@@ -10,9 +10,12 @@ export async function POST(request: Request) {
         const duration = toDate.getTime() - fromDate.getTime()
         const differenceInHours: number = duration / (1000 * 60 * 60);
         console.log({ from, to, appointmentID, differenceInHours })
-        //connectMongoDB()
-        //const updatedAppointment = await Appointment.findByIdAndUpdate({ _id: appointmentID }, { from, to, state: "accepted", duration })
-        return NextResponse.json({ message: duration }, { status: 200 })
+        connectMongoDB()
+        const updatedAppointment = await Appointment.findByIdAndUpdate({ _id: appointmentID }, { from, to, state: "accepted", duration: differenceInHours })
+        if(updatedAppointment){
+            return NextResponse.json({ message: "Appointment accepted successfully." }, { status: 200 })
+        }
+        return NextResponse.json({ message: "Failed accepting appointment." }, { status: 400 })
     }catch(err){
         return NextResponse.json({ message: `Internal server error: ${err}` }, { status: 500 })
     }
