@@ -19,6 +19,13 @@ import { useRouter } from "next/navigation";
 import { DateTimePicker } from "./DateTimePicker/DateTimePicker";
 
 export default function AcceptAppointment({open, setOpen}: {open: boolean, setOpen :any}) {
+    const [selectedDate, setSelectedDate] = useState<Date>()
+    console.log(selectedDate)
+    const selectDate = (e: any) => {
+        console.log(e)
+        const newDate = new Date(e.year, e.month - 1, e.day, e.hour, e.minute);
+        console.log(newDate);  // Should output: Thu Dec 14 2023 02:03:00 GMT+0100 (Central European Standard Time)
+    }
     return(
         <AlertDialog open={open}>
             <AlertDialogContent className='w-full flex justify-center flex-col'>
@@ -34,7 +41,7 @@ export default function AcceptAppointment({open, setOpen}: {open: boolean, setOp
                     <p className="font-semibold text-sickness-primaryText text-sm"> Symptoms: <span className="text-sickness-gray"> Symptom, Symptom, Symptom, Symptom, Symptom, Symptom, Symptom, Symptom, Symptom, Symptom, Symptom, Symptom, Symptom, Symptom, Symptom</span> </p>
                     <div className="h-[1px] bg-sickness-border w-full mt-3" />
                     <p className="font-semibold mt-2 self-start"> Start Time: </p>
-                    <DateTimePicker granularity={"minute"}  />
+                    <DateTimePicker granularity={"minute"} onChange={(e)=>selectDate(e)} hourCycle={24}  />
                     <p className="font-semibold mt-2 self-start"> End Time: </p>
                     <DateTimePicker granularity={"minute"}  />
                     <div className="h-[1px] bg-sickness-border w-full mt-3" />
