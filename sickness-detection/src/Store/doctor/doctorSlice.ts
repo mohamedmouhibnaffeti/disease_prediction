@@ -98,6 +98,10 @@ export const acceptAppointment = createAsyncThunk(
                 const data = await response.json()
                 return { ...data, status: 201 } 
             }
+            else if(response.status === 404 || response.status === 400 || response.status === 409){
+                const data = await response.json()
+                return { ...data, status: 400 } 
+            }
         }catch(err){
             return { error: err, status: 500 }
         }

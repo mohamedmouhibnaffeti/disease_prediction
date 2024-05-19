@@ -47,7 +47,16 @@ export default function AcceptAppointment({open, setOpen}: {open: boolean, setOp
                 title: "Congratulations !",
                 description: <p> You've accepted the appointment with <span className="font-semibold"> Mouhib Naffeti </span> </p>,
               })
-        }else if(response.payload.status === 500){
+              
+        }
+        else if(response.payload.status === 400){
+            toast({
+                variant: "destructive",
+                title: "Sorry.",
+                description: <p> { response.payload.message } </p>,
+              })
+        }
+        else if(response.payload.status === 500){
             toast({
                 variant: "destructive",
                 title: "Sorry.",
