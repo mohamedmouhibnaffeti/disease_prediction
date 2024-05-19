@@ -18,6 +18,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useRouter } from "next/navigation";
 import { DateTimePicker } from "./DateTimePicker/DateTimePicker";
 import { acceptAppointment } from "@/Store/doctor/doctorSlice";
+import { useToast } from "./ui/use-toast";
 
 export default function AcceptAppointment({open, setOpen}: {open: boolean, setOpen :any}) {
     const [selectedStartDate, setSelectedStartDate] = useState<Date>()
@@ -35,11 +36,24 @@ export default function AcceptAppointment({open, setOpen}: {open: boolean, setOp
     const dispatch = useDispatch<AppDispatch>()
     const [loading, setLoading] = useState(false)
 
+    const { toast } = useToast()
+
     const handleAcceptAppointment = async() => {
         setLoading(true)
         const response = await dispatch(acceptAppointment({from: selectedStartDate, to: selectedEndDate, AppointmentID: "66380c35f709c277ef1545bf"}))
         setLoading(false)
-        console.log(response)
+        if(response.payload.status === 201){
+            toast({
+                title: "Congratulations !",
+                description: <p> You've accepted the appointment with <span className="font-semibold"> Mouhib Naffeti </span> </p>,
+              })
+        }else if(response.payload.status === 500){
+            toast({
+                variant: "destructive",
+                title: "Sorry.",
+                description: <p> Couldn't accept an appointment with patient <span className="font-semibold"> Mouhib Naffeti </span>.Please try again later. </p>,
+              })
+        }
     }
     return(
         <AlertDialog open={open}>
