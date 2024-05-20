@@ -7,6 +7,7 @@ venv/
 Diagrammes/
 
 FlaskBackend/llamaModel
+FlaskBackend/Scraper1
 
 # Ignore .vscode folder
 .vscode/
