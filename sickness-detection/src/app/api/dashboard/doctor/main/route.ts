@@ -7,6 +7,7 @@ export async function GET(request: NextRequest){
         const doctorID = (request.nextUrl.searchParams.get('doctorID') || "")
         connectMongoDB()
         const doctorAppointments = await Appointment.find({doctor: doctorID})
+        return NextResponse.json({ message: `Internal server error: ${err}` }, { status: 500 })
     }catch(err){
         return NextResponse.json({ message: `Internal server error: ${err}` }, { status: 500 })
     }
