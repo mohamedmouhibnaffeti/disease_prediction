@@ -1,5 +1,6 @@
 import mongoose, { Schema, model, models } from "mongoose";
 import Location from "../LocationModel/Location";
+
 const UserSchema = new Schema({
     name: {
         type: String,

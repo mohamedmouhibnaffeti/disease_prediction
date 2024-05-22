@@ -46,16 +46,18 @@ try:
             si += 1
             print(f"Sickness {si}")
             try:
-                response = model.generate_content(f"for this sickness {sickness.get('title')} give the necessary recommendations before consulting a medical expert briefly in the form of points only mention the recommendation points that's all please don't return any other text except the points and remove the title of the points.")
-                recommendations = response.text  # Update body_part field
+                response = model.generate_content(f"for this sickness {sickness.get('title')} give the necessary recommendations before consulting a medical expert briefly 
+                                                  in the form of points only mention the recommendation points that's all please don't return any other text except the points 
+                                                  and remove the title of the points.")
+                recommendations = response.text 
                 updatedSickness = collection.update_one(
-                    {"_id": sickness["_id"]},  # Assuming "_id" is the unique identifier
+                    {"_id": sickness["_id"]},
                     {"$set": {"recommendations": recommendations}}
                 )
                 print(updatedSickness)
                 print(recommendations)
                 print("-----------------------------------------------------------------------------------------------------------------")
-                time.sleep(1.1)  # Sleep for 1.1 seconds between requests
+                time.sleep(1.1) 
             except Exception as e:
                 print(f"Error updating body_part for {sickness.get('title')}: {str(e)}")
 

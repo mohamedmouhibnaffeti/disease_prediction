@@ -1,4 +1,5 @@
 import mongoose, { model, Schema, models } from "mongoose"
+
 const LocationSchema = new Schema ({
     cordonnees: {
         type: [Number],

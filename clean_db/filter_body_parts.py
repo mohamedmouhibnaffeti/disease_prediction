@@ -63,7 +63,6 @@ try:
             for symptom in sickness.get('symptoms'):   
                 print(f"Sickness {si}")
                 try:
-                    # Generate content for two questions
                     response = model.generate_content(f"where does this symptom '{symptom.get('title')}' fall into in human body (body parts to choose from ({body_parts_and_systems})).")
                     body_part = response.text.strip()  # Get the generated body part and gender
                     time.sleep(1)
@@ -78,7 +77,7 @@ try:
                     print(f"Updated body part for symptom '{symptom.get('title')}': {body_part}")
                     print(f"Gender for symptom '{symptom.get('title')}': {gender}")
                     print("-----------------------------------------------------------------------------------------------------------------")
-                    time.sleep(1.1)  # Sleep for 1.1 seconds between requests
+                    time.sleep(1.1)
                 except Exception as e:
                     print(f"Error updating body_part for symptom '{symptom}' of {sickness.get('title')}: {str(e)}")
 
