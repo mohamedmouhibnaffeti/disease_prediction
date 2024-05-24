@@ -119,7 +119,7 @@ export const RefuseAppointment = createAsyncThunk(
     "doctor/acceptAppointment",
     async({ AppointmentID }: { AppointmentID: any }) => {
         try{
-            const response = await fetch(`${next_backend_route}/Appointments/accepted_appointment?AppointmentID=${AppointmentID}`, {
+            const response = await fetch(`${next_backend_route}/Appointments/refused_appointment?AppointmentID=${AppointmentID}`, {
                 method: 'DELETE'
             })
             if(response.ok){

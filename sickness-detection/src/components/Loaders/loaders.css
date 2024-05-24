@@ -51,3 +51,28 @@ vertical-align: middle;
     100% { transform: rotate(360deg); }
 }
 
+/* Small button loader white */
+.smallWhiteLoader {
+    /* Spinner size and color */
+        width: 1.2rem;
+        height: 1.2rem;
+        border-top-color: #ffffff;
+        border-left-color: #ffffff;
+    
+        /* Additional spinner styles */
+        animation: smallWhiteLoader 500ms linear infinite;
+        border-bottom-color: transparent;
+        border-right-color: transparent;
+        border-style: solid;
+        border-width: 2px;
+        border-radius: 50%;  
+        box-sizing: border-box;
+        display: inline-block;
+        vertical-align: middle;
+    }
+        
+    /* Animation styles */
+    @keyframes smallWhiteLoader {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }

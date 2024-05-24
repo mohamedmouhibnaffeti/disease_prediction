@@ -18,6 +18,8 @@ import { useRouter } from "next/navigation";
 import { DateTimePicker } from "./DateTimePicker/DateTimePicker";
 import { RefuseAppointment, acceptAppointment, setAcceptAppointmentOpen } from "@/Store/doctor/doctorSlice";
 import { useToast } from "./ui/use-toast";
+import SmallWhiteLoader from "./Loaders/WhiteButtonLoader";
+
 export default function PendingAppointmentCard({appointment}: {appointment: any}) {
     const dispatch = useDispatch<AppDispatch>() 
     const { AcceptAppointmentState } = useSelector((state: RootState) => state.Doctor)
@@ -33,14 +35,15 @@ export default function PendingAppointmentCard({appointment}: {appointment: any}
         setSelectedEndDate(newDate)
     }
 
-    const [loading, setLoading] = useState(false)
+    const [Acceptloading, AcceptsetLoading] = useState(false)
+    const [Refuseloading, RefusesetLoading] = useState(false)
 
     const { toast } = useToast()
 
     const handleAcceptAppointment = async() => {
-        setLoading(true)
+        AcceptsetLoading(true)
         const response = await dispatch(acceptAppointment({from: selectedStartDate, to: selectedEndDate, AppointmentID: appointment._id}))
-        setLoading(false)
+        AcceptsetLoading(false)
         if(response.payload.status === 201){
             toast({
                 title: "Congratulations !",
@@ -64,9 +67,9 @@ export default function PendingAppointmentCard({appointment}: {appointment: any}
         }
     }
     const handleRefuseAppointment = async() => {
-        setLoading(true)
+        RefusesetLoading(true)
         const response = await dispatch(RefuseAppointment({AppointmentID: appointment._id}))
-        setLoading(false)
+        RefusesetLoading(false)
         if(response.payload.status === 201){
             toast({
                 title: "Congratulations !",
@@ -124,8 +127,8 @@ export default function PendingAppointmentCard({appointment}: {appointment: any}
                 <DateTimePicker granularity={"minute"} onChange={(e)=>selectEndDate(e)} hourCycle={24} />
                 <div className="h-[1px] bg-sickness-border w-full mt-3" />
                 <div className="w-full justify-between flex gap-2 mt-3 font-semibold">
-                    <button className={`w-fit h-fit py-2 px-4 ${loading ? "bg-red-500/70" : "bg-red-500 hover:bg-red-600" } text-white  transition delay-100 ease-in rounded-md`} disabled={loading} onClick={handleRefuseAppointment}> Refuse </button>
-                    <button className={`w-fit h-fit py-2 px-4 ${loading ? "bg-sickness-primary/70" : "bg-sickness-primary hover:bg-sickness-primary/80"} text-white text-whitetransition delay-100 ease-in rounded-md flex gap-2`} disabled={loading} onClick={handleAcceptAppointment} > Accept { loading && <div className="small-white-loader" /> } </button>
+                    <button className={`w-fit h-fit py-2 px-4 ${Refuseloading ? "bg-red-500/70" : "bg-red-500 hover:bg-red-600" } text-white  transition delay-100 ease-in rounded-md`} disabled={Refuseloading} onClick={handleRefuseAppointment}> Refuse  { Refuseloading && <SmallWhiteLoader /> } </button>
+                    <button className={`w-fit h-fit py-2 px-4 ${Acceptloading ? "bg-sickness-primary/70" : "bg-sickness-primary hover:bg-sickness-primary/80"} text-white text-whitetransition delay-100 ease-in rounded-md flex gap-2`} disabled={Acceptloading} onClick={handleAcceptAppointment} > Accept { Acceptloading && <SmallWhiteLoader /> } </button>
                 </div>
             </div>
         </DialogContent>

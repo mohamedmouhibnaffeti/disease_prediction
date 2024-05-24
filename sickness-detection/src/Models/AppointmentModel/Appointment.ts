@@ -15,7 +15,7 @@ const AppointmentSchema = new Schema({
     },
     state: {
         type: String,
-        enum: ["finished", "overdue", "pending", "accepted", "waiting"],
+        enum: ["finished", "overdue", "pending", "accepted", "waiting", "refused"],
         default: "pending"
     },
     duration: {

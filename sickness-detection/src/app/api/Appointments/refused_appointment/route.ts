@@ -4,7 +4,7 @@ import Appointment from "@/Models/AppointmentModel/Appointment";
 
 export async function DELETE(request: NextRequest) {
     try {
-        const appointmentID = request.nextUrl.searchParams.get("appointmentID") || ""
+        const appointmentID = request.nextUrl.searchParams.get("AppointmentID") || ""
 
         await connectMongoDB();
 
@@ -22,7 +22,7 @@ export async function DELETE(request: NextRequest) {
         console.log(updatedAppointment)
 
         if (updatedAppointment) {
-            return NextResponse.json({ message: "Appointment refused successfully." }, { status: 204 });
+            return NextResponse.json({ message: "Appointment refused successfully." }, { status: 200 });
         }
 
         return NextResponse.json({ message: "Failed to refuse appointment." }, { status: 400 });
