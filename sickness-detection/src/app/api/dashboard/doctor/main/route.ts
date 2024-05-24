@@ -2,12 +2,13 @@ import { NextResponse, NextRequest } from "next/server";
 import connectMongoDB from "@/lib/mongodb";
 import Appointment from "@/Models/AppointmentModel/Appointment";
 import { User } from "@/Models/UserModel/UserModel";
+import PredictedSickness from "@/Models/PredictedSicknessModel/PredictedSickness";
 
 export async function GET(request: NextRequest){
     try{
         const doctorID = (request.nextUrl.searchParams.get('doctorID') || "")
         connectMongoDB()
-        const MyAppointments = await Appointment.find({doctor: doctorID})
+        const MyAppointments = await Appointment.find({doctor: doctorID}).populate({ path: "patient", select: "name lastname" })
         const Users = await User.find()
         
         const pendingAppointments: any = []

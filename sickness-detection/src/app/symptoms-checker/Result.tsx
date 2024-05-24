@@ -7,9 +7,7 @@ import { AppDispatch, RootState } from "@/Store/store"
 import Predict from "@/vendors/MachineLearning/Predict"
 export default () => {
     const dispatch = useDispatch<AppDispatch>()
-    const SelectedSymptoms = useSelector((state: RootState) => state.Predict.SelectedSymptoms)
-    const PredictionState = useSelector((state: RootState) => state.Predict.predicting)
-    const PredictionResult = useSelector((state: RootState) => state.Predict.PredictionResult)
+    const {SicknessToPush, SelectedSymptoms, PredictionResult, predicting} = useSelector((state: RootState) => state.Predict)
     const FetchPredictionResult = async() =>{
         setPredictingState(true)
         const result = await Predict({ Symptoms: SelectedSymptoms })
@@ -20,7 +18,7 @@ export default () => {
             PredictionResult.push({ nom: nom.slice(1), res: parseFloat(res) });
         }
         */
-        if(result){
+        if(true && SicknessToPush.sickness){
             pushDisease()
         }
         dispatch(setPredictionResult(result))
@@ -29,7 +27,7 @@ export default () => {
     const [pushingLoading, setPushingLoading] = useState(false)
     const pushDisease = async() => {
         setPushingLoading(true)
-        dispatch(CreatePredictedSickness())
+        await dispatch(CreatePredictedSickness())
         setPushingLoading(false)
     }
     useLayoutEffect(()=>{
@@ -40,7 +38,7 @@ export default () => {
         <div className="w-fit flex flex-col bg-white border-[1px] border-sickness-border shadow-md rounded-lg mt-[8rem] py-8 px-4">
             <p className="text-center text-sickness-primaryText font-semibold">While the predictions are accurate, it's always advisable to consult a medical expert for a more comprehensive understanding and personalized guidance.</p>
             <div className="flex flex-col gap-2 mt-2 w-full justify-center items-center">
-                {PredictionState ? 
+                {predicting ? 
                     <>    
                         <div className="ModelLoader mt-4" />
                         <p className="font-semibold text-sickness-primary mt-2"> Please wait for us to do our thing </p>
@@ -77,7 +75,7 @@ export default () => {
                     
                 }
             </div>
-            {!PredictionState && 
+            {!predicting && 
             <div className="flex justify-between w-full">
                 <button className="bg-none py-2 px-14 transition ease-in duration-100 delay-100 hover:bg-sickness-primary/90 hover:text-white text-sickness-primary border-2 border-sickness-primary rounded-md font-semibold mt-6" onClick={()=>dispatch(changeEtatByNom('Conditions'))} disabled={pushingLoading}> Back </button>
                 <button className="bg-sickness-primary border-2 transition ease-in duration-100 delay-100 hover:bg-sickness-primary/90 border-sickness-primary py-2 px-14 text-white rounded-md font-semibold mt-6" onClick={()=>dispatch(changeEtatByNom('recommendations'))} disabled={pushingLoading}> Continue </button>

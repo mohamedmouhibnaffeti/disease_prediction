@@ -38,7 +38,7 @@ const initialState: PredictType = {
     sex: "",
     age: NaN,
     sicknessDetails: {},
-    SicknessToPush: {age: NaN, sex: "", conditions: [], sickness: "", symptoms: []}
+    SicknessToPush: {age: NaN, sex: "", conditions: [], sickness: "Allergies (Asthma)", symptoms: []}
 }
 
 const PredictSlice = createSlice({

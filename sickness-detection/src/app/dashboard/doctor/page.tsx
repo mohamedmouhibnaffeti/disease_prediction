@@ -3,14 +3,31 @@ import SideBarDash from "@/components/SideBarDash"
 import NavBarDash from "@/components/NavBarDash"
 import StatsCard from "@/components/StatsCard"
 import PendingAppointmentCard from "@/components/PendingAppointmentCard"
-import { useState } from "react"
+import { useLayoutEffect, useState } from "react"
 import PatientsOverallChart from "@/components/Charts/PatientsOverallChart"
 import { PatientsTable } from "@/components/Tables/PatientsTable"
 import AcceptAppointment from "@/components/AcceptAppointmentModal"
-import Loader from "@/components/Loader/loader"
+import Loader from "@/components/Loaders/loader"
+import { useDispatch, useSelector } from "react-redux"
+import { AppDispatch } from "@/Store/store"
+import { fetchDashboardMainData } from "@/Store/doctor/doctorSlice"
+import MainLoader from "@/components/Loaders/MainLoader"
+import ErrorFetching from "@/components/Errors/FailedFetching"
 
 export default function Dashboard(){
     const [maxLen, setMaxLen] = useState(3)
+    const [mainData, setMainData] = useState<any>()
+    const [requestLoading, setRequestLoading] = useState(true)
+    const dispatch = useDispatch<AppDispatch>()
+    const fetchData = async() => {
+        const response = await dispatch(fetchDashboardMainData({doctorID: "6638a68658a37450282e8079"}))
+        setMainData(response.payload)
+        setRequestLoading((prev) => false)
+    }
+    useLayoutEffect(()=>{
+        fetchData()
+    }, [])
+    console.log(mainData)
     return (
         <>
             <div className="grid min-h-screen w-full overflow-hidden md:grid-cols-[280px_1fr]">
@@ -19,50 +36,59 @@ export default function Dashboard(){
                     <NavBarDash />
                     <main className="flex-1 p-4 md:p-6">
                     {
-                        true?
-                        <>
-                            <h1 className="md:text-2xl text-xl font-semibold text-sickness-primaryText"> Good Morning Dr. Mouhib </h1>
-                            <div className="flex flex-col gap-2 mt-4">
-                                <div className="grid lg:grid-cols-3 gap-2">
-                                    <StatsCard text="Accepted Appointments" value={120} />
-                                    <StatsCard text="Pending Appointments" value={20} />
-                                    <StatsCard text="Total Appointments" value={250} />
+                        !requestLoading?
+                        (
+                            mainData && mainData.status === 200 ?
+                            <>
+                                <h1 className="md:text-2xl text-xl font-semibold text-sickness-primaryText"> Good Morning Dr. Mouhib </h1>
+                                <div className="flex flex-col gap-2 mt-4">
+                                    <div className="grid lg:grid-cols-3 gap-2">
+                                        <StatsCard text="Accepted Appointments" value={mainData.acceptedAppointments} />
+                                        <StatsCard text="Pending Appointments" value={mainData.pendingAppointments.length} />
+                                        <StatsCard text="Total Appointments" value={mainData.totalAppointments} />
+                                    </div>
+                                    <div className="grid lg:grid-cols-3 gap-2">
+                                        <StatsCard text="My Patients" value={mainData.myPatients.length} />
+                                        <StatsCard text="Total Patients" value={mainData.totalPatients} />
+                                        <StatsCard text="Total Doctors" value={mainData.totalDoctors} />
+                                    </div>
                                 </div>
-                                <div className="grid lg:grid-cols-3 gap-2">
-                                    <StatsCard text="My Patients" value={280} />
-                                    <StatsCard text="Total Patients" value={20} />
-                                    <StatsCard text="Total Doctors" value={250} />
+                                <h1 className="md:text-xl text-lg font-semibold text-sickness-gray mt-4"> Pending Appointments </h1>
+                                <div className="flex flex-col gap-2 mt-2 w-fit">
+                                    {
+                                        mainData.pendingAppointments.length > 0 ?
+                                        <div className="grid lg:grid-cols-3 gap-2">
+                                        {
+                                            mainData.pendingAppointments.map((appoinement: any,index: any) => (
+                                                <PendingAppointmentCard key={index} appointment={appoinement} />
+                                            ))
+                                        }
+                                        </div>
+                                        :
+                                        <p className="md:text-lg text-base font-semibold text-sickness-primaryText"> You have no pending appointments. </p>
+                                    }
+                                    { maxLen !== 9 && <button className="w-fit h-fit px-4 py-2 text-sm font-semibold bg-sickness-gray/30 rounded-md hover:bg-sickness-gray/50 transition delay-100 ease-in self-center" onClick={()=>{setMaxLen(9)}}> See All </button> }
                                 </div>
-                            </div>
-                            <h1 className="md:text-xl text-lg font-semibold text-sickness-gray mt-4"> Pending Appointments </h1>
-                            <div className="flex flex-col gap-2 mt-2 w-fit">
-                                <div className="grid lg:grid-cols-3 gap-2">
-                                {
-                                    Array.from({ length: maxLen }).map((_, index) => (
-                                        <PendingAppointmentCard key={index} />
-                                    ))
-                                }
+                                <h1 className="lg:flex hidden md:text-xl text-lg font-semibold text-sickness-gray mt-4"> Patients </h1>
+                                <div className="lg:flex hidden max-w-screen-sm">
+                                    <PatientsOverallChart />
                                 </div>
-                                { maxLen !== 9 && <button className="w-fit h-fit px-4 py-2 text-sm font-semibold bg-sickness-gray/30 rounded-md hover:bg-sickness-gray/50 transition delay-100 ease-in self-center" onClick={()=>{setMaxLen(9)}}> See All </button> }
-                            </div>
-                            <h1 className="lg:flex hidden md:text-xl text-lg font-semibold text-sickness-gray mt-4"> Patients </h1>
-                            <div className="lg:flex hidden max-w-screen-sm">
-                                <PatientsOverallChart />
-                            </div>
-                            <h1 className="md:text-xl text-lg font-semibold text-sickness-gray mt-4"> Patients List </h1>
-                            <div className="overflow-x-scroll grid max-w-screen">
-                                <PatientsTable />
-                            </div>
-                        </>
+                                <h1 className="md:text-xl text-lg font-semibold text-sickness-gray mt-4"> Patients List </h1>
+                                <div className="overflow-x-scroll grid max-w-screen">
+                                    <PatientsTable />
+                                </div>
+                            </>
+                            :
+                            <ErrorFetching />
+                        )
                         :
                         <div className="w-full h-full flex justify-center items-center">
-                            <Loader />
+                            <MainLoader />
                         </div>
                     }
                     </main>
                 </div>
             </div>
-            <AcceptAppointment open={false} setOpen={()=>{}} />
         </>
     )
 }

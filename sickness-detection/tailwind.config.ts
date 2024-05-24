@@ -25,7 +25,7 @@ const config = {
     extend: {
       fontFamily: {
         sans: ['Helvetica', 'Arial', 'sans-serif'],
-        dashfont: ["Freeman", "sans-serif"],
+        dashfont: ['var(--font-oswald)', 'sans-serif'],
       },
       colors: {
         sickness: {

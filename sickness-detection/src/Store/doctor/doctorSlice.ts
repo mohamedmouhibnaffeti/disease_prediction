@@ -5,13 +5,15 @@ import { RootState } from "../store";
 interface doctorSliceType {
     doctors: Array<any>,
     updatedDoctors: Array<any>,
-    requestLoading: boolean
+    requestLoading: boolean,
+    AcceptAppointmentState: boolean
 }
 
 const initialState: doctorSliceType = {
     doctors: [],
     updatedDoctors: [],
-    requestLoading: false
+    requestLoading: false,
+    AcceptAppointmentState: false
 }
 
 const doctorSlice = createSlice({
@@ -34,6 +36,9 @@ const doctorSlice = createSlice({
         },
         setRequestLoading: (state, action: PayloadAction<boolean>) => {
             state.requestLoading = action.payload
+        },
+        setAcceptAppointmentOpen : (state, action: PayloadAction<boolean>) => {
+            state.AcceptAppointmentState = action.payload
         }
     },
     extraReducers: (builder) => {
@@ -75,6 +80,8 @@ export const requestAppointment = createAsyncThunk(
             if(response.ok){
                 const data = await response.json()
                 return { ...data, status: 201 } 
+            }else{
+                return { error: "Error fetching", status: 500 }
             }
         }catch(err){
             return { error: err, status: 500 }
@@ -110,7 +117,7 @@ export const acceptAppointment = createAsyncThunk(
 
 //dashboard apis
 
-export const dashboardMain = createAsyncThunk(
+export const fetchDashboardMainData = createAsyncThunk(
     "doctor/dashboardMain",
     async({doctorID}: {doctorID: any}) => {
         try{
@@ -125,6 +132,6 @@ export const dashboardMain = createAsyncThunk(
     }
 )
 
-export const { updateDoctorsArray, setRequestLoading } = doctorSlice.actions
+export const { updateDoctorsArray, setRequestLoading, setAcceptAppointmentOpen } = doctorSlice.actions
 
 export default doctorSlice.reducer

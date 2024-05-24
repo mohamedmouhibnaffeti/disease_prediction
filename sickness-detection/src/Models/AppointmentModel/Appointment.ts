@@ -4,11 +4,11 @@ import { Doctor, Patient, User } from "@/Models/UserModel/UserModel";
 const AppointmentSchema = new Schema({
     doctor: {
         type: Schema.Types.ObjectId,
-        ref: "user" // Reference to Doctor model
+        ref: "User" // Reference to Doctor model
     },
     patient: {
         type: Schema.Types.ObjectId,
-        ref: "user" // Reference to Patient model
+        ref: "User" // Reference to Patient model
     },
     date: {
         type: Date

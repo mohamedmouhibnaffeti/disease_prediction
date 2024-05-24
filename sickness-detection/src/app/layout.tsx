@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Oswald } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import Nav from "@/components/Nav";
@@ -11,6 +11,12 @@ import Loader from "@/components/Loader";
 export const inter = Inter({ 
   subsets: ["latin"],
   variable: "--font-sans",
+});
+
+const oswald = Oswald({
+  subsets: ['latin'],
+  variable: '--font-oswald',
+  weight: ["200", "300", "400", "500", "600", "700"], // Specify the weights you need
 });
 
 export const metadata: Metadata = {
@@ -27,7 +33,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={cn(
           "min-h-screen bg-sickness-lightGray font-sans antialiased overflow-x-hidden",
-          inter.variable
+          inter.variable,
+          oswald.variable
         )}>
           <Nav />
           <Providers>
