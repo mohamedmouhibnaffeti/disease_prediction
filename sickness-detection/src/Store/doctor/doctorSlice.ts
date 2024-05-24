@@ -115,6 +115,27 @@ export const acceptAppointment = createAsyncThunk(
     }
 )
 
+export const RefuseAppointment = createAsyncThunk(
+    "doctor/acceptAppointment",
+    async({ AppointmentID }: { AppointmentID: any }) => {
+        try{
+            const response = await fetch(`${next_backend_route}/Appointments/accepted_appointment?AppointmentID=${AppointmentID}`, {
+                method: 'DELETE'
+            })
+            if(response.ok){
+                const data = await response.json()
+                return { ...data, status: 204 } 
+            }
+            else if(response.status === 404 || response.status === 400){
+                const data = await response.json()
+                return { ...data, status: 400 } 
+            }
+        }catch(err){
+            return { error: err, status: 500 }
+        }
+    }
+)
+
 //dashboard apis
 
 export const fetchDashboardMainData = createAsyncThunk(

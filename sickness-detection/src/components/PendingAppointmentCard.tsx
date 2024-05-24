@@ -16,7 +16,7 @@ import { DoctorSignup, RegisterOTP, setSignupFormDataDoctor } from "@/Store/auth
 import { useDispatch, useSelector } from "react-redux"
 import { useRouter } from "next/navigation";
 import { DateTimePicker } from "./DateTimePicker/DateTimePicker";
-import { acceptAppointment, setAcceptAppointmentOpen } from "@/Store/doctor/doctorSlice";
+import { RefuseAppointment, acceptAppointment, setAcceptAppointmentOpen } from "@/Store/doctor/doctorSlice";
 import { useToast } from "./ui/use-toast";
 export default function PendingAppointmentCard({appointment}: {appointment: any}) {
     const dispatch = useDispatch<AppDispatch>() 
@@ -40,6 +40,32 @@ export default function PendingAppointmentCard({appointment}: {appointment: any}
     const handleAcceptAppointment = async() => {
         setLoading(true)
         const response = await dispatch(acceptAppointment({from: selectedStartDate, to: selectedEndDate, AppointmentID: appointment._id}))
+        setLoading(false)
+        if(response.payload.status === 201){
+            toast({
+                title: "Congratulations !",
+                description: <p> You've accepted the appointment with <span className="font-semibold"> Mouhib Naffeti </span> </p>,
+              })
+              
+        }
+        else if(response.payload.status === 400){
+            toast({
+                variant: "destructive",
+                title: "Sorry.",
+                description: <p> { response.payload.message } </p>,
+              })
+        }
+        else if(response.payload.status === 500){
+            toast({
+                variant: "destructive",
+                title: "Sorry.",
+                description: <p> Couldn't accept an appointment with patient <span className="font-semibold"> Mouhib Naffeti </span>.Please try again later. </p>,
+              })
+        }
+    }
+    const handleRefuseAppointment = async() => {
+        setLoading(true)
+        const response = await dispatch(RefuseAppointment({AppointmentID: appointment._id}))
         setLoading(false)
         if(response.payload.status === 201){
             toast({
@@ -98,7 +124,7 @@ export default function PendingAppointmentCard({appointment}: {appointment: any}
                 <DateTimePicker granularity={"minute"} onChange={(e)=>selectEndDate(e)} hourCycle={24} />
                 <div className="h-[1px] bg-sickness-border w-full mt-3" />
                 <div className="w-full justify-between flex gap-2 mt-3 font-semibold">
-                    <button className="w-fit h-fit py-2 px-4 bg-red-500 text-white hover:bg-red-600 transition delay-100 ease-in rounded-md"> Refuse </button>
+                    <button className={`w-fit h-fit py-2 px-4 ${loading ? "bg-red-500/70" : "bg-red-500 hover:bg-red-600" } text-white  transition delay-100 ease-in rounded-md`} disabled={loading} onClick={handleRefuseAppointment}> Refuse </button>
                     <button className={`w-fit h-fit py-2 px-4 ${loading ? "bg-sickness-primary/70" : "bg-sickness-primary hover:bg-sickness-primary/80"} text-white text-whitetransition delay-100 ease-in rounded-md flex gap-2`} disabled={loading} onClick={handleAcceptAppointment} > Accept { loading && <div className="small-white-loader" /> } </button>
                 </div>
             </div>
