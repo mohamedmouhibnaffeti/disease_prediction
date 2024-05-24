@@ -5,7 +5,7 @@ import { User } from "@/Models/UserModel/UserModel";
 
 export async function GET(request: NextRequest){
     try{
-        const doctorID = (request.nextUrl.searchParams.get('doctorID') || "660ad6cfb9de95e17ff96c90")
+        const doctorID = (request.nextUrl.searchParams.get('doctorID') || "")
         connectMongoDB()
         const MyAppointments = await Appointment.find({doctor: doctorID})
         const Users = await User.find()

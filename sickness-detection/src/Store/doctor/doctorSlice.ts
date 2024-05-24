@@ -108,6 +108,23 @@ export const acceptAppointment = createAsyncThunk(
     }
 )
 
+//dashboard apis
+
+export const dashboardMain = createAsyncThunk(
+    "doctor/dashboardMain",
+    async({doctorID}: {doctorID: any}) => {
+        try{
+            const response = await fetch(`${next_backend_route}/dashboard/doctor/main?doctorID=${doctorID}`)
+            if(response.ok){
+                const data = await response.json()
+                return { ...data, status: 200 }
+            }
+        }catch(err){
+            return { err, status: 500 }
+        }
+    }
+)
+
 export const { updateDoctorsArray, setRequestLoading } = doctorSlice.actions
 
 export default doctorSlice.reducer
