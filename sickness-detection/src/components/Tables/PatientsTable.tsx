@@ -55,7 +55,8 @@ const patients = [
 ];
 
 
-export function PatientsTable() {
+export function PatientsTable({ patients }: { patients: Array<any> }) {
+    console.log(patients)
 return (
     <Table>
     <TableCaption>A list of your patients.</TableCaption>
@@ -68,7 +69,7 @@ return (
         </TableRow>
     </TableHeader>
     <TableBody>
-        {patients.map((patient) => (
+        {patients.map(({patient}) => (
         <TableRow key={patient.email}>
             <TableCell>{patient.name}</TableCell>
             <TableCell>{patient.lastname}</TableCell>

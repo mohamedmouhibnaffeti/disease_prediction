@@ -8,7 +8,7 @@ export async function GET(request: NextRequest){
     try{
         const doctorID = (request.nextUrl.searchParams.get('doctorID') || "")
         connectMongoDB()
-        const MyAppointments = await Appointment.find({doctor: doctorID}).populate({ path: "patient", select: "name lastname" })
+        const MyAppointments = await Appointment.find({doctor: doctorID}).populate({ path: "patient", select: "name lastname email phone" })
         const Users = await User.find()
         
         const pendingAppointments: any = []
@@ -21,7 +21,7 @@ export async function GET(request: NextRequest){
             if(appointment.state === "accepted"){
                 AcceptedAppointments.push(appointment)
             }
-            if((!MyPatients.some(((existingAppointment: any) => existingAppointment["patient"] === appointment.patient)) && appointment.state === "accepted")){
+            if(((appointment.state === "accepted" || appointment.state === "pending"))){
                 MyPatients.push(appointment)
             }
         })

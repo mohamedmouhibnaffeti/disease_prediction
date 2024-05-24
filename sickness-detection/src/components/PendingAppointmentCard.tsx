@@ -102,7 +102,7 @@ export default function PendingAppointmentCard({appointment}: {appointment: any}
                 </div>
                 <div className="flex flex-col gap-2">
                     <h3 className="font-semibold text-sickness-primaryText"> Bird Flu </h3>
-                    <p className="font-semibold text-sickness-primaryText"> Symptoms: <span className="font-normal text-sickness-gray"> headache, runny nose, runny nose, runny nose </span> </p>
+                    <p className="font-semibold text-sickness-primaryText"> Symptoms: <span className="font-normal text-sickness-gray"> headache, runny nose, runny nose, runny noseheadache, runny nose, runny nose, runny noseheadache, runny nose, runny nose, runny noseheadache, runny nose, runny nose, runny nose </span> </p>
                 </div>
             </div>
             </DialogTrigger>

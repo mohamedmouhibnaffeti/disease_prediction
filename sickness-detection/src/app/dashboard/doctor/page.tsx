@@ -6,7 +6,6 @@ import PendingAppointmentCard from "@/components/PendingAppointmentCard"
 import { useLayoutEffect, useState } from "react"
 import PatientsOverallChart from "@/components/Charts/PatientsOverallChart"
 import { PatientsTable } from "@/components/Tables/PatientsTable"
-import AcceptAppointment from "@/components/AcceptAppointmentModal"
 import Loader from "@/components/Loaders/loader"
 import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch } from "@/Store/store"
@@ -20,7 +19,7 @@ export default function Dashboard(){
     const [requestLoading, setRequestLoading] = useState(true)
     const dispatch = useDispatch<AppDispatch>()
     const fetchData = async() => {
-        const response = await dispatch(fetchDashboardMainData({doctorID: "6638a68658a37450282e8079"}))
+        const response = await dispatch(fetchDashboardMainData({doctorID: "6650f76e724682a9692f7f9e"}))
         setMainData(response.payload)
         setRequestLoading((prev) => false)
     }
@@ -59,23 +58,25 @@ export default function Dashboard(){
                                         mainData.pendingAppointments.length > 0 ?
                                         <div className="grid lg:grid-cols-3 gap-2">
                                         {
-                                            mainData.pendingAppointments.map((appoinement: any,index: any) => (
-                                                <PendingAppointmentCard key={index} appointment={appoinement} />
-                                            ))
+                                            mainData.pendingAppointments.map((appoinement: any,index: any) => {
+                                                if(index < maxLen){
+                                                    return(<PendingAppointmentCard key={index} appointment={appoinement} />)
+                                                }
+                                            })
                                         }
                                         </div>
                                         :
                                         <p className="md:text-lg text-base font-semibold text-sickness-primaryText"> You have no pending appointments. </p>
                                     }
-                                    { maxLen !== 9 && <button className="w-fit h-fit px-4 py-2 text-sm font-semibold bg-sickness-gray/30 rounded-md hover:bg-sickness-gray/50 transition delay-100 ease-in self-center" onClick={()=>{setMaxLen(9)}}> See All </button> }
+                                    { (maxLen !== mainData.pendingAppointments.length && mainData.pendingAppointments.length > 3 ) && <button className="w-fit h-fit px-4 py-2 text-sm font-semibold bg-sickness-gray/30 rounded-md hover:bg-sickness-gray/50 transition delay-100 ease-in self-center" onClick={()=>{setMaxLen(mainData.pendingAppointments.length)}}> See All </button> }
                                 </div>
                                 <h1 className="lg:flex hidden md:text-xl text-lg font-semibold text-sickness-gray mt-4"> Patients </h1>
                                 <div className="lg:flex hidden max-w-screen-sm">
-                                    <PatientsOverallChart />
+                                    <PatientsOverallChart patients={mainData.myPatients} />
                                 </div>
                                 <h1 className="md:text-xl text-lg font-semibold text-sickness-gray mt-4"> Patients List </h1>
                                 <div className="overflow-x-scroll grid max-w-screen">
-                                    <PatientsTable />
+                                    <PatientsTable patients={mainData.myPatients} />
                                 </div>
                             </>
                             :

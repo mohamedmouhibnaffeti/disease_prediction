@@ -10,3 +10,8 @@ export function compareDateWithToday(date: any){
         return false
     }
 }
+
+export const getMonthName = (dateString: any) => {
+    const date = new Date(dateString);
+    return date.toLocaleString('default', { month: 'long' })
+};

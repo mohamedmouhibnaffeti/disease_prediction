@@ -11,6 +11,7 @@ import {
   Tooltip,
   Filler,
 } from "chart.js";
+import { getMonthName } from "@/lib/functions/dates";
 
 ChartJS.register(
   LineElement,
@@ -22,22 +23,35 @@ ChartJS.register(
   Filler
 );
 
-const patientsData = [
-    { month: "January", patients: 120 },
-    { month: "February", patients: 130 },
-    { month: "March", patients: 180 },
-    { month: "April", patients: 140 },
-    { month: "May", patients: 200 },
-    { month: "June", patients: 280 },
-    { month: "July", patients: 280 },
-    { month: "August", patients: 280 },
-    { month: "September", patients: 280 },
-    { month: "October", patients: 280 },
-    { month: "November", patients: 280 },
-    { month: "December", patients: 280 },
-  ];
 
-function PatientsOverallChart() {
+function PatientsOverallChart({patients}: {patients: Array<any>}) {
+  const patientsData = [
+    { month: "January", patients: 0 },
+    { month: "February", patients: 0 },
+    { month: "March", patients: 0 },
+    { month: "April", patients: 0 },
+    { month: "May", patients: 0 },
+    { month: "June", patients: 0 },
+    { month: "July", patients: 0 },
+    { month: "August", patients: 0 },
+    { month: "September", patients: 0 },
+    { month: "October", patients: 0 },
+    { month: "November", patients: 0 },
+    { month: "December", patients: 0 },
+  ];
+  const monthMap = patientsData.reduce((map: any, { month }, index) => {
+      map[month] = index;
+      return map;
+  }, {});
+  
+  patients.forEach((patient) => {
+      const monthName = getMonthName(patient.requestedAt);
+      const monthIndex = monthMap[monthName];
+      if (monthIndex !== undefined) {
+          patientsData[monthIndex].patients++;
+      }
+  });
+  console.log(patientsData)
   const data = {
     labels: patientsData.map((data) => data.month),
     datasets: [
@@ -95,7 +109,7 @@ function PatientsOverallChart() {
             family: "Arial",
           },
         },
-        min: 50,
+        min: 0,
       },
       x: {
         ticks: {
