@@ -16,13 +16,13 @@ import { DoctorSignup, RegisterOTP, setSignupFormDataDoctor } from "@/Store/auth
 import { useDispatch, useSelector } from "react-redux"
 import { useRouter } from "next/navigation";
 import { DateTimePicker } from "./DateTimePicker/DateTimePicker";
-import { RefuseAppointment, acceptAppointment, setAcceptAppointmentOpen } from "@/Store/doctor/doctorSlice";
+import { RefuseAppointment, postponeAppointment, setPostponeAppointmentOpen } from "@/Store/doctor/doctorSlice";
 import { useToast } from "./ui/use-toast";
 import SmallWhiteLoader from "./Loaders/WhiteButtonLoader";
 
-export default function PendingAppointmentCard({appointment}: {appointment: any}) {
+export default function PostponeAppointment({appointment}: {appointment: any}) {
     const dispatch = useDispatch<AppDispatch>() 
-    const { AcceptAppointmentState } = useSelector((state: RootState) => state.Doctor)
+    const { postponeAppointmentState } = useSelector((state: RootState) => state.Doctor)
     const [selectedStartDate, setSelectedStartDate] = useState<Date>()
     const [selectedEndDate, setSelectedEndDate] = useState<Date>()
 
@@ -35,19 +35,19 @@ export default function PendingAppointmentCard({appointment}: {appointment: any}
         setSelectedEndDate(newDate)
     }
 
-    const [Acceptloading, AcceptsetLoading] = useState(false)
+    const [postponeloading, postponesetLoading] = useState(false)
     const [Refuseloading, RefusesetLoading] = useState(false)
 
     const { toast } = useToast()
 
-    const handleAcceptAppointment = async() => {
-        AcceptsetLoading(true)
-        const response = await dispatch(acceptAppointment({from: selectedStartDate, to: selectedEndDate, AppointmentID: appointment._id}))
-        AcceptsetLoading(false)
+    const handlepostponeAppointment = async() => {
+        postponesetLoading(true)
+        const response = await dispatch(postponeAppointment({from: selectedStartDate, to: selectedEndDate, AppointmentID: appointment._id}))
+        postponesetLoading(false)
         if(response.payload.status === 201){
             toast({
                 title: "Congratulations !",
-                description: <p> You've accepted the appointment with <span className="font-semibold"> {appointment.patient.name} {appointment.patient.lastname} </span> </p>,
+                description: <p> You've postponeed the appointment with <span className="font-semibold"> {appointment.patient.name} {appointment.patient.lastname} </span> </p>,
               })
               
         }
@@ -62,7 +62,7 @@ export default function PendingAppointmentCard({appointment}: {appointment: any}
             toast({
                 variant: "destructive",
                 title: "Sorry.",
-                description: <p> Couldn't accept an appointment with patient <span className="font-semibold"> {appointment.patient.name} {appointment.patient.lastname} </span>.Please try again later. </p>,
+                description: <p> Couldn't postpone an appointment with patient <span className="font-semibold"> {appointment.patient.name} {appointment.patient.lastname} </span>.Please try again later. </p>,
               })
         }
     }
@@ -73,7 +73,7 @@ export default function PendingAppointmentCard({appointment}: {appointment: any}
         if(response.payload.status === 201){
             toast({
                 title: "Congratulations !",
-                description: <p> You've accepted the appointment with <span className="font-semibold"> {appointment.patient.name} {appointment.patient.lastname} </span> </p>,
+                description: <p> You've postponeed the appointment with <span className="font-semibold"> {appointment.patient.name} {appointment.patient.lastname} </span> </p>,
               })
               
         }
@@ -88,7 +88,7 @@ export default function PendingAppointmentCard({appointment}: {appointment: any}
             toast({
                 variant: "destructive",
                 title: "Sorry.",
-                description: <p> Couldn't accept an appointment with patient <span className="font-semibold"> {appointment.patient.name} {appointment.patient.lastname} </span>.Please try again later. </p>,
+                description: <p> Couldn't postpone an appointment with patient <span className="font-semibold"> {appointment.patient.name} {appointment.patient.lastname} </span>.Please try again later. </p>,
               })
         }
     }
@@ -97,25 +97,14 @@ export default function PendingAppointmentCard({appointment}: {appointment: any}
 
     return(
         
-        <Dialog open={AcceptAppointmentState} >
-            <DialogTrigger asChild className="w-full">
-            <div className="flex gap-2 border border-sickness-border shadow-md rounded-md p-2 cursor-pointer hover:bg-sickness-primary/10 transition ease-in delay-100 w-full" onClick={()=>dispatch(setAcceptAppointmentOpen(true))}>
-                <div className="border border-sickness-border rounded-full p-2 text-xl bg-sickness-orange text-white w-fit h-fit">
-                    <p className="uppercase"> {`${appointment.patient.name[0]}${appointment.patient.lastname[0]}`} </p>
-                </div>
-                <div className="flex flex-col gap-2">
-                    <h3 className="font-semibold text-sickness-primaryText"> {`${appointment.patient.name} ${appointment.patient.lastname}`} </h3>
-                    <p className="font-semibold text-sickness-primaryText"> Phone number: <span className="font-normal text-sickness-gray"> { appointment.patient.phone } </span> </p>
-                </div>
-            </div>
-            </DialogTrigger>
+        <Dialog open={postponeAppointmentState} >
         <DialogContent className='w-full flex justify-center flex-col'>
             <DialogHeader className='w-full flex justify-center'>
                 <div className="self-end"  >
-                    <X onClick={()=>dispatch(setAcceptAppointmentOpen(false))} className="cursor-pointer hover:rotate-90 transition delay-100 ease-linear"/>
+                    <X onClick={()=>dispatch(setPostponeAppointmentOpen(false))} className="cursor-pointer hover:rotate-90 transition delay-100 ease-linear"/>
                 </div>
                 <DialogTitle className='w-full flex justify-center'>
-                    Accept or Refuse Appointment
+                    postpone or Refuse Appointment
                 </DialogTitle>
                 <DialogDescription className='text-center'>
                     <p className="text-sickness-primaryText font-semibold text-base"> Patient Name: <span className="text-sickness-primary"> {appointment.patient.name} {appointment.patient.lastname} </span> </p>
@@ -135,7 +124,7 @@ export default function PendingAppointmentCard({appointment}: {appointment: any}
                 <div className="h-[1px] bg-sickness-border w-full mt-3" />
                 <div className="w-full justify-between flex gap-2 mt-3 font-semibold">
                     <button className={`w-fit h-fit py-2 px-4 ${Refuseloading ? "bg-red-500/70" : "bg-red-500 hover:bg-red-600" } text-white  transition delay-100 ease-in rounded-md`} disabled={Refuseloading} onClick={handleRefuseAppointment}> Refuse  { Refuseloading && <SmallWhiteLoader /> } </button>
-                    <button className={`w-fit h-fit py-2 px-4 ${Acceptloading ? "bg-sickness-primary/70" : "bg-sickness-primary hover:bg-sickness-primary/80"} text-white text-whitetransition delay-100 ease-in rounded-md flex gap-2`} disabled={Acceptloading} onClick={handleAcceptAppointment} > Accept { Acceptloading && <SmallWhiteLoader /> } </button>
+                    <button className={`w-fit h-fit py-2 px-4 ${postponeloading ? "bg-sickness-primary/70" : "bg-sickness-primary hover:bg-sickness-primary/80"} text-white text-whitetransition delay-100 ease-in rounded-md flex gap-2`} disabled={postponeloading} onClick={handlepostponeAppointment} > Postpone { postponeloading && <SmallWhiteLoader /> } </button>
                 </div>
             </div>
         </DialogContent>

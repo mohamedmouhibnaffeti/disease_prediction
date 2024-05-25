@@ -12,10 +12,10 @@ import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { AppDispatch } from "@/Store/store"
 import FinishAppointmentDialog from "./FinishAppointment"
-import { setFinishAppointmentOpen } from "@/Store/doctor/doctorSlice"
+import { setFinishAppointmentOpen, setPostponeAppointmentOpen } from "@/Store/doctor/doctorSlice"
+import PostponeAppointment from "./PostponeAppointment"
 
 export default function AppointmentDetailsCard({appointemntDetails}: { appointemntDetails: any }) {
-    const [appointment, setAppointment] = useState<any>()
     const dispatch = useDispatch<AppDispatch>()
     return(
         <div className="flex flex-col gap-2 border border-sickness-border shadow-md rounded-md pb-2 w-full h-fit">
@@ -23,8 +23,8 @@ export default function AppointmentDetailsCard({appointemntDetails}: { appointem
                 <div className="border border-sickness-border rounded-full p-2 text-xl bg-sickness-orange text-white w-fit h-fit my-2 ml-2">
                     <p> {`${appointemntDetails.patient.name[0]}${appointemntDetails.patient.lastname[0]}`} </p>
                 </div>
-                <div className="flex flex-col gap-2  my-2 mx-2">
-                    <div className="flex justify-between items-center">
+                <div className="flex flex-col gap-2  my-2 mx-2 w-full">
+                    <div className="flex justify-between items-center w-full">
                         <h3 className="font-semibold text-sickness-primaryText"> {`${appointemntDetails.patient.name} ${appointemntDetails.patient.lastname}`} </h3>
                         <DropdownMenu>
                             <DropdownMenuTrigger asChild>
@@ -35,7 +35,7 @@ export default function AppointmentDetailsCard({appointemntDetails}: { appointem
                                 <DropdownMenuItem onClick={()=>dispatch(setFinishAppointmentOpen(true))} className="cursor-pointer text-sickness-primaryText font-[510]">
                                     Finish Appointment
                                 </DropdownMenuItem>
-                                <DropdownMenuItem className="cursor-pointer text-sickness-primaryText font-[510]">
+                                <DropdownMenuItem onClick={()=>dispatch(setPostponeAppointmentOpen(true))} className="cursor-pointer text-sickness-primaryText font-[510]">
                                     Postpone appointment
                                 </DropdownMenuItem>
                             </DropdownMenuContent>
@@ -48,6 +48,7 @@ export default function AppointmentDetailsCard({appointemntDetails}: { appointem
             <div className="w-full h-[1px] bg-sickness-border" />
             <p className="font-semibold text-sickness-primaryText text-center self-center flex"> Last Checked: <span className="font-normal text-sickness-gray"> First visit </span> </p>
             <FinishAppointmentDialog appointment={appointemntDetails} />
+            <PostponeAppointment appointment={appointemntDetails} />
         </div>
     )
 }

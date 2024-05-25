@@ -125,12 +125,65 @@ export const acceptAppointment = createAsyncThunk(
     }
 )
 
+export const postponeAppointment = createAsyncThunk(
+    "doctor/postponeAppointment",
+    async({ AppointmentID, from, to }: { AppointmentID: any, from: Date | undefined, to: Date | undefined }) => {
+        try{
+            const response = await fetch(`${next_backend_route}/Appointments/postpone_appointment`, {
+                method: 'POST',
+                body: JSON.stringify({
+                    appointmentID: AppointmentID,
+                    from: from,
+                    to: to
+                })
+            })
+            if(response.ok){
+                const data = await response.json()
+                return { ...data, status: 201 } 
+            }
+            else if(response.status === 404 || response.status === 400 || response.status === 409){
+                const data = await response.json()
+                return { ...data, status: 400 } 
+            }
+        }catch(err){
+            return { error: err, status: 500 }
+        }
+    }
+)
+
+
 export const RefuseAppointment = createAsyncThunk(
-    "doctor/acceptAppointment",
+    "doctor/refuseAppointment",
     async({ AppointmentID }: { AppointmentID: any }) => {
         try{
             const response = await fetch(`${next_backend_route}/Appointments/refused_appointment?AppointmentID=${AppointmentID}`, {
                 method: 'DELETE'
+            })
+            if(response.ok){
+                const data = await response.json()
+                return { ...data, status: 204 } 
+            }
+            else if(response.status === 404 || response.status === 400){
+                const data = await response.json()
+                return { ...data, status: 400 } 
+            }
+        }catch(err){
+            return { error: err, status: 500 }
+        }
+    }
+)
+
+export const FinishAppointment = createAsyncThunk(
+    "doctor/finishAppointment",
+    async({ AppointmentID, prescription, observation }: { AppointmentID: any, prescription: string, observation: string }) => {
+        try{
+            const response = await fetch(`${next_backend_route}/Appointments/finished_appointment`, {
+                method: 'POST',
+                body: JSON.stringify({
+                    AppointmentID: AppointmentID,
+                    prescription: prescription,
+                    observation: observation 
+                })
             })
             if(response.ok){
                 const data = await response.json()

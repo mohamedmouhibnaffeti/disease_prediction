@@ -43,7 +43,7 @@ export async function POST(request: Request) {
 
         const updatedAppointment = await Appointment.findByIdAndUpdate(
             { _id: appointmentID },
-            { from, to, state: "accepted", duration: differenceInHours },
+            { from, to, duration: differenceInHours },
             { new: true }
         );
 
