@@ -92,17 +92,20 @@ export default function PendingAppointmentCard({appointment}: {appointment: any}
               })
         }
     }
+
+    const date = new Date(appointment.requestedAt)
+
     return(
         
         <Dialog open={AcceptAppointmentState} >
-            <DialogTrigger asChild>
-            <div className="flex gap-2 border border-sickness-border shadow-md rounded-md p-2 cursor-pointer hover:bg-sickness-primary/10 transition ease-in delay-100" onClick={()=>dispatch(setAcceptAppointmentOpen(true))}>
+            <DialogTrigger asChild className="w-full">
+            <div className="flex gap-2 border border-sickness-border shadow-md rounded-md p-2 cursor-pointer hover:bg-sickness-primary/10 transition ease-in delay-100 w-full" onClick={()=>dispatch(setAcceptAppointmentOpen(true))}>
                 <div className="border border-sickness-border rounded-full p-2 text-xl bg-sickness-orange text-white w-fit h-fit">
                     <p className="uppercase"> {`${appointment.patient.name[0]}${appointment.patient.lastname[0]}`} </p>
                 </div>
                 <div className="flex flex-col gap-2">
-                    <h3 className="font-semibold text-sickness-primaryText"> Bird Flu </h3>
-                    <p className="font-semibold text-sickness-primaryText"> Symptoms: <span className="font-normal text-sickness-gray"> headache, runny nose, runny nose, runny noseheadache, runny nose, runny nose, runny noseheadache, runny nose, runny nose, runny noseheadache, runny nose, runny nose, runny nose </span> </p>
+                    <h3 className="font-semibold text-sickness-primaryText"> {`${appointment.patient.name} ${appointment.patient.lastname}`} </h3>
+                    <p className="font-semibold text-sickness-primaryText"> Phone number: <span className="font-normal text-sickness-gray"> { appointment.patient.phone } </span> </p>
                 </div>
             </div>
             </DialogTrigger>
@@ -118,8 +121,12 @@ export default function PendingAppointmentCard({appointment}: {appointment: any}
                     <p className="text-sickness-primaryText font-semibold text-base"> Patient Name: <span className="text-sickness-primary"> {appointment.patient.name} {appointment.patient.lastname} </span> </p>
                 </DialogDescription>
             </DialogHeader>
-            <div className='w-full flex justify-center items-center flex-col'>
-                <p className="font-semibold text-sickness-primaryText text-sm"> Symptoms: <span className="text-sickness-gray"> Symptom, Symptom, Symptom, Symptom, Symptom, Symptom, Symptom, Symptom, Symptom, Symptom, Symptom, Symptom, Symptom, Symptom, Symptom</span> </p>
+            <div className='w-full flex justify-start items-center flex-col'>
+                <div className="flex w-full justify-between items-center flex-wrap">
+                    <p className="font-semibold text-sickness-primaryText text-sm"> Phone Number: <span className="text-sickness-gray"> { appointment.patient.phone } </span> </p>
+                    <p className="font-semibold text-sickness-primaryText text-sm"> Request Date: <span className="text-sickness-gray"> {date.toDateString()} </span> </p>
+                </div>
+                <p className="font-semibold text-sickness-primaryText text-sm self-center mt-2"> Email: <span className="text-sickness-gray"> { appointment.patient.email } </span> </p>
                 <div className="h-[1px] bg-sickness-border w-full mt-3" />
                 <p className="font-semibold mt-2 self-start"> Start Time: </p>
                 <DateTimePicker granularity={"minute"} onChange={(e)=>selectStartDate(e)} hourCycle={24}  />

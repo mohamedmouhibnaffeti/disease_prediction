@@ -56,7 +56,7 @@ export default function Dashboard(){
                                 <div className="flex flex-col gap-2 mt-2 w-fit">
                                     {
                                         mainData.pendingAppointments.length > 0 ?
-                                        <div className="grid lg:grid-cols-3 gap-2">
+                                        <div className="grid lg:grid-cols-3 gap-2 w-full justify-between">
                                         {
                                             mainData.pendingAppointments.map((appoinement: any,index: any) => {
                                                 if(index < maxLen){
