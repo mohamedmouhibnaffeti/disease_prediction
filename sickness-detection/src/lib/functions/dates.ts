@@ -56,3 +56,9 @@ export function compareDates(date1: Date,date2: Date){
 
     return (Day1 === Day2 && Month1 === Month2 && Year1 === Year2)
 }
+
+export function getHoursAndMinutes(date: Date){
+    const hours = date.getHours()
+    const minutes = date.getMinutes()
+    return { hours, minutes }
+}

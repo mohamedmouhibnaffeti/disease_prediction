@@ -13,6 +13,7 @@ import MainLoader from "@/components/Loaders/MainLoader"
 import { useState, useLayoutEffect, useEffect } from "react"
 import ErrorFetching from "@/components/Errors/FailedFetching"
 import { compareDates } from "@/lib/functions/dates"
+import { HeartPulse } from "lucide-react"
 
 export default function Dashboard(){
     const [AppointmentsData, setAppointmentsData] = useState<any>()
@@ -28,9 +29,8 @@ export default function Dashboard(){
     }, [])
     const today = new Date()
     const [date, setDate] = useState<Date>(today)
-    useEffect(()=>{
-        console.log(date)
-    }, [date])
+    const [appointmentDetails, setAppointmentDetails] = useState<any>()
+    const [detailsOpen, setDetailsOpen] = useState(false)
     return (
         <div className="grid min-h-screen w-full overflow-hidden md:grid-cols-[280px_1fr]">
             <SideBarDash /> 
@@ -48,14 +48,14 @@ export default function Dashboard(){
                                 <div className="flex flex-col gap-4">
                                     <div className="px-4 py-2 pb-4 mt-4 flex flex-col border border-sickness-border rounded-md shadow-md gap-6 lg:w-fit lg:h-fit w-full">
                                         <p className="text-sickness-primary lg:text-2xl text-xl font-semibold"> Visits for today: <span> {AppointmentsData.body.visitsToday} </span> </p>
-                                        <div className="flex flex-wrap gap-4">
-                                            <div className="px-4 py-2 flex flex-col border border-sickness-border rounded-sm shadow-sm">
+                                        <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 w-full">
+                                            <div className="px-4 py-2 flex w-full flex-col border border-sickness-border rounded-sm shadow-sm">
                                                 <h1 className="text-xl"> New Patients </h1>
                                                 <p className="text-lg font-semibold flex gap-2 self-end">  { AppointmentsData.body.newPatients.value } { AppointmentsData.body.newPatients.etat === "positive" ? <TrendingUpIcon className="text-green-500" /> : (AppointmentsData.newPatients.etat === "negative" ? <TrendingDownIcon className="text-red-500" /> : "" ) } </p>
                                             </div>
-                                            <div className="px-4 py-2 flex flex-col border border-sickness-border rounded-sm shadow-sm">
+                                            <div className="px-4 py-2 flex w-full flex-col border border-sickness-border rounded-sm shadow-sm">
                                                 <h1 className="text-xl"> Yesterday's Patients </h1>
-                                                <p className="text-lg font-semibold flex gap-2 self-end"> { AppointmentsData.body.yesterdayPatients } </p>
+                                                <p className="text-lg font-semibold flex gap-2 self-end"> { AppointmentsData.body.yesterdayPatients } <HeartPulse className="translate-y-[1.5px]" /> </p>
                                             </div>
                                         </div>
                                     </div>
@@ -64,26 +64,25 @@ export default function Dashboard(){
                                             <h1 className="md:text-xl text-lg font-semibold text-sickness-primaryText"> Appointments List </h1>
                                             <SelectDate date={date} setDate={setDate} />
                                         </div>
-                                        <div className="grid lg:grid-cols-2 grid-cols-1 gap-2 w-full mt-4">
+                                        <div className="grid xl:grid-cols-2 grid-cols-1 gap-2 w-full mt-4">
                                             <div className="flex flex-col gap-4">
                                                 {
                                                     AppointmentsData.body.appointmentHistory.map((appointment: any) => {
                                                         const appointmentDate = new Date(appointment.requestedAt)
-                                                        console.log(appointmentDate)
                                                         if(compareDates(appointmentDate, date)){
                                                             return(
-                                                                <TodayAppointmentsCard />
+                                                                <TodayAppointmentsCard appointment={appointment} setAppointmentDetails={setAppointmentDetails} setDetailsOpen={setDetailsOpen} />
                                                             )
                                                         }
                                                     } )
                                                 }
                                             </div>
-                                            <AppointmentDetailsCard />
+                                            { detailsOpen && <AppointmentDetailsCard appointemntDetails={appointmentDetails}  /> }
                                         </div>
                                     </div>
                                 </div>
                                 <div className="w-full">
-                                    <DashboardCalendar />
+                                    <DashboardCalendar appointments={AppointmentsData.body.appointmentHistory} />
                                 </div>
                             </div>
                         </>

@@ -5,11 +5,20 @@ import interactionPlugin from '@fullcalendar/interaction'
 import resourceTimelinePlugin from '@fullcalendar/resource-timeline'
 import timeGridPlugin from '@fullcalendar/timegrid'
 
-export default function DashboardCalendar() {
+export default function DashboardCalendar({appointments}: {appointments: Array<any>}) {
+
+  const updatedAppointments = appointments.map((appointment) => {
+    const date = new Date(appointment.requestedAt)
+    const AppointmentExample = { title: `${appointment.patient.name} ${appointment.patient.lastname}`, start: date, resourceId: appointment.state === "accepted" ? 'a' : (appointment.state === "finished" ? 'b' : 'c')}
+    return (AppointmentExample)
+  })
+
+
   return (
     <Layout>
-      <div className='calendar-container'>
+      <div className='calendar-container overflow-x-auto'>
         <FullCalendar
+          viewClassNames={`overflow-x-scroll`}
           plugins={[
             resourceTimelinePlugin,
             dayGridPlugin,
@@ -27,11 +36,11 @@ export default function DashboardCalendar() {
           selectable={true}
           selectMirror={true}
           resources={[
-            { id: 'a', title: 'Rendez-Vous' }
+            { id: 'a', title: 'Appointment' },
+            { id: 'b', title: 'Finished Appointment' },
+            { id: 'c', title: 'Other' },
           ]}
-          initialEvents={[
-            { title: 'Consultation', start: new Date(), resourceId: 'a' }
-          ]}
+          initialEvents={ updatedAppointments }
         />
       </div>
     </Layout>
