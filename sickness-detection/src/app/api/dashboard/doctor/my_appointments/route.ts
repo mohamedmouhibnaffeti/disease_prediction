@@ -8,7 +8,7 @@ export async function GET(request: NextRequest){
     try{
         const doctorID = request.nextUrl.searchParams.get("doctorID") || ""
         connectMongoDB()
-        const appointments = await Appointment.find({ doctor: doctorID }).populate({path: "patient", select: "name lastname age gender"})
+        const appointments = await Appointment.find({ doctor: doctorID }).populate({path: "patient", select: "name lastname age gender phone"})
         const todayAppointments = appointments.filter((appointment) => isToday(appointment.requestedAt))
         const yesterdayAppointments = appointments.filter((appointment) => isYesterday(appointment.requestedAt))
         const visitsToday = appointments.filter((appointment) => (isToday(appointment.requestedAt) && appointment.state === "pending" ))
