@@ -8,8 +8,15 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { useState } from "react"
+import { useDispatch } from "react-redux"
+import { AppDispatch } from "@/Store/store"
+import FinishAppointmentDialog from "./FinishAppointment"
+import { setFinishAppointmentOpen } from "@/Store/doctor/doctorSlice"
 
 export default function AppointmentDetailsCard({appointemntDetails}: { appointemntDetails: any }) {
+    const [appointment, setAppointment] = useState<any>()
+    const dispatch = useDispatch<AppDispatch>()
     return(
         <div className="flex flex-col gap-2 border border-sickness-border shadow-md rounded-md pb-2 w-full h-fit">
             <div className="flex gap-2">
@@ -25,7 +32,7 @@ export default function AppointmentDetailsCard({appointemntDetails}: { appointem
                             </DropdownMenuTrigger>
                             <DropdownMenuContent className="w-56">
                                 <DropdownMenuSeparator />
-                                <DropdownMenuItem className="cursor-pointer text-sickness-primaryText font-[510]">
+                                <DropdownMenuItem onClick={()=>dispatch(setFinishAppointmentOpen(true))} className="cursor-pointer text-sickness-primaryText font-[510]">
                                     Finish Appointment
                                 </DropdownMenuItem>
                                 <DropdownMenuItem className="cursor-pointer text-sickness-primaryText font-[510]">
@@ -40,6 +47,7 @@ export default function AppointmentDetailsCard({appointemntDetails}: { appointem
             </div>
             <div className="w-full h-[1px] bg-sickness-border" />
             <p className="font-semibold text-sickness-primaryText text-center self-center flex"> Last Checked: <span className="font-normal text-sickness-gray"> First visit </span> </p>
+            <FinishAppointmentDialog appointment={appointemntDetails} />
         </div>
     )
 }

@@ -30,6 +30,15 @@ const AppointmentSchema = new Schema({
     requestedAt: {
         type: Date,
         default: Date.now()
+    },
+    prescription: {
+        type: String
+    },
+    finishedAt: {
+        type: Date
+    },
+    observation: {
+        type: String
     }
 });
 

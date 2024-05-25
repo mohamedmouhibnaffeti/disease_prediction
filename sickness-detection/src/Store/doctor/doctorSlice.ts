@@ -6,14 +6,18 @@ interface doctorSliceType {
     doctors: Array<any>,
     updatedDoctors: Array<any>,
     requestLoading: boolean,
-    AcceptAppointmentState: boolean
+    AcceptAppointmentState: boolean,
+    postponeAppointmentState: boolean,
+    finishAppointmentState: boolean
 }
 
 const initialState: doctorSliceType = {
     doctors: [],
     updatedDoctors: [],
     requestLoading: false,
-    AcceptAppointmentState: false
+    AcceptAppointmentState: false,
+    postponeAppointmentState: false,
+    finishAppointmentState: false
 }
 
 const doctorSlice = createSlice({
@@ -39,6 +43,12 @@ const doctorSlice = createSlice({
         },
         setAcceptAppointmentOpen : (state, action: PayloadAction<boolean>) => {
             state.AcceptAppointmentState = action.payload
+        },
+        setFinishAppointmentOpen : (state, action: PayloadAction<boolean>) => {
+            state.finishAppointmentState = action.payload
+        },
+        setPostponeAppointmentOpen : (state, action: PayloadAction<boolean>) => {
+            state.postponeAppointmentState = action.payload
         }
     },
     extraReducers: (builder) => {
@@ -183,6 +193,6 @@ export const fetchAppointmentsData = createAsyncThunk(
     }
 )
 
-export const { updateDoctorsArray, setRequestLoading, setAcceptAppointmentOpen } = doctorSlice.actions
+export const { updateDoctorsArray, setRequestLoading, setAcceptAppointmentOpen, setFinishAppointmentOpen, setPostponeAppointmentOpen } = doctorSlice.actions
 
 export default doctorSlice.reducer
