@@ -9,6 +9,8 @@ import { useState } from 'react';
 import { PatientSignupErrorsType } from '@/app/interfaces/interfaces';
 import { isValidEmail } from '@/lib/functions/strings';
 import { useRouter } from 'next/navigation';
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { Label } from "@radix-ui/react-label"
 
 const ContainerStyle = {
     height: '2.7rem',
@@ -28,7 +30,7 @@ const ButtonStyle = {
 }
 
 export default () => {
-    const [ErrorMessages, setErrorMessages] = useState<PatientSignupErrorsType>({name: "", lastname: "", email: "", phone: "",password: "", confirmPassword: ""})
+    const [ErrorMessages, setErrorMessages] = useState<PatientSignupErrorsType>({name: "", lastname: "", email: "", phone: "",password: "", confirmPassword: "", age: "", gender: ""})
     const SignupFormData = useSelector((state: RootState) => state.Authentication.PatientSignupFormData)
     const dispatch = useDispatch<AppDispatch>()
     const [isLoading, setIsLoading] = useState(false)
@@ -53,7 +55,13 @@ export default () => {
         if(!isValidEmail(SignupFormData.email)){
             setErrorMessages((prevErrors: PatientSignupErrorsType) => ({ ...prevErrors, email: "Invalid email." }))
         }
-        if((!isValidEmail(SignupFormData.email)) || (SignupFormData.password !== SignupFormData.confirmPassword) || (SignupFormData.phone?.length < 9) || (SignupFormData.password?.length < 5) || (SignupFormData.name?.length < 5) || (SignupFormData.lastname?.length < 5)){
+        if(SignupFormData.gender.length === 0){
+            setErrorMessages((prevErrors: PatientSignupErrorsType) => ({ ...prevErrors, gender: "Please select a gender." }))
+        }
+        if(parseInt(SignupFormData.age) < 15){
+            setErrorMessages((prevErrors: PatientSignupErrorsType) => ({ ...prevErrors, age: "You should be older than 15 years old." }))
+        }
+        if((parseInt(SignupFormData.age) < 15) || (SignupFormData.gender.length === 0) || (!isValidEmail(SignupFormData.email)) || (SignupFormData.password !== SignupFormData.confirmPassword) || (SignupFormData.phone?.length < 9) || (SignupFormData.password?.length < 5) || (SignupFormData.name?.length < 5) || (SignupFormData.lastname?.length < 5)){
             return
         }else{
             setIsLoading(true)
@@ -69,8 +77,10 @@ export default () => {
             setIsLoading(false)
         }
     }
+
+    console.log(SignupFormData)
     return(
-        <div className="w-[34rem] flex justify-center items-center flex-col border border-sickness-border bg-white px-8 py-4 gap-4 rounded-lg sm:mt-[8rem] mt-[10rem] ">
+        <div className="w-[34rem] flex justify-center items-center flex-col border border-sickness-border bg-white px-8 py-4 gap-4 rounded-lg sm:mt-[6rem] mt-[8rem] ">
             <h1 className="font-semibold text-sickness-primaryText text-3xl"> Create Account </h1>
             <div className="flex md:flex-row flex-col gap-2 w-full">
                 <div className="w-full">
@@ -91,7 +101,28 @@ export default () => {
             </div>
             <PhoneInput country='tn' value={SignupFormData.phone} inputStyle={InputStyle} buttonStyle={ButtonStyle} containerStyle={ContainerStyle} onChange={(e)=>{ dispatch(setPatientSignupFormData({ name: "phone", value: e })); setErrorMessages((prevErrors: PatientSignupErrorsType) => ({ ...prevErrors,  phone: ""})) }}/>
             <p className="text-sm text-red-500 text-center break-words"> { ErrorMessages.phone } </p>
-            <div className="w-full mt-4">
+            <div className="flex justify-between gap-2 w-full -translate-y-2">
+                <div className="flex flex-col gap-3 justify-center items-center translate-y-3">
+                    <p className="font-medium text-lg text-sickness-gray rounded-sm"> Age </p>
+                    <input type="text" placeholder="18" value={SignupFormData.age || ""} onChange={(e)=>{ dispatch(setPatientSignupFormData({ name: "age", value: parseInt(e.target.value) || "" })); setErrorMessages((prevErrors: PatientSignupErrorsType) => ({ ...prevErrors,  age: ""})) }}  className="w-[4rem] py-2 pl-4 text-sickness-ashGray font-medium text-2xl focus:outline-none border-[1px] border-sicness-border focus:border-sickness-border rounded-md" />
+                    <p className="text-sm text-red-500 text-center break-words"> { ErrorMessages.age } </p>
+                </div>
+                <div className="flex flex-col gap-3 mt-6 justify-center items-center">
+                    <p className="font-medium text-sickness-gray text-lg rounded-sm self-start "> Gender </p>
+                    <RadioGroup className="flex gap-2" onValueChange={(e)=>{ dispatch(setPatientSignupFormData({ name: "gender", value: e })); setErrorMessages((prevErrors: PatientSignupErrorsType) => ({ ...prevErrors,  age: ""})) }}  >
+                        <div className="flex items-center py-2 space-x-4 px-4 w-full bg-settaFill border-[1px] border-settaBorder pl-2 rounded-md text-[#999999]">
+                            <RadioGroupItem value="Male" id="r1" />
+                            <Label htmlFor="r1">Male</Label>
+                        </div>
+                        <div className="flex items-center h-[3rem] space-x-4 px-4 bg-settaFill border-[1px] border-settaBorder py-3 rounded-md text-[#999999]">
+                            <RadioGroupItem value="Female" id="r2" />
+                            <Label htmlFor="r2">Female</Label>
+                        </div>
+                    </RadioGroup>
+                    <p className="text-sm text-red-500 text-center break-words"> { ErrorMessages.gender } </p>
+                </div>
+            </div>
+            <div className="w-full mt-2">
                     <span className="text-sickness-gray text-lg"> Password </span>
                     <input type="password" value={SignupFormData.password} onChange={(e)=>{ dispatch(setPatientSignupFormData({ name: "password", value: e.target.value })); setErrorMessages((prevErrors: PatientSignupErrorsType) => ({ ...prevErrors,  password: ""})) }} className="outline-none border focus:border-sickness-primary text-sickness-gray text- pl-2 py-2 rounded-md w-full border-sickness-border" placeholder="●●●●●●●●" />
                     <p className="text-sm text-red-500 text-center break-words"> { ErrorMessages.password } </p>

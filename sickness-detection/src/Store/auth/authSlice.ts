@@ -18,7 +18,7 @@ const initialState: authSliceType = {
     currentSignUpPage: "role",
     currentDoctorSignupPage: 1,
     SignupFormDataDoctor: { name: "", lastname: "", email: "", phone: "",password: "", confirmPassword: "", images: [], otp: "", location: [35.632401, 10.8959568], speciality: "" },
-    PatientSignupFormData: { name: "", lastname: "", email: "", phone: "",password: "", confirmPassword: "" },
+    PatientSignupFormData: { name: "", lastname: "", email: "", phone: "",password: "", confirmPassword: "", gender: "", age: "" },
     LoginFormData: { email: "", password: "" },
     ForgotPasswordData: { email: "", passwwd: "", confirmPasswd: "", otp: "" }
 }
@@ -168,7 +168,12 @@ export const PatientSignup = createAsyncThunk(
         if(PatientSignupFormData.phone.length < 9){
             return ({message: "Phone number should be of 9 caracters long minimum."})
         }
-        
+        if(parseInt(PatientSignupFormData.age) < 15){
+            return ({message: "You should be older than 15 years old."})
+        }
+        if(PatientSignupFormData.gender.length === 0){
+            return ({message: "Please select a gender."})
+        }
         const etat = areAllStringsEmpty(PatientSignupFormData)
         if(!etat){
             const response = await fetch(`${next_backend_route}/auth/signup/patient`, {

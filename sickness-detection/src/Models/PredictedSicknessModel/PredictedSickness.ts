@@ -17,8 +17,8 @@ const PredictedSicknessSchema = new Schema({
     },
     conditions: {
         type: []
-    }
-})
+    },
+}, { timestamps: true })
 
 
 const PredictedSickness = models.PredictedSickness || model("PredictedSickness", PredictedSicknessSchema)

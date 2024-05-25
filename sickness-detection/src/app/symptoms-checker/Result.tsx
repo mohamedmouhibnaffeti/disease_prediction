@@ -8,6 +8,7 @@ import Predict from "@/vendors/MachineLearning/Predict"
 export default () => {
     const dispatch = useDispatch<AppDispatch>()
     const {SicknessToPush, SelectedSymptoms, PredictionResult, predicting} = useSelector((state: RootState) => state.Predict)
+    const [hasPushed, setHasPushed] = useState(false)
     const FetchPredictionResult = async() =>{
         setPredictingState(true)
         const result = await Predict({ Symptoms: SelectedSymptoms })
@@ -18,7 +19,7 @@ export default () => {
             PredictionResult.push({ nom: nom.slice(1), res: parseFloat(res) });
         }
         */
-        if(true && SicknessToPush.sickness){
+        if(SicknessToPush.sickness.length > 0 && !hasPushed){
             pushDisease()
         }
         dispatch(setPredictionResult(result))
@@ -28,6 +29,7 @@ export default () => {
     const pushDisease = async() => {
         setPushingLoading(true)
         await dispatch(CreatePredictedSickness())
+        setHasPushed(true)
         setPushingLoading(false)
     }
     useLayoutEffect(()=>{

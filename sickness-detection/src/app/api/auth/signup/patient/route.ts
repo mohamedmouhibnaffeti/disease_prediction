@@ -7,10 +7,10 @@ import { createAccessToken, createRefreshToken } from "@/lib/functions/auth"
 
 export async function POST(request: Request){
     try{
-        const { name, lastname, phone, email, password, confirmPassword } = await request.json()
+        const { name, lastname, phone, email, password, confirmPassword, gender, age } = await request.json()
         await connectMongoDB()
         const salt = await bcrypt.genSalt(10)
-        if(name.length < 5 || lastname.length < 5 || !isValidEmail(email) || password.length < 6 || confirmPassword < 6 || confirmPassword !== password || phone.length < 9){
+        if(name.length < 5 || lastname.length < 5 || !isValidEmail(email) || password.length < 6 || confirmPassword < 6 || confirmPassword !== password || phone.length < 9 || gender.length === 0 || parseInt(age) < 15 ){
             return NextResponse.json({ message: "check patient form data" }, { status: 400 })
         }
         const existingPatient = await User.findOne({email: email})
@@ -18,7 +18,7 @@ export async function POST(request: Request){
             return NextResponse.json({message: "Email already exists in database." }, { status: 400 })
         }else{
             const hashedPassword = await bcrypt.hash(password, salt)
-            const createdPatient = await Patient.create({ name, lastname, email, password: hashedPassword, phone })
+            const createdPatient = await Patient.create({ name, lastname, email, password: hashedPassword, phone, gender, age: parseInt(age) })
             if(createdPatient){
                 const RefreshToken = createRefreshToken(createdPatient._id)
                 const AccessToken = createAccessToken(createdPatient._id)

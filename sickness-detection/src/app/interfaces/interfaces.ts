@@ -32,7 +32,9 @@ export interface PatientSignupformDataType {
     email: string,
     phone: string,
     password: string,
-    confirmPassword: string
+    confirmPassword: string,
+    gender: string, 
+    age: string,
 }
 
 export interface LoginFormDataType {
@@ -58,7 +60,9 @@ export interface PatientSignupErrorsType {
     email: string,
     phone: string,
     password: string,
-    confirmPassword: string
+    confirmPassword: string,
+    age: string,
+    gender: string
 }
 
 export interface LoginErrorsType {
