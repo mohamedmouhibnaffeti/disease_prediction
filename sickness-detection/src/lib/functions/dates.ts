@@ -43,3 +43,16 @@ export function isYesterday(date: Date){
 
     return (todayDay === Day && todayMonth === Month && todayYear === Year)
 }
+
+export function compareDates(date1: Date,date2: Date){
+
+    const Year1 = date1.getFullYear()
+    const Month1 = date1.getMonth()
+    const Day1 = date1.getDate() 
+
+    const Year2 = date2.getFullYear()
+    const Month2 = date2.getMonth()
+    const Day2 = date2.getDate()
+
+    return (Day1 === Day2 && Month1 === Month2 && Year1 === Year2)
+}

@@ -17,7 +17,7 @@ export async function GET(request: NextRequest){
         const returnBody = {
             newPatients: { value: todayAppointments.length - yesterdayAppointments.length, etat: (todayAppointments.length - yesterdayAppointments.length) >= 0 ? "positive" : "negative" },
             yesterdayPatients: yesterdayAppointments.length,
-            visitsToday: visitsToday,
+            visitsToday: visitsToday.length,
             appointmentHistory: appointmentHistory
         }
         return NextResponse.json({body: returnBody})

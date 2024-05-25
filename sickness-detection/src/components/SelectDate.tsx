@@ -21,9 +21,7 @@ import {
 } from "@/components/ui/select"
 import { compareDateWithToday } from "@/lib/functions/dates"
 
-export default function SelectDate() {
-  const [date, setDate] = React.useState<Date>()
-
+export default function SelectDate({date, setDate}: { date: Date, setDate: any }) {
   return (
     <Popover>
       <PopoverTrigger asChild>

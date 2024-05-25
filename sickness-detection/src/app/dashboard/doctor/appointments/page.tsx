@@ -5,52 +5,96 @@ import { TrendingDownIcon, TrendingUpIcon } from "lucide-react"
 import DashboardCalendar from "@/components/DashboardCalendar"
 import TodayAppointmentsCard from "@/components/TodayAppointmentsCard"
 import AppointmentDetailsCard from "@/components/AppointmentDetailsCard"
-
+import { useDispatch } from "react-redux"
+import { AppDispatch } from "@/Store/store"
 import SelectDate from "@/components/SelectDate"
+import { fetchAppointmentsData } from "@/Store/doctor/doctorSlice"
+import MainLoader from "@/components/Loaders/MainLoader"
+import { useState, useLayoutEffect, useEffect } from "react"
+import ErrorFetching from "@/components/Errors/FailedFetching"
+import { compareDates } from "@/lib/functions/dates"
 
 export default function Dashboard(){
+    const [AppointmentsData, setAppointmentsData] = useState<any>()
+    const [requestLoading, setRequestLoading] = useState(true)
+    const dispatch = useDispatch<AppDispatch>()
+    const fetchData = async() => {
+        const response = await dispatch(fetchAppointmentsData({doctorID: "6651ad919b6651ea68e8243c"}))
+        setAppointmentsData(response.payload)
+        setRequestLoading((prev) => false)
+    }
+    useLayoutEffect(()=>{
+        fetchData()
+    }, [])
+    const today = new Date()
+    const [date, setDate] = useState<Date>(today)
+    useEffect(()=>{
+        console.log(date)
+    }, [date])
     return (
         <div className="grid min-h-screen w-full overflow-hidden md:grid-cols-[280px_1fr]">
             <SideBarDash /> 
         <div className="flex flex-col">
             <NavBarDash />
             <main className="flex-1 p-4 md:p-6">
-                <h1 className="md:text-2xl text-xl font-semibold text-sickness-primaryText"> Good Morning Dr. Mouhib </h1>
-                <div className="grid lg:grid-cols-2 grid-cols-1 gap-2">
-                    <div className="flex flex-col gap-4">
-                        <div className="px-4 py-2 pb-4 mt-4 flex flex-col border border-sickness-border rounded-md shadow-md gap-6 lg:w-fit lg:h-fit w-full">
-                            <p className="text-sickness-primary lg:text-2xl text-xl font-semibold"> Visits for today: <span> 100 </span> </p>
-                            <div className="flex flex-wrap gap-4">
-                                <div className="px-4 py-2 flex flex-col border border-sickness-border rounded-sm shadow-sm">
-                                    <h1 className="text-xl"> New Patients </h1>
-                                    <p className="text-lg font-semibold flex gap-2 self-end"> 40 <TrendingUpIcon className="text-green-500" /> </p>
-                                </div>
-                                <div className="px-4 py-2 flex flex-col border border-sickness-border rounded-sm shadow-sm">
-                                    <h1 className="text-xl"> Old Patients </h1>
-                                    <p className="text-lg font-semibold flex gap-2 self-end"> 20 <TrendingDownIcon className="text-red-500" /> </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="flex flex-col border border-sickness-border rounded-md shadow-md px-4 py-2 pb-4 mt-4">
-                            <div className="flex w-full gap-6 items-center">
-                                <h1 className="md:text-xl text-lg font-semibold text-sickness-primaryText"> Pending Appointments </h1>
-                                <SelectDate />
-                            </div>
-                            <div className="grid lg:grid-cols-2 grid-cols-1 gap-2 w-full mt-4">
+                {
+                    !requestLoading ?
+                    (
+                        AppointmentsData && AppointmentsData.status === 200
+                        ?
+                        <>
+                            <h1 className="md:text-2xl text-xl font-semibold text-sickness-primaryText"> Good Morning Dr. Mouhib </h1>
+                            <div className="grid lg:grid-cols-2 grid-cols-1 gap-2">
                                 <div className="flex flex-col gap-4">
-                                    <TodayAppointmentsCard />
-                                    <TodayAppointmentsCard />
-                                    <TodayAppointmentsCard />
-                                    <TodayAppointmentsCard />
+                                    <div className="px-4 py-2 pb-4 mt-4 flex flex-col border border-sickness-border rounded-md shadow-md gap-6 lg:w-fit lg:h-fit w-full">
+                                        <p className="text-sickness-primary lg:text-2xl text-xl font-semibold"> Visits for today: <span> {AppointmentsData.body.visitsToday} </span> </p>
+                                        <div className="flex flex-wrap gap-4">
+                                            <div className="px-4 py-2 flex flex-col border border-sickness-border rounded-sm shadow-sm">
+                                                <h1 className="text-xl"> New Patients </h1>
+                                                <p className="text-lg font-semibold flex gap-2 self-end">  { AppointmentsData.body.newPatients.value } { AppointmentsData.body.newPatients.etat === "positive" ? <TrendingUpIcon className="text-green-500" /> : (AppointmentsData.newPatients.etat === "negative" ? <TrendingDownIcon className="text-red-500" /> : "" ) } </p>
+                                            </div>
+                                            <div className="px-4 py-2 flex flex-col border border-sickness-border rounded-sm shadow-sm">
+                                                <h1 className="text-xl"> Yesterday's Patients </h1>
+                                                <p className="text-lg font-semibold flex gap-2 self-end"> { AppointmentsData.body.yesterdayPatients } </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-col border border-sickness-border rounded-md shadow-md px-4 py-2 pb-4 mt-4">
+                                        <div className="flex w-full gap-6 items-center">
+                                            <h1 className="md:text-xl text-lg font-semibold text-sickness-primaryText"> Appointments List </h1>
+                                            <SelectDate date={date} setDate={setDate} />
+                                        </div>
+                                        <div className="grid lg:grid-cols-2 grid-cols-1 gap-2 w-full mt-4">
+                                            <div className="flex flex-col gap-4">
+                                                {
+                                                    AppointmentsData.body.appointmentHistory.map((appointment: any) => {
+                                                        const appointmentDate = new Date(appointment.requestedAt)
+                                                        console.log(appointmentDate)
+                                                        if(compareDates(appointmentDate, date)){
+                                                            return(
+                                                                <TodayAppointmentsCard />
+                                                            )
+                                                        }
+                                                    } )
+                                                }
+                                            </div>
+                                            <AppointmentDetailsCard />
+                                        </div>
+                                    </div>
                                 </div>
-                                <AppointmentDetailsCard />
+                                <div className="w-full">
+                                    <DashboardCalendar />
+                                </div>
                             </div>
-                        </div>
+                        </>
+                        :
+                        <ErrorFetching />
+                    )
+                    :
+                    <div className="w-full h-full flex justify-center items-center">
+                        <MainLoader />
                     </div>
-                    <div className="w-full">
-                        <DashboardCalendar />
-                    </div>
-                </div>
+                }
             </main>
         </div>
         </div>
