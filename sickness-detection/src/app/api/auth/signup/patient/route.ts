@@ -18,7 +18,7 @@ export async function POST(request: Request){
             return NextResponse.json({message: "Email already exists in database." }, { status: 400 })
         }else{
             const hashedPassword = await bcrypt.hash(password, salt)
-            const createdPatient = await Patient.create({ name, lastname, email, password: hashedPassword, phone, gender, age: parseInt(age) })
+            const createdPatient = await Patient.create({ name, lastname, email, password: hashedPassword, phone, gender, age: parseInt(age), role: "patient" })
             if(createdPatient){
                 const RefreshToken = createRefreshToken(createdPatient._id)
                 const AccessToken = createAccessToken(createdPatient._id)
@@ -28,6 +28,7 @@ export async function POST(request: Request){
             }
         }
     }catch(err){
+        console.log(err)
         return NextResponse.json({ message: "error signing up patient", error: err }, { status: 500 })
     }
 }

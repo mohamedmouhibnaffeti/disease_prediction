@@ -61,7 +61,7 @@ export async function POST(request: NextRequest) {
         }else{
             const salt = await bcrypt.genSalt(10)
             const hashedPassword = await bcrypt.hash(password, salt)
-            const CreatedDoctor = await Doctor.create({ name, lastname, phone, email, password: hashedPassword, id_images: imagepaths, speciality: speciality, location: locationObject })
+            const CreatedDoctor = await Doctor.create({ name, lastname, phone, email, password: hashedPassword, id_images: imagepaths, speciality: speciality, location: locationObject, role: "doctor" })
             if(CreatedDoctor){
                 const RefreshToken = createRefreshToken(CreatedDoctor._id)
                 const AccessToken = createAccessToken(CreatedDoctor._id)

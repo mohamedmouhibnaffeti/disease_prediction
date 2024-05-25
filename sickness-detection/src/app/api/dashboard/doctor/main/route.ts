@@ -21,7 +21,7 @@ export async function GET(request: NextRequest){
             if(appointment.state === "accepted"){
                 AcceptedAppointments.push(appointment)
             }
-            if(((appointment.state === "accepted" || appointment.state === "pending"))){
+            if(/* (!MyPatients.some(((existingAppointment: any) => existingAppointment.patient._id === appointment.patient._id))) && */((appointment.state === "accepted" || appointment.state === "pending"))){
                 MyPatients.push(appointment)
             }
         })

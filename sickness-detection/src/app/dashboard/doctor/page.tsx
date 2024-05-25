@@ -19,7 +19,7 @@ export default function Dashboard(){
     const [requestLoading, setRequestLoading] = useState(true)
     const dispatch = useDispatch<AppDispatch>()
     const fetchData = async() => {
-        const response = await dispatch(fetchDashboardMainData({doctorID: "6650f76e724682a9692f7f9e"}))
+        const response = await dispatch(fetchDashboardMainData({doctorID: "6651ad919b6651ea68e8243c"}))
         setMainData(response.payload)
         setRequestLoading((prev) => false)
     }

@@ -9,3 +9,24 @@ export function areAllStringsEmpty(obj: any): boolean {
     }
     return true;
 }
+
+
+export function getAgeCounts(patients: Array<any>) {
+    const ageCountMap = new Map();
+  
+    patients.forEach(({patient}) => {
+      const age = patient.age;
+      if (ageCountMap.has(age)) {
+        ageCountMap.set(age, ageCountMap.get(age) + 1);
+      } else {
+        ageCountMap.set(age, 1);
+      }
+    });
+  
+    const result: any = [];
+    ageCountMap.forEach((count, age) => {
+      result.push({ age: age, count: count });
+    });
+  
+    return result;
+  }

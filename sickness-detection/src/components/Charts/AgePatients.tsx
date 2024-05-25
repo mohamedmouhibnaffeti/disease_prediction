@@ -11,6 +11,7 @@ import {
   Tooltip,
   Filler,
 } from "chart.js";
+import { getAgeCounts } from "@/lib/functions/objects";
 
 ChartJS.register(
   LineElement,
@@ -22,28 +23,14 @@ ChartJS.register(
   Filler
 );
 
-const patientsData = [
-    { month: "January", patients: 120 },
-    { month: "February", patients: 130 },
-    { month: "March", patients: 180 },
-    { month: "April", patients: 140 },
-    { month: "May", patients: 200 },
-    { month: "June", patients: 280 },
-    { month: "July", patients: 280 },
-    { month: "August", patients: 280 },
-    { month: "September", patients: 280 },
-    { month: "October", patients: 280 },
-    { month: "November", patients: 280 },
-    { month: "December", patients: 280 },
-  ];
-
-function AgeLineChart() {
+function AgeLineChart({patients}: {patients: Array<any>}) {
+  const patientsData = getAgeCounts(patients)
   const data = {
-    labels: patientsData.map((data) => data.month),
+    labels: patientsData.map((data: any) => data.count),
     datasets: [
       {
         label: "Patients",
-        data: patientsData.map((data) => data.patients),
+        data: patientsData.map((data: any) => data.age),
         borderColor: "#D3D3D3",
         borderWidth: 3,
         pointBorderColor: "#D3D3D3",
@@ -85,7 +72,7 @@ function AgeLineChart() {
         },
         title: {
           display: true,
-          text: "Number of patients",
+          text: "Age",
           padding: {
             bottom: 10,
           },
@@ -95,29 +82,27 @@ function AgeLineChart() {
             family: "Arial",
           },
         },
-        min: 50,
+        min: 15,
       },
       x: {
         ticks: {
           font: {
-            size: 17,
+            size: 14,
             weight: "bold" as "bold",
           },
         },
-        /*
         title: {
           display: true,
-          text: "Month",
+          text: "Number of patients",
           padding: {
             top: 10,
           },
           font: {
-            size: 30,
+            size: 18,
             style: "italic" as "italic",
             family: "Arial",
           },
         },
-        */
       },
     },
   };
