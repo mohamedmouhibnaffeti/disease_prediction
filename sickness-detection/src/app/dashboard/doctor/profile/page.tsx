@@ -22,20 +22,101 @@ const InputStyle = {
 const ButtonStyle = {
     width: '4rem',
     display: 'flex',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    zIndex: "20"
 }
 import dynamic from 'next/dynamic'; // or any other library for dynamic imports
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
 import 'leaflet-defaulticon-compatibility';
 import { Marker, Popup, TileLayer } from 'react-leaflet';
+import { useState, useLayoutEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { AppDispatch } from '@/Store/store'
+import { updateDoctor } from '@/Store/doctor/doctorSlice'
+import { useToast } from '@/components/ui/use-toast'
+import SmallWhiteLoader from '@/components/Loaders/WhiteButtonLoader'
+import { isValidEmail } from '@/lib/functions/strings'
 const LeafletMap = dynamic(() => import('react-leaflet').then((mod) => mod.MapContainer), {
     ssr: false
   });
 
 export default function Parametres(){
+    const dispatch = useDispatch<AppDispatch>()
+    const [user, setUser] = useState<{name: string, lastname: string, userID: string, phone: string, location: [number, number], email: string}>({
+        name: "",
+        lastname: "",
+        phone: "",
+        userID: "",
+        location: [0, 0],
+        email: ""
+    });
+    const [error, setError] = useState<{name: string, lastname: string, phone: string}>({
+        name: "",
+        lastname: "",
+        phone: ""
+    });
+    useLayoutEffect(()=>{
+        const stringUser = localStorage.getItem("user") || ""
+        const parsedUser = JSON.parse(stringUser)
+        if(parsedUser){
+            setUser({
+                name: parsedUser.name,
+                lastname: parsedUser.lastname,
+                phone: parsedUser.phone,
+                userID: parsedUser._id,
+                location: parsedUser.location[0].cordonnees,
+                email: parsedUser.email
+            })
+        }
+    },[])
     const handleMarkerMove = (e: any) => {
-      };
+        setUser({...user, location: [e.target.getLatLng().lat, e.target.getLatLng().lng]})
+    };
+    const handleFieldChange = ({val, name}: {val: string, name: keyof {name: string, lastname: string, userID: string, phone: string, location: [number, number]}}) => {
+        setUser({...user, [name]: val})
+    }
+    const [loading, setLoading] = useState(false)
+    const { toast } = useToast()
+    const handleUpdateDoctor = async() => {
+        if(user.name.length < 4){
+            setError({...error, name: "Name should be longer than 4 caracters."})
+        }
+        if(user.lastname.length < 4){
+            setError({...error, lastname: "Lastname should be longer than 4 caracters."})
+        }
+        if(user.phone.length < 9){
+            setError({...error, name: "Phone number should be longer than 8 caracters"})
+        } 
+        if((user.phone.length < 9) || (!isValidEmail(user.email)) || (user.lastname.length < 4) || (user.name.length < 4)){
+            return
+        }
+        setLoading(true)
+        const response = await dispatch(updateDoctor({doctorID: user.userID, name: user.name, lastname: user.lastname, phone: user.phone, location: user.location}))
+        console.log(response)
+        setLoading(false)
+        if(response.payload.status === 204){
+            toast({
+                title: "Congratulations !",
+                description: <p> You've updated your profile successfully</p>,
+              })
+              
+        }
+        else if(response.payload.status === 400){
+            toast({
+                variant: "destructive",
+                title: "Sorry.",
+                description: <p> { response.payload.message } </p>,
+              })
+        }
+        else if(response.payload.status === 500){
+            toast({
+                variant: "destructive",
+                title: "Sorry.",
+                description: <p> Couldn't update profile.Please try again later. </p>,
+              })
+        }
+    }
     return (
         <div className="grid min-h-screen w-full overflow-hidden md:grid-cols-[280px_1fr]">
             <SideBarDash />
@@ -67,34 +148,34 @@ export default function Parametres(){
                                 <div className="flex md:flex-row flex-col gap-3 w-full mt-4">
                                     <div className="flex flex-col gap-1 w-full">
                                         <p className="text-sm text-black font-medium">Name</p>
-                                        <input type="text" className="border-2 border-[#C5C5C5] rounded-md h-12 focus:outline-none focus:border-sickness-primary pl-2 "/>
+                                        <input type="text" value={user.name} onChange={(e)=>{handleFieldChange({val: e.target.value, name: "name"}); setError({...error, name: ""})}} className="border-2 border-[#C5C5C5] rounded-md h-12 focus:outline-none focus:border-sickness-primary pl-2 "/>
                                         <p className="text-sm text-red-500 self-center text-center">  </p>
                                     </div>
                                     <div className="flex flex-col gap-1 w-full">
                                         <p className="text-sm text-black font-medium">Lastname</p>
-                                        <input type="text" className="border-2 border-[#C5C5C5] rounded-md h-12 focus:outline-none focus:border-sickness-primary pl-2 " />
+                                        <input type="text" value={user.lastname} onChange={(e)=>{handleFieldChange({val: e.target.value, name: "lastname"}); setError({...error, name: ""})}}  className="border-2 border-[#C5C5C5] rounded-md h-12 focus:outline-none focus:border-sickness-primary pl-2 " />
                                         <p className="text-sm text-red-500 self-center text-center">  </p>
                                     </div>
                                 </div>
                                 <div className="flex flex-col gap-1 w-full mt-4">
                                     <p className="text-sm text-black font-medium">Email Address</p>
-                                    <input type="email" className="border-2 border-[#C5C5C5] bg-[#C5C5C5]/20 rounded-md h-12 focus:outline-none] pl-2 " readOnly={true} />
+                                    <input type="email" value={user.email} className="border-2 border-[#C5C5C5] bg-[#C5C5C5]/20 rounded-md h-12 focus:outline-none] pl-2 " readOnly={true} />
                                 </div>
                                 <div className="flex flex-col gap-1 w-full mt-4 outline-none">
                                     <p className="text-sm text-black font-medium">Phone Number</p>
-                                    <PhoneInput country='tn' inputStyle={InputStyle} buttonStyle={ButtonStyle} containerStyle={ContainerStyle} />
+                                    <PhoneInput country='tn' value={user.phone} onChange={(e)=>{handleFieldChange({val: e, name: "phone"}); setError({...error, name: ""})}}  inputStyle={InputStyle} buttonStyle={ButtonStyle} containerStyle={ContainerStyle} />
                                 {/* <input type="text" className="border-2 border-[#C5C5C5] rounded-md w-full h-12 focus:outline-none focus:border-sickness-primary pl-2 " /> */}
                                 <p className="text-sm text-red-500 self-center text-center">  </p>
                                 </div>
                                 <div className="flex flex-col gap-1 w-full mt-4">
                                     <p className="text-sm text-black font-medium">Office Location</p>
                                     <div className="w-full h-[20rem]">
-                                        <LeafletMap center={[0, 0]} zoom={13} scrollWheelZoom={false} className='w-full h-full border-2 border-sickness-border rounded-lg shadow-lg z-10'>
+                                        <LeafletMap center={user.location} zoom={13} scrollWheelZoom={false} className='w-full h-full border-2 border-sickness-border rounded-lg shadow-lg z-10'>
                                             <TileLayer
                                                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                                                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                                             />
-                                            <Marker position={[0, 0]} draggable={true} eventHandlers={{ dragend: handleMarkerMove }}>
+                                            <Marker position={user.location} draggable={true} eventHandlers={{ dragend: handleMarkerMove }}>
                                                 <Popup>
                                                     My location
                                                 </Popup>
@@ -102,7 +183,7 @@ export default function Parametres(){
                                         </LeafletMap>
                                         </div>
                                 </div>
-                                <button className={`w-fit px-4 py-2 bg-settaPrimary/70 bg-settaPrimary text-white font-semibold flex justify-center items-center rounded-md mt-6`}> Sauvegarder </button>
+                                <button onClick={handleUpdateDoctor} className={`md:w-fit w-full px-8 py-2 ${loading ? "bg-sickness-primary/50" : "bg-sickness-primary/70 hover:bg-sickness-primary active:bg-sickness-primary/50"} transition delay-100 ease-in bg-settaPrimary text-white font-semibold flex gap-2 justify-center items-center rounded-md mt-6 self-end`} > Update {loading && <SmallWhiteLoader />} </button>
                             </>
                         }
                     </div>

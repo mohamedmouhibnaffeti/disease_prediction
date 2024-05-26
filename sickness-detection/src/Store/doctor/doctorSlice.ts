@@ -246,6 +246,35 @@ export const fetchAppointmentsData = createAsyncThunk(
     }
 )
 
+export const updateDoctor = createAsyncThunk(
+    "doctor/updateDoctor",
+    async({doctorID, name, lastname, phone, location}: {doctorID: any, name: string, lastname: string, phone: string, location: [number, number]}) => {
+        try{
+            const response = await fetch(`${next_backend_route}/user/doctor/update_doctor`, {
+                method: 'PUT',
+                body: JSON.stringify({
+                    doctorID: doctorID,
+                    name: name,
+                    lastname: lastname,
+                    phone: phone,
+                    location: location
+                })
+            })
+            if(response.ok){
+                const data = await response.json()
+                console.log(data)
+                localStorage.setItem("user", JSON.stringify(data.doctor))
+                return { ...data, status: 204 }
+            }else{
+                const data = await response.json()
+                return { ...data, status: 400 }
+            }
+        }catch(err){
+            return { err, status: 500 }
+        }
+    }
+)
+
 export const { updateDoctorsArray, setRequestLoading, setAcceptAppointmentOpen, setFinishAppointmentOpen, setPostponeAppointmentOpen } = doctorSlice.actions
 
 export default doctorSlice.reducer
