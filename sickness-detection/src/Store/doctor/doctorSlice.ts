@@ -210,6 +210,10 @@ export const fetchDashboardMainData = createAsyncThunk(
                 const data = await response.json()
                 return { ...data, status: 200 }
             }
+            else if(response.status === 404 || response.status === 400){
+                const data = await response.json()
+                return { ...data, status: 400 } 
+            }
         }catch(err){
             return { err, status: 500 }
         }
@@ -225,6 +229,10 @@ export const fetchStatisticsData = createAsyncThunk(
                 const data = await response.json()
                 return { ...data, status: 200 }
             }
+            else if(response.status === 404 || response.status === 400){
+                const data = await response.json()
+                return { ...data, status: 400 } 
+            }
         }catch(err){
             return { err, status: 500 }
         }
@@ -239,6 +247,10 @@ export const fetchAppointmentsData = createAsyncThunk(
             if(response.ok){
                 const data = await response.json()
                 return { ...data, status: 200 }
+            }
+            else if(response.status === 404 || response.status === 400){
+                const data = await response.json()
+                return { ...data, status: 400 } 
             }
         }catch(err){
             return { err, status: 500 }
@@ -265,9 +277,9 @@ export const updateDoctor = createAsyncThunk(
                 console.log(data)
                 localStorage.setItem("user", JSON.stringify(data.doctor))
                 return { ...data, status: 204 }
-            }else{
+            }else if(response.status === 404 || response.status === 400){
                 const data = await response.json()
-                return { ...data, status: 400 }
+                return { ...data, status: 400 } 
             }
         }catch(err){
             return { err, status: 500 }
@@ -275,6 +287,23 @@ export const updateDoctor = createAsyncThunk(
     }
 )
 
+export const fetchHistoryData = createAsyncThunk(
+    "doctor/dashboardStatistics",
+    async({doctorID}: {doctorID: any}) => {
+        try{
+            const response = await fetch(`${next_backend_route}/dashboard/doctor/history?doctorID=${doctorID}`)
+            if(response.ok){
+                const data = await response.json()
+                return { ...data, status: 200 }
+            }else{
+                const data = await response.json()
+                return { ...data, status: 400 } 
+            }
+        }catch(err){
+            return { err, status: 500 }
+        }
+    }
+)
 export const { updateDoctorsArray, setRequestLoading, setAcceptAppointmentOpen, setFinishAppointmentOpen, setPostponeAppointmentOpen } = doctorSlice.actions
 
 export default doctorSlice.reducer

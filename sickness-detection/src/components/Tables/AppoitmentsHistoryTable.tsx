@@ -9,86 +9,37 @@ TableHeader,
 TableRow,
 } from "@/components/ui/table"
 
-import { BookUserIcon } from "lucide-react"
+import { BookUserIcon, BookmarkCheckIcon, Clock9Icon, XCircleIcon } from "lucide-react"
 
-const appointments = [
-    {
-        name: "John",
-        lastname: "Doe",
-        email: "john.doe@example.com",
-        phone: "123-456-7890",
-        date: "17/11/2001"
-    },
-    {
-        name: "Jane",
-        lastname: "Smith",
-        email: "jane.smith@example.com",
-        phone: "987-654-3210",
-        date: "17/11/2001"
-    },
-    {
-        name: "Alice",
-        lastname: "Johnson",
-        email: "alice.johnson@example.com",
-        phone: "555-555-5555",
-        date: "17/11/2001"
-    },
-    {
-        name: "Bob",
-        lastname: "Brown",
-        email: "bob.brown@example.com",
-        phone: "111-222-3333",
-        date: "17/11/1999"
-    },
-    {
-        name: "Emily",
-        lastname: "Davis",
-        email: "emily.davis@example.com",
-        phone: "444-444-4444",
-        date: "17/11/2001"
-    },
-    {
-        name: "Michael",
-        lastname: "Wilson",
-        email: "michael.wilson@example.com",
-        phone: "666-777-8888",
-        date: "17/11/2002"
-    },
-    {
-        name: "Sarah",
-        lastname: "Taylor",
-        email: "sarah.taylor@example.com",
-        phone: "999-999-9999",
-        date: "17/11/2001"
-    }
-];
-
-
-export function AppointmentsTable() {
+export function AppointmentsTable({appointments}: {appointments: Array<any>}) {
 return (
     <Table>
         <TableCaption className="border-t border-sickness-border pt-3">A list of your appointments.</TableCaption>
         <TableHeader className="hover:bg-sickness-primary/20 transition delay-100 ease-in">
             <TableRow>
+            <TableHead>Status</TableHead>
             <TableHead>Name</TableHead>
             <TableHead>Lastname</TableHead>
             <TableHead>Email</TableHead>
             <TableHead>Phone</TableHead>
             <TableHead>Date</TableHead>
-            <TableHead>Details</TableHead>
             </TableRow>
         </TableHeader>
         <TableBody>
-            {appointments.map((appointment) => (
-            <TableRow key={appointment.email}>
-                <TableCell>{appointment.name}</TableCell>
-                <TableCell>{appointment.lastname}</TableCell>
-                <TableCell>{appointment.email}</TableCell>
-                <TableCell>{appointment.phone}</TableCell>
-                <TableCell>{appointment.date}</TableCell>
-                <TableCell> <button className="bg-sickness-primary text-white font-semibold text-sm hover:bg-sickness-primary/80 transition delay-100 ease-in flex px-2 py-1 w-fit h-fit rounded-md gap-2"> Details <BookUserIcon className="w-5 h-5" /> </button> </TableCell>
-            </TableRow>
-            ))}
+            {appointments.map((appointment) => {
+                const date = new Date(appointment.requestedAt)
+                const dateString = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+                return(
+                    <TableRow key={appointment._id}>
+                        <TableCell>{appointment.state === "pending" ? <Clock9Icon className="text-orange-400" /> : (appointment.state === "finished" ? <BookmarkCheckIcon className="text-green-500" /> : ( appointment.state === "refused" ? <XCircleIcon className="text-red-500" /> : "" ))}</TableCell>
+                        <TableCell>{appointment.patient.name}</TableCell>
+                        <TableCell>{appointment.patient.lastname}</TableCell>
+                        <TableCell>{appointment.patient.email}</TableCell>
+                        <TableCell>+{appointment.patient.phone}</TableCell>
+                        <TableCell>{dateString}</TableCell>
+                    </TableRow>
+                    )
+            })}
         </TableBody>
     </Table>
 )
