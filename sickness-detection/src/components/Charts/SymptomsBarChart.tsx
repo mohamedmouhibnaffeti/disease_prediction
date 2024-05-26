@@ -41,4 +41,4 @@ const SymptomsBarChart = ({symptoms}: {symptoms: Array<any>}) => {
     </div>
   );
 };
-export default SymptomsBarChart;
+export default SymptomsBarChart
