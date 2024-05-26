@@ -13,7 +13,7 @@ export default function TodayAppointmentsCard({appointment, setAppointmentDetail
             </div>
             <div className="flex flex-col gap-2 my-2 w-full">
                 <h3 className="font-semibold text-sickness-primaryText"> {`${appointment.patient.name} ${appointment.patient.lastname}`} </h3>
-                <p className="font-semibold text-sickness-primaryText"> New Visit </p>
+                <p className="font-semibold text-sickness-primaryText"> {appointment.lastChecked.firstTime ? appointment.lastChecked.message : "Scheduled" } </p>
             </div>
             <div className="border-l border-sickness-border flex justify-center items-center text-lg font-semibold px-4 w-fit">
                 {time.hours}:{time.minutes}

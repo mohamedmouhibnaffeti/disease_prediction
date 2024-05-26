@@ -8,7 +8,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { AppDispatch } from "@/Store/store"
 import FinishAppointmentDialog from "./FinishAppointment"
@@ -17,10 +17,9 @@ import PostponeAppointment from "./PostponeAppointment"
 
 export default function AppointmentDetailsCard({appointemntDetails}: { appointemntDetails: any }) {
     const dispatch = useDispatch<AppDispatch>()
-    const [date, setDate] = useState<Date>()
-    if(!appointemntDetails.lastChecked.firstTime){
-        setDate(appointemntDetails.finishedAt)
-    }
+    const newDate = new Date(appointemntDetails.lastChecked.finishedAt)
+    const [date, setDate] = useState<Date>(newDate)
+    console.log(date)
     return(
         <div className="flex flex-col gap-2 border border-sickness-border shadow-md rounded-md pb-2 w-full h-fit">
             <div className="flex gap-2">
@@ -50,7 +49,13 @@ export default function AppointmentDetailsCard({appointemntDetails}: { appointem
                 </div>
             </div>
             <div className="w-full h-[1px] bg-sickness-border" />
-            <p className="font-semibold text-sickness-primaryText text-center self-center flex"> Last Checked: <span className="font-normal text-sickness-gray"> {appointemntDetails.lastChecked.message || `${date?.toDateString()}`} </span> </p>
+            <p className="font-semibold text-sickness-primaryText text-center self-center flex"> Last Checked:&nbsp;<span className="font-normal text-sickness-gray"> {appointemntDetails.lastChecked.firstTime ?  appointemntDetails.lastChecked.message : `${date?.toDateString()}`} </span> </p>
+            {
+                !appointemntDetails.lastChecked.firstTime && 
+                <div className="flex flex-col gap-2 mt-2 pl-2">
+                    <p className="font-semibold text-sickness-primaryText text-center flex"> Observation:&nbsp;<span className="font-normal text-sickness-gray"> {appointemntDetails.lastChecked.observation} </span> </p>
+                </div>
+            }
             <FinishAppointmentDialog appointment={appointemntDetails} />
             <PostponeAppointment appointment={appointemntDetails} />
         </div>

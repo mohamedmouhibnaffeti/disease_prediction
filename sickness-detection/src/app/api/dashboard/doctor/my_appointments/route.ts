@@ -48,7 +48,7 @@ export async function GET(request: NextRequest) {
                     requestedAt: historyAppointment.requestedAt,
                     lastChecked: {
                         observation: latestMatch.observation || "No recorded observation",
-                        finishedAt: latestMatch.finishedAt,
+                        finishedAt: latestMatch.finishedAt || "No recorded prescription",
                         firstTime: false
                     }
                 };
