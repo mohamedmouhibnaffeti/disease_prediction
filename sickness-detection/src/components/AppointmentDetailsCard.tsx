@@ -17,6 +17,10 @@ import PostponeAppointment from "./PostponeAppointment"
 
 export default function AppointmentDetailsCard({appointemntDetails}: { appointemntDetails: any }) {
     const dispatch = useDispatch<AppDispatch>()
+    const [date, setDate] = useState<Date>()
+    if(!appointemntDetails.lastChecked.firstTime){
+        setDate(appointemntDetails.finishedAt)
+    }
     return(
         <div className="flex flex-col gap-2 border border-sickness-border shadow-md rounded-md pb-2 w-full h-fit">
             <div className="flex gap-2">
@@ -46,7 +50,7 @@ export default function AppointmentDetailsCard({appointemntDetails}: { appointem
                 </div>
             </div>
             <div className="w-full h-[1px] bg-sickness-border" />
-            <p className="font-semibold text-sickness-primaryText text-center self-center flex"> Last Checked: <span className="font-normal text-sickness-gray"> First visit </span> </p>
+            <p className="font-semibold text-sickness-primaryText text-center self-center flex"> Last Checked: <span className="font-normal text-sickness-gray"> {appointemntDetails.lastChecked.message || `${date?.toDateString()}`} </span> </p>
             <FinishAppointmentDialog appointment={appointemntDetails} />
             <PostponeAppointment appointment={appointemntDetails} />
         </div>

@@ -48,7 +48,8 @@ export async function GET(request: NextRequest) {
                     requestedAt: historyAppointment.requestedAt,
                     lastChecked: {
                         observation: latestMatch.observation || "No recorded observation",
-                        finishedAt: latestMatch.finishedAt
+                        finishedAt: latestMatch.finishedAt,
+                        firstTime: false
                     }
                 };
             } else {
@@ -67,7 +68,8 @@ export async function GET(request: NextRequest) {
                     state: historyAppointment.state,
                     requestedAt: historyAppointment.requestedAt,
                     lastChecked: {
-                        message: "First Visit"
+                        message: "First Visit",
+                        firstTime: true
                     }
                 };
             }
@@ -75,7 +77,7 @@ export async function GET(request: NextRequest) {
 
         const returnBody = {
             newPatients: {
-                value: todayAppointments.length - yesterdayAppointments.length,
+                value: todayAppointments.length - yesterdayAppointments.length >= 0  ? todayAppointments.length - yesterdayAppointments.length : 0,
                 etat: (todayAppointments.length - yesterdayAppointments.length) >= 0 ? "positive" : "negative"
             },
             yesterdayPatients: yesterdayAppointments.length,

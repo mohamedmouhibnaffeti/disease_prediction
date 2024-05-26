@@ -51,7 +51,7 @@ export default function Dashboard(){
                                         <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 w-full">
                                             <div className="px-4 py-2 flex w-full flex-col border border-sickness-border rounded-sm shadow-sm">
                                                 <h1 className="text-xl"> New Patients </h1>
-                                                <p className="text-lg font-semibold flex gap-2 self-end">  { AppointmentsData.body.newPatients.value } { AppointmentsData.body.newPatients.etat === "positive" ? <TrendingUpIcon className="text-green-500" /> : (AppointmentsData.newPatients.etat === "negative" ? <TrendingDownIcon className="text-red-500" /> : "" ) } </p>
+                                                <p className="text-lg font-semibold flex gap-2 self-end">  { AppointmentsData.body.newPatients.value } { AppointmentsData.body.newPatients.etat === "positive" ? <TrendingUpIcon className="text-green-500" /> : (AppointmentsData.body.newPatients.etat === "negative" ? <TrendingDownIcon className="text-red-500" /> : "" ) } </p>
                                             </div>
                                             <div className="px-4 py-2 flex w-full flex-col border border-sickness-border rounded-sm shadow-sm">
                                                 <h1 className="text-xl"> Yesterday's Patients </h1>
