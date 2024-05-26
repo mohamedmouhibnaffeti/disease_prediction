@@ -104,8 +104,8 @@ export default function PendingAppointmentCard({appointment}: {appointment: any}
                     <p className="uppercase"> {`${appointment.patient.name[0]}${appointment.patient.lastname[0]}`} </p>
                 </div>
                 <div className="flex flex-col gap-2">
-                    <h3 className="font-semibold text-sickness-primaryText"> {`${appointment.patient.name} +${appointment.patient.lastname}`} </h3>
-                    <p className="font-semibold text-sickness-primaryText"> Phone number: <span className="font-normal text-sickness-gray"> { appointment.patient.phone } </span> </p>
+                    <h3 className="font-semibold text-sickness-primaryText"> {`${appointment.patient.name} ${appointment.patient.lastname}`} </h3>
+                    <p className="font-semibold text-sickness-primaryText"> Phone number: <span className="font-normal text-sickness-gray"> +{ appointment.patient.phone } </span> </p>
                 </div>
             </div>
             </DialogTrigger>
