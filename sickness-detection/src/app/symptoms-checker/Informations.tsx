@@ -37,15 +37,15 @@ export default () => {
                 <div className="flex flex-col gap-3 mt-6 justify-center items-center w-full">
                     <p className="bg-sickness-carolinaBlue px-4 py-2 w-fit font-medium text-white rounded-sm"> Gender </p>
                     <RadioGroup className="flex gap-2" onValueChange={(e)=>{dispatch(selectSex(e)); setErrMsg((prevErr) => ({...prevErr, sex: ""}));}}>
-                    <div className="flex items-center h-[3rem] space-x-4 px-4 w-full bg-settaFill border-[1px] border-settaBorder py-3 pl-2 rounded-md text-[#999999]">
-                        <RadioGroupItem value="Male" id="r1" />
-                        <Label htmlFor="r1">Male</Label>
-                    </div>
-                    <div className="flex items-center h-[3rem] space-x-4 px-4 bg-settaFill border-[1px] border-settaBorder py-3 rounded-md text-[#999999]">
-                        <RadioGroupItem value="Female" id="r2" />
-                        <Label htmlFor="r2">Female</Label>
-                    </div>
-                </RadioGroup>
+                        <div className="flex items-center h-[3rem] space-x-4 px-4 w-full bg-settaFill border-[1px] border-settaBorder py-3 pl-2 rounded-md text-[#999999]">
+                            <RadioGroupItem value="Male" id="r1" />
+                            <Label htmlFor="r1">Male</Label>
+                        </div>
+                        <div className="flex items-center h-[3rem] space-x-4 px-4 bg-settaFill border-[1px] border-settaBorder py-3 rounded-md text-[#999999]">
+                            <RadioGroupItem value="Female" id="r2" />
+                            <Label htmlFor="r2">Female</Label>
+                        </div>
+                    </RadioGroup>
                 </div>
             </div>
             {Object.keys(errMsgs).map((key, index) => (

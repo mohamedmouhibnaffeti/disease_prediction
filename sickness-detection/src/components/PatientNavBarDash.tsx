@@ -53,7 +53,7 @@ const PatientNavBarDash = () => {
                 <div className="flex sm:gap-8 gap-2 items-center justify-between">
                     <MenuIcon className={`md:hidden flex cursor-pointer `} />
                     <NotificationBell />
-                    <div className="md:flex hidden border border-sickness-border rounded-full p-2 text-xl bg-teal-500 text-white w-fit h-fit">
+                    <div className="md:flex hidden border border-sickness-border rounded-full p-2 text-lg bg-teal-500 text-white w-fit h-fit">
                         <p className="uppercase"> MN </p>
                     </div>
                 </div>
