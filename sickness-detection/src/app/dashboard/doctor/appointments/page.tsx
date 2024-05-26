@@ -12,7 +12,7 @@ import { fetchAppointmentsData } from "@/Store/doctor/doctorSlice"
 import MainLoader from "@/components/Loaders/MainLoader"
 import { useState, useLayoutEffect, useEffect } from "react"
 import ErrorFetching from "@/components/Errors/FailedFetching"
-import { compareDates } from "@/lib/functions/dates"
+import { Greeting, compareDates } from "@/lib/functions/dates"
 import { HeartPulse } from "lucide-react"
 
 export default function Dashboard(){
@@ -43,7 +43,7 @@ export default function Dashboard(){
                         AppointmentsData && AppointmentsData.status === 200
                         ?
                         <>
-                            <h1 className="md:text-2xl text-xl font-semibold text-sickness-primaryText"> Good Morning Dr. Mouhib </h1>
+                            <h1 className="md:text-2xl text-xl font-semibold text-sickness-primaryText"> {Greeting()} </h1>
                             <div className="grid lg:grid-cols-2 grid-cols-1 gap-2">
                                 <div className="flex flex-col gap-4">
                                     <div className="px-4 py-2 pb-4 mt-4 flex flex-col border border-sickness-border rounded-md shadow-md gap-6 lg:w-fit lg:h-fit w-full">

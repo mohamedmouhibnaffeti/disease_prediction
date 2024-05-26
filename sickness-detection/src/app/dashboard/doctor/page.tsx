@@ -12,6 +12,7 @@ import { AppDispatch } from "@/Store/store"
 import { fetchDashboardMainData } from "@/Store/doctor/doctorSlice"
 import MainLoader from "@/components/Loaders/MainLoader"
 import ErrorFetching from "@/components/Errors/FailedFetching"
+import { Greeting } from "@/lib/functions/dates"
 
 export default function Dashboard(){
     const [maxLen, setMaxLen] = useState(3)
@@ -39,7 +40,7 @@ export default function Dashboard(){
                         (
                             mainData && mainData.status === 200 ?
                             <>
-                                <h1 className="md:text-2xl text-xl font-semibold text-sickness-primaryText"> Good Morning Dr. Mouhib </h1>
+                                <h1 className="md:text-2xl text-xl font-semibold text-sickness-primaryText"> {Greeting()} </h1>
                                 <div className="flex flex-col gap-2 mt-4">
                                     <div className="grid lg:grid-cols-3 gap-2">
                                         <StatsCard text="Accepted Appointments" value={mainData.acceptedAppointments} />

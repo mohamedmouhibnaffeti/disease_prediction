@@ -49,7 +49,7 @@ export default function PostponeAppointment({appointment}: {appointment: any}) {
                 title: "Congratulations !",
                 description: <p> You've postponeed the appointment with <span className="font-semibold"> {appointment.patient.name} {appointment.patient.lastname} </span> </p>,
               })
-              
+              window.location.reload()
         }
         else if(response.payload.status === 400){
             toast({
@@ -112,7 +112,7 @@ export default function PostponeAppointment({appointment}: {appointment: any}) {
             </DialogHeader>
             <div className='w-full flex justify-start items-center flex-col'>
                 <div className="flex w-full justify-between items-center flex-wrap">
-                    <p className="font-semibold text-sickness-primaryText text-sm"> Phone Number: <span className="text-sickness-gray"> +{ appointment.patient.phone } </span> </p>
+                    <p className="font-semibold text-sickness-primaryText text-sm"> Phone Number: <span className="text-sickness-gray"> { appointment.patient.phone } </span> </p>
                     <p className="font-semibold text-sickness-primaryText text-sm"> Request Date: <span className="text-sickness-gray"> {date.toDateString()} </span> </p>
                 </div>
                 <p className="font-semibold text-sickness-primaryText text-sm self-center mt-2"> Email: <span className="text-sickness-gray"> { appointment.patient.email } </span> </p>

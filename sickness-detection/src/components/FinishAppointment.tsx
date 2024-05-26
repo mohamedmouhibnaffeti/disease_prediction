@@ -33,6 +33,7 @@ export default function FinishAppointmentDialog ({appointment}: {appointment: an
                 description: <p> You've finished the appointment with <span className="font-semibold"> {appointment.patient.name} {appointment.patient.lastname} </span> </p>,
             })
             dispatch(setFinishAppointmentOpen(false))
+            window.location.reload()
         }
         else if(response.payload.status === 400){
             toast({
@@ -67,7 +68,7 @@ export default function FinishAppointmentDialog ({appointment}: {appointment: an
             </DialogHeader>
             <div className='w-full flex justify-start items-center flex-col'>
                 <div className="flex w-full justify-between items-center flex-wrap">
-                    <p className="font-semibold text-sickness-primaryText text-sm"> Phone Number: <span className="text-sickness-gray"> +{ appointment.patient.phone } </span> </p>
+                    <p className="font-semibold text-sickness-primaryText text-sm"> Phone Number: <span className="text-sickness-gray"> { appointment.patient.phone } </span> </p>
                     <p className="font-semibold text-sickness-primaryText text-sm"> Request Date: <span className="text-sickness-gray"> {date.toDateString()} </span> </p>
                 </div>
                 <div className="h-[1px] bg-sickness-border w-full mt-3" />
