@@ -2,18 +2,25 @@ import { next_backend_route } from "@/lib/statics/ApiRoutes";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface PatientSliceType {
-
+    PatientHistoryItemOpen: boolean,
+    PatientHistoryItem: any
 }
 
 const initialState: PatientSliceType = {
-    
+    PatientHistoryItemOpen: false,
+    PatientHistoryItem: null
 }
 
 const patientSlice = createSlice({
     name: "patient",
     initialState,
     reducers: {
-
+        setPatientHistoryItemOpen: (state, action: PayloadAction<boolean>) => {
+            state.PatientHistoryItemOpen = action.payload
+        },
+        setPatientHistoryItem: (state, action: PayloadAction<any>) => {
+            state.PatientHistoryItem = action.payload
+        }
     }
 })
 
@@ -80,6 +87,6 @@ export const fetchPatientHistoryData = createAsyncThunk(
     }
 )
 
-export const {} = patientSlice.actions
+export const { setPatientHistoryItemOpen, setPatientHistoryItem } = patientSlice.actions
 
 export default patientSlice.reducer

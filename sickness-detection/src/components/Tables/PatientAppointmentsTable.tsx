@@ -1,3 +1,5 @@
+import { setPatientHistoryItem, setPatientHistoryItemOpen } from "@/Store/patient/PatientSlice"
+import { AppDispatch } from "@/Store/store"
 import {
     Table,
     TableBody,
@@ -10,8 +12,10 @@ import {
     } from "@/components/ui/table"
     
     import { BookUserIcon, BookmarkCheckIcon, Clock9Icon, MinusIcon, XCircleIcon } from "lucide-react"
+import { useDispatch } from "react-redux"
     
-    export function PatientAppointmentsTable({appointments}: {appointments: Array<any>}) {
+export function PatientAppointmentsTable({appointments}: {appointments: Array<any>}) {
+    const dispatch = useDispatch<AppDispatch>()
     return (
         <Table>
             <TableCaption className="border-t border-sickness-border pt-3">A list of your appointments.</TableCaption>
@@ -38,7 +42,7 @@ import {
                             <TableCell>{appointment.doctor.speciality}</TableCell>
                             <TableCell>+{appointment.doctor.phone}</TableCell>
                             <TableCell>{dateString}</TableCell>
-                            <TableCell>{appointment.state === "finished" ? <button className="bg-green-500 hover:bg-green-600 transition delay-100 ease-in-out text-white text-sm px-2 py-1 rounded-md font-semibold"> View Details </button> : <MinusIcon className="text-sickness-gray translate-x-8" />}</TableCell>
+                            <TableCell>{appointment.state === "finished" ? <button onClick={()=>{dispatch(setPatientHistoryItemOpen(true)); dispatch(setPatientHistoryItem(appointment))}} className="bg-green-500 hover:bg-green-600 transition delay-100 ease-in-out text-white text-sm px-2 py-1 rounded-md font-semibold"> View Details </button> : <MinusIcon className="text-sickness-gray translate-x-8" />}</TableCell>
                         </TableRow>
                         )
                 })}

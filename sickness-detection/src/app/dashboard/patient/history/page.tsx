@@ -14,6 +14,7 @@ import { MonitorXIcon } from "lucide-react"
 import { AppointmentsTable } from "@/components/Tables/AppoitmentsHistoryTable"
 import { fetchPatientHistoryData } from "@/Store/patient/PatientSlice"
 import { PatientAppointmentsTable } from "@/components/Tables/PatientAppointmentsTable"
+import PatientHistoryItemDetails from "@/components/PatientHistoryItemDetails"
 
 export default function Dashboard(){
     const [AppointmentsData, setAppointmentsData] = useState<any>()
@@ -43,6 +44,7 @@ export default function Dashboard(){
                                 <div className="overflow-x-scroll grid max-w-screen mt-4 border border-sickness-border rounded-md">
                                     <PatientAppointmentsTable  appointments={AppointmentsData.appointments} />
                                 </div>
+                                <PatientHistoryItemDetails />
                             </>
                             :
                             <ErrorFetching />

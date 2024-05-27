@@ -15,23 +15,6 @@ import DashLikeCard from "@/components/DashLikeCard"
 import DashCommentCard from "@/components/DashCommentCard"
 import DashPostCardDetails from "@/components/DashPostCardDetails"
 
-const sampleSymptoms = [
-    { title: 'Headache', count: 120 },
-    { title: 'Fever', count: 95 },
-    { title: 'Cough', count: 85 },
-    { title: 'Fatigue', count: 70 },
-    { title: 'Sore Throat', count: 65 },
-    { title: 'Shortness of Breath', count: 50 },
-];
-const sampleSicknesses = [
-    { title: 'Common Cold', count: 140 },
-    { title: 'Influenza', count: 120 },
-    { title: 'Stomach Flu', count: 90 },
-    { title: 'Bronchitis', count: 75 },
-    { title: 'COVID-19', count: 200 },
-    { title: 'Pneumonia', count: 60 },
-];
-
 export default function Dashboard(){
     const [requestLoading, setRequestLoading] = useState(false)
     return (
