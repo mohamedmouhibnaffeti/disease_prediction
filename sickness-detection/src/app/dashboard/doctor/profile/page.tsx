@@ -86,7 +86,7 @@ export default function Parametres(){
             setError({...error, lastname: "Lastname should be longer than 4 caracters."})
         }
         if(user.phone.length < 9){
-            setError({...error, name: "Phone number should be longer than 8 caracters"})
+            setError({...error, phone: "Phone number should be longer than 9 caracters"})
         } 
         if((user.phone.length < 9) || (!isValidEmail(user.email)) || (user.lastname.length < 4) || (user.name.length < 4)){
             return
@@ -163,9 +163,9 @@ export default function Parametres(){
                                 </div>
                                 <div className="flex flex-col gap-1 w-full mt-4 outline-none">
                                     <p className="text-sm text-black font-medium">Phone Number</p>
-                                    <PhoneInput country='tn' value={user.phone} onChange={(e)=>{handleFieldChange({val: e, name: "phone"}); setError({...error, name: ""})}}  inputStyle={InputStyle} buttonStyle={ButtonStyle} containerStyle={ContainerStyle} />
+                                    <PhoneInput country='tn' value={user.phone} onChange={(e)=>{handleFieldChange({val: e, name: "phone"}); setError({...error, phone: ""})}}  inputStyle={InputStyle} buttonStyle={ButtonStyle} containerStyle={ContainerStyle} />
                                 {/* <input type="text" className="border-2 border-[#C5C5C5] rounded-md w-full h-12 focus:outline-none focus:border-sickness-primary pl-2 " /> */}
-                                <p className="text-sm text-red-500 self-center text-center">  </p>
+                                <p className="text-sm text-red-500 self-center text-center"> {error.phone} </p>
                                 </div>
                                 <div className="flex flex-col gap-1 w-full mt-4">
                                     <p className="text-sm text-black font-medium">Office Location</p>
