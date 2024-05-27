@@ -25,7 +25,7 @@ const ButtonStyle = {
     justifyContent: 'center',
     zIndex: "20"
 }
-import dynamic from 'next/dynamic'; // or any other library for dynamic imports
+import dynamic from 'next/dynamic';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
 import 'leaflet-defaulticon-compatibility';
@@ -36,7 +36,6 @@ import { AppDispatch } from '@/Store/store'
 import { updateDoctor } from '@/Store/doctor/doctorSlice'
 import { useToast } from '@/components/ui/use-toast'
 import SmallWhiteLoader from '@/components/Loaders/WhiteButtonLoader'
-import { isValidEmail } from '@/lib/functions/strings'
 const LeafletMap = dynamic(() => import('react-leaflet').then((mod) => mod.MapContainer), {
     ssr: false
   });
@@ -88,7 +87,7 @@ export default function Parametres(){
         if(user.phone.length < 9){
             setError({...error, phone: "Phone number should be longer than 9 caracters"})
         } 
-        if((user.phone.length < 9) || (!isValidEmail(user.email)) || (user.lastname.length < 4) || (user.name.length < 4)){
+        if((user.phone.length < 9) || (user.lastname.length < 4) || (user.name.length < 4)){
             return
         }
         setLoading(true)

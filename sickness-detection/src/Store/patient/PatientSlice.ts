@@ -34,6 +34,34 @@ export const PatientDashMainPageData = createAsyncThunk(
     }
 )
 
+export const updatePatient = createAsyncThunk(
+    "doctor/updateDoctor",
+    async({patientID, name, lastname, phone}: {patientID: any, name: string, lastname: string, phone: string}) => {
+        try{
+            const response = await fetch(`${next_backend_route}/user/patient`, {
+                method: 'PUT',
+                body: JSON.stringify({
+                    patientID: patientID,
+                    name: name,
+                    lastname: lastname,
+                    phone: phone
+                })
+            })
+            if(response.ok){
+                const data = await response.json()
+                console.log(data)
+                localStorage.setItem("user", JSON.stringify(data.patient))
+                return { ...data, status: 204 }
+            }else if(response.status === 404 || response.status === 400){
+                const data = await response.json()
+                return { ...data, status: 400 } 
+            }
+        }catch(err){
+            return { err, status: 500 }
+        }
+    }
+)
+
 export const {} = patientSlice.actions
 
 export default patientSlice.reducer

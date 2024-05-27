@@ -8,7 +8,7 @@ export async function PUT(request: Request){
         connectMongoDB()
         const exisingDoctor = await User.findById(doctorID)
         if(!exisingDoctor){
-            return NextResponse.json({message: "doesn't exist in database." }, { status: 400 })
+            return NextResponse.json({message: "Doctor doesn't exist in database." }, { status: 400 })
         }
         let locationObject
         if(location){
