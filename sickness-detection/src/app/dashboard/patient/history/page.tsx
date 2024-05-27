@@ -12,26 +12,21 @@ import SymptomsBarChart from "@/components/Charts/SymptomsBarChart"
 import SicknessBarChart from "@/components/Charts/SicknessBarChat"
 import { MonitorXIcon } from "lucide-react"
 import { AppointmentsTable } from "@/components/Tables/AppoitmentsHistoryTable"
-
-const sampleSymptoms = [
-    { title: 'Headache', count: 120 },
-    { title: 'Fever', count: 95 },
-    { title: 'Cough', count: 85 },
-    { title: 'Fatigue', count: 70 },
-    { title: 'Sore Throat', count: 65 },
-    { title: 'Shortness of Breath', count: 50 },
-];
-const sampleSicknesses = [
-    { title: 'Common Cold', count: 140 },
-    { title: 'Influenza', count: 120 },
-    { title: 'Stomach Flu', count: 90 },
-    { title: 'Bronchitis', count: 75 },
-    { title: 'COVID-19', count: 200 },
-    { title: 'Pneumonia', count: 60 },
-];
+import { fetchPatientHistoryData } from "@/Store/patient/PatientSlice"
+import { PatientAppointmentsTable } from "@/components/Tables/PatientAppointmentsTable"
 
 export default function Dashboard(){
-    const [requestLoading, setRequestLoading] = useState(false)
+    const [AppointmentsData, setAppointmentsData] = useState<any>()
+    const [requestLoading, setRequestLoading] = useState(true)
+    const dispatch = useDispatch<AppDispatch>()
+    const fetchData = async() => {
+        const response = await dispatch(fetchPatientHistoryData({patientID: "6651af539b6651ea68e82453"}))
+        setAppointmentsData(response.payload)
+        setRequestLoading((prev) => false)
+    }
+    useLayoutEffect(()=>{
+        fetchData()
+    }, [])
     return (
         <>
             <div className="grid min-h-screen w-full overflow-hidden md:grid-cols-[280px_1fr]">
@@ -42,11 +37,11 @@ export default function Dashboard(){
                     {
                         !requestLoading?
                         (
-                            200 === 200 ?
+                            AppointmentsData && AppointmentsData.status === 200 ?
                             <>
                                 <h1 className="md:text-2xl text-xl font-semibold text-sickness-primaryText"> Your previous appointments </h1>
                                 <div className="overflow-x-scroll grid max-w-screen mt-4 border border-sickness-border rounded-md">
-                                    <AppointmentsTable  appointments={AppointmentsData.appointments} />
+                                    <PatientAppointmentsTable  appointments={AppointmentsData.appointments} />
                                 </div>
                             </>
                             :

@@ -35,7 +35,7 @@ export const PatientDashMainPageData = createAsyncThunk(
 )
 
 export const updatePatient = createAsyncThunk(
-    "doctor/updateDoctor",
+    "doctor/updatePatient",
     async({patientID, name, lastname, phone}: {patientID: any, name: string, lastname: string, phone: string}) => {
         try{
             const response = await fetch(`${next_backend_route}/user/patient`, {
@@ -53,6 +53,24 @@ export const updatePatient = createAsyncThunk(
                 localStorage.setItem("user", JSON.stringify(data.patient))
                 return { ...data, status: 204 }
             }else if(response.status === 404 || response.status === 400){
+                const data = await response.json()
+                return { ...data, status: 400 } 
+            }
+        }catch(err){
+            return { err, status: 500 }
+        }
+    }
+)
+
+export const fetchPatientHistoryData = createAsyncThunk(
+    "doctor/PatientDashboardStatistics",
+    async({patientID}: {patientID: any}) => {
+        try{
+            const response = await fetch(`${next_backend_route}/dashboard/patient/history?patiendID=${patientID}`)
+            if(response.ok){
+                const data = await response.json()
+                return { ...data, status: 200 }
+            }else{
                 const data = await response.json()
                 return { ...data, status: 400 } 
             }

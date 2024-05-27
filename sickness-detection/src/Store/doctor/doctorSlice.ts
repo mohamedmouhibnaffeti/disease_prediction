@@ -304,6 +304,7 @@ export const fetchHistoryData = createAsyncThunk(
         }
     }
 )
+
 export const { updateDoctorsArray, setRequestLoading, setAcceptAppointmentOpen, setFinishAppointmentOpen, setPostponeAppointmentOpen } = doctorSlice.actions
 
 export default doctorSlice.reducer
