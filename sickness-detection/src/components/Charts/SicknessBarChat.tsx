@@ -1,13 +1,14 @@
 "use client";
 import dynamic from 'next/dynamic';
 import 'chart.js/auto';
+import { truncateString } from '@/lib/functions/strings';
 const Bar = dynamic(() => import('react-chartjs-2').then((mod) => mod.Bar), {
   ssr: false,
 });
 
 const SicknessBarChart = ({sicknesses}: {sicknesses: Array<any>}) => {
   const data = {
-    labels: sicknesses.map((sickness) => sickness.title),
+    labels: sicknesses.map((sickness) => truncateString({str: sickness.title, val: 30})),
     datasets: [
       {
         label: 'Trending sicknesses in the past 7 days',

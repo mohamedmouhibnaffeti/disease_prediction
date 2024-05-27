@@ -49,3 +49,12 @@ export function returnSpecificBodyParts(bodyPart: string, gender: string){
         default: return [];
     }
 }
+
+export function truncateString({str, val}: {str: string, val: number}) {
+    if (str.length > val) {
+      return str.substring(0, 10) + '...';
+    } else {
+      return str;
+    }
+  }
+  
