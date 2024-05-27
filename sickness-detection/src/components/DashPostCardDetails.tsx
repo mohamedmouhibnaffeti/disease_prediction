@@ -13,7 +13,7 @@ import DashCommentCard from "./DashCommentCard"
 import CommentItemDashCard from "./CommentItemDashCard"
 export default function DashPostCardDetails(){
     return(
-        <Dialog open={true} >
+        <Dialog open={false} >
             <DialogContent className='w-full flex justify-center flex-col'>
                 <DialogHeader className='w-full flex justify-center'>
                     <div className="self-end"  >
