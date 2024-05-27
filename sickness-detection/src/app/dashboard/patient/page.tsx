@@ -11,26 +11,21 @@ import NextAppointmentCard from "@/components/NextAppointmentCard"
 import SymptomsBarChart from "@/components/Charts/SymptomsBarChart"
 import SicknessBarChart from "@/components/Charts/SicknessBarChat"
 import { MonitorXIcon } from "lucide-react"
-
-const sampleSymptoms = [
-    { title: 'Headache', count: 120 },
-    { title: 'Fever', count: 95 },
-    { title: 'Cough', count: 85 },
-    { title: 'Fatigue', count: 70 },
-    { title: 'Sore Throat', count: 65 },
-    { title: 'Shortness of Breath', count: 50 },
-];
-const sampleSicknesses = [
-    { title: 'Common Cold', count: 140 },
-    { title: 'Influenza', count: 120 },
-    { title: 'Stomach Flu', count: 90 },
-    { title: 'Bronchitis', count: 75 },
-    { title: 'COVID-19', count: 200 },
-    { title: 'Pneumonia', count: 60 },
-];
+import { PatientDashMainPageData } from "@/Store/patient/PatientSlice"
 
 export default function Dashboard(){
     const [requestLoading, setRequestLoading] = useState(false)
+    const [mainData, setMainData] = useState<any>()
+    const dispatch = useDispatch<AppDispatch>()
+    const fetchData = async () => {
+        setRequestLoading(true)
+        const response = await dispatch(PatientDashMainPageData({patientID: "6651af539b6651ea68e82453"}))
+        setMainData(response.payload)
+        setRequestLoading(false)
+    }
+    useLayoutEffect(()=>{
+        fetchData()
+    }, [])
     return (
         <>
             <div className="grid min-h-screen w-full overflow-hidden md:grid-cols-[280px_1fr]">
@@ -41,16 +36,27 @@ export default function Dashboard(){
                     {
                         !requestLoading?
                         (
-                            200 === 200 ?
+                            mainData && mainData.status === 200 ?
                             <>
                                 <h1 className="md:text-2xl text-xl font-semibold text-sickness-primaryText"> {Greeting()} </h1>
                                 <div className="flex flex-col gap-2">
-                                    <h1 className="md:text-xl text-lg font-semibold text-sickness-gray mt-4"> My Next Appointment </h1>
-                                    <NextAppointmentCard />
+                                    <h1 className="md:text-xl text-lg font-semibold text-sickness-gray mt-4"> My Next Appointments </h1>
+                                    {
+                                        mainData.Appointments.length > 0 ?
+                                            <div className="grid xl:grid-cols-3 md:grid-cols-2 gap-2">
+                                               { mainData.Appointments.map((appointment: any, index: number) => {
+                                                    return(
+                                                        <NextAppointmentCard appointment={appointment} />
+                                                    )
+                                                })}
+                                            </div>
+                                        :
+                                        <h1 className="md:text-lg text-md font-semibold text-sickness-primary mt-4"> You have no accepted appointment in the moment. </h1>
+                                    }
                                     <h1 className="md:text-xl text-lg font-semibold text-sickness-gray mt-6"> Statistics </h1>
                                     <div className="gap-2 justify-between w-full lg:flex hidden">
-                                        <SymptomsBarChart symptoms={sampleSymptoms} />
-                                        <SicknessBarChart sicknesses={sampleSicknesses} />
+                                        <SymptomsBarChart symptoms={mainData.trendingSymptoms} />
+                                        <SicknessBarChart sicknesses={mainData.trendingSicknesses} />
                                     </div>
                                     <div className="lg:hidden flex flex-col text-red-500 items-center mt-20 w-full h-full gap-2 px-4 md:px-6">
                                         <MonitorXIcon className="w-48 h-48" />

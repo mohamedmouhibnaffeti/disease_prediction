@@ -3,6 +3,7 @@ import counterReducer from "./counter/counterSlice"
 import PredictReducer from "./Predict/PredictSlice"
 import authReducer from "./auth/authSlice"
 import doctorReducer from "./doctor/doctorSlice"
+import patientReducer from "./patient/PatientSlice"
 
 export const store = configureStore({
     reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
         Predict: PredictReducer,
         Authentication: authReducer,
         Doctor: doctorReducer,
+        Patient: patientReducer
     }
 })
 
