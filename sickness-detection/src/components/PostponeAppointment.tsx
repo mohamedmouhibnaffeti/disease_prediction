@@ -98,36 +98,36 @@ export default function PostponeAppointment({appointment}: {appointment: any}) {
     return(
         
         <Dialog open={postponeAppointmentState} >
-        <DialogContent className='w-full flex justify-center flex-col'>
-            <DialogHeader className='w-full flex justify-center'>
-                <div className="self-end"  >
-                    <X onClick={()=>dispatch(setPostponeAppointmentOpen(false))} className="cursor-pointer hover:rotate-90 transition delay-100 ease-linear"/>
+            <DialogContent className='w-full flex justify-center flex-col'>
+                <DialogHeader className='w-full flex justify-center'>
+                    <div className="self-end"  >
+                        <X onClick={()=>dispatch(setPostponeAppointmentOpen(false))} className="cursor-pointer hover:rotate-90 transition delay-100 ease-linear"/>
+                    </div>
+                    <DialogTitle className='w-full flex justify-center'>
+                        postpone or Refuse Appointment
+                    </DialogTitle>
+                    <DialogDescription className='text-center'>
+                        <p className="text-sickness-primaryText font-semibold text-base"> Patient Name: <span className="text-sickness-primary"> {appointment.patient.name} {appointment.patient.lastname} </span> </p>
+                    </DialogDescription>
+                </DialogHeader>
+                <div className='w-full flex justify-start items-center flex-col'>
+                    <div className="flex w-full justify-between items-center flex-wrap">
+                        <p className="font-semibold text-sickness-primaryText text-sm"> Phone Number: <span className="text-sickness-gray"> { appointment.patient.phone } </span> </p>
+                        <p className="font-semibold text-sickness-primaryText text-sm"> Request Date: <span className="text-sickness-gray"> {date.toDateString()} </span> </p>
+                    </div>
+                    <p className="font-semibold text-sickness-primaryText text-sm self-center mt-2"> Email: <span className="text-sickness-gray"> { appointment.patient.email } </span> </p>
+                    <div className="h-[1px] bg-sickness-border w-full mt-3" />
+                    <p className="font-semibold mt-2 self-start"> Start Time: </p>
+                    <DateTimePicker granularity={"minute"} onChange={(e)=>selectStartDate(e)} hourCycle={24}  />
+                    <p className="font-semibold mt-2 self-start"> End Time: </p>
+                    <DateTimePicker granularity={"minute"} onChange={(e)=>selectEndDate(e)} hourCycle={24} />
+                    <div className="h-[1px] bg-sickness-border w-full mt-3" />
+                    <div className="w-full justify-between flex gap-2 mt-3 font-semibold">
+                        <button className={`w-fit h-fit py-2 px-4 ${Refuseloading ? "bg-red-500/70" : "bg-red-500 hover:bg-red-600" } text-white  transition delay-100 ease-in rounded-md`} disabled={Refuseloading} onClick={handleRefuseAppointment}> Refuse  { Refuseloading && <SmallWhiteLoader /> } </button>
+                        <button className={`w-fit h-fit py-2 px-4 ${postponeloading ? "bg-sickness-primary/70" : "bg-sickness-primary hover:bg-sickness-primary/80"} text-white text-whitetransition delay-100 ease-in rounded-md flex gap-2`} disabled={postponeloading} onClick={handlepostponeAppointment} > Postpone { postponeloading && <SmallWhiteLoader /> } </button>
+                    </div>
                 </div>
-                <DialogTitle className='w-full flex justify-center'>
-                    postpone or Refuse Appointment
-                </DialogTitle>
-                <DialogDescription className='text-center'>
-                    <p className="text-sickness-primaryText font-semibold text-base"> Patient Name: <span className="text-sickness-primary"> {appointment.patient.name} {appointment.patient.lastname} </span> </p>
-                </DialogDescription>
-            </DialogHeader>
-            <div className='w-full flex justify-start items-center flex-col'>
-                <div className="flex w-full justify-between items-center flex-wrap">
-                    <p className="font-semibold text-sickness-primaryText text-sm"> Phone Number: <span className="text-sickness-gray"> { appointment.patient.phone } </span> </p>
-                    <p className="font-semibold text-sickness-primaryText text-sm"> Request Date: <span className="text-sickness-gray"> {date.toDateString()} </span> </p>
-                </div>
-                <p className="font-semibold text-sickness-primaryText text-sm self-center mt-2"> Email: <span className="text-sickness-gray"> { appointment.patient.email } </span> </p>
-                <div className="h-[1px] bg-sickness-border w-full mt-3" />
-                <p className="font-semibold mt-2 self-start"> Start Time: </p>
-                <DateTimePicker granularity={"minute"} onChange={(e)=>selectStartDate(e)} hourCycle={24}  />
-                <p className="font-semibold mt-2 self-start"> End Time: </p>
-                <DateTimePicker granularity={"minute"} onChange={(e)=>selectEndDate(e)} hourCycle={24} />
-                <div className="h-[1px] bg-sickness-border w-full mt-3" />
-                <div className="w-full justify-between flex gap-2 mt-3 font-semibold">
-                    <button className={`w-fit h-fit py-2 px-4 ${Refuseloading ? "bg-red-500/70" : "bg-red-500 hover:bg-red-600" } text-white  transition delay-100 ease-in rounded-md`} disabled={Refuseloading} onClick={handleRefuseAppointment}> Refuse  { Refuseloading && <SmallWhiteLoader /> } </button>
-                    <button className={`w-fit h-fit py-2 px-4 ${postponeloading ? "bg-sickness-primary/70" : "bg-sickness-primary hover:bg-sickness-primary/80"} text-white text-whitetransition delay-100 ease-in rounded-md flex gap-2`} disabled={postponeloading} onClick={handlepostponeAppointment} > Postpone { postponeloading && <SmallWhiteLoader /> } </button>
-                </div>
-            </div>
-        </DialogContent>
-    </Dialog>
+            </DialogContent>
+        </Dialog>
     )
 }

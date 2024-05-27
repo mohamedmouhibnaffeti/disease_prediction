@@ -13,6 +13,7 @@ import SicknessBarChart from "@/components/Charts/SicknessBarChat"
 import { MonitorXIcon } from "lucide-react"
 import DashLikeCard from "@/components/DashLikeCard"
 import DashCommentCard from "@/components/DashCommentCard"
+import DashPostCardDetails from "@/components/DashPostCardDetails"
 
 const sampleSymptoms = [
     { title: 'Headache', count: 120 },
@@ -62,6 +63,7 @@ export default function Dashboard(){
                                         <DashCommentCard />
                                     </div>
                                 </div>
+                                <DashPostCardDetails />
                             </>
                             :
                             <ErrorFetching />
