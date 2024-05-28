@@ -13,6 +13,29 @@ import { PatientDashMainPageData } from "@/Store/patient/PatientSlice"
 import AdminSideBarDash from "@/components/AdminSideDash"
 import AdminNavBarDash from "@/components/AdminDashNav"
 import AdminOverViewStats from "@/components/AdminOverViewStats"
+import PendingDoctorCard from "@/components/PendingDoctorCard"
+
+const symptoms = [
+    { title: 'Headache', count: 87 },
+    { title: 'Cough', count: 45 },
+    { title: 'Fever', count: 63 },
+    { title: 'Fatigue', count: 74 },
+    { title: 'Sore Throat', count: 56 },
+    { title: 'Runny Nose', count: 29 },
+    { title: 'Muscle Pain', count: 92 },
+    { title: 'Shortness of Breath', count: 37 },
+    { title: 'Nausea', count: 81 },
+    { title: 'Dizziness', count: 53 },
+];
+  
+const sicknesses = [
+    { title: 'mridh', count: 100 },
+    { title: 'AH', count: 85 },
+    { title: 'Sabr', count: 63 },
+    { title: 'TE3B', count: 54 },
+    { title: 'WAYYY', count: 26 }
+];
+  
 
 export default function Dashboard(){
     const [requestLoading, setRequestLoading] = useState(false)
@@ -48,7 +71,24 @@ export default function Dashboard(){
                                     </div>
                                     <h1 className="md:text-xl text-lg font-semibold text-sickness-gray mt-4"> Pending Doctors </h1>
                                     <p className="pl-4 text-sm text-sickness-ashGray font-semibold"> You'll find here a list of doctors who request joining the platform. </p>
-                                    
+                                    <div className="grid grid-cols-1 gap-8 px-10 py-2 lg:grid-cols-2 xl:grid-cols-4">
+                                        <PendingDoctorCard />
+                                        <PendingDoctorCard />
+                                        <PendingDoctorCard />
+                                        <PendingDoctorCard />
+                                        <PendingDoctorCard />
+                                        <PendingDoctorCard />
+                                        <PendingDoctorCard />
+                                    </div>
+                                    <h1 className="md:text-xl text-lg font-semibold text-sickness-gray mt-4"> Statistics </h1>
+                                    <div className="gap-2 justify-between w-full lg:flex hidden">
+                                        <SymptomsBarChart symptoms={symptoms} />
+                                        <SicknessBarChart sicknesses={sicknesses} />
+                                    </div>
+                                    <div className="lg:hidden flex flex-col text-red-500 items-center mt-20 w-full h-full gap-2 px-4 md:px-6">
+                                        <MonitorXIcon className="w-48 h-48" />
+                                        <p className="text-center text-sm font-semibold"> For a better user experience please open this page in a desktop screen </p>
+                                    </div>
                                 </div>
                             </>
                             :
