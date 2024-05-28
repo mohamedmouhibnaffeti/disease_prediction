@@ -12,10 +12,12 @@ export async function sendOTPToEmail(email: string, otp: any, type: string) {
     let transporter = nodemailer.createTransport({
         host: process.env.SMTP_HOST,
         port: process.env.SMTP_PORT,
-        secure: false,
         auth: {
             user: process.env.SMTP_USER,
             pass: process.env.SMTP_PASS,
+        },
+        tls: {
+            rejectUnauthorized: false
         },
     });
 
@@ -99,6 +101,7 @@ export async function POST(request: Request){
             lowerCaseAlphabets: false,
             specialChars: false
         });
+        console.log(otp)
         const encodedOtp = encryptToken(otp, process.env.SECRET_ENCRYPTION_KEY || "")
         await sendOTPToEmail(email, otp, "Signup verification code");
         const CreatedOtp = await Otp.create({ email, otp: encodedOtp })

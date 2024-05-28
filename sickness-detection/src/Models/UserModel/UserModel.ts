@@ -47,6 +47,11 @@ const DoctorSchema = new Schema({
     location: {
         type: [Location.schema],
         required: true
+    },
+    state: {
+        type: String,
+        enum: ["pending", "archived", "refused", "accepted"],
+        default: "pending"
     }
 });
 
