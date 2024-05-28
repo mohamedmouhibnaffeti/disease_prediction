@@ -9,14 +9,14 @@ import {
     DialogTitle
 } from "@/components/ui/dialog"
 import { Checkbox } from "../ui/checkbox"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import MaleBack from "./MaleBack"
 import MaleFront from "./MaleFront"
 import FemaleBack from "./FemaleBack"
 import FemaleFront from "./FemaleFront"
 import { Symptom } from "@/app/interfaces/interfaces"
 import { useDispatch, useSelector } from "react-redux"
-import { changeEtatByNom, fetchSymptoms, fetchSymptomsByFilter, resetSymptomsArray, selectSymptoms } from "@/Store/Predict/PredictSlice"
+import { fetchSymptomsByFilter, resetSymptomsArray, selectSymptoms } from "@/Store/Predict/PredictSlice"
 import { AppDispatch, RootState } from "@/Store/store"
 import { returnSpecificBodyParts } from "@/lib/functions/strings"
 

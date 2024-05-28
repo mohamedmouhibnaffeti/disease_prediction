@@ -1,6 +1,5 @@
 "use client"
 import { useLayoutEffect, useState } from "react"
-import { Progress } from "@/components/ui/progress"
 import { useDispatch, useSelector } from "react-redux"
 import { changeEtatByNom, setPredictionResult, setPredictingState, CreatePredictedSickness } from "@/Store/Predict/PredictSlice"
 import { AppDispatch, RootState } from "@/Store/store"

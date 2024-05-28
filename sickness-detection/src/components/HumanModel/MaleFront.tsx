@@ -1,6 +1,4 @@
 "use client"
-import { data } from "@/app/symptoms-checker/data"
-import { useState } from "react"
 import maleFront from "../Images/front-m.webp"
 
 

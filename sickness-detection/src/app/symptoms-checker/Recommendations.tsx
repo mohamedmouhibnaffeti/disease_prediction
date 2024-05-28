@@ -1,5 +1,4 @@
 import { useEffect, useLayoutEffect, useState } from "react"
-import { RecommendationsData } from "./data"
 import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch, RootState } from "@/Store/store"
 import { changeEtatByNom } from "@/Store/Predict/PredictSlice"

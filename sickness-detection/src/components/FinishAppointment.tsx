@@ -2,12 +2,10 @@ import {
     Dialog,
     DialogContent,
     DialogDescription,
-    DialogFooter,
     DialogHeader,
     DialogTitle,
-    DialogTrigger,
-  } from "@/components/ui/dialog"
-import { BadgeCheckIcon, BanIcon, X } from "lucide-react";
+} from "@/components/ui/dialog"
+import { X } from "lucide-react";
 import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "@/Store/store";
 import SmallWhiteLoader from "./Loaders/WhiteButtonLoader";

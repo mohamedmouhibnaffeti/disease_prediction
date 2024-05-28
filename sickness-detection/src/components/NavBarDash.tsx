@@ -1,6 +1,5 @@
 "use client"
 import { usePathname, useRouter } from "next/navigation"
-import Link from "next/link"
 import { ApercuIcon } from "./SideBarDash"
 import { Settings2Icon, Clock, MenuIcon,LineChartIcon, CalendarCheckIcon } from "lucide-react"
 

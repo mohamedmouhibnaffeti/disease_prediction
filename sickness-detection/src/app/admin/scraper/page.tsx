@@ -1,7 +1,7 @@
 'use client'
 import { useLayoutEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { AppDispatch, RootState } from "@/Store/store"
+import { useDispatch } from "react-redux"
+import { AppDispatch } from "@/Store/store"
 import MainLoader from "@/components/Loaders/MainLoader"
 import ErrorFetching from "@/components/Errors/FailedFetching"
 import { Greeting } from "@/lib/functions/dates"

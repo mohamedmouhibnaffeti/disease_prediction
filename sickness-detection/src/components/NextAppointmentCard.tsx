@@ -1,11 +1,8 @@
 import { CircleEllipsis } from "lucide-react";
 import {
     DropdownMenu,
-    DropdownMenuCheckboxItem,
     DropdownMenuContent,
     DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { getHoursAndMinutes } from "@/lib/functions/dates";

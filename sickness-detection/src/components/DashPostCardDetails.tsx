@@ -3,13 +3,10 @@ import {
     Dialog,
     DialogContent,
     DialogDescription,
-    DialogFooter,
     DialogHeader,
     DialogTitle,
-    DialogTrigger,
-  } from "@/components/ui/dialog"
-import { MessageSquareText, MessagesSquareIcon, ThumbsUpIcon, X } from "lucide-react"
-import DashCommentCard from "./DashCommentCard"
+} from "@/components/ui/dialog"
+import { MessageSquareText, ThumbsUpIcon, X } from "lucide-react"
 import CommentItemDashCard from "./CommentItemDashCard"
 export default function DashPostCardDetails(){
     return(

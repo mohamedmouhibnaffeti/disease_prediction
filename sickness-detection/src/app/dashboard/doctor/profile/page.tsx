@@ -6,7 +6,6 @@ import { Toaster } from "@/components/ui/toaster"
 import { Skeleton } from "@/components/ui/skeleton"
 import SideBarDash from '@/components/SideBarDash'
 import NavBarDash from '@/components/NavBarDash'
-import MyMap from '@/components/Map'
 
 const ContainerStyle = {
     height: '3rem'

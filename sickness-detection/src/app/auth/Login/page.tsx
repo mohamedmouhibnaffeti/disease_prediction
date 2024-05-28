@@ -3,7 +3,7 @@ import { LogInIcon } from "lucide-react"
 import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch, RootState } from "@/Store/store"
 import { setLoginFormData, Login } from "@/Store/auth/authSlice"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useRouter } from "next/navigation"
 
 export default () => {

@@ -11,7 +11,7 @@ import {
     TableRow,
     } from "@/components/ui/table"
     
-    import { BookUserIcon, BookmarkCheckIcon, Clock9Icon, MinusIcon, XCircleIcon } from "lucide-react"
+    import { BookmarkCheckIcon, Clock9Icon, MinusIcon, XCircleIcon } from "lucide-react"
 import { useDispatch } from "react-redux"
     
 export function PatientAppointmentsTable({appointments}: {appointments: Array<any>}) {

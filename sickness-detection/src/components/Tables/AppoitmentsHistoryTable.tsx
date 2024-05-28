@@ -3,13 +3,12 @@ Table,
 TableBody,
 TableCaption,
 TableCell,
-TableFooter,
 TableHead,
 TableHeader,
 TableRow,
 } from "@/components/ui/table"
 
-import { BookUserIcon, BookmarkCheckIcon, CheckCircle2Icon, Clock9Icon, XCircleIcon } from "lucide-react"
+import { BookmarkCheckIcon, CheckCircle2Icon, Clock9Icon, XCircleIcon } from "lucide-react"
 
 export function AppointmentsTable({appointments}: {appointments: Array<any>}) {
 return (

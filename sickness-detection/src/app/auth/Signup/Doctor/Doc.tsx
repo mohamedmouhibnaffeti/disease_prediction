@@ -5,7 +5,6 @@ import Second from "./second"
 import { RootState } from "@/Store/store"
 import { useSelector } from "react-redux"
 import { DoctorSignupErrorsType } from "@/app/interfaces/interfaces"
-import { setCurrentDoctorSignupPage } from "@/Store/auth/authSlice"
 import Third from "./third"
 export default () => {
     const currendDoctorSignupPage =useSelector((state: RootState) => state.Authentication.currentDoctorSignupPage )

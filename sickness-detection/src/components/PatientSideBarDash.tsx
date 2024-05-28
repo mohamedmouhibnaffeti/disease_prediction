@@ -1,6 +1,6 @@
 "use client"
 import Link from "next/link"
-import { Settings2Icon, Clock, LogOutIcon,LineChartIcon, CalendarCheckIcon, HeartIcon } from "lucide-react"
+import { Settings2Icon, Clock, LogOutIcon, HeartIcon } from "lucide-react"
 import { usePathname, useRouter } from "next/navigation"
 import Image from "next/image"
 import Logo from "./Images/SymptoSense.png"

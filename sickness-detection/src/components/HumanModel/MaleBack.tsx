@@ -1,11 +1,4 @@
 "use client"
-import { data } from "@/app/symptoms-checker/data"
-import {
-    Tooltip,
-    TooltipContent,
-    TooltipProvider,
-    TooltipTrigger,
-} from "@/components/ui/tooltip"
 import { AppDispatch } from "@/Store/store"
 import { useDispatch } from "react-redux"
 import { fetchSymptomsByFilter } from "@/Store/Predict/PredictSlice"
@@ -14,10 +7,12 @@ import { useEffect } from "react"
 
 const MaleBack = ({ setDialogOpen, setBodyPart }: {setDialogOpen: any, setBodyPart: any}) => {
     const dispatch = useDispatch<AppDispatch>()
+    /*
     const fetchSymptoms = async(filter: string) => {
         const response = await dispatch(fetchSymptomsByFilter(filter))
         console.log(response.payload.Symptoms)
     }
+    */
     const handleSetDialogOpen = (part: string)  => {
         setDialogOpen(true)
         setBodyPart(part)

@@ -1,5 +1,5 @@
 "use client"
-import { PlusSquare, UserPlusIcon } from 'lucide-react';
+import { UserPlusIcon } from 'lucide-react';
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 import { useDispatch, useSelector } from 'react-redux';

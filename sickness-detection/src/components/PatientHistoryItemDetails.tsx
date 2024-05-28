@@ -3,16 +3,12 @@ import {
     Dialog,
     DialogContent,
     DialogDescription,
-    DialogFooter,
     DialogHeader,
     DialogTitle,
-    DialogTrigger,
   } from "@/components/ui/dialog"
 import { X } from "lucide-react";
 import { RootState, AppDispatch } from "@/Store/store"
 import { useDispatch, useSelector } from "react-redux"
-import { DateTimePicker } from "./DateTimePicker/DateTimePicker";
-import SmallWhiteLoader from "./Loaders/WhiteButtonLoader";
 import { setPatientHistoryItem, setPatientHistoryItemOpen } from "@/Store/patient/PatientSlice";
 export default function PatientHistoryItemDetails(){
     const { PatientHistoryItem, PatientHistoryItemOpen } = useSelector((state: RootState) => state.Patient)

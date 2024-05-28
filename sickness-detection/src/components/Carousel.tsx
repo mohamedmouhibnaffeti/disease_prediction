@@ -2,9 +2,6 @@
 import Image from 'next/image'
 import React, { useEffect, useRef, useState } from 'react'
 import { ChevronRight, ChevronLeft } from 'lucide-react'
-import ModalComponent from './ImageModal'
-import { useDispatch } from 'react-redux'
-import { AppDispatch } from '@/Store/store'
 
 const Carousel = ({ data }: {data: {image: any}[]}) => {
     useEffect(() => {

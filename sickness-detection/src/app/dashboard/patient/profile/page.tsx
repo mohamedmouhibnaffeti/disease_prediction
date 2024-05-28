@@ -2,7 +2,7 @@
 import PatientSideBarDash from "@/components/PatientSideBarDash"
 import PatientNavBarDash from "@/components/PatientNavBarDash"
 import { useLayoutEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { AppDispatch } from "@/Store/store"
 import SmallWhiteLoader from "@/components/Loaders/WhiteButtonLoader"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"

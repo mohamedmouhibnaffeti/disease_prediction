@@ -1,16 +1,12 @@
 "use client"
 import { usePathname, useRouter } from "next/navigation"
-import Link from "next/link"
 import { ApercuIcon } from "./SideBarDash"
-import { Settings2Icon, Clock, MenuIcon,LineChartIcon, CalendarCheckIcon, HeartIcon } from "lucide-react"
+import { Settings2Icon, MenuIcon, CalendarCheckIcon, HeartIcon } from "lucide-react"
 
 import {
     DropdownMenu,
-    DropdownMenuCheckboxItem,
     DropdownMenuContent,
     DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 

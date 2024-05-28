@@ -2,7 +2,7 @@
 import PatientSideBarDash from "@/components/PatientSideBarDash"
 import PatientNavBarDash from "@/components/PatientNavBarDash"
 import { useLayoutEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { AppDispatch } from "@/Store/store"
 import MainLoader from "@/components/Loaders/MainLoader"
 import ErrorFetching from "@/components/Errors/FailedFetching"

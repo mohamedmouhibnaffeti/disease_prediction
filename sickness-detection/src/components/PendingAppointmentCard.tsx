@@ -3,18 +3,14 @@ import {
     Dialog,
     DialogContent,
     DialogDescription,
-    DialogFooter,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
   } from "@/components/ui/dialog"
-import { BadgeCheckIcon, BanIcon, X } from "lucide-react";
-import { useEffect, useState } from "react";
-import ReactCodeInput from "react-verification-code-input";
+import { X } from "lucide-react";
+import { useState } from "react";
 import { RootState, AppDispatch } from "@/Store/store"
-import { DoctorSignup, RegisterOTP, setSignupFormDataDoctor } from "@/Store/auth/authSlice"
 import { useDispatch, useSelector } from "react-redux"
-import { useRouter } from "next/navigation";
 import { DateTimePicker } from "./DateTimePicker/DateTimePicker";
 import { RefuseAppointment, acceptAppointment, setAcceptAppointmentOpen } from "@/Store/doctor/doctorSlice";
 import { useToast } from "./ui/use-toast";

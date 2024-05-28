@@ -2,7 +2,6 @@ import { useRouter } from "next/navigation"
 import { CircleEllipsis } from "lucide-react"
 import {
     DropdownMenu,
-    DropdownMenuCheckboxItem,
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuLabel,
@@ -11,8 +10,8 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 import { requestAppointment, setRequestLoading } from "@/Store/doctor/doctorSlice"
-import { useDispatch, useSelector } from "react-redux"
-import { AppDispatch, RootState } from "@/Store/store"
+import { useDispatch } from "react-redux"
+import { AppDispatch } from "@/Store/store"
 import { useLayoutEffect, useState } from "react"
 import { useToast } from "./ui/use-toast"
   

@@ -1,6 +1,5 @@
 "use client"
 import Human from "@/components/HumanModel/Human"
-import { data } from "./data"
 import { CheckIcon, FrownIcon } from "lucide-react"
 import { useDispatch, useSelector } from "react-redux"
 import { changeEtatByNom } from "@/Store/Predict/PredictSlice"
