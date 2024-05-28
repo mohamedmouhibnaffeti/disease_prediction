@@ -21,21 +21,21 @@ const AdminSideBarDash = () => {
                     <p className="text-[#999999] font-semibold"> General </p>
                     <Link
                         className={`font-dashfont transition ease-in delay-100 flex items-center gap-3 px-3 py-2 ${pathname === "/admin" ? "bg-sickness-primaryText/50 text-white border-2 border-sickness-primaryText/50 " : "hover:bg-sickness-primaryText/30 "} rounded-lg mt-2`}
-                        href="/dashboard/admin"
+                        href="/admin"
                     >
                         <ApercuIcon />
                         Overview
                     </Link>
                     <Link
                         className={`font-dashfont transition ease-in delay-100 flex items-center gap-3 rounded-lg px-3 py-2 mt-2 ${pathname.startsWith("/admin/manage_doctors") ? "bg-sickness-primaryText/50 text-white border-2 border-sickness-primaryText/50 " : "hover:bg-sickness-primaryText/30 "}`}
-                        href="/dashboard/admin/manage_doctors"
+                        href="/admin/manage_doctors"
                     >
-                        <DoctorIcon className={`w-5 h-5 ${pathname.startsWith("/dashboard/admin/manage_doctors") ? "fill-white" : "fill-sickness-primaryText"}`} />
+                        <DoctorIcon className={`w-5 h-5 ${pathname.startsWith("/admin/manage_doctors") ? "fill-white" : "fill-sickness-primaryText"}`} />
                         Doctors
                     </Link>
                     <Link
                         className={`font-dashfont transition ease-in delay-100 flex items-center gap-3 rounded-lg px-3 py-2 mt-2 ${pathname.startsWith("/admin/profile") ? "bg-sickness-primaryText/50 text-white border-2 border-sickness-primaryText/50 " : "hover:bg-sickness-primaryText/30 "}`}
-                        href="/dashboard/admin/manage_users"
+                        href="/admin/manage_users"
                     >
                         <User2Icon className="h-5 w-5" />
                         Users
@@ -43,14 +43,14 @@ const AdminSideBarDash = () => {
                     <p className="text-[#999999] font-semibold mt-4"> Me </p>
                     <Link
                         className={`font-dashfont transition ease-in delay-100 flex items-center gap-3 rounded-lg px-3 py-2 mt-2 ${pathname.startsWith("/admin/profile") ? "bg-sickness-primaryText/50 text-white border-2 border-sickness-primaryText/50 " : "hover:bg-sickness-primaryText/30 "}`}
-                        href="/dashboard/admin/profile"
+                        href="/admin/profile"
                     >
                         <Settings2Icon className="h-5 w-5" />
                         My Profile
                     </Link>
                     <Link
                         className={`font-dashfont transition ease-in delay-100 flex items-center gap-3 rounded-lg px-3 py-2 mt-2 ${pathname.startsWith("/admin/history") ? "bg-sickness-primaryText/50 text-white border-2 border-sickness-primaryText/50 " : "hover:bg-sickness-primaryText/30 "}`}
-                        href="/dashboard/admin/history"
+                        href="/admin/history"
                     >
                         <Clock className="h-5 w-5" />
                         History

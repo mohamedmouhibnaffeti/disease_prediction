@@ -11,7 +11,6 @@ TableRow,
 
 
 export function PatientsTable({ patients }: { patients: Array<any> }) {
-    console.log(patients)
 return (
     <Table>
     <TableCaption>A list of your patients.</TableCaption>
