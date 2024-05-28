@@ -42,9 +42,11 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ message: "Please check form data" }, { status: 400 })
         }
         await connectMongoDB()
+        /*
         if(await checkOTP({email, otp}) === false){
             return NextResponse.json({ message: 'Invalid verification code.' }, { status: 400 });
         }
+        */
         const locationObject = await Location.create({cordonnees: parsedLocation})
         for(const image of images){
             const buffer = Buffer.from(await image.arrayBuffer())
