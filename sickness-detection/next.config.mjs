@@ -13,7 +13,10 @@ const nextConfig = {
                 ]
             }
         ]
-    }
+    },
+    images: {
+        domains: ["picsum.photos"]
+      }
 
 };
 

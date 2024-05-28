@@ -1,7 +1,7 @@
 "use client"
 import { useLayoutEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { AppDispatch } from "@/Store/store"
+import { AppDispatch, RootState } from "@/Store/store"
 import MainLoader from "@/components/Loaders/MainLoader"
 import ErrorFetching from "@/components/Errors/FailedFetching"
 import { Greeting } from "@/lib/functions/dates"
@@ -14,6 +14,7 @@ import AdminSideBarDash from "@/components/AdminSideDash"
 import AdminNavBarDash from "@/components/AdminDashNav"
 import AdminOverViewStats from "@/components/AdminOverViewStats"
 import PendingDoctorCard from "@/components/PendingDoctorCard"
+import ModalComponent from "@/components/ImageModal"
 
 const symptoms = [
     { title: 'Headache', count: 87 },
