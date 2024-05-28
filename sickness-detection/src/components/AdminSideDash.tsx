@@ -1,6 +1,6 @@
 "use client"
 import Link from "next/link"
-import { Settings2Icon, Clock, LogOutIcon,LineChartIcon, CalendarCheckIcon, HeartIcon, User2Icon } from "lucide-react"
+import { Settings2Icon, Clock, LogOutIcon,LineChartIcon, CalendarCheckIcon, HeartIcon, User2Icon, ScanSearch, FileTextIcon } from "lucide-react"
 import { usePathname, useRouter } from "next/navigation"
 import Image from "next/image"
 import Logo from "./Images/SymptoSense.png"
@@ -39,6 +39,20 @@ const AdminSideBarDash = () => {
                     >
                         <User2Icon className="h-5 w-5" />
                         Users
+                    </Link>
+                    <Link
+                        className={`font-dashfont transition ease-in delay-100 flex items-center gap-3 rounded-lg px-3 py-2 mt-2 ${pathname.startsWith("/admin/scraper") ? "bg-sickness-primaryText/50 text-white border-2 border-sickness-primaryText/50 " : "hover:bg-sickness-primaryText/30 "}`}
+                        href="/admin/scraper"
+                    >
+                        <ScanSearch className="h-5 w-5" />
+                        Web Scraper
+                    </Link>
+                    <Link
+                        className={`font-dashfont transition ease-in delay-100 flex items-center gap-3 rounded-lg px-3 py-2 mt-2 ${pathname.startsWith("/admin/insert-file") ? "bg-sickness-primaryText/50 text-white border-2 border-sickness-primaryText/50 " : "hover:bg-sickness-primaryText/30 "}`}
+                        href="/admin/file-insert"
+                    >
+                        <FileTextIcon className="h-5 w-5" />
+                        Data Processing
                     </Link>
                     <p className="text-[#999999] font-semibold mt-4"> Me </p>
                     <Link

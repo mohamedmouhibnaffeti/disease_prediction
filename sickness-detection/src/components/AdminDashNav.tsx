@@ -2,7 +2,7 @@
 import { usePathname, useRouter } from "next/navigation"
 import Link from "next/link"
 import { ApercuIcon } from "./SideBarDash"
-import { Settings2Icon, Clock, MenuIcon,LineChartIcon, CalendarCheckIcon, HeartIcon, User2Icon } from "lucide-react"
+import { Settings2Icon, Clock, MenuIcon,LineChartIcon, CalendarCheckIcon, HeartIcon, User2Icon, ScanSearch, FileTextIcon } from "lucide-react"
 
 import {
     DropdownMenu,
@@ -39,8 +39,21 @@ const ConditionalNavTitle = ({pathname}: {pathname: string}) => {
                     Doctors
                 </h1>
             :
-            ""
-            
+                (
+                    pathname.startsWith('/admin/scraper') ?
+                    <h1 className="font-semibold sm:text-lg text-md flex gap-1">
+                        <div className="translate-y-[1px]"><ScanSearch /></div>
+                        Web Scraper
+                    </h1>
+                    :   
+                    pathname.startsWith('/admin/file-insert') ?
+                        <h1 className="font-semibold sm:text-lg text-md flex gap-1">
+                            <div className="translate-y-[1px]"><FileTextIcon /></div>
+                            Data Processing
+                        </h1>
+                    :
+                    ""
+                )
             )
         )
         }

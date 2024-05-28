@@ -1,5 +1,13 @@
 "use client"
-import { useState, useRef, useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { AppDispatch, RootState } from "@/Store/store"
+import MainLoader from "@/components/Loaders/MainLoader"
+import ErrorFetching from "@/components/Errors/FailedFetching"
+import { Greeting } from "@/lib/functions/dates"
+import { PatientDashMainPageData } from "@/Store/patient/PatientSlice"
+import AdminSideBarDash from "@/components/AdminSideDash"
+import AdminNavBarDash from "@/components/AdminDashNav"
+import { useState, useRef, useEffect, useLayoutEffect } from "react"
 import { Input } from "@/components/ui/input"
 import { FileCheck, X, FileX, FileUp } from "lucide-react"
 import DataLoader from "./Loading"
@@ -8,7 +16,17 @@ import { io } from "socket.io-client"
 const socket = io('http://127.0.0.1:5000')
 
 const File_Insert = () => {
-
+    const [requestLoading, setRequestLoading] = useState(false)
+    const [mainData, setMainData] = useState<any>()
+    const dispatch = useDispatch<AppDispatch>()
+    const fetchData = async () => {
+        setRequestLoading(true)
+        const response = await dispatch(PatientDashMainPageData({patientID: "6651af539b6651ea68e82453"}))
+        setMainData(response.payload)
+        setRequestLoading(false)
+    }
+    useLayoutEffect(()=>{
+    }, [])
     //messaging server
     const [statusLoading, setLoadingStatus] = useState<Array<number>>([0])
     useEffect(() => {
@@ -160,8 +178,19 @@ const File_Insert = () => {
         }
     }
     return(
-        <div className="flex flex-col justify-center items-center min-h-screen w-screen">        
-            <div className="flex flex-col items-center justify-center gap-12 px-8 xl:flex-row ">
+        <div className="grid min-h-screen w-full overflow-hidden md:grid-cols-[280px_1fr]">
+                <AdminSideBarDash /> 
+                <div className="flex flex-col">
+                    <AdminNavBarDash />
+                    <main className="flex-1 p-4 md:p-6">
+                    {
+                        !requestLoading?
+                        (
+                            /*mainData && mainData.status */ 200 === 200 ?
+                            <>
+                                <h1 className="md:text-2xl text-xl font-semibold text-sickness-primaryText"> {Greeting()} </h1>
+                                <div className="flex flex-col gap-2">
+                                <div className="flex flex-col items-center justify-center gap-12 px-8 xl:flex-row ">
                 <div className="flex flex-col items-center justify-center bg-sickness-primaryText/20 px-10 pt-12 pb-6 rounded-3xl border-2 border-gray-300 shadow-xl mt-24 mb-4 md:w-fit w-[29rem]">
                     <p className="font-semibold text-4xl text-slate-950 text-center">
                         Upload and attach CSV files
@@ -251,7 +280,19 @@ const File_Insert = () => {
             </div>
             { (CSVErrorMessageShow || txtErrorMessageShow) ? <p className="text-red-500 text-xl mt-2">Only specific files are accepted !</p> : "" }
             { ( CSVfileContent || txtfileContent ) ? <a href={ CSVfileContent ? CSVfileContent : txtfileContent } download={CSVfileContent ? "Result.csv" : "Result.txt"} target="_blank" rel="noopener noreferrer" className="flex mt-6 items-center justify-center bg-[#0D1821] border-2 border-[#0D1821] text-white p-4 rounded-md tranition duration-100 hover:bg-slate-800 gap-2 h-fit"> <button> Download Result </button> </a> : "" }
-        </div>   
+                                </div>
+                            </>
+                            :
+                            <ErrorFetching />
+                        )
+                        :
+                        <div className="w-full h-full flex justify-center items-center">
+                            <MainLoader />
+                        </div>
+                    }
+                    </main>
+                </div>
+            </div>   
     )
 }
 

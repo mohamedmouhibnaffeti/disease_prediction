@@ -5,16 +5,9 @@ import { AppDispatch, RootState } from "@/Store/store"
 import MainLoader from "@/components/Loaders/MainLoader"
 import ErrorFetching from "@/components/Errors/FailedFetching"
 import { Greeting } from "@/lib/functions/dates"
-import NextAppointmentCard from "@/components/NextAppointmentCard"
-import SymptomsBarChart from "@/components/Charts/SymptomsBarChart"
-import SicknessBarChart from "@/components/Charts/SicknessBarChat"
-import { MonitorXIcon } from "lucide-react"
 import { PatientDashMainPageData } from "@/Store/patient/PatientSlice"
 import AdminSideBarDash from "@/components/AdminSideDash"
 import AdminNavBarDash from "@/components/AdminDashNav"
-import AdminOverViewStats from "@/components/AdminOverViewStats"
-import PendingDoctorCard from "@/components/PendingDoctorCard"
-import ModalComponent from "@/components/ImageModal"
 import { DoctorsTable } from "@/components/Tables/DoctorsTable"
 
 const doctorsData = [
@@ -55,7 +48,7 @@ const doctorsData = [
     },
 ]
 
-export default function Dashboard(){
+export default function ManageDoctors(){
     const [requestLoading, setRequestLoading] = useState(false)
     const [mainData, setMainData] = useState<any>()
     const dispatch = useDispatch<AppDispatch>()
