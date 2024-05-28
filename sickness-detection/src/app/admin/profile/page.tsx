@@ -1,16 +1,14 @@
 "use client"
-import PatientSideBarDash from "@/components/PatientSideBarDash"
-import PatientNavBarDash from "@/components/PatientNavBarDash"
 import { useLayoutEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch } from "@/Store/store"
 import SmallWhiteLoader from "@/components/Loaders/WhiteButtonLoader"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Label } from "@radix-ui/react-label"
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 import { useToast } from "@/components/ui/use-toast"
 import { updatePatient } from "@/Store/patient/PatientSlice"
+import AdminSideBarDash from "@/components/AdminSideDash"
+import AdminNavBarDash from "@/components/AdminDashNav"
 const ContainerStyle = {
     height: '3rem'
 }
@@ -118,9 +116,9 @@ export default function Dashboard(){
     return (
         <>
             <div className="grid min-h-screen w-full overflow-hidden md:grid-cols-[280px_1fr]">
-                <PatientSideBarDash /> 
+                <AdminSideBarDash /> 
                 <div className="flex flex-col">
-                    <PatientNavBarDash />
+                    <AdminNavBarDash />
                     <main className="w-full flex-1 flex p-4 sm:p-6">
                         <div className="flex flex-col md:flex-[0.7] flex-1">
                             <h1 className="text-xl font-semibold text-sickness-primaryText">Profile Settings</h1>
@@ -145,27 +143,6 @@ export default function Dashboard(){
                                 <PhoneInput country='tn' value={user.phone} onChange={(e)=>{handleFieldChange({val: e, name: "phone"}); setError({...error, name: ""})}}  inputStyle={InputStyle} buttonStyle={ButtonStyle} containerStyle={ContainerStyle} />
                             {/* <input type="text" className="border-2 border-[#C5C5C5] rounded-md w-full h-12 focus:outline-none focus:border-sickness-primary pl-2 " /> */}
                             <p className="text-sm text-red-500 self-center text-center"> {error.phone} </p>
-                            <div className="flex md:flex-row flex-col gap-3 w-full mt-4">
-                                <div className="flex flex-col gap-1 w-full">
-                                    <p className="text-sm text-black font-medium">Age</p>
-                                    <input type="text" value={user.age || ""} onChange={(e)=>{handleFieldChange({val: parseInt(e.target.value), name: "age"}); setError({...error, name: ""})}} className="border-2 border-[#C5C5C5] rounded-md h-12 focus:outline-none focus:border-sickness-primary pl-2 "/>
-                                    <p className="text-sm text-red-500 self-center text-center"> {error.age} </p>
-                                </div>
-                                <div className="flex flex-col gap-1 w-full">
-                                    <p className="text-sm text-black font-medium">Gender</p>
-                                    <RadioGroup className="flex gap-2" value={user.gender} onValueChange={(e)=>{handleFieldChange({val: e, name: "gender"}); setError({...error, name: ""})}}>
-                                        <div className="flex items-center h-[3rem] space-x-4 px-4 w-full bg-settaFill border-[1px] border-settaBorder py-3 pl-2 rounded-md text-[#999999]">
-                                            <RadioGroupItem value="Male" id="r1" />
-                                            <Label htmlFor="r1">Male</Label>
-                                        </div>
-                                        <div className="flex items-center h-[3rem] space-x-4 px-4 w-full bg-settaFill border-[1px] border-settaBorder py-3 rounded-md text-[#999999]">
-                                            <RadioGroupItem value="Female" id="r2" />
-                                            <Label htmlFor="r2">Female</Label>
-                                        </div>
-                                    </RadioGroup>
-                                    <p className="text-sm text-red-500 self-center text-center"> {error.gender} </p>
-                                </div>
-                            </div>
                             </div>
                             <button onClick={handleUpdatePatient} className={`md:w-fit w-full px-8 py-2 ${loading ? "bg-sickness-primary/50" : "bg-sickness-primary/70 hover:bg-sickness-primary active:bg-sickness-primary/50"} transition delay-100 ease-in bg-settaPrimary text-white font-semibold flex gap-2 justify-center items-center rounded-md mt-6 self-end`} > Update {loading && <SmallWhiteLoader />} </button>
                         </div>
