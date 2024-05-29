@@ -5,7 +5,6 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(request: Request){
     try{
         const { doctorID, state } = await request.json()
-        console.log({ doctorID, state })
         const doctor = await User.findById(doctorID)
         if(!doctor){
             return NextResponse.json({message: "No doctor found with the provided ID"}, {status: 404})

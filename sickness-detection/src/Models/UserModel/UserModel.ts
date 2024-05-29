@@ -38,6 +38,11 @@ const PatientSchema = new Schema({
     },
     age: {
         type: Number
+    },
+    state: {
+        type: String,
+        enum: ["archived", "accepted"],
+        default: "accepted"
     }
 });
 

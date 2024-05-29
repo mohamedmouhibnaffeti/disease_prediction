@@ -9,53 +9,21 @@ import { PatientDashMainPageData } from "@/Store/patient/PatientSlice"
 import AdminSideBarDash from "@/components/AdminSideDash"
 import AdminNavBarDash from "@/components/AdminDashNav"
 import { UsersTable } from "@/components/Tables/UsersTable"
+import { getPatients } from "@/Store/admin/AdminSlice"
 
-
-const samplePatients = [
-    {
-        name: "John",
-        lastname: "Doe",
-        email: "john.doe@example.com",
-        phone: "1234567890",
-        gender: "Male",
-        age: 30,
-    },
-    {
-        name: "Jane",
-        lastname: "Smith",
-        email: "jane.smith@example.com",
-        phone: "0987654321",
-        gender: "Female",
-        age: 25,
-    },
-    {
-        name: "Robert",
-        lastname: "Johnson",
-        email: "robert.johnson@example.com",
-        phone: "1122334455",
-        gender: "Male",
-        age: 40,
-    },
-    {
-        name: "Emily",
-        lastname: "Davis",
-        email: "emily.davis@example.com",
-        phone: "5566778899",
-        gender: "Female",
-        age: 35,
-    },
-  ];
 export default function ManageUsers(){
     const [requestLoading, setRequestLoading] = useState(false)
-    const [mainData, setMainData] = useState<any>()
+    const { manageUsersData } = useSelector((state: RootState) => state.Admin)
     const dispatch = useDispatch<AppDispatch>()
     const fetchData = async () => {
         setRequestLoading(true)
-        const response = await dispatch(PatientDashMainPageData({patientID: "6651af539b6651ea68e82453"}))
-        setMainData(response.payload)
+        const response = await dispatch(getPatients())
         setRequestLoading(false)
     }
     useLayoutEffect(()=>{
+        if(!manageUsersData){
+            fetchData()
+        }
     }, [])
     return (
         <>
@@ -67,11 +35,11 @@ export default function ManageUsers(){
                     {
                         !requestLoading?
                         (
-                            /*mainData && mainData.status */ 200 === 200 ?
+                            manageUsersData && manageUsersData.status === 200 ?
                             <>
                                 <h1 className="md:text-2xl text-xl font-semibold text-sickness-primaryText"> {Greeting()} </h1>
-                                <div className="flex flex-col gap-2">
-                                    <UsersTable users={samplePatients} />
+                                <div className="gap-2 mt-4 overflow-x-scroll grid max-w-screen">
+                                    <UsersTable users={manageUsersData.patients} />
                                 </div>
                             </>
                             :

@@ -4,18 +4,22 @@ import { RootState } from "../store";
 
 interface adminSliceType {
     selectedDoctor: any,
+    selectedPatient: null,
     drawerOpen: boolean,
     selectedState: string,
     MainPageData: any,
-    manageDoctorsData: any
+    manageDoctorsData: any,
+    manageUsersData: any
 }
 
 const initialState: adminSliceType = {
     selectedDoctor: null,
+    selectedPatient: null,
     selectedState: "",
     drawerOpen: false,
     MainPageData: null,
-    manageDoctorsData: null
+    manageDoctorsData: null,
+    manageUsersData: null
 }
 
 const adminSlice = createSlice({
@@ -30,7 +34,9 @@ const adminSlice = createSlice({
         },
         selectState: (state, action: PayloadAction<string>) => {
             state.selectedState = action.payload
-            console.log(state.selectedState)
+        },
+        selectPatient: (state, action: PayloadAction<any>) =>{
+            state.selectedPatient = action.payload
         }
     },
     extraReducers: (builder) => {
@@ -59,6 +65,11 @@ const adminSlice = createSlice({
         .addCase(getDoctors.fulfilled, (state, action: PayloadAction<any>) => {
             if(action.payload.status === 200){
                 state.manageDoctorsData = action.payload
+            }
+        })
+        .addCase(getPatients.fulfilled, (state, action: PayloadAction<any>)=>{
+            if(action.payload.status === 200){
+                state.manageUsersData = action.payload
             }
         })
     }
@@ -152,7 +163,6 @@ export const changeDoctorState = createAsyncThunk(
     }
 )
 
-
 export const getDoctors = createAsyncThunk(
     "admin/getDoctors",
     async() => {
@@ -172,6 +182,49 @@ export const getDoctors = createAsyncThunk(
     }
 )
 
-export const { setSelectedDoctor, openDrawer, selectState } = adminSlice.actions
+export const getPatients = createAsyncThunk(
+    "admin/getPatients",
+    async() => {
+        try{
+            const response = await fetch(`${next_backend_route}/user/patient/get_all_patients`)
+            if(response.ok){
+                const data = await response.json()
+                return { ...data, status: 200 }
+            }
+            else if(response.status === 404 || response.status === 400){
+                const data = await response.json()
+                return { ...data, status: 400 } 
+            }
+        }catch(err){
+            return { err, status: 500 }
+        }
+    }
+)
+export const changePatientState = createAsyncThunk(
+    "admin/changePatientState",
+    async(_, { getState }) => {
+        try{
+            const state: RootState = getState() as RootState
+            const { selectedPatient, selectedState } = state.Admin
+
+            const response = await fetch(`${next_backend_route}/user/patient/change_patient_state`, {
+                method: 'POST',
+                body: JSON.stringify({patientID: selectedPatient, state: selectedState})
+            })
+            if(response.ok){
+                const data = await response.json()
+                return { ...data, status: 200 }
+            }
+            else if(response.status === 404 || response.status === 400){
+                const data = await response.json()
+                return { ...data, status: 400 } 
+            }
+        }catch(err){
+            return { err, status: 500 }
+        }
+    }
+)
+
+export const { setSelectedDoctor, openDrawer, selectState, selectPatient } = adminSlice.actions
 
 export default adminSlice.reducer

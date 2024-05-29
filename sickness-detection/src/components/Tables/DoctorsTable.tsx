@@ -77,7 +77,7 @@ return (
                 }
                 {doctor.state}
                     
-                </TableCell>
+            </TableCell>
             <TableCell>{doctor.name}</TableCell>
             <TableCell>{doctor.lastname}</TableCell>
             <TableCell>{doctor.email}</TableCell>
