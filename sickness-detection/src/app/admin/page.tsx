@@ -87,8 +87,8 @@ export default function Dashboard(){
                                     </div>
                                     <h1 className="md:text-xl text-lg font-semibold text-sickness-gray mt-4"> Statistics </h1>
                                     <div className="gap-2 justify-between w-full lg:flex hidden">
-                                        <SymptomsBarChart symptoms={symptoms} />
-                                        <SicknessBarChart sicknesses={sicknesses} />
+                                        <SymptomsBarChart symptoms={MainPageData.body.trendingSymptoms} />
+                                        <SicknessBarChart sicknesses={MainPageData.body.trendingSicknesses} />
                                     </div>
                                     <div className="lg:hidden flex flex-col text-red-500 items-center mt-20 w-full h-full gap-2 px-4 md:px-6">
                                         <MonitorXIcon className="w-48 h-48" />
