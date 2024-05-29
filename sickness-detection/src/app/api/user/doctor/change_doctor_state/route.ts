@@ -1,16 +1,16 @@
 import { Doctor, User } from "@/Models/UserModel/UserModel";
 import connectMongoDB from "@/lib/mongodb";
-import { NextResponse, NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(request: NextRequest){
+export async function POST(request: Request){
     try{
-        const doctorID = request.nextUrl.searchParams.get("doctorID") || ""
-        connectMongoDB()
+        const { doctorID, state } = await request.json()
+        console.log({ doctorID, state })
         const doctor = await User.findById(doctorID)
         if(!doctor){
-            return NextResponse.json({message: `No doctor found with the provided ID`}, {status: 404})
+            return NextResponse.json({message: "No doctor found with the provided ID"}, {status: 404})
         }
-        const updatedDoctor = await Doctor.findOneAndUpdate({_id: doctorID}, {state: "accepted"}, {new: true})
+        const updatedDoctor = await Doctor.findOneAndUpdate({_id: doctorID}, {state: state}, {new: true})
         if(!updatedDoctor){
             return NextResponse.json({message: `Couldn't update doctor`}, {status: 400})
         }

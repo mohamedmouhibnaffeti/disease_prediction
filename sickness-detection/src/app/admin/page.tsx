@@ -17,28 +17,6 @@ import ModalComponent from "@/components/ImageModal"
 import { fetchDashboardMainData } from "@/Store/admin/AdminSlice"
 import DrawerComponent from "@/components/Drawer"
 
-const symptoms = [
-    { title: 'Headache', count: 87 },
-    { title: 'Cough', count: 45 },
-    { title: 'Fever', count: 63 },
-    { title: 'Fatigue', count: 74 },
-    { title: 'Sore Throat', count: 56 },
-    { title: 'Runny Nose', count: 29 },
-    { title: 'Muscle Pain', count: 92 },
-    { title: 'Shortness of Breath', count: 37 },
-    { title: 'Nausea', count: 81 },
-    { title: 'Dizziness', count: 53 },
-];
-  
-const sicknesses = [
-    { title: 'mridh', count: 100 },
-    { title: 'AH', count: 85 },
-    { title: 'Sabr', count: 63 },
-    { title: 'TE3B', count: 54 },
-    { title: 'WAYYY', count: 26 }
-];
-  
-
 export default function Dashboard(){
     const [requestLoading, setRequestLoading] = useState(false)
     const dispatch = useDispatch<AppDispatch>()
