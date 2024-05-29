@@ -9,6 +9,7 @@ import { useToast } from "@/components/ui/use-toast"
 import { updatePatient } from "@/Store/patient/PatientSlice"
 import AdminSideBarDash from "@/components/AdminSideDash"
 import AdminNavBarDash from "@/components/AdminDashNav"
+import { updateAdmin } from "@/Store/admin/AdminSlice"
 const ContainerStyle = {
     height: '3rem'
 }
@@ -28,21 +29,17 @@ const ButtonStyle = {
 }
 export default function Dashboard(){
     const [loading, setLoading] = useState(false)
-    const [user, setUser] = useState<{name: string, lastname: string, userID: string, phone: string, email: string, gender: string, age: number}>({
+    const [user, setUser] = useState<{name: string, lastname: string, userID: string, phone: string, email: string}>({
         name: "",
         lastname: "",
         phone: "",
         userID: "",
         email: "",
-        gender: "",
-        age: NaN
     });
-    const [error, setError] = useState<{name: string, lastname: string, phone: string, gender: string, age: string}>({
+    const [error, setError] = useState<{name: string, lastname: string, phone: string}>({
         name: "",
         lastname: "",
         phone: "",
-        gender: "",
-        age: ""
     });
 
     useLayoutEffect(()=>{
@@ -55,13 +52,11 @@ export default function Dashboard(){
                 email: userParsed.email,
                 phone: userParsed.phone,
                 userID: userParsed._id,
-                age: userParsed.age,
-                gender: userParsed.gender
             }))
         }
     },[])
 
-    const handleFieldChange = ({val, name}: {val: string | number, name: keyof {name: string, lastname: string, userID: string, phone: string, gender: string, age: number}}) => {
+    const handleFieldChange = ({val, name}: {val: string | number, name: keyof {name: string, lastname: string, userID: string, phone: string}}) => {
         setUser({...user, [name]: val})
     }
 
@@ -78,17 +73,11 @@ export default function Dashboard(){
         if(user.phone.length < 9){
             setError({...error, phone: "Phone number should be longer than 9 caracters"})
         }
-        if(user.age < 15 || user.age > 100){
-            setError({...error, phone: "Age should be between 15 and 100 years old"})
-        } 
-        if(user.gender.length === 0){
-            setError({...error, phone: "Please select a gender"})
-        } 
-        if((user.phone.length < 9) || (user.lastname.length < 4) || (user.name.length < 4) || (user.gender?.length === 0) || (user.age < 15)){
+        if((user.phone.length < 9) || (user.lastname.length < 4) || (user.name.length < 4)){
             return
         }
         setLoading(true)
-        const response = await dispatch(updatePatient({patientID: user.userID, name: user.name, lastname: user.lastname, phone: user.phone}))
+        const response = await dispatch(updateAdmin({adminID: user.userID, name: user.name, lastname: user.lastname, phone: user.phone}))
         setLoading(false)
         if(response.payload.status === 204){
             toast({

@@ -90,7 +90,7 @@ export default function Dashboard(){
             return
         }
         setLoading(true)
-        const response = await dispatch(updatePatient({patientID: user.userID, name: user.name, lastname: user.lastname, phone: user.phone}))
+        const response = await dispatch(updatePatient({patientID: user.userID, name: user.name, lastname: user.lastname, phone: user.phone, gender: user.gender, age: user.age}))
         setLoading(false)
         if(response.payload.status === 204){
             toast({

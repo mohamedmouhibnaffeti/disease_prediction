@@ -1,7 +1,7 @@
 "use client"
 import { usePathname, useRouter } from "next/navigation"
 import { ApercuIcon } from "./SideBarDash"
-import { MenuIcon, User2Icon, ScanSearch, FileTextIcon } from "lucide-react"
+import { MenuIcon, User2Icon, ScanSearch, FileTextIcon, Settings2Icon, Clock10Icon } from "lucide-react"
 
 import {
     DropdownMenu,
@@ -10,6 +10,7 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import DocAvatar from "./SVG/DocAvatar"
+import DoctorIcon from "./SVG/DoctorIcon"
 
 
 const ConditionalNavTitle = ({pathname}: {pathname: string}) => {
@@ -31,7 +32,7 @@ const ConditionalNavTitle = ({pathname}: {pathname: string}) => {
             (
                 pathname.startsWith('/admin/manage_doctors') ?
                 <h1 className="font-semibold sm:text-lg text-md flex gap-1">
-                    <div className="translate-y-[1px]"><DocAvatar /></div>
+                    <div className="translate-y-[1px]"><DoctorIcon className="w-6 h-6" /></div>
                     Doctors
                 </h1>
             :
@@ -48,7 +49,19 @@ const ConditionalNavTitle = ({pathname}: {pathname: string}) => {
                             Data Processing
                         </h1>
                     :
-                    ""
+                    pathname.startsWith('/admin/profile') ?
+                        <h1 className="font-semibold sm:text-lg text-md flex gap-1">
+                            <div className="translate-y-[1px]"><Settings2Icon /></div>
+                            Profile
+                        </h1>
+                        :
+                            pathname.startsWith('/admin/history') ?
+                            <h1 className="font-semibold sm:text-lg text-md flex gap-1">
+                                <div className="translate-y-[1px]"><Clock10Icon /></div>
+                                History
+                            </h1>
+                            :
+                            ""
                 )
             )
         )

@@ -225,6 +225,34 @@ export const changePatientState = createAsyncThunk(
     }
 )
 
+export const updateAdmin = createAsyncThunk(
+    "admin/updateAdmin",
+    async({adminID, name, lastname, phone}: {adminID: any, name: string, lastname: string, phone: string}) => {
+        try{
+            const response = await fetch(`${next_backend_route}/user/admin/update_user`, {
+                method: 'PUT',
+                body: JSON.stringify({
+                    adminID: adminID,
+                    name: name,
+                    lastname: lastname,
+                    phone: phone
+                })
+            })
+            if(response.ok){
+                const data = await response.json()
+                console.log(data)
+                localStorage.setItem("user", JSON.stringify(data.admin))
+                return { ...data, status: 204 }
+            }else if(response.status === 404 || response.status === 400){
+                const data = await response.json()
+                return { ...data, status: 400 } 
+            }
+        }catch(err){
+            return { err, status: 500 }
+        }
+    }
+)
+
 export const { setSelectedDoctor, openDrawer, selectState, selectPatient } = adminSlice.actions
 
 export default adminSlice.reducer

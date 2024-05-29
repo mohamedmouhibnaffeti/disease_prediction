@@ -43,7 +43,7 @@ export const PatientDashMainPageData = createAsyncThunk(
 
 export const updatePatient = createAsyncThunk(
     "patient/updatePatient",
-    async({patientID, name, lastname, phone}: {patientID: any, name: string, lastname: string, phone: string}) => {
+    async({patientID, name, lastname, phone, age, gender}: {patientID: any, name: string, lastname: string, phone: string, age: number, gender: string}) => {
         try{
             const response = await fetch(`${next_backend_route}/user/patient`, {
                 method: 'PUT',
@@ -51,7 +51,9 @@ export const updatePatient = createAsyncThunk(
                     patientID: patientID,
                     name: name,
                     lastname: lastname,
-                    phone: phone
+                    phone: phone,
+                    age: age,
+                    gender: gender
                 })
             })
             if(response.ok){
