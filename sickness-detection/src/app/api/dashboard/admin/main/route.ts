@@ -41,7 +41,7 @@ export async function GET(request: NextRequest){
             trendingSymptoms: trendingSymptoms.slice(0, 6),
             pendingDoctors: pendingDoctors
         }
-        return NextResponse.json({body: returnBody }, { status: 500 })
+        return NextResponse.json({body: returnBody }, { status: 200 })
     }catch(err){
         return NextResponse.json({message: `Internal server error: ${err}`}, {status: 500})
     }
