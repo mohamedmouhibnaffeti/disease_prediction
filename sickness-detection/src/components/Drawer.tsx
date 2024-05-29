@@ -1,5 +1,4 @@
 import * as React from "react"
-import { MinusIcon, PlusIcon } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -13,39 +12,96 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer"
 import Carousel from "./Carousel"
-const DATA = [{ image: "https://picsum.photos/seed/random101/500/500" },
- { image: "https://picsum.photos/seed/random102/500/500" }, 
- { image: "https://picsum.photos/seed/random103/500/500" }]
-const data = [
-  // Data array remains unchanged
-]
-interface MyComponentProps {
-    triggerButton: React.ReactNode;  // Accepts any valid JSX element or TypeScript expression
-  }
-  
-const DrawerComponent: React.FC<MyComponentProps> = ({ triggerButton }) => {
-  const [goal, setGoal] = React.useState(350)
+import { useDispatch, useSelector } from "react-redux"
+import { AppDispatch, RootState } from "@/Store/store"
+import { useState, useEffect } from "react"
+import { fetchDoctorImages, openDrawer, setSelectedDoctor, acceptDoctor } from "@/Store/admin/AdminSlice"
+import MainLoader from "./Loaders/MainLoader"
+import { useToast } from "./ui/use-toast"
+import SmallWhiteLoader from "./Loaders/WhiteButtonLoader"
 
-  function onClick(adjustment: number) {
-    setGoal(Math.max(200, Math.min(400, goal + adjustment)))
+const DrawerComponent = () => {
+  const dispatch = useDispatch<AppDispatch>()
+  const { selectedDoctor, drawerOpen } = useSelector((state: RootState) => state.Admin)
+  const [loading, setLoading] = useState<boolean>(false)
+  const [accepting, setAccepting] = useState<boolean>(false)
+  const [data, setData] = useState<any>()
+  const fetchData = async() => {
+    setLoading(true)
+    const response = await dispatch(fetchDoctorImages())
+    console.log(response)
+    setData(response.payload)
+    setLoading(false)
+  }
+
+  const {toast} = useToast()
+
+  useEffect(()=>{
+    if(selectedDoctor && drawerOpen){
+      fetchData()
+    }
+  }, [selectedDoctor])
+  console.log(data)
+  const CloseDrawer = () => {
+    dispatch(openDrawer(false))
+    dispatch(setSelectedDoctor(null))
+  }
+
+  const AcceptDoctor = async() => {
+    setAccepting(true)
+    const response = await dispatch(acceptDoctor())
+    setAccepting(false)
+    if(response.payload.status === 200){
+      toast({
+          title: "Congratulations !",
+          description: <p> Doctor accepted successfully.</p>,
+        })
+        CloseDrawer()
+  }
+  else if(response.payload.status === 400){
+      toast({
+          variant: "destructive",
+          title: "Sorry.",
+          description: <p> { response.payload.message } </p>,
+        })
+  }
+  else if(response.payload.status === 500){
+      toast({
+          variant: "destructive",
+          title: "Sorry.",
+          description: <p> Couldn't accept doctor, Please try again later. </p>,
+        })
+  }
   }
 
   return (
-    <Drawer>
-      <DrawerTrigger asChild>
-        {triggerButton}
-      </DrawerTrigger>
+    <Drawer open={drawerOpen} onClose={CloseDrawer} >
       <DrawerContent>
         <div className="mx-auto w-full max-w-sm">
           <DrawerHeader>
             <DrawerTitle className="text-center">ID Images</DrawerTitle>
             <DrawerDescription className="text-center">A list of identity images corresponding to the selected doctor.</DrawerDescription>
           </DrawerHeader>
-            <Carousel data={DATA} />
+            {
+              !loading ?
+                (
+                  data && data.status === 200 ?
+                    <Carousel data={data.images} />
+                  :
+                    <div className="w-full flex justify-center items-center mt-3">
+                      <p className="text-sickness-primaryText text-xl font-semibold"> Sorry... </p>
+                      <p className="font-semibold text-sickness-ashGray"> Couldn't fetch images for the selected doctor </p>
+                    </div>
+                )
+              :
+              <div className="w-full flex justify-center items-center">
+                <MainLoader />
+              </div>
+            }
           <DrawerFooter>
-            <Button>Accept</Button>
+            <Button onClick={AcceptDoctor} variant={`${accepting ? "loading" : "default"}`} disabled={accepting}>Accept { accepting && <SmallWhiteLoader /> } </Button>
             <DrawerClose asChild>
-              <Button variant="outline">Cancel</Button>
+              <Button variant="outline" disabled={accepting} onClick={CloseDrawer}>Close</Button>
             </DrawerClose>
           </DrawerFooter>
         </div>

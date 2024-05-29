@@ -1,14 +1,23 @@
 import PredictedSickness from "@/Models/PredictedSicknessModel/PredictedSickness";
-import { Doctor } from "@/Models/UserModel/UserModel";
+import { Doctor, Patient } from "@/Models/UserModel/UserModel";
 import connectMongoDB from "@/lib/mongodb";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest){
     try{
-        const adminID = request.nextUrl.searchParams.get("adminID")
         connectMongoDB()
         const predictedSicknesses = await PredictedSickness.find()
-        const pendingDoctors = await Doctor.find({state: "pending"})
+        const Doctors = await Doctor.find()
+        const patients = await Patient.find()
+
+
+        const pendingDoctors: Array<any> = []
+        Doctors.forEach((doctor) => {
+            if(doctor.state === "pending"){
+                pendingDoctors.push(doctor)
+            }
+        })
+
         const insertedSymptoms = []
         const trendingSymptoms: Array<{title: string, count: number}> = []
         const trendingSicknesses: Array<{title: string, count: number}> = []
@@ -37,6 +46,8 @@ export async function GET(request: NextRequest){
         const returnBody = {
             totalPredictedDiseases: predictedSicknesses.length,
             totalInsertedSymptoms: insertedSymptoms.length,
+            doctors:Doctors.length,
+            patients: patients.length,
             trendingSicknesses: trendingSicknesses.slice(0, 6),
             trendingSymptoms: trendingSymptoms.slice(0, 6),
             pendingDoctors: pendingDoctors

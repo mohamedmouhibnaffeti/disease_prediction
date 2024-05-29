@@ -111,7 +111,7 @@ export default function Parametres(){
             toast({
                 variant: "destructive",
                 title: "Sorry.",
-                description: <p> Couldn't update profile.Please try again later. </p>,
+                description: <p> Couldn't update profile, Please try again later. </p>,
               })
         }
     }

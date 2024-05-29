@@ -29,9 +29,9 @@ const Carousel = ({ data }: {data: {image: any}[]}) => {
                         <div key={i} className='relative shrink-0 w-full h-full'>
                             <Image
                                 className='pointer-events-none'
-                                alt="random image"
+                                alt="Doctor Image"
                                 fill
-                                src={v.image}
+                                src={`data:image/jpeg;base64,${v.image}`}
                             />
                         </div>
                     ))}

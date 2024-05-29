@@ -42,7 +42,7 @@ export const PatientDashMainPageData = createAsyncThunk(
 )
 
 export const updatePatient = createAsyncThunk(
-    "doctor/updatePatient",
+    "patient/updatePatient",
     async({patientID, name, lastname, phone}: {patientID: any, name: string, lastname: string, phone: string}) => {
         try{
             const response = await fetch(`${next_backend_route}/user/patient`, {
@@ -70,7 +70,7 @@ export const updatePatient = createAsyncThunk(
 )
 
 export const fetchPatientHistoryData = createAsyncThunk(
-    "doctor/PatientDashboardStatistics",
+    "patient/PatientDashboardStatistics",
     async({patientID}: {patientID: any}) => {
         try{
             const response = await fetch(`${next_backend_route}/dashboard/patient/history?patiendID=${patientID}`)

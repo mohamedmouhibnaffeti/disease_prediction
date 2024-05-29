@@ -1,7 +1,7 @@
 "use client"
 import { useLayoutEffect, useState } from "react"
-import { useDispatch } from "react-redux"
-import { AppDispatch } from "@/Store/store"
+import { useDispatch, useSelector } from "react-redux"
+import { AppDispatch, RootState } from "@/Store/store"
 import MainLoader from "@/components/Loaders/MainLoader"
 import ErrorFetching from "@/components/Errors/FailedFetching"
 import { Greeting } from "@/lib/functions/dates"
@@ -14,6 +14,8 @@ import AdminNavBarDash from "@/components/AdminDashNav"
 import AdminOverViewStats from "@/components/AdminOverViewStats"
 import PendingDoctorCard from "@/components/PendingDoctorCard"
 import ModalComponent from "@/components/ImageModal"
+import { fetchDashboardMainData } from "@/Store/admin/AdminSlice"
+import DrawerComponent from "@/components/Drawer"
 
 const symptoms = [
     { title: 'Headache', count: 87 },
@@ -39,16 +41,19 @@ const sicknesses = [
 
 export default function Dashboard(){
     const [requestLoading, setRequestLoading] = useState(false)
-    const [mainData, setMainData] = useState<any>()
     const dispatch = useDispatch<AppDispatch>()
+    const { MainPageData } = useSelector((state: RootState) => state.Admin)
     const fetchData = async () => {
         setRequestLoading(true)
-        const response = await dispatch(PatientDashMainPageData({patientID: "6651af539b6651ea68e82453"}))
-        setMainData(response.payload)
+        const response = await dispatch(fetchDashboardMainData())
         setRequestLoading(false)
     }
     useLayoutEffect(()=>{
+        if(!MainPageData){
+            fetchData()
+        }
     }, [])
+    console.log(MainPageData)
     return (
         <>
             <div className="grid min-h-screen w-full overflow-hidden md:grid-cols-[280px_1fr]">
@@ -59,26 +64,26 @@ export default function Dashboard(){
                     {
                         !requestLoading?
                         (
-                            /*mainData && mainData.status */ 200 === 200 ?
+                            MainPageData && MainPageData.status === 200 ?
                             <>
                                 <h1 className="md:text-2xl text-xl font-semibold text-sickness-primaryText"> {Greeting()} </h1>
                                 <div className="flex flex-col gap-2">
                                     <div className="grid grid-cols-1 gap-8 p-10 lg:grid-cols-2 xl:grid-cols-4">
-                                        <AdminOverViewStats str="Doctors" val={50} />
-                                        <AdminOverViewStats str="Patients" val={120} />
-                                        <AdminOverViewStats str="Predicted Diseases" val={100} />
-                                        <AdminOverViewStats str="Selected Symptoms" val={500} />
+                                        <AdminOverViewStats str="Doctors" val={MainPageData.body.doctors} />
+                                        <AdminOverViewStats str="Patients" val={MainPageData.body.patients} />
+                                        <AdminOverViewStats str="Predicted Diseases" val={MainPageData.body.totalPredictedDiseases} />
+                                        <AdminOverViewStats str="Selected Symptoms" val={MainPageData.body.totalInsertedSymptoms} />
                                     </div>
                                     <h1 className="md:text-xl text-lg font-semibold text-sickness-gray mt-4"> Pending Doctors </h1>
                                     <p className="pl-4 text-sm text-sickness-ashGray font-semibold"> You'll find here a list of doctors who request joining the platform. </p>
                                     <div className="grid grid-cols-1 gap-8 px-10 py-2 lg:grid-cols-2 xl:grid-cols-4">
-                                        <PendingDoctorCard />
-                                        <PendingDoctorCard />
-                                        <PendingDoctorCard />
-                                        <PendingDoctorCard />
-                                        <PendingDoctorCard />
-                                        <PendingDoctorCard />
-                                        <PendingDoctorCard />
+                                        {
+                                            MainPageData.body.pendingDoctors.map((doctor: any, index: number) => {
+                                                return(
+                                                    <PendingDoctorCard doctor={doctor} key={index} />
+                                                )
+                                            })
+                                        }
                                     </div>
                                     <h1 className="md:text-xl text-lg font-semibold text-sickness-gray mt-4"> Statistics </h1>
                                     <div className="gap-2 justify-between w-full lg:flex hidden">
@@ -90,6 +95,7 @@ export default function Dashboard(){
                                         <p className="text-center text-sm font-semibold"> For a better user experience please open this page in a desktop screen </p>
                                     </div>
                                 </div>
+                                <DrawerComponent />
                             </>
                             :
                             <ErrorFetching />
