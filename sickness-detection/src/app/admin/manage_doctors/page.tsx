@@ -23,6 +23,8 @@ export default function ManageDoctors(){
     useLayoutEffect(()=>{
         if(!manageDoctorsData){
             fetchData()
+        }else{
+            setRequestLoading(false)
         }
     }, [])
     return (

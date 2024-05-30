@@ -90,7 +90,8 @@ return (
                             : (doctor.state === "pending" ? <button onClick={()=>handleSelectDoctor(doctor._id)} className="border border-sickness-border rounded-sm text-sickness-border hover:border-sickness-primary hover:text-sickness-primary transition ease-out delay-100 text-xs px-1 py-1"> VIEW CARDS </button> 
                                 : (doctor.state === "refused" ? <button onClick={()=>handleSelectDoctor(doctor._id)} className="border border-sickness-border rounded-sm text-sickness-border hover:border-red-primary hover:text-sickness-primary transition ease-out delay-100 text-xs px-1 py-1"> VIEW CARDS </button> 
                                     : (doctor.state === "archived" ? 
-                                        <MinusIcon className="text-sickness-gray translate-x-8" /> : 
+                                        <button onClick={()=>handleSelectDoctor(doctor._id)} className="border border-sickness-border rounded-sm text-sickness-border hover:border-red-primary hover:text-sickness-primary transition ease-out delay-100 text-xs px-1 py-1"> VIEW CARDS </button>  
+                                        : 
                                         "")
                                     )
                                 )

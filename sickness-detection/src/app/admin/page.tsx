@@ -29,6 +29,8 @@ export default function Dashboard(){
     useLayoutEffect(()=>{
         if(!MainPageData){
             fetchData()
+        }else{
+            setRequestLoading(false)
         }
     }, [])
     console.log(MainPageData)

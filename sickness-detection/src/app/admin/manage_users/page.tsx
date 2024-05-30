@@ -23,6 +23,8 @@ export default function ManageUsers(){
     useLayoutEffect(()=>{
         if(!manageUsersData){
             fetchData()
+        }else{
+            setRequestLoading(false)
         }
     }, [])
     return (

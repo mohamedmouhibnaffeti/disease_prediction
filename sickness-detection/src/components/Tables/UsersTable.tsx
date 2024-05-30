@@ -7,13 +7,14 @@ TableHead,
 TableHeader,
 TableRow,
 } from "@/components/ui/table"
-import { ArchiveIcon, CheckCircle2, MinusIcon } from "lucide-react"
+import { ArchiveIcon, CheckCircle2, CheckIcon, MinusIcon } from "lucide-react"
 import { useState } from "react"
 import SmallRedLoader from "../Loaders/SmallRedLoader"
 import { changePatientState, selectPatient, selectState } from "@/Store/admin/AdminSlice"
 import { useToast } from "../ui/use-toast"
 import { useDispatch } from "react-redux"
 import { AppDispatch } from "@/Store/store"
+import SmallGreenLoader from "../Loaders/SmallGreenLoader"
 
 
 export function UsersTable({ users }: { users: Array<any> }) {
@@ -83,7 +84,7 @@ return (
                     user.state === "accepted" ? 
                     <button disabled={deleting.state} onClick={()=>changeDoctorStateCall({state: "archived", id: user._id})} className={`border rounded-sm ${(deleting.state && deleting.id === user._id) ? "text-red-500 border-red-500" : "text-sickness-border border-sickness-border hover:border-red-500 hover:text-red-500"} transition ease-out delay-100 text-xs px-1 py-1 flex justify-center items-center gap-2`}> ARCHIVE {(deleting.state && deleting.id === user._id) ? <SmallRedLoader /> : <ArchiveIcon className="w-[0.9rem] h-[0.9rem] " />} </button> 
                                     : (user.state === "archived" ? 
-                                        <MinusIcon className="text-sickness-gray translate-x-8" /> : 
+                                    <button disabled={deleting.state} onClick={()=>changeDoctorStateCall({state: "accepted", id: user._id})} className={`border rounded-sm ${(deleting.state && deleting.id === user._id) ? "text-green-500 border-green-500" : "text-sickness-border border-sickness-border hover:border-green-500 hover:text-green-500"} transition ease-out delay-100 text-xs px-1 py-1 flex justify-center items-center gap-2`}> ACCEPT {(deleting.state && deleting.id === user._id) ? <SmallGreenLoader /> : <CheckIcon className="w-[0.9rem] h-[0.9rem] " />} </button>  : 
                                         "")
                 }
             </TableCell>
