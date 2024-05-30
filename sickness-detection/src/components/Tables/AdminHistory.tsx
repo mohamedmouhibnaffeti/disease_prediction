@@ -7,6 +7,7 @@ import {
     TableHeader,
     TableRow,
     } from "@/components/ui/table"
+import { getHoursAndMinutes } from "@/lib/functions/dates"
     
     import { BookmarkCheckIcon, CheckCircle2Icon, Clock9Icon, XCircleIcon } from "lucide-react"
     
@@ -27,7 +28,7 @@ import {
             <TableBody>
                 {actions.map((action: any) => {
                     const date = new Date(action.createdAt)
-                    const dateString = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+                    const dateString = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}, ${getHoursAndMinutes(date).hours}:${getHoursAndMinutes(date).minutes}`
                     return(
                         <TableRow key={action._id}>
                             <TableCell>{action._id}</TableCell>

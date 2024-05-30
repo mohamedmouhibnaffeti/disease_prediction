@@ -54,6 +54,7 @@ export default function Parametres(){
         lastname: "",
         phone: ""
     });
+    const [rendering, setRendering] = useState(true)
     useLayoutEffect(()=>{
         const stringUser = localStorage.getItem("user") || ""
         const parsedUser = JSON.parse(stringUser)
@@ -67,6 +68,7 @@ export default function Parametres(){
                 email: parsedUser.email
             })
         }
+        setRendering(false)
     },[])
     const handleMarkerMove = (e: any) => {
         setUser({...user, location: [e.target.getLatLng().lat, e.target.getLatLng().lng]})
@@ -123,7 +125,7 @@ export default function Parametres(){
                 <main className="w-full flex-1 flex p-4 sm:p-6">
                     <div className="flex flex-col md:flex-[0.7] flex-1">
                         {
-                            false ?
+                            rendering ?
                             <>
                                 <Skeleton className="w-[100px] h-8 rounded-md" />
                                 <div className="flex gap-3 w-full mt-8">

@@ -7,7 +7,7 @@ import { useLayoutEffect, useState } from "react"
 import PatientsOverallChart from "@/components/Charts/PatientsOverallChart"
 import { PatientsTable } from "@/components/Tables/PatientsTable"
 import { useDispatch, useSelector } from "react-redux"
-import { AppDispatch } from "@/Store/store"
+import { AppDispatch, RootState } from "@/Store/store"
 import { fetchDashboardMainData } from "@/Store/doctor/doctorSlice"
 import MainLoader from "@/components/Loaders/MainLoader"
 import ErrorFetching from "@/components/Errors/FailedFetching"
@@ -15,16 +15,19 @@ import { Greeting } from "@/lib/functions/dates"
 
 export default function Dashboard(){
     const [maxLen, setMaxLen] = useState(3)
-    const [mainData, setMainData] = useState<any>()
+    const { mainData } = useSelector((state: RootState) => state.Doctor)
     const [requestLoading, setRequestLoading] = useState(true)
     const dispatch = useDispatch<AppDispatch>()
     const fetchData = async() => {
         const response = await dispatch(fetchDashboardMainData({doctorID: "6651ad919b6651ea68e8243c"}))
-        setMainData(response.payload)
         setRequestLoading((prev) => false)
     }
     useLayoutEffect(()=>{
-        fetchData()
+        if(!mainData){
+            fetchData()
+        }else{
+            setRequestLoading(false)
+        }
     }, [])
     console.log(mainData)
     return (

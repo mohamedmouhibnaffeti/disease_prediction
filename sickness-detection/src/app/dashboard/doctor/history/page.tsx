@@ -8,22 +8,25 @@ import PatientsOverallChart from "@/components/Charts/PatientsOverallChart"
 import { PatientsTable } from "@/components/Tables/PatientsTable"
 import { AppointmentsTable } from "@/components/Tables/AppoitmentsHistoryTable"
 import { fetchHistoryData } from "@/Store/doctor/doctorSlice"
-import { useDispatch } from "react-redux"
-import { AppDispatch } from "@/Store/store"
+import { useDispatch, useSelector } from "react-redux"
+import { AppDispatch, RootState } from "@/Store/store"
 import ErrorFetching from "@/components/Errors/FailedFetching"
 import MainLoader from "@/components/Loaders/MainLoader"
 
 export default function Dashboard(){
-    const [AppointmentsData, setAppointmentsData] = useState<any>()
+    const { historyData } = useSelector((state: RootState) => state.Doctor)
     const [requestLoading, setRequestLoading] = useState(true)
     const dispatch = useDispatch<AppDispatch>()
     const fetchData = async() => {
         const response = await dispatch(fetchHistoryData({doctorID: "6651ad919b6651ea68e8243c"}))
-        setAppointmentsData(response.payload)
         setRequestLoading((prev) => false)
     }
     useLayoutEffect(()=>{
-        fetchData()
+        if( !historyData ){
+            fetchData()
+        }else{
+            setRequestLoading(false)
+        }
     }, [])
     return (
         <div className="grid min-h-screen w-full overflow-hidden md:grid-cols-[280px_1fr]">
@@ -34,11 +37,11 @@ export default function Dashboard(){
                 {
                     !requestLoading?
                     (
-                        AppointmentsData && AppointmentsData.status === 200 ?
+                        historyData && historyData.status === 200 ?
                         <>
                             <h1 className="md:text-2xl text-xl font-semibold text-sickness-primaryText"> Appointments History </h1>
                             <div className="overflow-x-scroll grid max-w-screen mt-4 border border-sickness-border rounded-md">
-                                <AppointmentsTable  appointments={AppointmentsData.appointments} />
+                                <AppointmentsTable  appointments={historyData.appointments} />
                             </div>
                         </>
                         :

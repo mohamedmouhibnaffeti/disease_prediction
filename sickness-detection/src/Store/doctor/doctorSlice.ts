@@ -8,7 +8,11 @@ interface doctorSliceType {
     requestLoading: boolean,
     AcceptAppointmentState: boolean,
     postponeAppointmentState: boolean,
-    finishAppointmentState: boolean
+    finishAppointmentState: boolean,
+    appointmentsData: any,
+    mainData: any,
+    statisticsData: any,
+    historyData: any
 }
 
 const initialState: doctorSliceType = {
@@ -17,7 +21,11 @@ const initialState: doctorSliceType = {
     requestLoading: false,
     AcceptAppointmentState: false,
     postponeAppointmentState: false,
-    finishAppointmentState: false
+    finishAppointmentState: false,
+    appointmentsData: null,
+    mainData: null,
+    statisticsData: null,
+    historyData: null
 }
 
 const doctorSlice = createSlice({
@@ -56,6 +64,26 @@ const doctorSlice = createSlice({
         .addCase(fetchDoctorsBySpeciality.fulfilled, (state, action: PayloadAction<any>) => {
             if(action.payload.status === 200){
                 state.doctors = action.payload.doctors
+            }
+        })
+        .addCase(fetchDashboardMainData.fulfilled, (state, action: PayloadAction<any>) => {
+            if(action.payload.status === 200){
+                state.mainData = action.payload
+            }
+        })
+        .addCase(fetchHistoryData.fulfilled, (state, action: PayloadAction<any>) => {
+            if(action.payload.status === 200){
+                state.historyData = action.payload
+            }
+        })
+        .addCase(fetchStatisticsData.fulfilled, (state, action: PayloadAction<any>) => {
+            if(action.payload.status === 200){
+                state.statisticsData = action.payload
+            }
+        })
+        .addCase(fetchAppointmentsData.fulfilled, (state, action: PayloadAction<any>) => {
+            if(action.payload.status === 200){
+                state.appointmentsData = action.payload
             }
         })
     }

@@ -5,8 +5,8 @@ import { TrendingDownIcon, TrendingUpIcon } from "lucide-react"
 import DashboardCalendar from "@/components/DashboardCalendar"
 import TodayAppointmentsCard from "@/components/TodayAppointmentsCard"
 import AppointmentDetailsCard from "@/components/AppointmentDetailsCard"
-import { useDispatch } from "react-redux"
-import { AppDispatch } from "@/Store/store"
+import { useDispatch, useSelector } from "react-redux"
+import { AppDispatch, RootState } from "@/Store/store"
 import SelectDate from "@/components/SelectDate"
 import { fetchAppointmentsData } from "@/Store/doctor/doctorSlice"
 import MainLoader from "@/components/Loaders/MainLoader"
@@ -16,12 +16,11 @@ import { Greeting, compareDates } from "@/lib/functions/dates"
 import { HeartPulse } from "lucide-react"
 
 export default function Dashboard(){
-    const [AppointmentsData, setAppointmentsData] = useState<any>()
+    const { appointmentsData } = useSelector((state: RootState) => state.Doctor )
     const [requestLoading, setRequestLoading] = useState(true)
     const dispatch = useDispatch<AppDispatch>()
     const fetchData = async() => {
         const response = await dispatch(fetchAppointmentsData({doctorID: "6651ad919b6651ea68e8243c"}))
-        setAppointmentsData(response.payload)
         setRequestLoading((prev) => false)
     }
     useLayoutEffect(()=>{
@@ -40,22 +39,22 @@ export default function Dashboard(){
                 {
                     !requestLoading ?
                     (
-                        AppointmentsData && AppointmentsData.status === 200
+                        appointmentsData && appointmentsData.status === 200
                         ?
                         <>
                             <h1 className="md:text-2xl text-xl font-semibold text-sickness-primaryText"> {Greeting()} </h1>
                             <div className="grid lg:grid-cols-2 grid-cols-1 gap-2">
                                 <div className="flex flex-col gap-4">
                                     <div className="px-4 py-2 pb-4 mt-4 flex flex-col border border-sickness-border rounded-md shadow-md gap-6 lg:w-fit lg:h-fit w-full">
-                                        <p className="text-sickness-primary lg:text-2xl text-xl font-semibold"> Visits for today: <span> {AppointmentsData.body.visitsToday} </span> </p>
+                                        <p className="text-sickness-primary lg:text-2xl text-xl font-semibold"> Visits for today: <span> {appointmentsData.body.visitsToday} </span> </p>
                                         <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 w-full">
                                             <div className="px-4 py-2 flex w-full flex-col border border-sickness-border rounded-sm shadow-sm">
                                                 <h1 className="text-xl"> New Patients </h1>
-                                                <p className="text-lg font-semibold flex gap-2 self-end">  { AppointmentsData.body.newPatients.value } { AppointmentsData.body.newPatients.etat === "positive" ? <TrendingUpIcon className="text-green-500" /> : (AppointmentsData.body.newPatients.etat === "negative" ? <TrendingDownIcon className="text-red-500" /> : "" ) } </p>
+                                                <p className="text-lg font-semibold flex gap-2 self-end">  { appointmentsData.body.newPatients.value } { appointmentsData.body.newPatients.etat === "positive" ? <TrendingUpIcon className="text-green-500" /> : (appointmentsData.body.newPatients.etat === "negative" ? <TrendingDownIcon className="text-red-500" /> : "" ) } </p>
                                             </div>
                                             <div className="px-4 py-2 flex w-full flex-col border border-sickness-border rounded-sm shadow-sm">
                                                 <h1 className="text-xl"> Yesterday's Patients </h1>
-                                                <p className="text-lg font-semibold flex gap-2 self-end"> { AppointmentsData.body.yesterdayPatients } <HeartPulse className="translate-y-[1.5px]" /> </p>
+                                                <p className="text-lg font-semibold flex gap-2 self-end"> { appointmentsData.body.yesterdayPatients } <HeartPulse className="translate-y-[1.5px]" /> </p>
                                             </div>
                                         </div>
                                     </div>
@@ -67,7 +66,7 @@ export default function Dashboard(){
                                         <div className="grid xl:grid-cols-2 grid-cols-1 gap-2 w-full mt-4">
                                             <div className="flex flex-col gap-4">
                                                 {
-                                                    AppointmentsData.body.appointmentHistory.map((appointment: any) => {
+                                                    appointmentsData.body.appointmentHistory.map((appointment: any) => {
                                                         const appointmentDate = new Date(appointment.requestedAt)
                                                         if(compareDates(appointmentDate, date)){
                                                             return(
@@ -82,7 +81,7 @@ export default function Dashboard(){
                                     </div>
                                 </div>
                                 <div className="w-full">
-                                    <DashboardCalendar appointments={AppointmentsData.body.appointmentHistory} />
+                                    <DashboardCalendar appointments={appointmentsData.body.appointmentHistory} />
                                 </div>
                             </div>
                         </>

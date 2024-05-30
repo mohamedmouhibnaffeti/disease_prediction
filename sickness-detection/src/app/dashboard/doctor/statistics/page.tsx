@@ -7,26 +7,27 @@ import AgeLineChart from "@/components/Charts/AgePatients"
 import { MonitorXIcon } from "lucide-react"
 import SymptomsBarChart from "@/components/Charts/SymptomsBarChart"
 import SicknessBarChart from "@/components/Charts/SicknessBarChat"
-import { useDispatch } from "react-redux"
-import { AppDispatch } from "@/Store/store"
+import { useDispatch, useSelector } from "react-redux"
+import { AppDispatch, RootState } from "@/Store/store"
 import { fetchStatisticsData } from "@/Store/doctor/doctorSlice"
 import MainLoader from "@/components/Loaders/MainLoader"
 import ErrorFetching from "@/components/Errors/FailedFetching"
 
 export default function Dashboard(){
-    const [statisticsData, setstatisticsData] = useState<any>()
+    const { statisticsData } = useSelector((state: RootState) => state.Doctor)
     const [requestLoading, setRequestLoading] = useState(true)
     const dispatch = useDispatch<AppDispatch>()
     const fetchData = async() => {
         const response = await dispatch(fetchStatisticsData({doctorID: "6651ad919b6651ea68e8243c"}))
-        setstatisticsData(response.payload)
         setRequestLoading((prev) => false)
     }
     useLayoutEffect(()=>{
-        fetchData()
+        if(!statisticsData){
+            fetchData()
+        }else{
+            setRequestLoading(false)
+        }
     }, [])
-    console.log(statisticsData)
-    console.log(requestLoading)
     return (
         <div className="grid min-h-screen w-full overflow-hidden md:grid-cols-[280px_1fr]">
             <SideBarDash /> 
