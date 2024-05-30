@@ -268,7 +268,7 @@ export const fetchStatisticsData = createAsyncThunk(
 )
 
 export const fetchAppointmentsData = createAsyncThunk(
-    "doctor/dashboardStatistics",
+    "doctor/fetchAppointmentsData",
     async({doctorID}: {doctorID: any}) => {
         try{
             const response = await fetch(`${next_backend_route}/dashboard/doctor/my_appointments?doctorID=${doctorID}`)
@@ -316,7 +316,7 @@ export const updateDoctor = createAsyncThunk(
 )
 
 export const fetchHistoryData = createAsyncThunk(
-    "doctor/dashboardStatistics",
+    "doctor/fetchHistoryData",
     async({doctorID}: {doctorID: any}) => {
         try{
             const response = await fetch(`${next_backend_route}/dashboard/doctor/history?doctorID=${doctorID}`)
