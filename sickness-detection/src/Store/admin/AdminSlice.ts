@@ -122,8 +122,9 @@ export const acceptDoctor = createAsyncThunk(
         try{
             const state: RootState = getState() as RootState
             const { selectedDoctor } = state.Admin
-            console.log(selectedDoctor)
-            const response = await fetch(`${next_backend_route}/user/doctor/accept_doctor?doctorID=${selectedDoctor}`)
+            const admin = localStorage.getItem("user") || ""
+            const parsedAdmin = JSON.parse(admin)
+            const response = await fetch(`${next_backend_route}/user/doctor/accept_doctor?doctorID=${selectedDoctor}&adminID=${parsedAdmin._id}`)
             if(response.ok){
                 const data = await response.json()
                 return { ...data, status: 200 }
@@ -144,10 +145,11 @@ export const changeDoctorState = createAsyncThunk(
         try{
             const state: RootState = getState() as RootState
             const { selectedDoctor, selectedState } = state.Admin
-
+            const admin = localStorage.getItem("user") || ""
+            const parsedAdmin = JSON.parse(admin)
             const response = await fetch(`${next_backend_route}/user/doctor/change_doctor_state`, {
                 method: 'POST',
-                body: JSON.stringify({doctorID: selectedDoctor, state: selectedState})
+                body: JSON.stringify({adminID: parsedAdmin._id, doctorID: selectedDoctor, state: selectedState})
             })
             if(response.ok){
                 const data = await response.json()
@@ -205,11 +207,12 @@ export const changePatientState = createAsyncThunk(
     async(_, { getState }) => {
         try{
             const state: RootState = getState() as RootState
+            const admin = localStorage.getItem("user") || ""
+            const parsedAdmin = JSON.parse(admin)
             const { selectedPatient, selectedState } = state.Admin
-
             const response = await fetch(`${next_backend_route}/user/patient/change_patient_state`, {
                 method: 'POST',
-                body: JSON.stringify({patientID: selectedPatient, state: selectedState})
+                body: JSON.stringify({adminID: parsedAdmin._id, patientID: selectedPatient, state: selectedState})
             })
             if(response.ok){
                 const data = await response.json()

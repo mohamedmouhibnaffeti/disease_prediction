@@ -1,7 +1,7 @@
 import mongoose, { Schema, model, models } from "mongoose"
 import {Admin, User} from "@/Models/UserModel/UserModel"
 
-const AdminHistoryModel = new Schema({
+const AdminHistorySchema = new Schema({
     owner: {
         type: Schema.Types.ObjectId,
         ref: User.modelName
@@ -14,3 +14,7 @@ const AdminHistoryModel = new Schema({
         default: Date.now()
     }
 })
+
+const AdminHistory = models.AdminHistory || model("AdminHistory", AdminHistorySchema)
+
+export default AdminHistory
