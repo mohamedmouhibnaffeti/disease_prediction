@@ -2,8 +2,8 @@
 import PatientSideBarDash from "@/components/PatientSideBarDash"
 import PatientNavBarDash from "@/components/PatientNavBarDash"
 import { useLayoutEffect, useState } from "react"
-import { useDispatch } from "react-redux"
-import { AppDispatch } from "@/Store/store"
+import { useDispatch, useSelector } from "react-redux"
+import { AppDispatch, RootState } from "@/Store/store"
 import MainLoader from "@/components/Loaders/MainLoader"
 import ErrorFetching from "@/components/Errors/FailedFetching"
 import { Greeting } from "@/lib/functions/dates"
@@ -15,16 +15,19 @@ import { PatientDashMainPageData } from "@/Store/patient/PatientSlice"
 
 export default function Dashboard(){
     const [requestLoading, setRequestLoading] = useState(false)
-    const [mainData, setMainData] = useState<any>()
+    const { mainData } = useSelector((state: RootState) => state.Patient)
     const dispatch = useDispatch<AppDispatch>()
     const fetchData = async () => {
         setRequestLoading(true)
         const response = await dispatch(PatientDashMainPageData({patientID: "6651af539b6651ea68e82453"}))
-        setMainData(response.payload)
         setRequestLoading(false)
     }
     useLayoutEffect(()=>{
-        fetchData()
+        if(!mainData){
+            fetchData()
+        }else{
+            setRequestLoading(false)
+        }
     }, [])
     return (
         <>

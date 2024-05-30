@@ -3,12 +3,16 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface PatientSliceType {
     PatientHistoryItemOpen: boolean,
-    PatientHistoryItem: any
+    PatientHistoryItem: any,
+    mainData: any,
+    historyData: any
 }
 
 const initialState: PatientSliceType = {
     PatientHistoryItemOpen: false,
-    PatientHistoryItem: null
+    PatientHistoryItem: null,
+    mainData: null,
+    historyData: null
 }
 
 const patientSlice = createSlice({
@@ -21,6 +25,19 @@ const patientSlice = createSlice({
         setPatientHistoryItem: (state, action: PayloadAction<any>) => {
             state.PatientHistoryItem = action.payload
         }
+    },
+    extraReducers: (builder) => {
+        builder
+        .addCase(fetchPatientHistoryData.fulfilled, (state, action: PayloadAction<any>) => {
+            if(action.payload.status === 200){
+                state.historyData = action.payload
+            }
+        })
+        .addCase(PatientDashMainPageData.fulfilled, (state, action: PayloadAction<any>) => {
+            if(action.payload.status === 200){
+                state.mainData = action.payload
+            }
+        })
     }
 })
 

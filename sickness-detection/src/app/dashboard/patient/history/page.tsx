@@ -3,7 +3,7 @@ import PatientSideBarDash from "@/components/PatientSideBarDash"
 import PatientNavBarDash from "@/components/PatientNavBarDash"
 import { useLayoutEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { AppDispatch } from "@/Store/store"
+import { AppDispatch, RootState } from "@/Store/store"
 import MainLoader from "@/components/Loaders/MainLoader"
 import ErrorFetching from "@/components/Errors/FailedFetching"
 import { fetchPatientHistoryData } from "@/Store/patient/PatientSlice"
@@ -11,16 +11,19 @@ import { PatientAppointmentsTable } from "@/components/Tables/PatientAppointment
 import PatientHistoryItemDetails from "@/components/PatientHistoryItemDetails"
 
 export default function Dashboard(){
-    const [AppointmentsData, setAppointmentsData] = useState<any>()
+    const { historyData } = useSelector((state: RootState) => state.Patient)
     const [requestLoading, setRequestLoading] = useState(true)
     const dispatch = useDispatch<AppDispatch>()
     const fetchData = async() => {
         const response = await dispatch(fetchPatientHistoryData({patientID: "6651af539b6651ea68e82453"}))
-        setAppointmentsData(response.payload)
         setRequestLoading((prev) => false)
     }
     useLayoutEffect(()=>{
-        fetchData()
+        if(!historyData){
+            fetchData()
+        }else{
+            setRequestLoading(false)
+        }
     }, [])
     return (
         <>
@@ -32,11 +35,11 @@ export default function Dashboard(){
                     {
                         !requestLoading?
                         (
-                            AppointmentsData && AppointmentsData.status === 200 ?
+                            historyData && historyData.status === 200 ?
                             <>
                                 <h1 className="md:text-2xl text-xl font-semibold text-sickness-primaryText"> Your previous appointments </h1>
                                 <div className="overflow-x-scroll grid max-w-screen mt-4 border border-sickness-border rounded-md">
-                                    <PatientAppointmentsTable  appointments={AppointmentsData.appointments} />
+                                    <PatientAppointmentsTable  appointments={historyData.appointments} />
                                 </div>
                                 <PatientHistoryItemDetails />
                             </>
