@@ -18,7 +18,7 @@ import { fetchDashboardMainData } from "@/Store/admin/AdminSlice"
 import DrawerComponent from "@/components/Drawer"
 
 export default function Dashboard(){
-    const [requestLoading, setRequestLoading] = useState(false)
+    const [requestLoading, setRequestLoading] = useState(true)
     const dispatch = useDispatch<AppDispatch>()
     const { MainPageData } = useSelector((state: RootState) => state.Admin)
     const fetchData = async () => {

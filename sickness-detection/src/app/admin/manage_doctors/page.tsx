@@ -12,7 +12,7 @@ import { DoctorsTable } from "@/components/Tables/DoctorsTable"
 import { getDoctors } from "@/Store/admin/AdminSlice"
 
 export default function ManageDoctors(){
-    const [requestLoading, setRequestLoading] = useState(false)
+    const [requestLoading, setRequestLoading] = useState(true)
     const { manageDoctorsData } = useSelector((state: RootState) => state.Admin)
     const dispatch = useDispatch<AppDispatch>()
     const fetchData = async () => {

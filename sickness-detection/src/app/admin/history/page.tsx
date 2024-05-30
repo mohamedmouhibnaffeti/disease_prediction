@@ -1,7 +1,7 @@
 "use client"
 import { useLayoutEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { AppDispatch } from "@/Store/store"
+import { AppDispatch, RootState } from "@/Store/store"
 import MainLoader from "@/components/Loaders/MainLoader"
 import ErrorFetching from "@/components/Errors/FailedFetching"
 import { fetchPatientHistoryData } from "@/Store/patient/PatientSlice"
@@ -9,6 +9,7 @@ import PatientHistoryItemDetails from "@/components/PatientHistoryItemDetails"
 import AdminSideBarDash from "@/components/AdminSideDash"
 import AdminNavBarDash from "@/components/AdminDashNav"
 import { ActionsTable } from "@/components/Tables/AdminHistory"
+import { fetchActions } from "@/Store/admin/AdminSlice"
 
 const sampleActions = [
     {
@@ -58,12 +59,11 @@ const sampleActions = [
 ];
 
 export default function Dashboard(){
-    const [AppointmentsData, setAppointmentsData] = useState<any>()
     const [requestLoading, setRequestLoading] = useState(true)
+    const { actionsData } = useSelector((state: RootState) => state.Admin)
     const dispatch = useDispatch<AppDispatch>()
     const fetchData = async() => {
-        const response = await dispatch(fetchPatientHistoryData({patientID: "6651af539b6651ea68e82453"}))
-        setAppointmentsData(response.payload)
+        const response = await dispatch(fetchActions())
         setRequestLoading((prev) => false)
     }
     useLayoutEffect(()=>{
@@ -79,12 +79,12 @@ export default function Dashboard(){
                     {
                         !requestLoading?
                         (
-                            200 === 200 ?
+                            actionsData && actionsData.status === 200 ?
                             <>
                                 <h1 className="md:text-2xl text-xl font-semibold text-sickness-primaryText"> Actions History </h1>
                                 <p className="pl-4 text-sm text-sickness-ashGray font-semibold"> You'll find here a list of all actions performed by all admins in the platform, from deleting a user, all the way to accepting a doctor. </p>
                                 <div className="overflow-x-scroll grid max-w-screen mt-4 border border-sickness-border rounded-md">
-                                    <ActionsTable actions={sampleActions} />
+                                    <ActionsTable actions={actionsData.actions} />
                                 </div>
                                 <PatientHistoryItemDetails />
                             </>

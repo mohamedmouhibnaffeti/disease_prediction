@@ -9,7 +9,8 @@ interface adminSliceType {
     selectedState: string,
     MainPageData: any,
     manageDoctorsData: any,
-    manageUsersData: any
+    manageUsersData: any,
+    actionsData: any
 }
 
 const initialState: adminSliceType = {
@@ -19,7 +20,8 @@ const initialState: adminSliceType = {
     drawerOpen: false,
     MainPageData: null,
     manageDoctorsData: null,
-    manageUsersData: null
+    manageUsersData: null,
+    actionsData: null
 }
 
 const adminSlice = createSlice({
@@ -72,6 +74,11 @@ const adminSlice = createSlice({
                 state.manageUsersData = action.payload
             }
         })
+        .addCase(fetchActions.fulfilled, (state, action: PayloadAction<any>)=>{
+            if(action.payload.status === 200){
+                state.actionsData = action.payload
+            }
+        })
     }
 })
 
@@ -87,6 +94,8 @@ export const fetchDashboardMainData = createAsyncThunk(
             else if(response.status === 404 || response.status === 400){
                 const data = await response.json()
                 return { ...data, status: 400 } 
+            }else{
+                return { status: 500 } 
             }
         }catch(err){
             return { err, status: 500 }
@@ -100,7 +109,6 @@ export const fetchDoctorImages = createAsyncThunk(
         try{
             const state: RootState = getState() as RootState
             const { selectedDoctor } = state.Admin
-            console.log(selectedDoctor)
             const response = await fetch(`${next_backend_route}/user/doctor/get_doctor_images?doctorID=${selectedDoctor}`)
             if(response.ok){
                 const data = await response.json()
@@ -109,6 +117,8 @@ export const fetchDoctorImages = createAsyncThunk(
             else if(response.status === 404 || response.status === 400){
                 const data = await response.json()
                 return { ...data, status: 400 } 
+            }else{
+                return { status: 500 } 
             }
         }catch(err){
             return { err, status: 500 }
@@ -132,6 +142,8 @@ export const acceptDoctor = createAsyncThunk(
             else if(response.status === 404 || response.status === 400){
                 const data = await response.json()
                 return { ...data, status: 400 } 
+            }else{
+                return { status: 500 } 
             }
         }catch(err){
             return { err, status: 500 }
@@ -158,6 +170,8 @@ export const changeDoctorState = createAsyncThunk(
             else if(response.status === 404 || response.status === 400){
                 const data = await response.json()
                 return { ...data, status: 400 } 
+            }else{
+                return { status: 500 } 
             }
         }catch(err){
             return { err, status: 500 }
@@ -177,6 +191,8 @@ export const getDoctors = createAsyncThunk(
             else if(response.status === 404 || response.status === 400){
                 const data = await response.json()
                 return { ...data, status: 400 } 
+            }else{
+                return { status: 500 } 
             }
         }catch(err){
             return { err, status: 500 }
@@ -196,6 +212,8 @@ export const getPatients = createAsyncThunk(
             else if(response.status === 404 || response.status === 400){
                 const data = await response.json()
                 return { ...data, status: 400 } 
+            }else{
+                return { status: 500 } 
             }
         }catch(err){
             return { err, status: 500 }
@@ -221,6 +239,8 @@ export const changePatientState = createAsyncThunk(
             else if(response.status === 404 || response.status === 400){
                 const data = await response.json()
                 return { ...data, status: 400 } 
+            }else{
+                return { status: 500 } 
             }
         }catch(err){
             return { err, status: 500 }
@@ -243,18 +263,42 @@ export const updateAdmin = createAsyncThunk(
             })
             if(response.ok){
                 const data = await response.json()
-                console.log(data)
                 localStorage.setItem("user", JSON.stringify(data.admin))
                 return { ...data, status: 204 }
             }else if(response.status === 404 || response.status === 400){
                 const data = await response.json()
                 return { ...data, status: 400 } 
+            }else{
+                return { status: 500 } 
             }
         }catch(err){
             return { err, status: 500 }
         }
     }
 )
+
+export const fetchActions = createAsyncThunk(
+    "admin/fetchActions",
+    async(_, { getState }) => {
+        try{
+            const state: RootState = getState() as RootState
+            const { selectedDoctor } = state.Admin
+            console.log(selectedDoctor)
+            const response = await fetch(`${next_backend_route}/dashboard/admin/history`)
+            if(response.ok){
+                const data = await response.json()
+                return { ...data, status: 200 }
+            }
+            else{
+                const data = await response.json()
+                return { ...data, status: 500 } 
+            }
+        }catch(err){
+            return { err, status: 500 }
+        }
+    }
+)
+
 
 export const { setSelectedDoctor, openDrawer, selectState, selectPatient } = adminSlice.actions
 

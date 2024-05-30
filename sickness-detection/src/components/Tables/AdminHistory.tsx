@@ -20,21 +20,21 @@ import {
                 <TableHead>Name</TableHead>
                 <TableHead>Lastname</TableHead>
                 <TableHead>Email</TableHead>
-                <TableHead>Phone</TableHead>
+                <TableHead>description</TableHead>
                 <TableHead>Date</TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody>
                 {actions.map((action: any) => {
-                    const date = new Date(action.requestedAt)
+                    const date = new Date(action.createdAt)
                     const dateString = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
                     return(
                         <TableRow key={action._id}>
-                            <TableCell>{action.state === "pending" ? <Clock9Icon className="text-orange-400" /> : (history.state === "finished" ? <BookmarkCheckIcon className="text-green-500" /> : ( history.state === "refused" ? <XCircleIcon className="text-red-500" /> : ( history.state === "accepted" ? <CheckCircle2Icon className="text-green-800" /> : "") ))}</TableCell>
-                            <TableCell>{action.patient.name}</TableCell>
-                            <TableCell>{action.patient.lastname}</TableCell>
-                            <TableCell>{action.patient.email}</TableCell>
-                            <TableCell>+{action.patient.phone}</TableCell>
+                            <TableCell>{action._id}</TableCell>
+                            <TableCell>{action.owner.name}</TableCell>
+                            <TableCell>{action.owner.lastname}</TableCell>
+                            <TableCell>{action.owner.email}</TableCell>
+                            <TableCell>{action.description}</TableCell>
                             <TableCell>{dateString}</TableCell>
                         </TableRow>
                         )
