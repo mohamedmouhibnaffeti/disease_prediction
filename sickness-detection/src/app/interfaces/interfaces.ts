@@ -75,3 +75,18 @@ export interface ForgotPasswordDataType {
     passwwd: string,
     confirmPasswd: string
 }
+
+export interface RolePermissionsType {
+    patient: Array<string>,
+    doctor: Array<string>,
+    admin: Array<string>
+}
+
+export type Role = 'patient' | 'doctor' | 'admin';
+
+export interface JwtPayloadType {
+    user: {
+        id: string;
+        role: Role;
+    };
+}

@@ -16,8 +16,8 @@ export async function POST(request: Request){
         if(!passwordsMatch){
             return NextResponse.json({ message: "Wrong password." }, { status: 400 })
         }
-        const RefreshToken = createRefreshToken(user._id)
-        const Accesstoken = createAccessToken(user._id)
+        const RefreshToken = createRefreshToken(user)
+        const Accesstoken = createAccessToken(user)
         return NextResponse.json({ message: "welcome", user: user, AccessToken: Accesstoken, RefreshToken: RefreshToken }, { status: 200 })
     }catch(err){
         return NextResponse.json({ message: "Server error when signing in" }, { status: 500 })

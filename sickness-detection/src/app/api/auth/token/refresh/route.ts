@@ -15,13 +15,13 @@ export async function POST(request: Request) {
         }
 
         await connectMongoDB();
-        const user = await User.findById(decodedToken.id);
+        const user = await User.findById(decodedToken.user.id);
 
         if (!user) {
             return NextResponse.json({ message: 'User not found' }, { status: 404 });
         }
 
-        const accessToken = createAccessToken(user._id);
+        const accessToken = createAccessToken(user);
 
         return NextResponse.json({ accessToken }, { status: 200 });
     } catch (error) {

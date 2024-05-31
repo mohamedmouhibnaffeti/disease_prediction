@@ -1,13 +1,14 @@
 import jwt from "jsonwebtoken"
-
 export const createAccessToken = (id: any) => {
-    return jwt.sign({id}, process.env.JWT_SECRET || "", {
+    const user = {id: id._id, role: id.role}
+    return jwt.sign({user}, process.env.JWT_SECRET || "", {
         expiresIn: '1h'
     })
 }
 
 export const createRefreshToken = (id: any) => {
-    return jwt.sign({id}, process.env.JWT_SECRET || "", {
+    const user = {id: id._id, role: id.role}
+    return jwt.sign({user}, process.env.JWT_SECRET || "", {
         expiresIn: '7d'
     })
 }
@@ -34,7 +35,7 @@ export const refreshToken = async() => {
         }
         const data = await response.json()
         const { accessToken } = data
-        localStorage.setItem('accessToken', accessToken)
+        localStorage.setItem('AccessToken', accessToken)
     }catch(err){
         console.log(err)
     }
