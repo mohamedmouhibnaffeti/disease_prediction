@@ -45,7 +45,8 @@ const config = {
           mouthbattenPink: "#827081",
           lavenderBlue: "#C6D2ED",
           gray: "#999999",
-          border: "#C5C5C5"
+          border: "#C5C5C5",
+          social: "#F3F6F8"
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -101,8 +102,8 @@ const config = {
         },
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
+        "accordion-down": "accordion-down 0.3s ease-out",
+        "accordion-up": "accordion-up 0.3s ease-out",
         "wiggle": 'wiggle 1s ease-in-out infinite',
       },
     },
