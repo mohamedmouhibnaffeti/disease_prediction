@@ -9,8 +9,9 @@ import { requestAppointment, setRequestLoading } from "@/Store/doctor/doctorSlic
 const Calendar = lazy(()=>import("@/components/Calendar"))
 const Map = lazy(()=>import("@/components/Map"))
 import { useToast } from "@/components/ui/use-toast"
+import withAuth from "@/components/HOC/AuthHOC"
 
-export default () => {
+const DoctorPage = () => {
     const { toast } = useToast()
 
     const dispatch = useDispatch<AppDispatch>()
@@ -98,3 +99,5 @@ export default () => {
         </div>
     )
 }
+
+export default withAuth(DoctorPage, ["doctor", "patient", "admin"])

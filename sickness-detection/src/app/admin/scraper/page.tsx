@@ -12,6 +12,7 @@ import React, { useEffect, useState } from 'react';
 import { AddWebDialog } from './components/AddWebDialog';
 import { io } from 'socket.io-client';
 import Scraper from './components/Scraper';
+import withAuth from "@/components/HOC/AuthHOC"
 
 const Page: React.FC = () => {
   const [requestLoading, setRequestLoading] = useState(false)
@@ -188,4 +189,4 @@ const Page: React.FC = () => {
   );
 };
 
-export default Page;
+export default withAuth(Page, ["admin"]);

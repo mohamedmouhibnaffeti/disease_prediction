@@ -12,6 +12,7 @@ import { Input } from "@/components/ui/input"
 import { FileCheck, X, FileX, FileUp } from "lucide-react"
 import DataLoader from "./Loading"
 import { io } from "socket.io-client"
+import withAuth from "@/components/HOC/AuthHOC"
 
 const socket = io('http://127.0.0.1:5000')
 
@@ -296,4 +297,4 @@ const File_Insert = () => {
     )
 }
 
-export default File_Insert
+export default withAuth(File_Insert, ["admin"])

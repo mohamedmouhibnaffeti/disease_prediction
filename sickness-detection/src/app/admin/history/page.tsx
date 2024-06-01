@@ -10,6 +10,7 @@ import AdminSideBarDash from "@/components/AdminSideDash"
 import AdminNavBarDash from "@/components/AdminDashNav"
 import { ActionsTable } from "@/components/Tables/AdminHistory"
 import { fetchActions } from "@/Store/admin/AdminSlice"
+import withAuth from "@/components/HOC/AuthHOC"
 
 const sampleActions = [
     {
@@ -58,7 +59,7 @@ const sampleActions = [
     }
 ];
 
-export default function Dashboard(){
+const AdminHistory = () => {
     const [requestLoading, setRequestLoading] = useState(true)
     const { actionsData } = useSelector((state: RootState) => state.Admin)
     const dispatch = useDispatch<AppDispatch>()
@@ -103,3 +104,4 @@ export default function Dashboard(){
     )
 }
 
+export default withAuth(AdminHistory, ["admin"])

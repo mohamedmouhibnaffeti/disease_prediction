@@ -10,8 +10,9 @@ import AdminSideBarDash from "@/components/AdminSideDash"
 import AdminNavBarDash from "@/components/AdminDashNav"
 import { UsersTable } from "@/components/Tables/UsersTable"
 import { getPatients } from "@/Store/admin/AdminSlice"
+import withAuth from "@/components/HOC/AuthHOC"
 
-export default function ManageUsers(){
+const ManageUsers = () => {
     const [requestLoading, setRequestLoading] = useState(true)
     const { manageUsersData } = useSelector((state: RootState) => state.Admin)
     const dispatch = useDispatch<AppDispatch>()
@@ -59,3 +60,4 @@ export default function ManageUsers(){
     )
 }
 
+export default withAuth(ManageUsers, ["admin"])

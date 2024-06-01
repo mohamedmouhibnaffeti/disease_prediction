@@ -11,6 +11,7 @@ import AdminSideBarDash from "@/components/AdminSideDash"
 import AdminNavBarDash from "@/components/AdminDashNav"
 import { updateAdmin } from "@/Store/admin/AdminSlice"
 import MainLoader from "@/components/Loaders/MainLoader"
+import withAuth from "@/components/HOC/AuthHOC"
 const ContainerStyle = {
     height: '3rem'
 }
@@ -28,7 +29,7 @@ const ButtonStyle = {
     justifyContent: 'center',
     zIndex: "20"
 }
-export default function Dashboard(){
+const AdminProfile = () => {
     const [loading, setLoading] = useState(false)
     const [user, setUser] = useState<{name: string, lastname: string, userID: string, phone: string, email: string}>({
         name: "",
@@ -156,3 +157,4 @@ export default function Dashboard(){
     )
 }
 
+export default withAuth(AdminProfile, ["admin"])

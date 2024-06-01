@@ -16,8 +16,9 @@ import PendingDoctorCard from "@/components/PendingDoctorCard"
 import ModalComponent from "@/components/ImageModal"
 import { fetchDashboardMainData } from "@/Store/admin/AdminSlice"
 import DrawerComponent from "@/components/Drawer"
+import withAuth from "@/components/HOC/AuthHOC"
 
-export default function Dashboard(){
+const Dashboard = () => {
     const [requestLoading, setRequestLoading] = useState(true)
     const dispatch = useDispatch<AppDispatch>()
     const { MainPageData } = useSelector((state: RootState) => state.Admin)
@@ -92,3 +93,4 @@ export default function Dashboard(){
     )
 }
 
+export default withAuth(Dashboard, ["admin"])
