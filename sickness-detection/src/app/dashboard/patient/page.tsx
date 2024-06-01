@@ -12,8 +12,9 @@ import SymptomsBarChart from "@/components/Charts/SymptomsBarChart"
 import SicknessBarChart from "@/components/Charts/SicknessBarChat"
 import { MonitorXIcon } from "lucide-react"
 import { PatientDashMainPageData } from "@/Store/patient/PatientSlice"
+import withAuth from "@/components/HOC/AuthHOC"
 
-export default function Dashboard(){
+const PatientDashboard = () => {
     const [requestLoading, setRequestLoading] = useState(false)
     const { mainData } = useSelector((state: RootState) => state.Patient)
     const dispatch = useDispatch<AppDispatch>()
@@ -82,3 +83,4 @@ export default function Dashboard(){
     )
 }
 
+export default withAuth(PatientDashboard, ["patient"])

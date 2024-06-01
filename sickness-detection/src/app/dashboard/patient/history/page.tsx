@@ -9,8 +9,9 @@ import ErrorFetching from "@/components/Errors/FailedFetching"
 import { fetchPatientHistoryData } from "@/Store/patient/PatientSlice"
 import { PatientAppointmentsTable } from "@/components/Tables/PatientAppointmentsTable"
 import PatientHistoryItemDetails from "@/components/PatientHistoryItemDetails"
+import withAuth from "@/components/HOC/AuthHOC"
 
-export default function Dashboard(){
+const PatientHistory = () => {
     const { historyData } = useSelector((state: RootState) => state.Patient)
     const [requestLoading, setRequestLoading] = useState(true)
     const dispatch = useDispatch<AppDispatch>()
@@ -58,3 +59,4 @@ export default function Dashboard(){
     )
 }
 
+export default withAuth(PatientHistory, ["patient"])

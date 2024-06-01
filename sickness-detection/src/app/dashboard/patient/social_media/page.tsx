@@ -8,8 +8,9 @@ import { Greeting } from "@/lib/functions/dates"
 import DashLikeCard from "@/components/DashLikeCard"
 import DashCommentCard from "@/components/DashCommentCard"
 import DashPostCardDetails from "@/components/DashPostCardDetails"
+import withAuth from "@/components/HOC/AuthHOC"
 
-export default function Dashboard(){
+const PatientSocialStats = () => {
     const [requestLoading, setRequestLoading] = useState(false)
     return (
         <>
@@ -57,3 +58,4 @@ export default function Dashboard(){
     )
 }
 
+export default withAuth(PatientSocialStats, ["patient"])

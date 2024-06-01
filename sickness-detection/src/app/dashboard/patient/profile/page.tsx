@@ -12,6 +12,7 @@ import 'react-phone-input-2/lib/style.css'
 import { useToast } from "@/components/ui/use-toast"
 import { updatePatient } from "@/Store/patient/PatientSlice"
 import MainLoader from "@/components/Loaders/MainLoader"
+import withAuth from "@/components/HOC/AuthHOC"
 const ContainerStyle = {
     height: '3rem'
 }
@@ -29,7 +30,7 @@ const ButtonStyle = {
     justifyContent: 'center',
     zIndex: "20"
 }
-export default function Dashboard(){
+const PatientProfile = () => {
     const [loading, setLoading] = useState(false)
     const [user, setUser] = useState<{name: string, lastname: string, userID: string, phone: string, email: string, gender: string, age: number}>({
         name: "",
@@ -188,3 +189,4 @@ export default function Dashboard(){
     )
 }
 
+export default withAuth(PatientProfile, ["patient"])
