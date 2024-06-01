@@ -40,7 +40,7 @@ export async function middleware(request: Request){
         // Verify the token
         const secret = new TextEncoder().encode(process.env.JWT_SECRET);
         const { payload } = await jwtVerify(token, secret);
-        console.log(payload)
+
         const decodedPayload = payload as unknown as JwtPayloadType;
         if (!decodedPayload || !decodedPayload.user) {
             return NextResponse.json({ message: "Unauthorized" }, { status: 401 });

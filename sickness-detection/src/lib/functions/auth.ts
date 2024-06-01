@@ -16,7 +16,7 @@ export const createRefreshToken = (id: any) => {
 
 export const refreshToken = async() => {
     try{
-        const response = await fetch('api/auth/token/refresh', {
+        const response = await fetch(`${next_backend_route}/auth/token/refresh`, {
             method: 'POST',
             body: JSON.stringify({
                 refresh_token: localStorage.getItem('RefreshToken')
@@ -27,9 +27,9 @@ export const refreshToken = async() => {
         })
         if(!response.ok){
             if (response.status === 401) {
-                //localStorage.removeItem('AccessToken');
-                //localStorage.removeItem('RefreshToken');
-                console.log(response)//window.location.href = '/login';
+                localStorage.removeItem('AccessToken');
+                localStorage.removeItem('RefreshToken');
+                window.location.href = '/auth/Login';
             } else {
                 throw new Error('Failed to refresh token');
             }
@@ -40,7 +40,9 @@ export const refreshToken = async() => {
             localStorage.setItem('AccessToken', accessToken)
         }
     }catch(err){
-        console.log(err)
+        localStorage.removeItem('AccessToken');
+        localStorage.removeItem('RefreshToken');
+        window.location.href = '/auth/Login';
     }
 }
 
@@ -60,7 +62,9 @@ export const sendAuthenticatedRequest = async (url: string, options: any = {}) =
                 options.headers.Authorization = `Bearer ${localStorage.getItem('AccessToken')}`;
                 response = await fetch(url, options);
             } else if (response.status === 403) {
-                console.log(response);
+                localStorage.removeItem('AccessToken');
+                localStorage.removeItem('RefreshToken');
+                window.location.href = '/auth/Login';
             } else {
                 throw new Error('Failed to fetch data');
             }
@@ -68,7 +72,6 @@ export const sendAuthenticatedRequest = async (url: string, options: any = {}) =
 
         return response;
     } catch (err) {
-        console.log(err);
         throw err;
     }
 };
