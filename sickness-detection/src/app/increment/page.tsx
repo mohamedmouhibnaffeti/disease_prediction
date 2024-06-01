@@ -2,8 +2,9 @@
 import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch, RootState } from "@/Store/store"
 import { fetchData } from "@/Store/counter/counterSlice"
+import withAuth from "@/components/HOC/AuthHOC"
 
-export default () => {
+const Increment = () => {
     const count = useSelector((state: RootState)=>state.counter?.value)
     const dispatch = useDispatch<AppDispatch>()
     return(
@@ -15,3 +16,5 @@ export default () => {
         </div>
     )
 }
+
+export default withAuth(Increment, ["doctor"])
