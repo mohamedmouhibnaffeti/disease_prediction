@@ -62,7 +62,7 @@ export const updatePatient = createAsyncThunk(
     "patient/updatePatient",
     async({patientID, name, lastname, phone, age, gender}: {patientID: any, name: string, lastname: string, phone: string, age: number, gender: string}) => {
         try{
-            const response = await fetch(`${next_backend_route}/user/patient`, {
+            const response = await fetch(`${next_backend_route}/user/patient/update_patient`, {
                 method: 'PUT',
                 body: JSON.stringify({
                     patientID: patientID,

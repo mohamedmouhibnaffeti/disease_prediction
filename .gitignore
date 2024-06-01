@@ -16,3 +16,5 @@ FlaskBackend/Scraper1
 documents/
 
 .next/
+
+sickness-detection/.env
