@@ -13,7 +13,10 @@ export default () => {
         await dispatch(fetchSicknessForPredictedSickness({sicknessName: "Allergies (Asthma)"}))
         setResultLoading(false)
     }
+    const [Token, setToken] = useState("")
     useLayoutEffect(()=>{
+        const token = localStorage.getItem("AccessToken") || ""
+        setToken(token)
         FetchSicknessDetails()
     }, [])
     useEffect(()=>{
@@ -50,10 +53,13 @@ export default () => {
                         
                     }
                 </div>
+                {
+                    Token.length === 0 && <p className="font-semibold text-red-500 mt-2 self-center text-center"> Please login so you can request an appointment with a doctor. </p>
+                }
                 {!ResultLoading && 
                 <div className="flex justify-between w-full sm:flex-row flex-col">
                     <button className="bg-none py-2 px-14 transition ease-in duration-100 delay-100 hover:bg-sickness-primary/90 hover:text-white  text-sickness-primary border-2 border-sickness-primary rounded-md font-semibold mt-6" onClick={()=>dispatch(changeEtatByNom('Conditions'))}> Back </button>
-                    <button className="bg-sickness-primary border-2 transition ease-in duration-100 delay-100 hover:bg-sickness-primary/90 border-sickness-primary py-2 px-14 text-white rounded-md font-semibold mt-6" onClick={()=>dispatch(changeEtatByNom('doctors'))}> Continue </button>
+                    <button className={`border-2 transition ease-in duration-100 delay-100 ${Token.length === 0 ? "bg-sickness-primary/60 border-sickness-primary/60" : "bg-sickness-primary hover:bg-sickness-primary/90 border-sickness-primary"} py-2 px-14 text-white rounded-md font-semibold mt-6`} onClick={()=>dispatch(changeEtatByNom('doctors'))} disabled={Token.length === 0} > Continue </button>
                 </div>
                 }
             </div>
