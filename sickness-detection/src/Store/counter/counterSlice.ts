@@ -1,3 +1,4 @@
+import { sendAuthenticatedRequest } from "@/lib/functions/auth"
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 
 interface CounterState {
@@ -64,9 +65,10 @@ export const decrementAsync = createAsyncThunk(
 export const fetchData = createAsyncThunk(
     "counter/fetchBooks",
     async() => {
-        const data = await fetch('https://api.publicapis.org/entries')
+        const data = await sendAuthenticatedRequest("api/dashboard/admin/history")
         if(data){
             const resp = await data.json()
+            console.log(resp)
             return resp
         }
     }

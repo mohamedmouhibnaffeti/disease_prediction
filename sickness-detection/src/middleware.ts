@@ -30,6 +30,7 @@ export async function middleware(request: Request){
     }
     
     const authHeader = request.headers.get('Authorization');
+
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
         return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
@@ -41,12 +42,13 @@ export async function middleware(request: Request){
         const { payload } = await jwtVerify(token, secret);
 
         const decodedPayload = payload as unknown as JwtPayloadType;
-
         if (!decodedPayload || !decodedPayload.user) {
+            console.log("unothorized")
             return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
         }
 
         const userRole = decodedPayload.user.role as Role;
+
 
         // Check if the role is authorized to access the route
 
@@ -58,7 +60,7 @@ export async function middleware(request: Request){
         return NextResponse.next();
     } catch (error) {
         console.error('JWT verification error:', error);
-        return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ message: "Unauthorized Error" }, { status: 401 });
     }
 
 }

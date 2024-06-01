@@ -8,9 +8,9 @@ export async function POST(request: Request) {
     try {
         const { refresh_token } = await request.json();
 
-        const decodedToken = jwt.verify(refresh_token, process.env.REFRESH_TOKEN_SECRET || '') as JwtPayload;
+        const decodedToken = jwt.verify(refresh_token, process.env.JWT_SECRET || '') as JwtPayload;
 
-        if (!decodedToken || typeof decodedToken !== 'object' || !decodedToken.id) {
+        if (!decodedToken || typeof decodedToken !== 'object' || !decodedToken.user) {
             return NextResponse.json({ message: 'Invalid refresh token' }, { status: 401 });
         }
 
