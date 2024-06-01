@@ -1,3 +1,4 @@
+import { sendAuthenticatedRequest } from "@/lib/functions/auth";
 import { next_backend_route } from "@/lib/statics/ApiRoutes";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
@@ -45,7 +46,7 @@ export const PatientDashMainPageData = createAsyncThunk(
     "patient/dashMain",
     async({patientID}: {patientID: string}) => {
         try{
-            const response = await fetch(`${next_backend_route}/dashboard/patient/main?patientID=${patientID}`)
+            const response = await sendAuthenticatedRequest(`/dashboard/patient/main?patientID=${patientID}`)
             if(response.ok){
                 const data = await response.json()
                 return { ...data, status: 200 } 
@@ -62,7 +63,7 @@ export const updatePatient = createAsyncThunk(
     "patient/updatePatient",
     async({patientID, name, lastname, phone, age, gender}: {patientID: any, name: string, lastname: string, phone: string, age: number, gender: string}) => {
         try{
-            const response = await fetch(`${next_backend_route}/user/patient/update_patient`, {
+            const response = await sendAuthenticatedRequest(`/user/patient/update_patient`, {
                 method: 'PUT',
                 body: JSON.stringify({
                     patientID: patientID,
@@ -92,7 +93,7 @@ export const fetchPatientHistoryData = createAsyncThunk(
     "patient/PatientDashboardStatistics",
     async({patientID}: {patientID: any}) => {
         try{
-            const response = await fetch(`${next_backend_route}/dashboard/patient/history?patiendID=${patientID}`)
+            const response = await sendAuthenticatedRequest(`/dashboard/patient/history?patiendID=${patientID}`)
             if(response.ok){
                 const data = await response.json()
                 return { ...data, status: 200 }

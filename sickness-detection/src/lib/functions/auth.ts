@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken"
+import { next_backend_route } from "../statics/ApiRoutes"
 export const createAccessToken = (id: any) => {
     const user = {id: id._id, role: id.role}
     return jwt.sign({user}, process.env.JWT_SECRET || "", {
@@ -51,7 +52,7 @@ export const sendAuthenticatedRequest = async (url: string, options: any = {}) =
             options.headers.Authorization = `Bearer ${accessToken}`;
         }
 
-        let response = await fetch(url, options);
+        let response = await fetch(`${next_backend_route}/${url}`, options);
 
         if (!response.ok) {
             if (response.status === 401) {

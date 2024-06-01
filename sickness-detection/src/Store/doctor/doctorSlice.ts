@@ -1,6 +1,7 @@
 import { next_backend_route } from "@/lib/statics/ApiRoutes";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
+import { sendAuthenticatedRequest } from "@/lib/functions/auth";
 
 interface doctorSliceType {
     doctors: Array<any>,
@@ -93,7 +94,7 @@ export const fetchDoctorsBySpeciality = createAsyncThunk(
     "doctor/fetchdoctorsbyspeciality",
     async({speciality}: { speciality: string }) => {
         try{
-            const response = await fetch(`${next_backend_route}/user/doctor/get_doctor_by_speciality?speciality=${speciality}`)
+            const response = await sendAuthenticatedRequest(`/user/doctor/get_doctor_by_speciality?speciality=${speciality}`)
             if(response.ok){
                 const data = await response.json()
                 return {...data, status: 200}
@@ -108,7 +109,7 @@ export const requestAppointment = createAsyncThunk(
     "doctor/requestAppointment",
     async({ doctorID, patientID }: { doctorID: string, patientID: string }) => {
         try{
-            const response = await fetch(`${next_backend_route}/Appointments/request_appointment`, {
+            const response = await sendAuthenticatedRequest(`/Appointments/request_appointment`, {
                 method: "POST",
                 body: JSON.stringify({
                     doctorID: doctorID,
@@ -131,7 +132,7 @@ export const acceptAppointment = createAsyncThunk(
     "doctor/acceptAppointment",
     async({ AppointmentID, from, to }: { AppointmentID: any, from: Date | undefined, to: Date | undefined }) => {
         try{
-            const response = await fetch(`${next_backend_route}/Appointments/accepted_appointment`, {
+            const response = await sendAuthenticatedRequest(`/Appointments/accepted_appointment`, {
                 method: 'POST',
                 body: JSON.stringify({
                     appointmentID: AppointmentID,
@@ -157,7 +158,7 @@ export const postponeAppointment = createAsyncThunk(
     "doctor/postponeAppointment",
     async({ AppointmentID, from, to }: { AppointmentID: any, from: Date | undefined, to: Date | undefined }) => {
         try{
-            const response = await fetch(`${next_backend_route}/Appointments/postpone_appointment`, {
+            const response = await sendAuthenticatedRequest(`/Appointments/postpone_appointment`, {
                 method: 'POST',
                 body: JSON.stringify({
                     appointmentID: AppointmentID,
@@ -184,7 +185,7 @@ export const RefuseAppointment = createAsyncThunk(
     "doctor/refuseAppointment",
     async({ AppointmentID }: { AppointmentID: any }) => {
         try{
-            const response = await fetch(`${next_backend_route}/Appointments/refused_appointment?AppointmentID=${AppointmentID}`, {
+            const response = await sendAuthenticatedRequest(`/Appointments/refused_appointment?AppointmentID=${AppointmentID}`, {
                 method: 'DELETE'
             })
             if(response.ok){
@@ -205,7 +206,7 @@ export const FinishAppointment = createAsyncThunk(
     "doctor/finishAppointment",
     async({ AppointmentID, prescription, observation }: { AppointmentID: any, prescription: string, observation: string }) => {
         try{
-            const response = await fetch(`${next_backend_route}/Appointments/finished_appointment`, {
+            const response = await sendAuthenticatedRequest(`/Appointments/finished_appointment`, {
                 method: 'POST',
                 body: JSON.stringify({
                     AppointmentID: AppointmentID,
@@ -233,7 +234,7 @@ export const fetchDashboardMainData = createAsyncThunk(
     "doctor/dashboardMain",
     async({doctorID}: {doctorID: any}) => {
         try{
-            const response = await fetch(`${next_backend_route}/dashboard/doctor/main?doctorID=${doctorID}`)
+            const response = await sendAuthenticatedRequest(`/dashboard/doctor/main?doctorID=${doctorID}`)
             if(response.ok){
                 const data = await response.json()
                 return { ...data, status: 200 }
@@ -252,7 +253,7 @@ export const fetchStatisticsData = createAsyncThunk(
     "doctor/dashboardStatistics",
     async({doctorID}: {doctorID: any}) => {
         try{
-            const response = await fetch(`${next_backend_route}/dashboard/doctor/statistics?doctorID=${doctorID}`)
+            const response = await sendAuthenticatedRequest(`/dashboard/doctor/statistics?doctorID=${doctorID}`)
             if(response.ok){
                 const data = await response.json()
                 return { ...data, status: 200 }
@@ -271,7 +272,7 @@ export const fetchAppointmentsData = createAsyncThunk(
     "doctor/fetchAppointmentsData",
     async({doctorID}: {doctorID: any}) => {
         try{
-            const response = await fetch(`${next_backend_route}/dashboard/doctor/my_appointments?doctorID=${doctorID}`)
+            const response = await sendAuthenticatedRequest(`/dashboard/doctor/my_appointments?doctorID=${doctorID}`)
             if(response.ok){
                 const data = await response.json()
                 return { ...data, status: 200 }
@@ -290,7 +291,7 @@ export const updateDoctor = createAsyncThunk(
     "doctor/updateDoctor",
     async({doctorID, name, lastname, phone, location}: {doctorID: any, name: string, lastname: string, phone: string, location: [number, number]}) => {
         try{
-            const response = await fetch(`${next_backend_route}/user/doctor/update_doctor`, {
+            const response = await sendAuthenticatedRequest(`/user/doctor/update_doctor`, {
                 method: 'PUT',
                 body: JSON.stringify({
                     doctorID: doctorID,
@@ -319,7 +320,7 @@ export const fetchHistoryData = createAsyncThunk(
     "doctor/fetchHistoryData",
     async({doctorID}: {doctorID: any}) => {
         try{
-            const response = await fetch(`${next_backend_route}/dashboard/doctor/history?doctorID=${doctorID}`)
+            const response = await sendAuthenticatedRequest(`/dashboard/doctor/history?doctorID=${doctorID}`)
             if(response.ok){
                 const data = await response.json()
                 return { ...data, status: 200 }

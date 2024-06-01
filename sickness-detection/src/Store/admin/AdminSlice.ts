@@ -1,6 +1,7 @@
 import { next_backend_route } from "@/lib/statics/ApiRoutes";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
+import { sendAuthenticatedRequest } from "@/lib/functions/auth";
 
 interface adminSliceType {
     selectedDoctor: any,
@@ -86,7 +87,7 @@ export const fetchDashboardMainData = createAsyncThunk(
     "admin/AdmindashboardMain",
     async() => {
         try{
-            const response = await fetch(`${next_backend_route}/dashboard/admin/main`)
+            const response = await sendAuthenticatedRequest(`/dashboard/admin/main`)
             if(response.ok){
                 const data = await response.json()
                 return { ...data, status: 200 }
@@ -109,7 +110,7 @@ export const fetchDoctorImages = createAsyncThunk(
         try{
             const state: RootState = getState() as RootState
             const { selectedDoctor } = state.Admin
-            const response = await fetch(`${next_backend_route}/user/doctor/get_doctor_images?doctorID=${selectedDoctor}`)
+            const response = await sendAuthenticatedRequest(`/user/doctor/get_doctor_images?doctorID=${selectedDoctor}`)
             if(response.ok){
                 const data = await response.json()
                 return { ...data, status: 200 }
@@ -134,7 +135,7 @@ export const acceptDoctor = createAsyncThunk(
             const { selectedDoctor } = state.Admin
             const admin = localStorage.getItem("user") || ""
             const parsedAdmin = JSON.parse(admin)
-            const response = await fetch(`${next_backend_route}/user/doctor/accept_doctor?doctorID=${selectedDoctor}&adminID=${parsedAdmin._id}`)
+            const response = await sendAuthenticatedRequest(`/user/doctor/accept_doctor?doctorID=${selectedDoctor}&adminID=${parsedAdmin._id}`)
             if(response.ok){
                 const data = await response.json()
                 return { ...data, status: 200 }
@@ -159,7 +160,7 @@ export const changeDoctorState = createAsyncThunk(
             const { selectedDoctor, selectedState } = state.Admin
             const admin = localStorage.getItem("user") || ""
             const parsedAdmin = JSON.parse(admin)
-            const response = await fetch(`${next_backend_route}/user/doctor/change_doctor_state`, {
+            const response = await sendAuthenticatedRequest(`/user/doctor/change_doctor_state`, {
                 method: 'POST',
                 body: JSON.stringify({adminID: parsedAdmin._id, doctorID: selectedDoctor, state: selectedState})
             })
@@ -183,7 +184,7 @@ export const getDoctors = createAsyncThunk(
     "admin/getDoctors",
     async() => {
         try{
-            const response = await fetch(`${next_backend_route}/user/doctor/get_all_doctors`)
+            const response = await sendAuthenticatedRequest(`/user/doctor/get_all_doctors`)
             if(response.ok){
                 const data = await response.json()
                 return { ...data, status: 200 }
@@ -204,7 +205,7 @@ export const getPatients = createAsyncThunk(
     "admin/getPatients",
     async() => {
         try{
-            const response = await fetch(`${next_backend_route}/user/patient/get_all_patients`)
+            const response = await sendAuthenticatedRequest(`/user/patient/get_all_patients`)
             if(response.ok){
                 const data = await response.json()
                 return { ...data, status: 200 }
@@ -228,7 +229,7 @@ export const changePatientState = createAsyncThunk(
             const admin = localStorage.getItem("user") || ""
             const parsedAdmin = JSON.parse(admin)
             const { selectedPatient, selectedState } = state.Admin
-            const response = await fetch(`${next_backend_route}/user/patient/change_patient_state`, {
+            const response = await sendAuthenticatedRequest(`/user/patient/change_patient_state`, {
                 method: 'POST',
                 body: JSON.stringify({adminID: parsedAdmin._id, patientID: selectedPatient, state: selectedState})
             })
@@ -252,7 +253,7 @@ export const updateAdmin = createAsyncThunk(
     "admin/updateAdmin",
     async({adminID, name, lastname, phone}: {adminID: any, name: string, lastname: string, phone: string}) => {
         try{
-            const response = await fetch(`${next_backend_route}/user/admin/update_user`, {
+            const response = await sendAuthenticatedRequest(`/user/admin/update_user`, {
                 method: 'PUT',
                 body: JSON.stringify({
                     adminID: adminID,
@@ -284,7 +285,7 @@ export const fetchActions = createAsyncThunk(
             const state: RootState = getState() as RootState
             const { selectedDoctor } = state.Admin
             console.log(selectedDoctor)
-            const response = await fetch(`${next_backend_route}/dashboard/admin/history`)
+            const response = await sendAuthenticatedRequest(`/dashboard/admin/history`)
             if(response.ok){
                 const data = await response.json()
                 return { ...data, status: 200 }
