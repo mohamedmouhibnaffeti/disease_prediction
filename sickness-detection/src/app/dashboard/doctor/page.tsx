@@ -12,8 +12,9 @@ import { fetchDashboardMainData } from "@/Store/doctor/doctorSlice"
 import MainLoader from "@/components/Loaders/MainLoader"
 import ErrorFetching from "@/components/Errors/FailedFetching"
 import { Greeting } from "@/lib/functions/dates"
+import withAuth from "@/components/HOC/AuthHOC"
 
-export default function Dashboard(){
+const DoctorDashboard = () => {
     const [maxLen, setMaxLen] = useState(3)
     const { mainData } = useSelector((state: RootState) => state.Doctor)
     const [requestLoading, setRequestLoading] = useState(true)
@@ -97,3 +98,4 @@ export default function Dashboard(){
     )
 }
 
+export default withAuth(DoctorDashboard, ["doctor"])

@@ -35,11 +35,12 @@ import { AppDispatch } from '@/Store/store'
 import { updateDoctor } from '@/Store/doctor/doctorSlice'
 import { useToast } from '@/components/ui/use-toast'
 import SmallWhiteLoader from '@/components/Loaders/WhiteButtonLoader'
+import withAuth from '@/components/HOC/AuthHOC'
 const LeafletMap = dynamic(() => import('react-leaflet').then((mod) => mod.MapContainer), {
     ssr: false
   });
 
-export default function Parametres(){
+const DoctorParametres = () => {
     const dispatch = useDispatch<AppDispatch>()
     const [user, setUser] = useState<{name: string, lastname: string, userID: string, phone: string, location: [number, number], email: string}>({
         name: "",
@@ -196,3 +197,4 @@ export default function Parametres(){
     )
 }
 
+export default withAuth(DoctorParametres, ["doctor"])

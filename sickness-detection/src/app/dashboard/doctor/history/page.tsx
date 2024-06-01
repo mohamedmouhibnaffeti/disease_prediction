@@ -12,8 +12,9 @@ import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch, RootState } from "@/Store/store"
 import ErrorFetching from "@/components/Errors/FailedFetching"
 import MainLoader from "@/components/Loaders/MainLoader"
+import withAuth from "@/components/HOC/AuthHOC"
 
-export default function Dashboard(){
+const DoctorHistory = () => {
     const { historyData } = useSelector((state: RootState) => state.Doctor)
     const [requestLoading, setRequestLoading] = useState(true)
     const dispatch = useDispatch<AppDispatch>()
@@ -58,3 +59,4 @@ export default function Dashboard(){
     )
 }
 
+export default withAuth(DoctorHistory, ["doctor"])

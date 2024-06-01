@@ -12,8 +12,9 @@ import { AppDispatch, RootState } from "@/Store/store"
 import { fetchStatisticsData } from "@/Store/doctor/doctorSlice"
 import MainLoader from "@/components/Loaders/MainLoader"
 import ErrorFetching from "@/components/Errors/FailedFetching"
+import withAuth from "@/components/HOC/AuthHOC"
 
-export default function Dashboard(){
+const DoctorStatistics = () => {
     const { statisticsData } = useSelector((state: RootState) => state.Doctor)
     const [requestLoading, setRequestLoading] = useState(true)
     const dispatch = useDispatch<AppDispatch>()
@@ -67,3 +68,4 @@ export default function Dashboard(){
     )
 }
 
+export default withAuth(DoctorStatistics, ["doctor"])

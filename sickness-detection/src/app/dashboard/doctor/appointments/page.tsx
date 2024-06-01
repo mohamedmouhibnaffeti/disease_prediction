@@ -14,8 +14,9 @@ import { useState, useLayoutEffect, useEffect } from "react"
 import ErrorFetching from "@/components/Errors/FailedFetching"
 import { Greeting, compareDates } from "@/lib/functions/dates"
 import { HeartPulse } from "lucide-react"
+import withAuth from "@/components/HOC/AuthHOC"
 
-export default function Dashboard(){
+const DoctorAppointemnts = () => {
     const { appointmentsData } = useSelector((state: RootState) => state.Doctor )
     const [requestLoading, setRequestLoading] = useState(true)
     const dispatch = useDispatch<AppDispatch>()
@@ -99,3 +100,4 @@ export default function Dashboard(){
     )
 }
 
+export default withAuth(DoctorAppointemnts, ["doctor"])
