@@ -63,9 +63,6 @@ const useAuth = () => {
 
         const handleAuth = async () => {
             const currentPath = window.location.pathname
-            if (publicRoutes.includes(currentPath)) {
-                return
-            }
 
             let token = localStorage.getItem("AccessToken")
             if (token) {
@@ -79,14 +76,20 @@ const useAuth = () => {
                         if (payload) {
                             setRole(payload.user.role)
                         } else {
-                            router.push("/auth/Login")
+                            if (!publicRoutes.includes(currentPath)) {
+                                router.push("/auth/Login")
+                            }
                         }
                     } else {
-                        router.push("/auth/Login")
+                        if (!publicRoutes.includes(currentPath)) {
+                            router.push("/auth/Login")
+                        }
                     }
                 }
             } else {
-                router.push("/auth/Login")
+                if (!publicRoutes.includes(currentPath)) {
+                    router.push("/auth/Login")
+                }
             }
         }
 

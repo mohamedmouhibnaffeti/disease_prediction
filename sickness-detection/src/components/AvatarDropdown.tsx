@@ -49,7 +49,7 @@ export default function AvatarDropdown({user, role}: {user: any, role: string}) 
     const dispatch = useDispatch<AppDispatch>()
     return(
         <DropdownMenu>
-        <DropdownMenuTrigger>
+        <DropdownMenuTrigger className="md:flex hidden">
             <Avatar>
                 <AvatarFallback className={`font-semibold flex justify-center items-center`} style={{backgroundColor: color.bg, color: color.text}} >{`${user.name[0]}${user.lastname[0]}`}</AvatarFallback>
             </Avatar>
