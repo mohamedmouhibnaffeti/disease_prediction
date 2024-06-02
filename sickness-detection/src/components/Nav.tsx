@@ -14,8 +14,8 @@ export default () => {
     const [loading, setLoading] = useState(true)
     useLayoutEffect(()=>{
         const userString = localStorage.getItem("user") || ""
-        const userObject = JSON.parse(userString)
-        if(userObject){
+        if(userString){
+            const userObject = JSON.parse(userString)    
             setUser(userObject)
         }
         setLoading(false)
@@ -28,7 +28,7 @@ export default () => {
     return (
         <div className="fixed z-50 top-0 h-[5rem] bg-white shadow-md w-full">
             <div className="w-full h-full flex justify-between items-center px-8">
-                <div className="flex gap-3 justify-center items-center">
+                <div className="flex md:gap-3 gap-1 justify-center items-center">
                     <Image src={Logo} alt="" className="w-[170px]" />
                     <a href="/symptoms-checker" className={`font-bold ${pathname.startsWith("/symptoms-checker") ? "text-sickness-primary hover:text-sickness-primary/80" : "text-black hover:text-black/80" } transition delay-75 ease-in-out`}> Disease Prediction </a>
                 </div>
@@ -38,7 +38,8 @@ export default () => {
                     (user ?
                         <AvatarDropdown user={user} role={role || ""} />
                     :
-                        <button className="flex justify-center items-center font-semibold text-white bg-sickness-mayaBlue px-2 py-2 rounded-md" onClick={()=>Router.push('/auth/Login')}> Login <LogIn /> </button>)
+                        !pathname.startsWith("/auth/Login") && <button className="flex justify-center items-center font-semibold text-white bg-sickness-mayaBlue hover:bg-sickness-mayaBlue/70 transition delay-75 ease-in px-2 py-2 rounded-md" onClick={()=>Router.push('/auth/Login')}> Login <LogIn /> </button>
+                    )
                 }
             </div>
         </div>

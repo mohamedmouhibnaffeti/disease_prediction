@@ -10,6 +10,9 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { LogOutIcon } from "lucide-react"
 import { useRouter } from "next/navigation"
+import { useDispatch } from "react-redux"
+import { AppDispatch } from "@/Store/store"
+import { Logout } from "@/Store/auth/authSlice"
   
 export default function AvatarDropdown({user, role}: {user: any, role: string}) {
     const color = getRandomColor()
@@ -43,6 +46,7 @@ export default function AvatarDropdown({user, role}: {user: any, role: string}) 
             )
         }
     }
+    const dispatch = useDispatch<AppDispatch>()
     return(
         <DropdownMenu>
         <DropdownMenuTrigger>
@@ -54,7 +58,7 @@ export default function AvatarDropdown({user, role}: {user: any, role: string}) 
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <MenuItems />
-            <DropdownMenuItem className="cursor-pointer bg-red-500 transition hover:text-red-500 hover:border-red-500 border delay-75 ease-in text-white font-semibold flex justify-center items-center gap-2">Logout <LogOutIcon className="w-5 h-5" /></DropdownMenuItem>
+            <DropdownMenuItem onClick={()=>dispatch(Logout())} className="cursor-pointer bg-red-500 transition hover:text-red-500 hover:border-red-500 border delay-75 ease-in text-white font-semibold flex justify-center items-center gap-2">Logout <LogOutIcon className="w-5 h-5" /></DropdownMenuItem>
         </DropdownMenuContent>
         </DropdownMenu>
     )

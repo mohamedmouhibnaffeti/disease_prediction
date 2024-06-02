@@ -19,7 +19,7 @@ import symptoms from "../../components/Images/NavigationImages/symptoms.svg"
 import history from "../../components/Images/NavigationImages/history.svg"
 import Image from "next/image"
 
-export default () => {
+export default function Predict(){
     const ListItems = useSelector((state: RootState)=>state.Predict.listItems)
     const currentItem = useSelector((state: RootState)=>state.Predict.currentItem)
     return (

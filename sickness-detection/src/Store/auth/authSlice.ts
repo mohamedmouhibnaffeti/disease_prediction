@@ -52,6 +52,12 @@ const authSlice = createSlice({
             const newForgotPasswordData = { ...state.ForgotPasswordData }
             newForgotPasswordData[action.payload.name] = action.payload.value
             state.ForgotPasswordData = newForgotPasswordData
+        },
+        Logout: () => {
+            localStorage.removeItem("user")
+            localStorage.removeItem("AccessToken")
+            localStorage.removeItem("RefreshToken")
+            window.location.href = "/auth/Login"
         }
     },
     /*
@@ -279,6 +285,6 @@ export const updatePasswd = createAsyncThunk(
     }
 )
 
-export const { setCurrentDoctorSignupPage, setCurrentSignupPage, setSignupFormDataDoctor, setPatientSignupFormData, setLoginFormData, setForgotPasswordData } = authSlice.actions
+export const { setCurrentDoctorSignupPage, setCurrentSignupPage, setSignupFormDataDoctor, setPatientSignupFormData, setLoginFormData, setForgotPasswordData, Logout } = authSlice.actions
 
 export default authSlice.reducer

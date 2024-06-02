@@ -36,9 +36,9 @@ export default function RootLayout({
           inter.variable,
           oswald.variable
         )}>
-          <Nav />
           <Providers>
             <Suspense fallback={<MainLoader />}>
+              <Nav />
               {children}
               <Toaster />
             </Suspense>
