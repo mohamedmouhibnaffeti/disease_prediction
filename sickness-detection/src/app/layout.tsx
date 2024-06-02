@@ -7,6 +7,7 @@ import { Providers } from "./Providers";
 import { Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster"
 import MainLoader from "@/components/Loaders/MainLoader";
+import HamburgerMenu from "@/components/SideBar/MainSideBar";
 
 export const inter = Inter({ 
   subsets: ["latin"],
@@ -39,6 +40,7 @@ export default function RootLayout({
           <Providers>
             <Suspense fallback={<MainLoader />}>
               <Nav />
+              <HamburgerMenu />
               {children}
               <Toaster />
             </Suspense>
