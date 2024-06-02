@@ -11,7 +11,8 @@ interface authSliceType {
     SignupFormDataDoctor: DoctorSignupformDataType,
     PatientSignupFormData: PatientSignupformDataType,
     LoginFormData: LoginFormDataType,
-    ForgotPasswordData: ForgotPasswordDataType
+    ForgotPasswordData: ForgotPasswordDataType,
+    HamMenuOpen: boolean
 }
 
 const initialState: authSliceType = {
@@ -20,7 +21,8 @@ const initialState: authSliceType = {
     SignupFormDataDoctor: { name: "", lastname: "", email: "", phone: "",password: "", confirmPassword: "", images: [], otp: "", location: [35.632401, 10.8959568], speciality: "" },
     PatientSignupFormData: { name: "", lastname: "", email: "", phone: "",password: "", confirmPassword: "", gender: "", age: "" },
     LoginFormData: { email: "", password: "" },
-    ForgotPasswordData: { email: "", passwwd: "", confirmPasswd: "", otp: "" }
+    ForgotPasswordData: { email: "", passwwd: "", confirmPasswd: "", otp: "" },
+    HamMenuOpen: false
 }
 
 const authSlice = createSlice({
@@ -58,6 +60,9 @@ const authSlice = createSlice({
             localStorage.removeItem("AccessToken")
             localStorage.removeItem("RefreshToken")
             window.location.href = "/auth/Login"
+        },
+        ToggleHamMenu: (state, action: PayloadAction<boolean>) => {
+            state.HamMenuOpen = action.payload
         }
     },
     /*
@@ -285,6 +290,6 @@ export const updatePasswd = createAsyncThunk(
     }
 )
 
-export const { setCurrentDoctorSignupPage, setCurrentSignupPage, setSignupFormDataDoctor, setPatientSignupFormData, setLoginFormData, setForgotPasswordData, Logout } = authSlice.actions
+export const { setCurrentDoctorSignupPage, setCurrentSignupPage, setSignupFormDataDoctor, setPatientSignupFormData, setLoginFormData, setForgotPasswordData, Logout, ToggleHamMenu } = authSlice.actions
 
 export default authSlice.reducer

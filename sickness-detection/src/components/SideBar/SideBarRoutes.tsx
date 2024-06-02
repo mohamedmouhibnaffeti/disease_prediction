@@ -8,8 +8,12 @@ import { getRandomColor } from "@/lib/statics/Colors";
 import useAuth from "@/lib/Hooks/useAuth";
 import DoctorIcon from "../SVG/DoctorIcon";
 import { ApercuIcon } from "./MainSideBar";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "@/Store/store";
+import { ToggleHamMenu } from "@/Store/auth/authSlice";
 
 export default function SideBarRoutes({role, pathname}: {role: string, pathname: string}) {
+    const dispatch = useDispatch<AppDispatch>()
     switch (role) {
         case "admin":
             return pathname.startsWith("/admin") ? (
@@ -22,7 +26,7 @@ export default function SideBarRoutes({role, pathname}: {role: string, pathname:
                             : "hover:bg-sickness-primaryText/30"
                         } rounded-lg mt-2`}
                         href="/admin"
-                        onClick={()=>{}}
+                        onClick={()=>dispatch(ToggleHamMenu(false))}
                         >
                         <ApercuIcon />
                         Overview
@@ -34,7 +38,7 @@ export default function SideBarRoutes({role, pathname}: {role: string, pathname:
                             : "hover:bg-sickness-primaryText/30"
                         } rounded-lg mt-2`}
                         href="/admin/manage_doctors"
-                        onClick={()=>{}}
+                        onClick={()=>dispatch(ToggleHamMenu(false))}
                         >
                         <DoctorIcon className={`w-5 h-5 ${pathname.startsWith("/admin/manage_doctors") ? "fill-white" : "fill-sickness-primaryText"}`} />
                         Doctors
@@ -46,7 +50,7 @@ export default function SideBarRoutes({role, pathname}: {role: string, pathname:
                             : "hover:bg-sickness-primaryText/30"
                         } rounded-lg mt-2`}
                         href="/admin/manage_users"
-                        onClick={()=>{}}
+                        onClick={()=>dispatch(ToggleHamMenu(false))}
                         >
                         <User2Icon className="h-5 w-5" />
                         Users
@@ -58,7 +62,7 @@ export default function SideBarRoutes({role, pathname}: {role: string, pathname:
                             : "hover:bg-sickness-primaryText/30"
                         } rounded-lg mt-2`}
                         href="/admin/scraper"
-                        onClick={()=>{}}
+                        onClick={()=>dispatch(ToggleHamMenu(false))}
                         >
                         <ScanSearch className="h-5 w-5" />
                         Scraper
@@ -70,7 +74,7 @@ export default function SideBarRoutes({role, pathname}: {role: string, pathname:
                             : "hover:bg-sickness-primaryText/30"
                         } rounded-lg mt-2`}
                         href="/admin/file-insert"
-                        onClick={()=>{}}
+                        onClick={()=>dispatch(ToggleHamMenu(false))}
                         >
                         <FileTextIcon className="h-5 w-5" />
                         Data Processing
@@ -83,7 +87,7 @@ export default function SideBarRoutes({role, pathname}: {role: string, pathname:
                             : "hover:bg-sickness-primaryText/30"
                         } rounded-lg mt-2`}
                         href="/admin/profile"
-                        onClick={()=>{}}
+                        onClick={()=>dispatch(ToggleHamMenu(false))}
                         >
                         <Settings2Icon className="h-5 w-5" />
                         My Profile
@@ -95,7 +99,7 @@ export default function SideBarRoutes({role, pathname}: {role: string, pathname:
                             : "hover:bg-sickness-primaryText/30"
                         } rounded-lg mt-2`}
                         href="/admin/history"
-                        onClick={()=>{}}
+                        onClick={()=>dispatch(ToggleHamMenu(false))}
                         >
                         <Clock10Icon className="h-5 w-5" />
                         History
@@ -110,7 +114,7 @@ export default function SideBarRoutes({role, pathname}: {role: string, pathname:
                             : "hover:bg-sickness-primaryText/30"
                         } rounded-lg mt-2`}
                         href="/admin"
-                        onClick={()=>{}}
+                        onClick={()=>dispatch(ToggleHamMenu(false))}
                         >
                         <ApercuIcon />
                         Overview
@@ -122,7 +126,7 @@ export default function SideBarRoutes({role, pathname}: {role: string, pathname:
                             : "hover:bg-sickness-primaryText/30"
                         } rounded-lg mt-2`}
                         href="/admin/scraper"
-                        onClick={()=>{}}
+                        onClick={()=>dispatch(ToggleHamMenu(false))}
                         >
                         <ScanSearch className="h-5 w-5" />
                         Scraper
@@ -134,7 +138,7 @@ export default function SideBarRoutes({role, pathname}: {role: string, pathname:
                             : "hover:bg-sickness-primaryText/30"
                         } rounded-lg mt-2`}
                         href="/admin/file-insert"
-                        onClick={()=>{}}
+                        onClick={()=>dispatch(ToggleHamMenu(false))}
                         >
                         <FileTextIcon className="h-5 w-5" />
                         Data Processing
@@ -146,7 +150,7 @@ export default function SideBarRoutes({role, pathname}: {role: string, pathname:
                             : "hover:bg-sickness-primaryText/30"
                         } rounded-lg mt-2`}
                         href="/admin/profile"
-                        onClick={()=>{}}
+                        onClick={()=>dispatch(ToggleHamMenu(false))}
                         >
                         <Settings2Icon className="h-5 w-5" />
                         My Profile
@@ -164,7 +168,7 @@ export default function SideBarRoutes({role, pathname}: {role: string, pathname:
                             : "hover:bg-sickness-primaryText/30"
                         } rounded-lg mt-2`}
                         href="/dashboard/doctor"
-                        onClick={()=>{}}
+                        onClick={()=>dispatch(ToggleHamMenu(false))}
                         >
                         <ApercuIcon />
                         Overview
@@ -176,7 +180,7 @@ export default function SideBarRoutes({role, pathname}: {role: string, pathname:
                             : "hover:bg-sickness-primaryText/30"
                         } rounded-lg mt-2`}
                         href="/dashbaord/doctor/appointments"
-                        onClick={()=>{}}
+                        onClick={()=>dispatch(ToggleHamMenu(false))}
                         >
                         <CalendarCheckIcon className="h-5 w-5" />
                         Appointments
@@ -188,7 +192,7 @@ export default function SideBarRoutes({role, pathname}: {role: string, pathname:
                             : "hover:bg-sickness-primaryText/30"
                         } rounded-lg mt-2`}
                         href="/dashbaord/doctor/statistics"
-                        onClick={()=>{}}
+                        onClick={()=>dispatch(ToggleHamMenu(false))}
                         >
                         <LineChartIcon className="h-5 w-5" />
                         Statistics
@@ -201,7 +205,7 @@ export default function SideBarRoutes({role, pathname}: {role: string, pathname:
                             : "hover:bg-sickness-primaryText/30"
                         } rounded-lg mt-2`}
                         href="/dashbaord/doctor/profile"
-                        onClick={()=>{}}
+                        onClick={()=>dispatch(ToggleHamMenu(false))}
                         >
                         <Settings2Icon className="h-5 w-5" />
                         My Profile
@@ -213,7 +217,7 @@ export default function SideBarRoutes({role, pathname}: {role: string, pathname:
                             : "hover:bg-sickness-primaryText/30"
                         } rounded-lg mt-2`}
                         href="/dashboard/doctor/history"
-                        onClick={()=>{}}
+                        onClick={()=>dispatch(ToggleHamMenu(false))}
                         >
                         <Clock10Icon className="h-5 w-5" />
                         History
@@ -228,7 +232,7 @@ export default function SideBarRoutes({role, pathname}: {role: string, pathname:
                             : "hover:bg-sickness-primaryText/30"
                         } rounded-lg mt-2`}
                         href="/dashboard/doctor"
-                        onClick={()=>{}}
+                        onClick={()=>dispatch(ToggleHamMenu(false))}
                         >
                         <ApercuIcon />
                         Overview
@@ -240,7 +244,7 @@ export default function SideBarRoutes({role, pathname}: {role: string, pathname:
                             : "hover:bg-sickness-primaryText/30"
                         } rounded-lg mt-2`}
                         href="/dashbaord/doctor/appointments"
-                        onClick={()=>{}}
+                        onClick={()=>dispatch(ToggleHamMenu(false))}
                         >
                         <CalendarCheckIcon className="h-5 w-5" />
                         Appointments
@@ -252,7 +256,7 @@ export default function SideBarRoutes({role, pathname}: {role: string, pathname:
                             : "hover:bg-sickness-primaryText/30"
                         } rounded-lg mt-2`}
                         href="/dashbaord/doctor/profile"
-                        onClick={()=>{}}
+                        onClick={()=>dispatch(ToggleHamMenu(false))}
                         >
                         <Settings2Icon className="h-5 w-5" />
                         My Profile
@@ -269,7 +273,7 @@ export default function SideBarRoutes({role, pathname}: {role: string, pathname:
                             : "hover:bg-sickness-primaryText/30"
                         } rounded-lg mt-2`}
                         href="/dashboard/patient"
-                        onClick={()=>{}}
+                        onClick={()=>dispatch(ToggleHamMenu(false))}
                         >
                         <ApercuIcon />
                         Overview
@@ -281,7 +285,7 @@ export default function SideBarRoutes({role, pathname}: {role: string, pathname:
                             : "hover:bg-sickness-primaryText/30"
                         } rounded-lg mt-2`}
                         href="/dashbaord/patient/profile"
-                        onClick={()=>{}}
+                        onClick={()=>dispatch(ToggleHamMenu(false))}
                         >
                         <Settings2Icon className="h-5 w-5" />
                         My Profile
@@ -293,7 +297,7 @@ export default function SideBarRoutes({role, pathname}: {role: string, pathname:
                             : "hover:bg-sickness-primaryText/30"
                         } rounded-lg mt-2`}
                         href="dashboard/patient/history"
-                        onClick={()=>{}}
+                        onClick={()=>dispatch(ToggleHamMenu(false))}
                         >
                         <Clock10Icon className="h-5 w-5" />
                         History

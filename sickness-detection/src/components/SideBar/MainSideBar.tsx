@@ -5,29 +5,36 @@ import { usePathname } from "next/navigation";
 import { getRandomColor } from "@/lib/statics/Colors";
 import useAuth from "@/lib/Hooks/useAuth";
 import SideBarRoutes from "./SideBarRoutes";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/Store/store";
+import { Logout, ToggleHamMenu } from "@/Store/auth/authSlice";
 
 export default function HamburgerMenu() {
+    const dispatch = useDispatch<AppDispatch>()
+    const { HamMenuOpen } = useSelector((state: RootState) => state.Authentication)
     const pathname = usePathname()
     const color = getRandomColor()
     const role = useAuth()
-    if(role){
-        document.body.style.overflow = 'hidden';
+    if(HamMenuOpen){
+        document.body.style.overflow = "hidden"
+    }else{
+      document.body.style.overflow = "auto"
     }
 
     return (
         <>
-        {true && (
+        {HamMenuOpen && (
             <div className="md:hidden fixed top-0 right-0 flex w-screen z-[100] flex-col items-start border-r-2 border-settaBorder bg-white xsm:px-4 pt-4 h-screen overflow-hidden">
             <div className="flex flex-col gap-2 w-full">
                 <div className="w-full flex justify-between px-4">
-                    <Link href={"/"}>
+                    <Link href={"/"} onClick={()=>dispatch(ToggleHamMenu(false))}>
                     <h1 className="bg-clip-text text-transparent bg-gradient-to-r from-sickness-primaryText to-slate-700/80 text-2xl font-black translate-y-1">
                         SymptoSense
                     </h1>
                     </Link>
                 <XIcon
                     className="cursor-pointer lg:hidden visible w-8 h-8"
-                    onClick={()=>{}}
+                    onClick={()=>{dispatch(ToggleHamMenu(false))}}
                 />
                 </div>
                 <div className="flex-1 w-full">
@@ -56,7 +63,7 @@ export default function HamburgerMenu() {
             <div className="mt-8 h-[2px] bg-settaBorder w-full"></div>
             <p
                 className="mt-8 px-4 text-sm text-red-500 flex gap-2 cursor-pointer hover:text-red-500/80"
-                onClick={() => {}}
+                onClick={() => {dispatch(Logout())}}
             >
                 {" "}
                 <LogOutIcon className="-translate-y-[2px]" /> Logout{" "}
