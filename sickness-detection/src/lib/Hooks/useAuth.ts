@@ -30,18 +30,60 @@ const useAuth = () => {
             }
         };
 
-        const token = localStorage.getItem("AccessToken");
-        if (token) {
-            verifyToken(token).then((payload) => {
+        const refreshToken = async (): Promise<string | null> => {
+            try {
+                const refresh_token = localStorage.getItem("RefreshToken");
+                if (!refresh_token) {
+                    return null;
+                }
+
+                const response = await fetch(`${next_backend_route}/auth/token/refresh`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ refresh_token }),
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    const newAccessToken = data.accessToken;
+                    localStorage.setItem("AccessToken", newAccessToken);
+                    return newAccessToken;
+                } else {
+                    return null;
+                }
+            } catch (error) {
+                console.error("Token refresh failed:", error);
+                return null;
+            }
+        };
+
+        const handleAuth = async () => {
+            let token = localStorage.getItem("AccessToken");
+            if (token) {
+                let payload = await verifyToken(token);
                 if (payload) {
                     setRole(payload.user.role);
                 } else {
-                    router.push("/auth/Login");
+                    token = await refreshToken();
+                    if (token) {
+                        payload = await verifyToken(token);
+                        if (payload) {
+                            setRole(payload.user.role);
+                        } else {
+                            router.push("/auth/Login");
+                        }
+                    } else {
+                        router.push("/auth/Login");
+                    }
                 }
-            });
-        } else {
-            router.push("/auth/Login");
-        }
+            } else {
+                router.push("/auth/Login");
+            }
+        };
+
+        handleAuth();
     }, [router]);
 
     return role;
