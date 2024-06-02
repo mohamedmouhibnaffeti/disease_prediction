@@ -106,10 +106,54 @@ export default function HamburgerMenu() {
                     </>
                 ) : (
                     <>
-                        <p>Overview</p>
-                        <p>Scraper</p>
-                        <p>Data Processing</p>
-                        <p>Profile</p>
+                        <Link
+                            className={`flex items-center gap-3 px-3 py-2 font-semibold ${
+                                pathname === "/admin"
+                                ? "bg-sickness-primaryText/50 border-2 border-sickness-primaryText text-white"
+                                : "hover:bg-sickness-primaryText/30"
+                            } rounded-lg mt-2`}
+                            href="/admin"
+                            onClick={()=>{}}
+                            >
+                            <ApercuIcon />
+                            Overview
+                        </Link>
+                        <Link
+                            className={`flex items-center gap-3 px-3 py-2 font-semibold ${
+                                pathname === "/admin/scraper"
+                                ? "bg-sickness-primaryText/50 border-2 border-sickness-primaryText text-white"
+                                : "hover:bg-sickness-primaryText/30"
+                            } rounded-lg mt-2`}
+                            href="/admin/scraper"
+                            onClick={()=>{}}
+                            >
+                            <ScanSearch className="h-5 w-5" />
+                            Scraper
+                        </Link>
+                        <Link
+                            className={`flex items-center gap-3 px-3 py-2 font-semibold ${
+                                pathname === "/admin/file-insert"
+                                ? "bg-sickness-primaryText/50 border-2 border-sickness-primaryText text-white"
+                                : "hover:bg-sickness-primaryText/30"
+                            } rounded-lg mt-2`}
+                            href="/admin/file-insert"
+                            onClick={()=>{}}
+                            >
+                            <FileTextIcon className="h-5 w-5" />
+                            Data Processing
+                        </Link>
+                        <Link
+                            className={`flex items-center gap-3 px-3 py-2 font-semibold ${
+                                pathname === "/admin/profile"
+                                ? "bg-sickness-primaryText/50 border-2 border-sickness-primaryText text-white"
+                                : "hover:bg-sickness-primaryText/30"
+                            } rounded-lg mt-2`}
+                            href="/admin/profile"
+                            onClick={()=>{}}
+                            >
+                            <Settings2Icon className="h-5 w-5" />
+                            My Profile
+                        </Link>
                     </>
                 );
             case "doctor":
