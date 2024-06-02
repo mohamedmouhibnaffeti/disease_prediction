@@ -22,7 +22,7 @@ const initialState: authSliceType = {
     PatientSignupFormData: { name: "", lastname: "", email: "", phone: "",password: "", confirmPassword: "", gender: "", age: "" },
     LoginFormData: { email: "", password: "" },
     ForgotPasswordData: { email: "", passwwd: "", confirmPasswd: "", otp: "" },
-    HamMenuOpen: true
+    HamMenuOpen: false
 }
 
 const authSlice = createSlice({
