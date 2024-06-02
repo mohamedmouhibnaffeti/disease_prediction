@@ -1,12 +1,9 @@
 "use client";
 import Link from "next/link";
-import { Clock10Icon, FileTextIcon, LogOutIcon, PlusIcon, ScanSearch, Settings2Icon, User2Icon, XIcon } from "lucide-react";
-import { usePathname, useRouter } from "next/navigation";
-import Image from "next/image";
-import { Avatar, AvatarFallback } from "@radix-ui/react-avatar";
+import { LogOutIcon, XIcon } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { getRandomColor } from "@/lib/statics/Colors";
 import useAuth from "@/lib/Hooks/useAuth";
-import DoctorIcon from "../SVG/DoctorIcon";
 import SideBarRoutes from "./SideBarRoutes";
 
 export default function HamburgerMenu() {
