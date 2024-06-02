@@ -208,11 +208,11 @@ export default function SideBarRoutes({role, pathname}: {role: string, pathname:
                     </Link>
                     <Link
                         className={`flex items-center gap-3 px-3 py-2 font-semibold ${
-                            pathname === "/admin/history"
+                            pathname === "/dashboard/doctor/history"
                             ? "bg-sickness-primaryText/50 border-2 border-sickness-primaryText text-white"
                             : "hover:bg-sickness-primaryText/30"
                         } rounded-lg mt-2`}
-                        href="/admin/history"
+                        href="/dashboard/doctor/history"
                         onClick={()=>{}}
                         >
                         <Clock10Icon className="h-5 w-5" />
@@ -223,11 +223,11 @@ export default function SideBarRoutes({role, pathname}: {role: string, pathname:
                 <>
                     <Link
                         className={`flex items-center gap-3 px-3 py-2 font-semibold ${
-                            pathname === "/admin"
+                            pathname === "/dashboard/doctor"
                             ? "bg-sickness-primaryText/50 border-2 border-sickness-primaryText text-white"
                             : "hover:bg-sickness-primaryText/30"
                         } rounded-lg mt-2`}
-                        href="/admin"
+                        href="/dashboard/doctor"
                         onClick={()=>{}}
                         >
                         <ApercuIcon />
@@ -259,15 +259,47 @@ export default function SideBarRoutes({role, pathname}: {role: string, pathname:
                     </Link>
                 </>
             )
-        case "user":
-            return (
+        case "patient": return (
                 <>
-                    <p>Overview</p>
-                    <p>My Appointments</p>
-                    <p>Profile</p>
-                    <p>History</p>
+                    <p className="text-sickness-gray font-semibold pl-2">General</p>
+                    <Link
+                        className={`flex items-center gap-3 px-3 py-2 font-semibold ${
+                            pathname === "/dashboard/patient"
+                            ? "bg-sickness-primaryText/50 border-2 border-sickness-primaryText text-white"
+                            : "hover:bg-sickness-primaryText/30"
+                        } rounded-lg mt-2`}
+                        href="/dashboard/patient"
+                        onClick={()=>{}}
+                        >
+                        <ApercuIcon />
+                        Overview
+                    </Link>
+                    <Link
+                        className={`flex items-center gap-3 px-3 py-2 font-semibold ${
+                            pathname === "/dashbaord/patient/profile"
+                            ? "bg-sickness-primaryText/50 border-2 border-sickness-primaryText text-white"
+                            : "hover:bg-sickness-primaryText/30"
+                        } rounded-lg mt-2`}
+                        href="/dashbaord/patient/profile"
+                        onClick={()=>{}}
+                        >
+                        <Settings2Icon className="h-5 w-5" />
+                        My Profile
+                    </Link>
+                    <Link
+                        className={`flex items-center gap-3 px-3 py-2 font-semibold ${
+                            pathname === "/dashboard/patient/history"
+                            ? "bg-sickness-primaryText/50 border-2 border-sickness-primaryText text-white"
+                            : "hover:bg-sickness-primaryText/30"
+                        } rounded-lg mt-2`}
+                        href="dashboard/patient/history"
+                        onClick={()=>{}}
+                        >
+                        <Clock10Icon className="h-5 w-5" />
+                        History
+                    </Link>
                 </>
-            );
+            )
         default:
             return null
     }
