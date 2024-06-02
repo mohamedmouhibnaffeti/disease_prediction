@@ -20,12 +20,16 @@ const DoctorAppointemnts = () => {
     const { appointmentsData } = useSelector((state: RootState) => state.Doctor )
     const [requestLoading, setRequestLoading] = useState(true)
     const dispatch = useDispatch<AppDispatch>()
-    const fetchData = async() => {
-        const response = await dispatch(fetchAppointmentsData({doctorID: "6651ad919b6651ea68e8243c"}))
+    const fetchData = async(id: string) => {
+        const response = await dispatch(fetchAppointmentsData({doctorID: id}))
         setRequestLoading((prev) => false)
     }
     useLayoutEffect(()=>{
-        fetchData()
+        const userString = localStorage.getItem("user") || ""
+        if(userString){
+            const user = JSON.parse(userString)
+            fetchData(user.id)
+        }
     }, [])
     const today = new Date()
     const [date, setDate] = useState<Date>(today)

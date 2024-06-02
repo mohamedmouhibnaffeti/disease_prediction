@@ -15,13 +15,17 @@ const PatientHistory = () => {
     const { historyData } = useSelector((state: RootState) => state.Patient)
     const [requestLoading, setRequestLoading] = useState(true)
     const dispatch = useDispatch<AppDispatch>()
-    const fetchData = async() => {
+    const fetchData = async(id: string) => {
         const response = await dispatch(fetchPatientHistoryData({patientID: "6651af539b6651ea68e82453"}))
         setRequestLoading((prev) => false)
     }
     useLayoutEffect(()=>{
         if(!historyData){
-            fetchData()
+            const userString = localStorage.getItem("user") || ""
+            if(userString){
+                const user = JSON.parse(userString)
+                fetchData(user.id)
+            }
         }else{
             setRequestLoading(false)
         }

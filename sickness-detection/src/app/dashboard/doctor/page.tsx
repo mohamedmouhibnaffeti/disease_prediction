@@ -19,13 +19,17 @@ const DoctorDashboard = () => {
     const { mainData } = useSelector((state: RootState) => state.Doctor)
     const [requestLoading, setRequestLoading] = useState(true)
     const dispatch = useDispatch<AppDispatch>()
-    const fetchData = async() => {
-        const response = await dispatch(fetchDashboardMainData({doctorID: "6651ad919b6651ea68e8243c"}))
+    const fetchData = async(id: string) => {
+        const response = await dispatch(fetchDashboardMainData({doctorID: id}))
         setRequestLoading((prev) => false)
     }
     useLayoutEffect(()=>{
         if(!mainData){
-            fetchData()
+            const userString = localStorage.getItem("user") || ""
+            if(userString){
+                const user = JSON.parse(userString)
+                fetchData(user.id)
+            }
         }else{
             setRequestLoading(false)
         }

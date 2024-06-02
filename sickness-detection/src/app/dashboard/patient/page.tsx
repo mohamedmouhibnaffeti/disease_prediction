@@ -18,14 +18,18 @@ const PatientDashboard = () => {
     const [requestLoading, setRequestLoading] = useState(false)
     const { mainData } = useSelector((state: RootState) => state.Patient)
     const dispatch = useDispatch<AppDispatch>()
-    const fetchData = async () => {
+    const fetchData = async (id: string) => {
         setRequestLoading(true)
-        const response = await dispatch(PatientDashMainPageData({patientID: "6651af539b6651ea68e82453"}))
+        const response = await dispatch(PatientDashMainPageData({patientID: id}))
         setRequestLoading(false)
     }
     useLayoutEffect(()=>{
         if(!mainData){
-            fetchData()
+            const userString = localStorage.getItem("user") || ""
+            if(userString){
+                const user = JSON.parse(userString)
+                fetchData(user.id)
+            }
         }else{
             setRequestLoading(false)
         }

@@ -34,7 +34,6 @@ const Dashboard = () => {
             setRequestLoading(false)
         }
     }, [])
-    console.log(MainPageData)
     return (
         <>
             <div className="grid min-h-screen w-full overflow-hidden md:grid-cols-[280px_1fr]">
