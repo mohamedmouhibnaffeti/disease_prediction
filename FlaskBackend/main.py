@@ -189,24 +189,25 @@ def predict():
     return jsonify({"predicted_disease": predicted_disease}), 200
 
 #preprocess csv file endpoint
-@app.route('/preprocess', methods=['POST'])
+@app.route('/api/preprocess', methods=['POST'])
 def preprocess():
-    uploaded_files = request.files.getlist("file")
-    if not uploaded_files:
-        return jsonify({"message": "No files were uploaded"}), 400
-    
-    # Save uploaded files
-    saved_files = []
-    for file in uploaded_files:
-        file_path = os.path.join('./', file.filename)
-        file.save(file_path)
-        saved_files.append(file_path)
-    
-    # Preprocess and save the files using the function from preprocessing module
-    result_df = dataCleaning.preprocess_and_save(saved_files, socketio)
-    
-    return jsonify({"message": "Files preprocessed and saved successfully", "result_df": result_df.to_dict()}), 200
-
+    try:
+        uploaded_files = []
+        
+        # Iterate through the files in the request
+        for key in request.files:
+            file = request.files[key]
+            file_path = os.path.join('./', file.filename)
+            file.save(file_path)
+            uploaded_files.append(file_path) 
+        
+        # Preprocess and save the files using the function from preprocessing module
+        result_df = dataCleaning.preprocess_and_save(uploaded_files, socketio)
+        
+        return send_file('./preprocessed_data.csv', as_attachment=True), 200
+    except Exception as e:
+        print(f"Error during file processing: {e}")
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
     app.run(debug=True)

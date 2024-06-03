@@ -1,20 +1,20 @@
+import ast
 import pandas as pd
 import nltk
 from nltk.corpus import stopwords
-import ast
-import sys
+import re
 from pymongo import MongoClient
 from bson import ObjectId
 import os
 from dotenv import load_dotenv
 
+# Load environment variables
 dotenv_path = 'C:/Users/mouha/OneDrive/Desktop/PFE/FlaskBackend/.env'
 load_dotenv(dotenv_path)
 db_string = os.environ['DATABASE_CONNECTION_STRING']
 
 # Connect to MongoDB
 client = MongoClient(db_string)
-
 db = client["SicknessDetection"]
 collection = db["sicknesses"]
 
@@ -34,29 +34,32 @@ def preprocess_text(text):
     # Convert text to lowercase
     text = text.lower()
     
-    # Remove punctuations and special characters, preserving newlines
+    # Remove punctuations and special characters, preserving newlines and periods
     new_text = ''
     for char in text:
-        if char.isalnum() or char.isspace() or char == '\n':
+        if char.isalnum() or char.isspace() or char in {'.', '\n'}:
             new_text += char
         else:
             new_text += ' '
     text = new_text
     
-    # Split text by newline
-    lines = text.split('\n')
+    # Split text by '.' or newline
+    phrases = [phrase.strip() for phrase in re.split(r'[.\n]', text) if phrase.strip()]
     
-    # Remove stopwords and strip whitespace for each line
-    symptoms_list = []
-    for line in lines:
-        words = [word.strip() for word in line.split() if word.strip() and word.strip() not in stop_words]
-        if words:  # Check if words list is not empty
-            symptoms_list.append(" ".join(words))
+    # Remove stopwords from each phrase
+    cleaned_phrases = []
+    for phrase in phrases:
+        words = phrase.split()
+        cleaned_phrase = ' '.join([word for word in words if word not in stop_words])
+        cleaned_phrases.append(cleaned_phrase)
+    
+    return cleaned_phrases
 
-    return symptoms_list
-
-def preprocess_and_save(csv_files):
-    with open('./preprocessed_data.csv', 'a') as file:
+def preprocess_and_save(csv_files, socketio):
+    total_rows = sum([len(pd.read_csv(csv_file)) for csv_file in csv_files])
+    processed_rows = 0
+    
+    with open('./preprocessed_data.csv', 'w') as file:
         for csv_file in csv_files:
             df = pd.read_csv(csv_file)
             for index, row in df.iterrows():
@@ -66,23 +69,18 @@ def preprocess_and_save(csv_files):
                 file.write(result_line)
                 
                 # Save to MongoDB collection
-                symptoms = [{'_id': ObjectId(),'title': symptom} for symptom in symptoms_list]
+                symptoms = [{'_id': ObjectId(), 'title': symptom} for symptom in symptoms_list]
                 sickness_document = {
                     'title': row['Sickness_Name'],
                     'symptoms': symptoms
                 }
-                collection.insert_one(sickness_document)
+                #collection.insert_one(sickness_document)
+                
+                # Update progress
+                processed_rows += 1
+                progress_percentage = (processed_rows / total_rows) * 100
+                print(progress_percentage)
+                socketio.emit('message', {'percentage': progress_percentage})
                 
     result_dataframe = pd.read_csv('./preprocessed_data.csv')
     return result_dataframe
-
-def main():
-    # Specify CSV files
-    csv_files = ["C:/Users/mouha/OneDrive/Desktop/PFE/FlaskBackend/machineLearningModel/DataNormalization/sicknesses.csv"]  # Add more file paths as needed
-    
-    # Preprocess and save data
-    preprocess_and_save(csv_files)
-    
-
-if __name__ == "__main__":
-    main()
