@@ -175,11 +175,11 @@ export default function SideBarRoutes({role, pathname}: {role: string, pathname:
                     </Link>
                     <Link
                         className={`flex items-center gap-3 px-3 py-2 font-semibold ${
-                            pathname === "/dashbaord/doctor/appointments"
+                            pathname === "/dashboard/doctor/appointments"
                             ? "bg-sickness-primaryText/50 border-2 border-sickness-primaryText text-white"
                             : "hover:bg-sickness-primaryText/30"
                         } rounded-lg mt-2`}
-                        href="/dashbaord/doctor/appointments"
+                        href="/dashboard/doctor/appointments"
                         onClick={()=>dispatch(ToggleHamMenu(false))}
                         >
                         <CalendarCheckIcon className="h-5 w-5" />
@@ -187,11 +187,11 @@ export default function SideBarRoutes({role, pathname}: {role: string, pathname:
                     </Link>
                     <Link
                         className={`flex items-center gap-3 px-3 py-2 font-semibold ${
-                            pathname === "/dashbaord/doctor/statistics"
+                            pathname === "/dashboard/doctor/statistics"
                             ? "bg-sickness-primaryText/50 border-2 border-sickness-primaryText text-white"
                             : "hover:bg-sickness-primaryText/30"
                         } rounded-lg mt-2`}
-                        href="/dashbaord/doctor/statistics"
+                        href="/dashboard/doctor/statistics"
                         onClick={()=>dispatch(ToggleHamMenu(false))}
                         >
                         <LineChartIcon className="h-5 w-5" />
@@ -200,11 +200,11 @@ export default function SideBarRoutes({role, pathname}: {role: string, pathname:
                     <p className="text-sickness-gray font-semibold pl-2 mt-3">Me</p>
                     <Link
                         className={`flex items-center gap-3 px-3 py-2 font-semibold ${
-                            pathname === "/dashbaord/doctor/profile"
+                            pathname === "/dashboard/doctor/profile"
                             ? "bg-sickness-primaryText/50 border-2 border-sickness-primaryText text-white"
                             : "hover:bg-sickness-primaryText/30"
                         } rounded-lg mt-2`}
-                        href="/dashbaord/doctor/profile"
+                        href="/dashboard/doctor/profile"
                         onClick={()=>dispatch(ToggleHamMenu(false))}
                         >
                         <Settings2Icon className="h-5 w-5" />
@@ -239,11 +239,11 @@ export default function SideBarRoutes({role, pathname}: {role: string, pathname:
                     </Link>
                     <Link
                         className={`flex items-center gap-3 px-3 py-2 font-semibold ${
-                            pathname === "/dashbaord/doctor/appointments"
+                            pathname === "/dashboard/doctor/appointments"
                             ? "bg-sickness-primaryText/50 border-2 border-sickness-primaryText text-white"
                             : "hover:bg-sickness-primaryText/30"
                         } rounded-lg mt-2`}
-                        href="/dashbaord/doctor/appointments"
+                        href="/dashboard/doctor/appointments"
                         onClick={()=>dispatch(ToggleHamMenu(false))}
                         >
                         <CalendarCheckIcon className="h-5 w-5" />
@@ -251,11 +251,11 @@ export default function SideBarRoutes({role, pathname}: {role: string, pathname:
                     </Link>
                     <Link
                         className={`flex items-center gap-3 px-3 py-2 font-semibold ${
-                            pathname === "/dashbaord/doctor/profile"
+                            pathname === "/dashboard/doctor/profile"
                             ? "bg-sickness-primaryText/50 border-2 border-sickness-primaryText text-white"
                             : "hover:bg-sickness-primaryText/30"
                         } rounded-lg mt-2`}
-                        href="/dashbaord/doctor/profile"
+                        href="/dashboard/doctor/profile"
                         onClick={()=>dispatch(ToggleHamMenu(false))}
                         >
                         <Settings2Icon className="h-5 w-5" />
@@ -280,11 +280,11 @@ export default function SideBarRoutes({role, pathname}: {role: string, pathname:
                     </Link>
                     <Link
                         className={`flex items-center gap-3 px-3 py-2 font-semibold ${
-                            pathname === "/dashbaord/patient/profile"
+                            pathname === "/dashboard/patient/profile"
                             ? "bg-sickness-primaryText/50 border-2 border-sickness-primaryText text-white"
                             : "hover:bg-sickness-primaryText/30"
                         } rounded-lg mt-2`}
-                        href="/dashbaord/patient/profile"
+                        href="/dashboard/patient/profile"
                         onClick={()=>dispatch(ToggleHamMenu(false))}
                         >
                         <Settings2Icon className="h-5 w-5" />

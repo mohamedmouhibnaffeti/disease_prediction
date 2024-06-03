@@ -13,6 +13,7 @@ import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
 import 'leaflet-defaulticon-compatibility';
 import { Marker, Popup, TileLayer } from 'react-leaflet';
+import SmallWhiteLoader from '@/components/Loaders/WhiteButtonLoader'
 const LeafletMap = dynamic(() => import('react-leaflet').then((mod) => mod.MapContainer), {
     ssr: false
   });
@@ -102,7 +103,7 @@ export default ({ Errors, setErrors }: { Errors: DoctorSignupErrorsType, setErro
             <p className='text-sm text-red-500 break-words'> { Errors.location } </p>
             <div className='flex flex-col gap-2 w-full mt-4'>
                 <button className="w-full rounded-md text-sickness-primary hover:text-white bg-none border-2 border-sickness-primary hover:border-inherit hover:bg-sickness-primaryText/70 active:bg-sickness-primaryText transition delay-75 duration-100 py-2 font-semibold flex justify-center items-center gap-2" onClick={()=>dispatch(setCurrentDoctorSignupPage(2))} disabled={isLoading} > <ChevronsLeftIcon /> Back  </button>
-                <button className={`w-full rounded-md text-white ${isLoading ? "bg-sickness-primary/70" : "bg-sickness-primary hover:border-inherit hover:bg-sickness-primaryText/70 active:bg-sickness-primaryText"} border-2 border-sickness-primary transition delay-75 duration-100 py-2 font-semibold flex justify-center items-center gap-2`} onClick={handleDoctorSignup} disabled={isLoading} > Create Account { isLoading ? <div className="small-white-loader" /> : <UserPlusIcon className="h-5 w-5" /> } </button>
+                <button className={`w-full rounded-md text-white ${isLoading ? "bg-sickness-primary/70" : "bg-sickness-primary hover:border-inherit hover:bg-sickness-primaryText/70 active:bg-sickness-primaryText"} border-2 border-sickness-primary transition delay-75 duration-100 py-2 font-semibold flex justify-center items-center gap-2`} onClick={handleDoctorSignup} disabled={isLoading} > Create Account { isLoading ? <SmallWhiteLoader /> : <UserPlusIcon className="h-5 w-5" /> } </button>
                 <p className="text-center self-center text-sm text-red-500"> { SignupResponse } </p>
             </div>
             <VerifyEmail open={open} setOpen={setOpen} />

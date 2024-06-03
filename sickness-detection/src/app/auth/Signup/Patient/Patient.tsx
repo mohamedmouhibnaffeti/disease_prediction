@@ -11,6 +11,7 @@ import { isValidEmail } from '@/lib/functions/strings';
 import { useRouter } from 'next/navigation';
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@radix-ui/react-label"
+import SmallWhiteLoader from '@/components/Loaders/WhiteButtonLoader';
 
 const ContainerStyle = {
     height: '2.7rem',
@@ -132,7 +133,7 @@ export default () => {
                 <input type="password" value={SignupFormData.confirmPassword} onChange={(e)=>{ dispatch(setPatientSignupFormData({ name: "confirmPassword", value: e.target.value })); setErrorMessages((prevErrors: PatientSignupErrorsType) => ({ ...prevErrors,  confirmPassword: ""})) }} className="outline-none border focus:border-sickness-primary text-sickness-gray text- pl-2 py-2 rounded-md w-full border-sickness-border" placeholder="●●●●●●●●" />
                 <p className="text-sm text-red-500 text-center break-words"> { ErrorMessages.confirmPassword } </p>
             </div>
-            <button className={`mt-4 w-full rounded-md text-white ${isLoading ? "bg-sickness-primary/70" : "bg-sickness-primary hover:bg-sickness-primaryText/70 active:bg-sickness-primaryText"} transition delay-75 duration-100 py-2 font-semibold flex justify-center items-center gap-2`} onClick={handleSignup} disabled={isLoading}> Create Account { isLoading ? <div className="small-white-loader" /> : <UserPlusIcon className="h-5 w-5 -translate-y-[2px]" /> } </button>
+            <button className={`mt-4 w-full rounded-md text-white ${isLoading ? "bg-sickness-primary/70" : "bg-sickness-primary hover:bg-sickness-primaryText/70 active:bg-sickness-primaryText"} transition delay-75 duration-100 py-2 font-semibold flex justify-center items-center gap-2`} onClick={handleSignup} disabled={isLoading}> Create Account { isLoading ? <SmallWhiteLoader /> : <UserPlusIcon className="h-5 w-5 -translate-y-[2px]" /> } </button>
             <p className="text-center self-center text-sm text-red-500"> { SignupResponse?.message !== "Patient Created" && SignupResponse?.message } </p>
             <p className="text-sickness-gray text-sm self-start mt-2"> Already have an account? <a href="/auth/Login" className="text-sickness-primaryText hover:underline font-semibold cursor-pointer"> Login! </a> </p>
         </div>

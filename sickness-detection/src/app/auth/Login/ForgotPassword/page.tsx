@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import { RootState, AppDispatch } from "@/Store/store"
 import { ForgotPasswordOTP, setForgotPasswordData } from "@/Store/auth/authSlice"
 import { useDispatch, useSelector } from "react-redux"
+import SmallWhiteLoader from "@/components/Loaders/WhiteButtonLoader"
 
 
 export default function ForgotPassword() {
@@ -32,7 +33,7 @@ export default function ForgotPassword() {
                     <span className="text-sickness-gray md:text-lg text-md"> Email </span>
                     <input type="text" onChange={(e)=>{dispatch(setForgotPasswordData({ name: 'email', value: e.target.value })); setErrorMsg("")}} className="outline-none border focus:border-sickness-primary text-sickness-gray text- pl-2 md:py-2 py-1 rounded-md w-full border-sickness-border" placeholder="example@gmail.com" value={forgotpassworddata.email} />
                 </div>
-                <button onClick={handleNextClick} className={`mt-4 w-full rounded-md text-white ${requestLoading ? "bg-sickness-primary/70" : "bg-sickness-primary hover:bg-sickness-primaryText/70 active:bg-sickness-primaryText"} transition delay-75 duration-100 md:h-12 h-10 font-semibold flex justify-center items-center gap-1 md:text-md text-sm`} disabled={requestLoading}> Send verification code { requestLoading ? <div className="small-white-loader" /> : <ChevronRight /> } </button>
+                <button onClick={handleNextClick} className={`mt-4 w-full rounded-md text-white ${requestLoading ? "bg-sickness-primary/70" : "bg-sickness-primary hover:bg-sickness-primaryText/70 active:bg-sickness-primaryText"} transition delay-75 duration-100 md:h-12 h-10 font-semibold flex justify-center items-center gap-1 md:text-md text-sm`} disabled={requestLoading}> Send verification code { requestLoading ? <SmallWhiteLoader /> : <ChevronRight /> } </button>
                 <p className="text-sm text-red-500 break-words"> {errorMsg} </p>
             </div>
         </div>

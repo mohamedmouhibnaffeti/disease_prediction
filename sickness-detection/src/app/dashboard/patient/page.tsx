@@ -28,7 +28,7 @@ const PatientDashboard = () => {
             const userString = localStorage.getItem("user") || ""
             if(userString){
                 const user = JSON.parse(userString)
-                fetchData(user.id)
+                fetchData(user._id)
             }
         }else{
             setRequestLoading(false)

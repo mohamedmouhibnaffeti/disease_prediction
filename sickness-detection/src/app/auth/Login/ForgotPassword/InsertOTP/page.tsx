@@ -7,6 +7,7 @@ import { RootState, AppDispatch } from "@/Store/store"
 import { setForgotPasswordData, VerifyOTPForForgotPasswd } from "@/Store/auth/authSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { isValidEmail } from "@/lib/functions/strings"
+import SmallWhiteLoader from "@/components/Loaders/WhiteButtonLoader"
 
 export default function InsertOTP() {
     const Router = useRouter()
@@ -36,7 +37,7 @@ export default function InsertOTP() {
                 <h1 className="md:text-3xl text-lg font-semibold text-sickness-primaryText"> Forgot Password </h1>
                 <p className="text-sickness-gray font-medium md:text-xsm text-sm"> <span className="text-sickness-primaryText font-semibold"> {60} seconds </span> until verification code expires. </p>
                 <ReactCodeInput className="self-center w-full md:gap-8 gap-0 flex" values={forgotpassworddata.otp.split("")} onChange={e=>{ dispatch(setForgotPasswordData({ name: 'otp', value: e })); setErrorMsg("") }} />
-                <button className={`mt-4 w-full rounded-md text-white ${requestLoading ? "bg-sickness-primary/70" : "bg-sickness-primary hover:bg-sickness-primaryText/70 active:bg-sickness-primaryText"} transition delay-75 duration-100 md:h-12 h-10 font-semibold flex justify-center items-center gap-1 md:text-md text-sm`} disabled={requestLoading} onClick={SendOTP}> Send verification code { requestLoading ? <div className="small-white-loader" /> : <ChevronRight /> } </button>
+                <button className={`mt-4 w-full rounded-md text-white ${requestLoading ? "bg-sickness-primary/70" : "bg-sickness-primary hover:bg-sickness-primaryText/70 active:bg-sickness-primaryText"} transition delay-75 duration-100 md:h-12 h-10 font-semibold flex justify-center items-center gap-1 md:text-md text-sm`} disabled={requestLoading} onClick={SendOTP}> Send verification code { requestLoading ? <SmallWhiteLoader /> : <ChevronRight /> } </button>
                 <p className="text-sm text-red-500 break-words text-center self-center"> {errorMsg} </p>
             </div>
         </div>

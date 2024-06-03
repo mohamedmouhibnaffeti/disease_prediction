@@ -45,6 +45,7 @@ export async function GET(request: NextRequest){
             totalDoctors: totalDoctors.length 
         }, { status: 200 })
     }catch(err){
+        console.log(err)
         return NextResponse.json({ message: `Internal server error: ${err}` }, { status: 500 })
     }
 }
