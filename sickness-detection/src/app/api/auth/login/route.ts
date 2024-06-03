@@ -12,6 +12,9 @@ export async function POST(request: Request){
         if(!user){
             return NextResponse.json({ message: "No user found with the provided email." }, { status: 400 })
         }
+        if(user && user.state === "archived"){
+            return NextResponse.json({ message: "Your accound has been suspended by our admins." }, { status: 400 })
+        }
         const passwordsMatch = await bcrypt.compare(password, user.password)
         if(!passwordsMatch){
             return NextResponse.json({ message: "Wrong password." }, { status: 400 })

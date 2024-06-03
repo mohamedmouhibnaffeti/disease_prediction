@@ -4,10 +4,14 @@ import { Settings2Icon, Clock, LogOutIcon,LineChartIcon, CalendarCheckIcon } fro
 import { usePathname, useRouter } from "next/navigation"
 import Image from "next/image"
 import Logo from "./Images/SymptoSense.png"
+import { useDispatch } from "react-redux"
+import { AppDispatch } from "@/Store/store"
+import { Logout } from "@/Store/auth/authSlice"
 
 const SideBarDash = () => {
     const pathname = usePathname()
     const Router = useRouter()
+    const dispatch = useDispatch<AppDispatch>()
     return(
         <div className="hidden border-r border-sickness-border bg-gray-200/40 text-sickness-primaryText md:block">
             <div className="flex flex-col gap-2">
@@ -56,7 +60,7 @@ const SideBarDash = () => {
                 </nav>
             </div>
             </div>
-            <p className="mt-[28rem] px-4 text-sm text-red-500 flex gap-2 cursor-pointer hover:text-red-500/80"> <LogOutIcon className="-translate-y-[2px]" /> Logout </p>
+            <p onClick={()=>dispatch(Logout())} className="mt-[28rem] px-4 text-sm text-red-500 flex gap-2 cursor-pointer hover:text-red-500/80"> <LogOutIcon className="-translate-y-[2px]" /> Logout </p>
         </div>
     )
 }

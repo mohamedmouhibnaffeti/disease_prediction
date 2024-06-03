@@ -6,9 +6,13 @@ import Image from "next/image"
 import Logo from "./Images/SymptoSense.png"
 import DocAvatar from "./SVG/DocAvatar"
 import DoctorIcon from "./SVG/DoctorIcon"
+import { useDispatch } from "react-redux"
+import { AppDispatch } from "@/Store/store"
+import { Logout } from "@/Store/auth/authSlice"
 
 const AdminSideBarDash = () => {
     const pathname = usePathname()
+    const dispatch = useDispatch<AppDispatch>()
     const Router = useRouter()
     return(
         <div className="hidden border-r border-sickness-border bg-gray-200/40 text-sickness-primaryText md:block">
@@ -72,7 +76,7 @@ const AdminSideBarDash = () => {
                 </nav>
             </div>
             </div>
-            <p className="mt-[28rem] px-4 text-sm text-red-500 flex gap-2 cursor-pointer hover:text-red-500/80"> <LogOutIcon className="-translate-y-[2px]" /> Logout </p>
+            <p onClick={()=>dispatch(Logout())} className="mt-[28rem] px-4 text-sm text-red-500 flex gap-2 cursor-pointer hover:text-red-500/80"> <LogOutIcon className="-translate-y-[2px]" /> Logout </p>
         </div>
     )
 }
