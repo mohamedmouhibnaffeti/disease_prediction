@@ -11,9 +11,9 @@ export async function GET(request: NextRequest) {
         const appointments = await Appointment.find({ doctor: doctorID }).populate({ path: "patient", select: "name lastname age gender phone" });
         const todayAppointments = appointments.filter((appointment) => isToday(appointment.requestedAt));
         const yesterdayAppointments = appointments.filter((appointment) => isYesterday(appointment.requestedAt));
-        const visitsToday = appointments.filter((appointment) => (isToday(appointment.requestedAt) && appointment.state === "pending"));
+        const visitsToday = appointments.filter((appointment) => (isToday(appointment.requestedAt) && appointment.state === "accepted"));
         const appointmentHistory = appointments.filter(
-            (appointment) => appointment.state === "pending"
+            (appointment) => appointment.state === "accepted"
         );
 
         const FinishedAppointments = appointments.filter(

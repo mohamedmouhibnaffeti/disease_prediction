@@ -10,7 +10,6 @@ export async function POST(request: Request) {
         const duration = toDate.getTime() - fromDate.getTime();
         const differenceInHours = duration / (1000 * 60 * 60);
 
-        console.log({ from, to, appointmentID, differenceInHours });
         if(!from || !to){
             return NextResponse.json({ message: "Please select a valid date." }, { status: 400 });
         }
@@ -39,6 +38,13 @@ export async function POST(request: Request) {
 
         if (conflict) {
             return NextResponse.json({ message: "The new appointment time conflicts with an existing appointment." }, { status: 409 });
+        }
+
+        const now = new Date();
+        const minimumStartTime = new Date(now.getTime() + 60 * 60 * 1000);
+    
+        if (fromDate < minimumStartTime) {
+            return NextResponse.json({ message: "Appointment must start at least one hour after the current time." }, { status: 400 });
         }
 
         const updatedAppointment = await Appointment.findByIdAndUpdate(

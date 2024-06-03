@@ -12,6 +12,7 @@ import SmallWhiteLoader from "./Loaders/WhiteButtonLoader";
 import { useState } from "react";
 import { setFinishAppointmentOpen, FinishAppointment } from "@/Store/doctor/doctorSlice";
 import { useToast } from "./ui/use-toast";
+import { DateTimePicker } from "./DateTimePicker/DateTimePicker";
 
 export default function FinishAppointmentDialog ({appointment}: {appointment: any}) {
     const { finishAppointmentState } = useSelector((state: RootState) => state.Doctor)
@@ -20,10 +21,21 @@ export default function FinishAppointmentDialog ({appointment}: {appointment: an
     const { toast } = useToast()
     const [prescription, setPrescription] = useState("")
     const [observation, setObservation] = useState("")
+    const [selectedStartDate, setSelectedStartDate] = useState<Date>()
+    const [selectedEndDate, setSelectedEndDate] = useState<Date>()
+    const selectStartDate = (e: any) => {
+        const newDate = new Date(e.year, e.month - 1, e.day, e.hour + 1, e.minute);
+        setSelectedStartDate(newDate)
+    }
+    const selectEndDate = (e: any) => {
+        const newDate = new Date(e.year, e.month - 1, e.day, e.hour + 1 , e.minute);
+        setSelectedEndDate(newDate)
+    }
 
     const handleFinishAppointment = async() => {
         setLoading(true)
-        const response = await dispatch(FinishAppointment({AppointmentID: appointment._id,prescription: prescription, observation: observation}))
+        const response = await dispatch(FinishAppointment({AppointmentID: appointment._id,prescription: prescription, observation: observation, from: selectedStartDate, to: selectedEndDate}))
+        console.log(response.payload)
         setLoading(false)
         if(response.payload.status === 204){
             toast({
@@ -74,6 +86,11 @@ export default function FinishAppointmentDialog ({appointment}: {appointment: an
                 <textarea onChange={(e)=>setObservation(e.target.value)} className="w-full rounded-md text-sm py-1 px-2 font-medium outline-none active:border-sickness-primary border-sickness-border border" />
                 <p className="font-semibold mt-2 self-start"> Prescription <span className="text-red-500"> * </span> </p>
                 <textarea onChange={(e)=>setPrescription(e.target.value)} className="w-full rounded-md text-sm font-medium py-1 px-2 outline-none active:border-sickness-primary border-sickness-border border" />
+                <div className="h-[1px] bg-sickness-border w-full mt-3" />
+                <p className="font-semibold mt-2 self-start"> Start Time: (New Appointment)</p>
+                <DateTimePicker granularity={"minute"} onChange={(e: any)=>selectStartDate(e)} hourCycle={24}  />
+                <p className="font-semibold mt-2 self-start"> End Time: (New Appointment)</p>
+                <DateTimePicker granularity={"minute"} onChange={(e: any)=>selectEndDate(e)} hourCycle={24} />
                 <div className="h-[1px] bg-sickness-border w-full mt-3" />
                 <button className={`w-full h-fit mt-3 py-2 px-4 ${loading ? "bg-green-500/70" : "bg-green-500 hover:bg-green-600" } text-white  transition delay-100 ease-in rounded-md`} disabled={loading} onClick={handleFinishAppointment}> Finish  { loading && <SmallWhiteLoader /> } </button>
             </div>

@@ -41,6 +41,13 @@ export async function POST(request: Request) {
             return NextResponse.json({ message: "The new appointment time conflicts with an existing appointment." }, { status: 409 });
         }
 
+        const now = new Date();
+        const minimumStartTime = new Date(now.getTime() + 60 * 60 * 1000);
+    
+        if (fromDate < minimumStartTime) {
+            return NextResponse.json({ message: "Appointment must start at least one hour after the current time." }, { status: 400 });
+        }
+
         const updatedAppointment = await Appointment.findByIdAndUpdate(
             { _id: appointmentID },
             { from, to, duration: differenceInHours },

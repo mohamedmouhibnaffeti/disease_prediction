@@ -19,7 +19,6 @@ export default function AppointmentDetailsCard({appointemntDetails}: { appointem
     const dispatch = useDispatch<AppDispatch>()
     const newDate = new Date(appointemntDetails.lastChecked.finishedAt)
     const [date, setDate] = useState<Date>(newDate)
-    console.log(date)
     return(
         <div className="flex flex-col gap-2 border border-sickness-border shadow-md rounded-md pb-2 w-full h-fit">
             <div className="flex gap-2">

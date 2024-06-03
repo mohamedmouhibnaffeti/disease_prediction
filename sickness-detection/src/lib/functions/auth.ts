@@ -54,20 +54,16 @@ export const sendAuthenticatedRequest = async (url: string, options: any = {}) =
             options.headers.Authorization = `Bearer ${accessToken}`;
         }
 
-        let response = await fetch(`${next_backend_route}/${url}`, options);
+        const response = await fetch(`${next_backend_route}/${url}`, options);
 
-        if (!response.ok) {
-            if (response.status === 401) {
-                await refreshToken();
-                options.headers.Authorization = `Bearer ${localStorage.getItem('AccessToken')}`;
-                response = await fetch(url, options);
-            } else if (response.status === 403) {
-                localStorage.removeItem('AccessToken');
-                localStorage.removeItem('RefreshToken');
-                window.location.href = '/auth/Login';
-            } else {
-                throw new Error('Failed to fetch data');
-            }
+        if (!response.ok && response.status === 401) {
+            await refreshToken();
+            options.headers.Authorization = `Bearer ${localStorage.getItem('AccessToken')}`;
+            return await fetch(`${next_backend_route}/${url}`, options);
+        } else if (!response.ok && response.status === 403) {
+            localStorage.removeItem('AccessToken');
+            localStorage.removeItem('RefreshToken');
+            window.location.href = '/auth/Login';
         }
 
         return response;

@@ -204,14 +204,16 @@ export const RefuseAppointment = createAsyncThunk(
 
 export const FinishAppointment = createAsyncThunk(
     "doctor/finishAppointment",
-    async({ AppointmentID, prescription, observation }: { AppointmentID: any, prescription: string, observation: string }) => {
+    async({ AppointmentID, prescription, observation, from, to }: { AppointmentID: any, prescription: string, observation: string, from: any, to: any }) => {
         try{
             const response = await sendAuthenticatedRequest(`/Appointments/finished_appointment`, {
                 method: 'POST',
                 body: JSON.stringify({
                     AppointmentID: AppointmentID,
                     prescription: prescription,
-                    observation: observation 
+                    observation: observation ,
+                    from: from || undefined,
+                    to: to || undefined
                 })
             })
             if(response.ok){
