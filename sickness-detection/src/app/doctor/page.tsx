@@ -10,6 +10,7 @@ const Calendar = lazy(()=>import("@/components/Calendar"))
 const Map = lazy(()=>import("@/components/Map"))
 import { useToast } from "@/components/ui/use-toast"
 import withAuth from "@/components/HOC/AuthHOC"
+import SmallWhiteLoader from "@/components/Loaders/WhiteButtonLoader"
 
 const DoctorPage = () => {
     const { toast } = useToast()
@@ -94,7 +95,7 @@ const DoctorPage = () => {
                 <div className="h-[30rem] mt-4">
                     <Map location={location} />
                 </div>
-                <button className={` ${requestLoading ? "bg-sickness-primary/70" : "bg-sickness-primary"} w-full py-2 text-white rounded-md flex gap-2 font-semibold mt-8 items-center justify-center`} disabled={requestLoading} onClick={RequestAppointment} > Request Appointment { requestLoading ? <div className="small-white-loader" /> : <NotebookPen className="h-5 w-5" /> } </button>
+                <button className={` ${requestLoading ? "bg-sickness-primary/70" : "bg-sickness-primary"} w-full py-2 text-white rounded-md flex gap-2 font-semibold mt-8 items-center justify-center`} disabled={requestLoading} onClick={RequestAppointment} > Request Appointment { requestLoading ? <SmallWhiteLoader /> : <NotebookPen className="h-5 w-5" /> } </button>
             </div>
         </div>
     )

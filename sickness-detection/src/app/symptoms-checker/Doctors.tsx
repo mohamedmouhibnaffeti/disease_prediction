@@ -6,6 +6,8 @@ import { changeEtatByNom } from "@/Store/Predict/PredictSlice"
 import { AppDispatch, RootState } from "@/Store/store"
 import { fetchDoctorsBySpeciality, updateDoctorsArray } from "@/Store/doctor/doctorSlice"
 import { DistanceEuclidienne } from "@/lib/statics/distance"
+import ThreeDotsLoader from "@/components/Loaders/ThreeDotsLoader"
+import MainLoader from "@/components/Loaders/MainLoader"
 const DoctorCard = lazy(()=>import('@/components/DoctorCard'))
 
 export default () => {
@@ -65,7 +67,7 @@ export default () => {
                 ?
                     <div className="px-4 py-8 bg-white w-fit flex flex-col justify-center mt-[12rem] items-center border shadow-md rounded-md border-sickness-border">
                         <p className="font-semibold text-lg text-sickness-orange text-center"> Your appointment request is being processed please wait for us to pass it. </p>
-                        <div className="three-dots-loader mt-4" />
+                        <ThreeDotsLoader />
                     </div>
                 :
                 <div className="w-full mt-[2rem] sm:px-8 px-2 py-4 flex flex-col gap-4">
@@ -74,7 +76,7 @@ export default () => {
                         {
                             loading ?
                                 <div className="flex flex-col justify-center items-center gap-8">    
-                                    <div className="ModelLoader mt-4" />
+                                    <MainLoader />
                                     <p className="font-semibold text-sickness-primary mt-2 text-center"> We're fetching doctors for your specific disease... </p>
                                 </div>
                             :

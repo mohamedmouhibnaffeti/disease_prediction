@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { changeEtatByNom, setPredictionResult, setPredictingState, CreatePredictedSickness } from "@/Store/Predict/PredictSlice"
 import { AppDispatch, RootState } from "@/Store/store"
 import Predict from "@/vendors/MachineLearning/Predict"
+import MainLoader from "@/components/Loaders/MainLoader"
 export default () => {
     const dispatch = useDispatch<AppDispatch>()
     const {SicknessToPush, SelectedSymptoms, PredictionResult, predicting} = useSelector((state: RootState) => state.Predict)
@@ -41,7 +42,7 @@ export default () => {
             <div className="flex flex-col gap-2 mt-2 w-full justify-center items-center">
                 {predicting ? 
                     <>    
-                        <div className="ModelLoader mt-4" />
+                        <MainLoader />
                         <p className="font-semibold text-sickness-primary mt-2"> Please wait for us to do our thing </p>
                     </>
                     : 

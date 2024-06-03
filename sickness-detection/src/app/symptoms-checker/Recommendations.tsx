@@ -4,6 +4,7 @@ import { AppDispatch, RootState } from "@/Store/store"
 import { changeEtatByNom } from "@/Store/Predict/PredictSlice"
 import { fetchSicknessForPredictedSickness } from "@/Store/Predict/PredictSlice"
 import {FrownIcon} from "lucide-react"
+import MainLoader from "@/components/Loaders/MainLoader"
 export default () => {
     const [ResultLoading, setResultLoading] = useState(true)
     const {PredictionResult, sicknessDetails} = useSelector((state: RootState) => state.Predict)
@@ -31,7 +32,7 @@ export default () => {
                 <div className="flex flex-col gap-2 mt-2 w-full justify-center items-center">
                     {ResultLoading ? 
                         <>    
-                            <div className="ModelLoader mt-4" />
+                            <MainLoader />
                             <p className="font-semibold text-sickness-primary mt-2"> Your recommendations are loading... </p>
                         </>
                         : 

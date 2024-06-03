@@ -6,8 +6,8 @@ import Nav from "@/components/Nav";
 import { Providers } from "./Providers";
 import { Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster"
-import MainLoader from "@/components/Loaders/MainLoader";
 import HamburgerMenu from "@/components/SideBar/MainSideBar";
+import FullScreenLoader from "@/components/Loaders/FullScreenLoader";
 
 export const inter = Inter({ 
   subsets: ["latin"],
@@ -38,7 +38,7 @@ export default function RootLayout({
           oswald.variable
         )}>
           <Providers>
-            <Suspense fallback={<MainLoader />}>
+            <Suspense fallback={<FullScreenLoader />}>
               <Nav />
               <HamburgerMenu />
               {children}
