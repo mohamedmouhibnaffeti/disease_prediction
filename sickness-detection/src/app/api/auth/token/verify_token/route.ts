@@ -15,6 +15,7 @@ export async function POST(request: NextRequest) {
         }
 
         const { payload } = await jwtVerify(token, new TextEncoder().encode(secret));
+        console.log(payload)
         return NextResponse.json({ payload }, { status: 200 });
     } catch (error) {
         console.log(error);

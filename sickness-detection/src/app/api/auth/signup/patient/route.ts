@@ -20,8 +20,8 @@ export async function POST(request: Request){
             const hashedPassword = await bcrypt.hash(password, salt)
             const createdPatient = await Patient.create({ name, lastname, email, password: hashedPassword, phone, gender, age: parseInt(age), role: "patient" })
             if(createdPatient){
-                const RefreshToken = createRefreshToken(createdPatient._id)
-                const AccessToken = createAccessToken(createdPatient._id)
+                const RefreshToken = createRefreshToken(createdPatient)
+                const AccessToken = createAccessToken(createdPatient)
                 return NextResponse.json({ message: "Patient Created", user: createdPatient, AccessToken: AccessToken, RefreshToken: RefreshToken }, { status: 201 })
             }else{
                 return NextResponse.json({ message: "Patient not created" }, { status: 500 })

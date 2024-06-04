@@ -13,6 +13,7 @@ import { ToggleHamMenu } from "@/Store/auth/authSlice"
 
 export default () => {
     const role = useAuth()
+    console.log(role)
     const [user, setUser] = useState<any>(null)
     const [loading, setLoading] = useState(true)
     useLayoutEffect(()=>{
