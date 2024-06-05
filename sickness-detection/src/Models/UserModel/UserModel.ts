@@ -55,14 +55,26 @@ const DoctorSchema = new Schema({
     },
     state: {
         type: String,
-        enum: ["pending", "archived", "refused", "accepted"],
+        enum: ["pending", 
+                "archived",
+                "refused",
+                "accepted"
+            ],
         default: "pending"
     }
 });
 
-const User = models.User || model("User", UserSchema);
-const Admin = models.Admin || User.discriminator("Admin", AdminSchema);
-const Doctor = models.Doctor || User.discriminator("Doctor", DoctorSchema);
-const Patient = models.Patient || User.discriminator("Patient", PatientSchema);
+const User = models.User || 
+        model("User", UserSchema);
+
+const Admin = models.Admin ||
+        User.discriminator("Admin", AdminSchema);
+
+const Doctor = models.Doctor ||
+        User.discriminator("Doctor", DoctorSchema);
+
+const Patient = models.Patient ||
+        User.discriminator("Patient",
+                            PatientSchema);
 
 export { User, Patient, Admin, Doctor };
