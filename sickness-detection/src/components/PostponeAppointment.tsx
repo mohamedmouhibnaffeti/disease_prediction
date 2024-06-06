@@ -47,7 +47,7 @@ export default function PostponeAppointment({appointment}: {appointment: any}) {
         if(response.payload.status === 201){
             toast({
                 title: "Congratulations !",
-                description: <p> You've postponeed the appointment with <span className="font-semibold"> {appointment.patient.name} {appointment.patient.lastname} </span> </p>,
+                description: <p> You&apos;ve postponeed the appointment with <span className="font-semibold"> {appointment.patient.name} {appointment.patient.lastname} </span> </p>,
               })
               window.location.reload()
         }
@@ -62,7 +62,7 @@ export default function PostponeAppointment({appointment}: {appointment: any}) {
             toast({
                 variant: "destructive",
                 title: "Sorry.",
-                description: <p> Couldn't postpone an appointment with patient <span className="font-semibold"> {appointment.patient.name} {appointment.patient.lastname} </span>.Please try again later. </p>,
+                description: <p> Couldn&apos;t postpone an appointment with patient <span className="font-semibold"> {appointment.patient.name} {appointment.patient.lastname} </span>.Please try again later. </p>,
               })
         }
     }
@@ -73,7 +73,7 @@ export default function PostponeAppointment({appointment}: {appointment: any}) {
         if(response.payload.status === 201){
             toast({
                 title: "Congratulations !",
-                description: <p> You've postponeed the appointment with <span className="font-semibold"> {appointment.patient.name} {appointment.patient.lastname} </span> </p>,
+                description: <p> You&apos;ve refused the appointment with <span className="font-semibold"> {appointment.patient.name} {appointment.patient.lastname} </span> </p>,
               })
               
         }
@@ -88,7 +88,7 @@ export default function PostponeAppointment({appointment}: {appointment: any}) {
             toast({
                 variant: "destructive",
                 title: "Sorry.",
-                description: <p> Couldn't postpone an appointment with patient <span className="font-semibold"> {appointment.patient.name} {appointment.patient.lastname} </span>.Please try again later. </p>,
+                description: <p> Couldn&apos;t refuse an appointment with patient <span className="font-semibold"> {appointment.patient.name} {appointment.patient.lastname} </span>.Please try again later. </p>,
               })
         }
     }

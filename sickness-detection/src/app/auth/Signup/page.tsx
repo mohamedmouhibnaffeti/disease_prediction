@@ -5,7 +5,7 @@ import Role from "./Role"
 import { RootState } from "@/Store/store"
 import { useSelector } from "react-redux"
 
-export default () => {
+export default function Signup() {
     const CurrentSignupPage = useSelector((state: RootState) => state.Authentication.currentSignUpPage)
     return(
         <div className="w-screen h-screen flex justify-center items-center py-4 px-8">

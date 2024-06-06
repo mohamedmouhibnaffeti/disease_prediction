@@ -40,7 +40,7 @@ export default function FinishAppointmentDialog ({appointment}: {appointment: an
         if(response.payload.status === 204){
             toast({
                 title: "Congratulations !",
-                description: <p> You've finished the appointment with <span className="font-semibold"> {appointment.patient.name} {appointment.patient.lastname} </span> </p>,
+                description: <p> You&apos;ve finished the appointment with <span className="font-semibold"> {appointment.patient.name} {appointment.patient.lastname} </span> </p>,
             })
             dispatch(setFinishAppointmentOpen(false))
             window.location.reload()
@@ -56,7 +56,7 @@ export default function FinishAppointmentDialog ({appointment}: {appointment: an
             toast({
                 variant: "destructive",
                 title: "Sorry.",
-                description: <p> Couldn't finish an appointment with patient <span className="font-semibold"> {appointment.patient.name} {appointment.patient.lastname} </span>.Please try again later. </p>,
+                description: <p> Couldn&apos;t finish an appointment with patient <span className="font-semibold"> {appointment.patient.name} {appointment.patient.lastname} </span>.Please try again later. </p>,
               })
         }
     }

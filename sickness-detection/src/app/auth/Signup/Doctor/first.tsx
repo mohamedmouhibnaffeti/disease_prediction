@@ -26,7 +26,7 @@ import { setCurrentDoctorSignupPage, setSignupFormDataDoctor } from '@/Store/aut
 import { DoctorSignupErrorsType } from '@/app/interfaces/interfaces';
 import { isValidEmail } from '@/lib/functions/strings';
 
-export default({ Errors, setErrors }: { Errors: DoctorSignupErrorsType, setErrors: any }) => {
+export default function First({ Errors, setErrors }: { Errors: DoctorSignupErrorsType, setErrors: any }) {
     const SignupFormData = useSelector((state: RootState) => state.Authentication.SignupFormDataDoctor)
     const dispatch = useDispatch<AppDispatch>()
 

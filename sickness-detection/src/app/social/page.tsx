@@ -18,7 +18,7 @@ export default function Social(){
 
                         <p className="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">Uh-oh!</p>
 
-                        <p className="mt-4 text-gray-500">We're currently working on this page.</p>
+                        <p className="mt-4 text-gray-500">We&apos;re currently working on this page.</p>
 
                         <a
                         href="/"

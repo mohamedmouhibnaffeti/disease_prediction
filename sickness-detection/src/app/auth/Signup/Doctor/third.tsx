@@ -18,7 +18,7 @@ const LeafletMap = dynamic(() => import('react-leaflet').then((mod) => mod.MapCo
     ssr: false
   });
 
-export default ({ Errors, setErrors }: { Errors: DoctorSignupErrorsType, setErrors: any }) => {
+export default function Third({ Errors, setErrors }: { Errors: DoctorSignupErrorsType, setErrors: any }) {
 
 
     const dispatch = useDispatch<AppDispatch>()
@@ -85,8 +85,8 @@ export default ({ Errors, setErrors }: { Errors: DoctorSignupErrorsType, setErro
 
     return (
         <>
-            <p className='text-sm text-sickness-gray text-center'> In this step you'll need to insert your <span className="text-sickness-primary font-semibold"> Location </span> </p>
-            <p className='text-sm text-sickness-gray text-center'> Afer creating your account you'll need to wait for us verify your profile before you can create appointments, meanwhile feel free checkout our website 😊 </p>
+            <p className='text-sm text-sickness-gray text-center'> In this step you&apos;ll need to insert your <span className="text-sickness-primary font-semibold"> Location </span> </p>
+            <p className='text-sm text-sickness-gray text-center'> Afer creating your account you&apos;ll need to wait for us verify your profile before you can create appointments, meanwhile feel free checkout our website 😊 </p>
             <div className="w-full h-64">
                 <LeafletMap center={SignupFormData.location} zoom={13} scrollWheelZoom={false} className='w-full h-full border-2 border-sickness-border rounded-lg shadow-lg z-10'>
                     <TileLayer

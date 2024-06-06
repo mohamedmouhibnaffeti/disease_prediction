@@ -110,7 +110,7 @@ const Scraper: React.FC = () => {
       {data ? (
         <>
           {data.map((item: any, index: number) => (
-            <Item websiteName={item}/>
+            <Item websiteName={item} key={index}/>
           ))}
         </>
       ) : (

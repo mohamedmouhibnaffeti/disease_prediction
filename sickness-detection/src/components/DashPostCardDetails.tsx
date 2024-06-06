@@ -31,7 +31,7 @@ export default function DashPostCardDetails(){
                 </DialogHeader>
                 <div className="mx-2 my-2 border border-slate-700/50 rounded-sm shadow-sm py-2 bg-gray-200/70 font-medium">
                     <p className="px-2 text-sm">
-                        Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum.
+                        Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu&apos;il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum.
                     </p>
                     <div className="w-full h-[1px] bg-slate-700/50 mt-3" />
                     <div className="w-full justify-between flex gap-2 mt-2 px-2">

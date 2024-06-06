@@ -45,7 +45,7 @@ export function UsersTable({ users }: { users: Array<any> }) {
             toast({
                 variant: "destructive",
                 title: "Sorry.",
-                description: <p> Couldn't update doctor, Please try again later. </p>,
+                description: <p> Couldn&apos;t update doctor, Please try again later. </p>,
                 })
             }
     }

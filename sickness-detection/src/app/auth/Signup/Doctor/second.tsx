@@ -17,7 +17,7 @@ import {
 import { specialities_array } from '@/lib/statics/specialities'
   
 
-export default ({ Errors, setErrors }: { Errors: DoctorSignupErrorsType, setErrors: any }) => {
+export default function Second({ Errors, setErrors }: { Errors: DoctorSignupErrorsType, setErrors: any }) {
 
     const dispatch = useDispatch<AppDispatch>()
     const [isLoading, setIsLoading] = useState(false)
@@ -59,7 +59,7 @@ export default ({ Errors, setErrors }: { Errors: DoctorSignupErrorsType, setErro
       }
     return (
         <>
-            <p className='text-sm text-sickness-gray text-center'> In this step you'll need to insert your <span className="text-sickness-primary font-semibold"> Service card </span> and your <span className="text-sickness-primary font-semibold"> Identity Card </span> to verify your identity </p>
+            <p className='text-sm text-sickness-gray text-center'> In this step you&apos;ll need to insert your <span className="text-sickness-primary font-semibold"> Service card </span> and your <span className="text-sickness-primary font-semibold"> Identity Card </span> to verify your identity </p>
             <div className="w-full">
                 <span className="text-sickness-gray text-lg"> Speciality </span>
                 <Select onValueChange={(e)=>{dispatch(setSignupFormDataDoctor({name: "speciality", value: e})); setErrors((prevErrors: DoctorSignupErrorsType) => ({ ...prevErrors,  speciality: ""}))}}>
@@ -80,17 +80,17 @@ export default ({ Errors, setErrors }: { Errors: DoctorSignupErrorsType, setErro
                 <div {...getRootProps()} className="cursor-pointer w-full h-fit mt-2 bg-[#D9D9D9]/50 hover:bg-[#D9D9D9]/70 flex justify-center items-center border-black border rounded-md flex-col py-2 gap-2 px-4">
                     <input {...getInputProps()} />
                     <ImagePlusIcon className='w-12 h-12' />
-                    <p className='text-center'>Drag 'n' drop your <span className='font-semibold'> Service and Identity Cards</span> here, or click to select files</p>
+                    <p className='text-center'>Drag &apos;n&apos; drop your <span className='font-semibold'> Service and Identity Cards</span> here, or click to select files</p>
                     <p className='text-center text-xs'> You should drop exactly <strong>2 pictures</strong> of type <strong>(JPEG, PNG, JPG, ...)</strong> </p>
                 </div>
             </div>
             <p className='text-sm text-red-500 break-words'> { Errors.images } </p>
             <div className='flex gap-2 flex-wrap w-full justify-start'>
                 {
-                    SignupFormData.images?.map((image :any, index: boolean) => {
+                    SignupFormData.images?.map((image :any, index: number) => {
                         const imageUrl = URL.createObjectURL(image);
                         return(
-                            <Image src={imageUrl} alt='' width={100} height={100} className="rounded-md border-sickness-border border w-[8rem] h-[6rem] object-cover" />
+                            <Image src={imageUrl} alt='' width={100} height={100} className="rounded-md border-sickness-border border w-[8rem] h-[6rem] object-cover" key={index} />
                         )
                     })
                 }

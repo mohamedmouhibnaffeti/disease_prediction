@@ -7,7 +7,7 @@ import { AppDispatch, RootState } from "@/Store/store"
 import { useEffect } from "react"
 import Predict from "@/vendors/MachineLearning/Predict"
 
-export default () => {
+export default function Select() {
     const dispatch = useDispatch<AppDispatch>()
     const SelectedSymptoms = useSelector((state: RootState)=>state.Predict.SelectedSymptoms)
     const ClickContinue = async() => {

@@ -5,7 +5,7 @@ import { changeEtatByNom, setPredictionResult, setPredictingState, CreatePredict
 import { AppDispatch, RootState } from "@/Store/store"
 import Predict from "@/vendors/MachineLearning/Predict"
 import MainLoader from "@/components/Loaders/MainLoader"
-export default () => {
+export default function Result() {
     const dispatch = useDispatch<AppDispatch>()
     const {SicknessToPush, SelectedSymptoms, PredictionResult, predicting} = useSelector((state: RootState) => state.Predict)
     const [hasPushed, setHasPushed] = useState(false)
@@ -38,7 +38,7 @@ export default () => {
 
     return (
         <div className="w-fit flex flex-col bg-white border-[1px] border-sickness-border shadow-md rounded-lg mt-[8rem] py-8 px-4">
-            <p className="text-center text-sickness-primaryText font-semibold">While the predictions are accurate, it's always advisable to consult a medical expert for a more comprehensive understanding and personalized guidance.</p>
+            <p className="text-center text-sickness-primaryText font-semibold">While the predictions are accurate, it&apos;s always advisable to consult a medical expert for a more comprehensive understanding and personalized guidance.</p>
             <div className="flex flex-col gap-2 mt-2 w-full justify-center items-center">
                 {predicting ? 
                     <>    

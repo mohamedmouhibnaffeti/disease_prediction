@@ -43,7 +43,7 @@ export default function PendingAppointmentCard({appointment}: {appointment: any}
         if(response.payload.status === 201){
             toast({
                 title: "Congratulations !",
-                description: <p> You've accepted the appointment with <span className="font-semibold"> {appointment.patient.name} {appointment.patient.lastname} </span> </p>,
+                description: <p> You&apos;ve accepted the appointment with <span className="font-semibold"> {appointment.patient.name} {appointment.patient.lastname} </span> </p>,
               })
               
         }
@@ -58,7 +58,7 @@ export default function PendingAppointmentCard({appointment}: {appointment: any}
             toast({
                 variant: "destructive",
                 title: "Sorry.",
-                description: <p> Couldn't accept an appointment with patient <span className="font-semibold"> {appointment.patient.name} {appointment.patient.lastname} </span>.Please try again later. </p>,
+                description: <p> Couldn&apos;t accept an appointment with patient <span className="font-semibold"> {appointment.patient.name} {appointment.patient.lastname} </span>.Please try again later. </p>,
               })
         }
     }
@@ -69,7 +69,7 @@ export default function PendingAppointmentCard({appointment}: {appointment: any}
         if(response.payload.status === 201){
             toast({
                 title: "Congratulations !",
-                description: <p> You've accepted the appointment with <span className="font-semibold"> {appointment.patient.name} {appointment.patient.lastname} </span> </p>,
+                description: <p> You&apos;ve accepted the appointment with <span className="font-semibold"> {appointment.patient.name} {appointment.patient.lastname} </span> </p>,
               })
               
         }
@@ -84,7 +84,7 @@ export default function PendingAppointmentCard({appointment}: {appointment: any}
             toast({
                 variant: "destructive",
                 title: "Sorry.",
-                description: <p> Couldn't accept an appointment with patient <span className="font-semibold"> {appointment.patient.name} {appointment.patient.lastname} </span>.Please try again later. </p>,
+                description: <p> Couldn&apos;t accept an appointment with patient <span className="font-semibold"> {appointment.patient.name} {appointment.patient.lastname} </span>.Please try again later. </p>,
               })
         }
     }

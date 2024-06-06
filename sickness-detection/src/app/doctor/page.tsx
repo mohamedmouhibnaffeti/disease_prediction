@@ -43,13 +43,13 @@ const DoctorPage = () => {
         if(response.payload.status === 201){
             toast({
                 title: "Congratulations !",
-                description: <p> You've requested an appointment with doctor <span className="font-semibold">{name} {lastname}</span> </p>,
+                description: <p> You&apos;ve requested an appointment with doctor <span className="font-semibold">{name} {lastname}</span> </p>,
               })
         }else if(response.payload.status === 500){
             toast({
                 variant: "destructive",
                 title: "Sorry.",
-                description: <p> Couldn't request an appointment with doctor <span className="font-semibold"> {name} {lastname} </span>.Please try again later. </p>,
+                description: <p> Couldn&apos;t request an appointment with doctor <span className="font-semibold"> {name} {lastname} </span>.Please try again later. </p>,
               })
         }
     }

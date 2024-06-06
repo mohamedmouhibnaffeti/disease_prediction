@@ -59,7 +59,7 @@ const CalendarComponent = (props: {date: any, setDate: any}) => {
 }
 
 
-export default () => {
+export default function Conditions() {
   const dispatch = useDispatch()
   const [selectedConditions, setSelectedConditions ] = useState<Array<{sicknessName: string, date: any}>>([{sicknessName: '', date: undefined}])
   const [date, setDate] = React.useState<any>({

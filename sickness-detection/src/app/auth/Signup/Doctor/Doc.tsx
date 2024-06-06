@@ -6,7 +6,7 @@ import { RootState } from "@/Store/store"
 import { useSelector } from "react-redux"
 import { DoctorSignupErrorsType } from "@/app/interfaces/interfaces"
 import Third from "./third"
-export default () => {
+export default function Doc() {
     const currendDoctorSignupPage =useSelector((state: RootState) => state.Authentication.currentDoctorSignupPage )
     const [Errors, setErrors] = useState<DoctorSignupErrorsType>({ name: "", lastname: "", email: "", phone: "",password: "", confirmPassword: "", images: "", speciality: "", location: "" })
     return(

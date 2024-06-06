@@ -11,7 +11,7 @@ import { useDispatch } from "react-redux"
 import { AppDispatch } from "@/Store/store"
 import { ToggleHamMenu } from "@/Store/auth/authSlice"
 
-export default () => {
+export default function Nav() {
     const role = useAuth()
     console.log(role)
     const [user, setUser] = useState<any>(null)

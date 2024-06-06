@@ -54,7 +54,7 @@ const PatientDashboard = () => {
                                             <div className="grid xl:grid-cols-3 md:grid-cols-2 gap-2">
                                                { mainData.Appointments.map((appointment: any, index: number) => {
                                                     return(
-                                                        <NextAppointmentCard appointment={appointment} />
+                                                        <NextAppointmentCard appointment={appointment} key={index} />
                                                     )
                                                 })}
                                             </div>

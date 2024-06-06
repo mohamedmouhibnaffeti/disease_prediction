@@ -58,7 +58,7 @@ const DoctorAppointemnts = () => {
                                                 <p className="text-lg font-semibold flex gap-2 self-end">  { appointmentsData.body.newPatients.value } { appointmentsData.body.newPatients.etat === "positive" ? <TrendingUpIcon className="text-green-500" /> : (appointmentsData.body.newPatients.etat === "negative" ? <TrendingDownIcon className="text-red-500" /> : "" ) } </p>
                                             </div>
                                             <div className="px-4 py-2 flex w-full flex-col border border-sickness-border rounded-sm shadow-sm">
-                                                <h1 className="text-xl"> Yesterday's Patients </h1>
+                                                <h1 className="text-xl"> Yesterday&apos;s Patients </h1>
                                                 <p className="text-lg font-semibold flex gap-2 self-end"> { appointmentsData.body.yesterdayPatients } <HeartPulse className="translate-y-[1.5px]" /> </p>
                                             </div>
                                         </div>
@@ -71,11 +71,11 @@ const DoctorAppointemnts = () => {
                                         <div className="grid xl:grid-cols-2 grid-cols-1 gap-2 w-full mt-4">
                                             <div className="flex flex-col gap-4">
                                                 {
-                                                    appointmentsData.body.appointmentHistory.map((appointment: any) => {
+                                                    appointmentsData.body.appointmentHistory.map((appointment: any, index: number) => {
                                                         const appointmentDate = new Date(appointment.requestedAt)
                                                         if(compareDates(appointmentDate, date)){
                                                             return(
-                                                                <TodayAppointmentsCard appointment={appointment} setAppointmentDetails={setAppointmentDetails} setDetailsOpen={setDetailsOpen} />
+                                                                <TodayAppointmentsCard key={index} appointment={appointment} setAppointmentDetails={setAppointmentDetails} setDetailsOpen={setDetailsOpen} />
                                                             )
                                                         }
                                                     } )

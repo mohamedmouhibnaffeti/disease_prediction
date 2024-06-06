@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default()=> {
+export default function Footer() {
   return (
     <div className="flex flex-col items-center pt-4 pb-4 w-full text-white bg-violet-950 max-md:max-w-full">
       <div className="flex gap-5 justify-between items-start px-5 mt-24 w-full text-sm max-w-[1149px] max-md:flex-wrap max-md:mt-10 max-md:max-w-full">
@@ -45,7 +45,7 @@ export default()=> {
           <div className="mt-6">Contact Us</div>
         </div>
         <div className="flex flex-col self-start mt-20 text-lg font-bold text-white max-md:mt-10">
-          <div>Let's do it!</div>
+          <div>Let&apos;s do it!</div>
           <img
             loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/8bcf9feb9e7b2284ffce4b782967790fab78ff6b6d7fa454e930878c5203972e?"

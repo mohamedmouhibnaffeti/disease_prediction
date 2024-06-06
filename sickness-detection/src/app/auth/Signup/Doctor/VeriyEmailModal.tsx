@@ -48,7 +48,7 @@ export default function VerifyEmail({open, setOpen}: {open: boolean, setOpen :an
                         Check your inbox!
                     </AlertDialogTitle>
                     <AlertDialogDescription className='text-sm text-center'>
-                        We've sent you an email containing a verification code which will expire in <span className='text-settaPrimary font-semibold'> {60} seconds </span>
+                        We&apos;ve sent you an email containing a verification code which will expire in <span className='text-settaPrimary font-semibold'> {60} seconds </span>
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <div className='w-full flex justify-center items-center flex-col'>

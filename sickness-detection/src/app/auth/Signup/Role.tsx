@@ -5,7 +5,7 @@ import { AppDispatch } from "@/Store/store"
 import { useDispatch } from "react-redux"
 import { setCurrentSignupPage } from "@/Store/auth/authSlice"
 
-export default () => {
+export default function Role() {
     const dispatch = useDispatch<AppDispatch>()
     return(
         <div className="w-[32rem] shadow-md rounded-lg flex justify-center items-center flex-col gap-4 py-4 px-8 bg-white border border-sickness-border">

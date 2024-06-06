@@ -12,52 +12,6 @@ import { ActionsTable } from "@/components/Tables/AdminHistory"
 import { fetchActions } from "@/Store/admin/AdminSlice"
 import withAuth from "@/components/HOC/AuthHOC"
 
-const sampleActions = [
-    {
-        _id: "1",
-        state: "pending",
-        patient: {
-            name: "John",
-            lastname: "Doe",
-            email: "john.doe@example.com",
-            phone: "1234567890"
-        },
-        requestedAt: "2023-05-14T10:00:00Z"
-    },
-    {
-        _id: "2",
-        state: "finished",
-        patient: {
-            name: "Jane",
-            lastname: "Smith",
-            email: "jane.smith@example.com",
-            phone: "0987654321"
-        },
-        requestedAt: "2023-06-20T14:30:00Z"
-    },
-    {
-        _id: "3",
-        state: "refused",
-        patient: {
-            name: "Alice",
-            lastname: "Johnson",
-            email: "alice.johnson@example.com",
-            phone: "1122334455"
-        },
-        requestedAt: "2023-07-01T09:15:00Z"
-    },
-    {
-        _id: "4",
-        state: "accepted",
-        patient: {
-            name: "Bob",
-            lastname: "Brown",
-            email: "bob.brown@example.com",
-            phone: "5566778899"
-        },
-        requestedAt: "2023-08-22T16:45:00Z"
-    }
-];
 
 const AdminHistory = () => {
     const [requestLoading, setRequestLoading] = useState(true)
@@ -83,7 +37,7 @@ const AdminHistory = () => {
                             actionsData && actionsData.status === 200 ?
                             <>
                                 <h1 className="md:text-2xl text-xl font-semibold text-sickness-primaryText"> Actions History </h1>
-                                <p className="pl-4 text-sm text-sickness-ashGray font-semibold"> You'll find here a list of all actions performed by all admins in the platform, from deleting a user, all the way to accepting a doctor. </p>
+                                <p className="pl-4 text-sm text-sickness-ashGray font-semibold"> You&apos;ll find here a list of all actions performed by all admins in the platform, from deleting a user, all the way to accepting a doctor. </p>
                                 <div className="overflow-x-scroll grid max-w-screen mt-4 border border-sickness-border rounded-md">
                                     <ActionsTable actions={actionsData.actions} />
                                 </div>

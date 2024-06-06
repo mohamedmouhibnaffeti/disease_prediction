@@ -7,7 +7,7 @@ const Forbidden = () => {
 
             <p className="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">Uh-oh!</p>
 
-            <p className="mt-4 text-gray-500">You're not authorized to visit this page.</p>
+            <p className="mt-4 text-gray-500">You&apos;re not authorized to visit this page.</p>
 
             <a
             href="/"

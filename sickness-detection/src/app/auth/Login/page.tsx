@@ -7,7 +7,7 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import SmallWhiteLoader from "@/components/Loaders/WhiteButtonLoader"
 
-export default () => {
+export default function Authenticate() {
     const Router = useRouter()
     const LoginData = useSelector((state: RootState) => state.Authentication.LoginFormData)
     const [requestLoading, setRequestLoading] = useState(false)
@@ -55,7 +55,7 @@ export default () => {
                 <button className={`mt-4 w-full rounded-md text-white ${requestLoading ? "bg-sickness-primary/70" : "bg-sickness-primary hover:bg-sickness-primaryText/70 active:bg-sickness-primaryText"} transition delay-75 duration-100 md:h-12 h-10 font-semibold flex justify-center items-center gap-1 md:text-md text-sm`} onClick={handleLogin} disabled={requestLoading}> Login { requestLoading ? <SmallWhiteLoader /> : <LogInIcon /> } </button>
                 <p className="text-center self-center text-sm text-red-500"> { LoginResponse?.message !== "welcome" && LoginResponse?.message } </p>
                 <a className="text-sm font-semibold text-sickness-gray self-start" href="/auth/Login/ForgotPassword"> Forgot password? <span className="cursor-pointer hover:underline text-sickness-primaryText"> Create new password! </span> </a>
-                <p className="text-sickness-gray text-sm self-start mt-2"> Don't have an account? <a href="/auth/Signup" className="text-sickness-primaryText hover:underline font-semibold cursor-pointer"> Create account! </a> </p>
+                <p className="text-sickness-gray text-sm self-start mt-2"> Don&apos;t have an account? <a href="/auth/Signup" className="text-sickness-primaryText hover:underline font-semibold cursor-pointer"> Create account! </a> </p>
             </div>
         </main>
     )

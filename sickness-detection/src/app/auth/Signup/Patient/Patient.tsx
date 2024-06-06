@@ -30,7 +30,7 @@ const ButtonStyle = {
     justifyContent: 'center'
 }
 
-export default () => {
+export default function Patient() {
     const [ErrorMessages, setErrorMessages] = useState<PatientSignupErrorsType>({name: "", lastname: "", email: "", phone: "",password: "", confirmPassword: "", age: "", gender: ""})
     const SignupFormData = useSelector((state: RootState) => state.Authentication.PatientSignupFormData)
     const dispatch = useDispatch<AppDispatch>()

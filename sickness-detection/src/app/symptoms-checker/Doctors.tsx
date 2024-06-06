@@ -10,7 +10,7 @@ import ThreeDotsLoader from "@/components/Loaders/ThreeDotsLoader"
 import MainLoader from "@/components/Loaders/MainLoader"
 const DoctorCard = lazy(()=>import('@/components/DoctorCard'))
 
-export default () => {
+export default function Doctors() {
     const dispatch = useDispatch<AppDispatch>()
     const { doctors, updatedDoctors, requestLoading } = useSelector((state: RootState) => state.Doctor)
     const [sickness, setSickness] = useState<any>()
@@ -77,7 +77,7 @@ export default () => {
                             loading ?
                                 <div className="flex flex-col justify-center items-center gap-8">    
                                     <MainLoader />
-                                    <p className="font-semibold text-sickness-primary mt-2 text-center"> We're fetching doctors for your specific disease... </p>
+                                    <p className="font-semibold text-sickness-primary mt-2 text-center"> We&apos;re fetching doctors for your specific disease... </p>
                                 </div>
                             :
                             updatedDoctors.map((doctor: any, index: number)=>{

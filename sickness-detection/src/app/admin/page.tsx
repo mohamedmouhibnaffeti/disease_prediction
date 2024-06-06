@@ -55,7 +55,7 @@ const Dashboard = () => {
                                         <AdminOverViewStats str="Selected Symptoms" val={MainPageData.body.totalInsertedSymptoms} />
                                     </div>
                                     <h1 className="md:text-xl text-lg font-semibold text-sickness-gray mt-4"> Pending Doctors </h1>
-                                    <p className="pl-4 text-sm text-sickness-ashGray font-semibold"> You'll find here a list of doctors who request joining the platform. </p>
+                                    <p className="pl-4 text-sm text-sickness-ashGray font-semibold"> You&apos;ll find here a list of doctors who request joining the platform. </p>
                                     <div className="grid grid-cols-1 gap-8 px-10 py-2 lg:grid-cols-2 xl:grid-cols-4">
                                         {
                                             MainPageData.body.pendingDoctors.map((doctor: any, index: number) => {

@@ -69,7 +69,7 @@ const DrawerComponent = () => {
       toast({
           variant: "destructive",
           title: "Sorry.",
-          description: <p> Couldn't accept doctor, Please try again later. </p>,
+          description: <p> Couldn&apos;t accept doctor, Please try again later. </p>,
         })
   }
   }
@@ -90,7 +90,7 @@ const DrawerComponent = () => {
                   :
                     <div className="w-full flex justify-center items-center mt-3">
                       <p className="text-sickness-primaryText text-xl font-semibold"> Sorry... </p>
-                      <p className="font-semibold text-sickness-ashGray"> Couldn't fetch images for the selected doctor </p>
+                      <p className="font-semibold text-sickness-ashGray"> Couldn&apos;t fetch images for the selected doctor </p>
                     </div>
                 )
               :

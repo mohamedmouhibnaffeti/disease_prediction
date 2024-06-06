@@ -99,7 +99,7 @@ const DoctorParametres = () => {
         if(response.payload.status === 204){
             toast({
                 title: "Congratulations !",
-                description: <p> You've updated your profile successfully</p>,
+                description: <p> You&apos;ve updated your profile successfully</p>,
               })
               
         }
@@ -114,7 +114,7 @@ const DoctorParametres = () => {
             toast({
                 variant: "destructive",
                 title: "Sorry.",
-                description: <p> Couldn't update profile, Please try again later. </p>,
+                description: <p> Couldn&apos;t update profile, Please try again later. </p>,
               })
         }
     }
