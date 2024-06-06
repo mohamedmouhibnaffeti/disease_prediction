@@ -24,5 +24,5 @@ export async function POST(request: Request){
         return NextResponse.json({ message: "welcome", user: user, AccessToken: Accesstoken, RefreshToken: RefreshToken }, { status: 200 })
     }catch(err){
         return NextResponse.json({ message: "Server error when signing in" }, { status: 500 })
-    }
+    } 
 }
