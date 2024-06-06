@@ -7,7 +7,7 @@ import { encryptToken } from '@/lib/functions/strings';
 import Otp from '@/Models/OtpModel/Otp';
 
 // Function to send OTP to user's email
-export async function sendOTPToEmail(email: string, otp: any, type: string) {
+async function sendOTPToEmail(email: string, otp: any, type: string) {
     // Create a nodemailer transporter with your SMTP settings
     let transporter = nodemailer.createTransport({
         host: process.env.SMTP_HOST,
