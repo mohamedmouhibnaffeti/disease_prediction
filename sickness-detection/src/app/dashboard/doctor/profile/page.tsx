@@ -29,7 +29,7 @@ import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
 import 'leaflet-defaulticon-compatibility';
 import { Marker, Popup, TileLayer } from 'react-leaflet';
-import { useState, useLayoutEffect } from 'react'
+import { useState, useLayoutEffect, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '@/Store/store'
 import { updateDoctor } from '@/Store/doctor/doctorSlice'
@@ -118,9 +118,19 @@ const DoctorParametres = () => {
               })
         }
     }
-    if(typeof window === "undefined"){
-        return null
-    }
+    const [location, setLocation] = useState<any>()
+    useEffect(() => {
+        // Use useEffect to execute code only on the client-side
+        if (typeof window !== 'undefined') {
+          // Accessing window object here is safe
+          // Example: Retrieve location from browser's geolocation API
+          navigator.geolocation.getCurrentPosition((position) => {
+            setLocation([position.coords.latitude, position.coords.longitude]);
+          }, (error) => {
+            console.error('Error getting current position:', error);
+          });
+        }
+      }, []);
     return (
         <div className="grid min-h-screen w-full overflow-hidden md:grid-cols-[280px_1fr]">
             <SideBarDash />
@@ -174,17 +184,20 @@ const DoctorParametres = () => {
                                 <div className="flex flex-col gap-1 w-full mt-4">
                                     <p className="text-sm text-black font-medium">Office Location</p>
                                     <div className="w-full h-[20rem]">
-                                        <LeafletMap center={user.location} zoom={13} scrollWheelZoom={false} className='w-full h-full border-2 border-sickness-border rounded-lg shadow-lg z-10'>
-                                            <TileLayer
-                                                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                                            />
-                                            <Marker position={user.location} draggable={true} eventHandlers={{ dragend: handleMarkerMove }}>
-                                                <Popup>
-                                                    My location
-                                                </Popup>
-                                            </Marker>
-                                        </LeafletMap>
+                                        {
+                                            location &&
+                                            <LeafletMap center={user.location} zoom={13} scrollWheelZoom={false} className='w-full h-full border-2 border-sickness-border rounded-lg shadow-lg z-10'>
+                                                <TileLayer
+                                                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                                />
+                                                <Marker position={user.location} draggable={true} eventHandlers={{ dragend: handleMarkerMove }}>
+                                                    <Popup>
+                                                        My location
+                                                    </Popup>
+                                                </Marker>
+                                            </LeafletMap>
+                                        }
                                         </div>
                                 </div>
                                 <button onClick={handleUpdateDoctor} className={`md:w-fit w-full px-8 py-2 ${loading ? "bg-sickness-primary/50" : "bg-sickness-primary/70 hover:bg-sickness-primary active:bg-sickness-primary/50"} transition delay-100 ease-in bg-settaPrimary text-white font-semibold flex gap-2 justify-center items-center rounded-md mt-6 self-end`} > Update {loading && <SmallWhiteLoader />} </button>

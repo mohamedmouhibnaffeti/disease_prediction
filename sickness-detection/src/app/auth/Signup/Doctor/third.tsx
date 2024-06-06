@@ -1,6 +1,6 @@
 "use client"
 import { ChevronsLeftIcon, ImagePlusIcon, UserPlusIcon } from 'lucide-react'
-import React, {useCallback, useState} from 'react'
+import React, {useCallback, useEffect, useState} from 'react'
 import {useDropzone} from 'react-dropzone'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '@/Store/store'
@@ -80,26 +80,40 @@ export default function Third({ Errors, setErrors }: { Errors: DoctorSignupError
           
         setErrors((prevErrors: DoctorSignupErrorsType) => ({ ...prevErrors,  location: ""}))
       };
-      if(typeof window === "undefined"){
-        return null
-    }
+      const [location, setLocation] = useState<any>()
+      useEffect(() => {
+        // Use useEffect to execute code only on the client-side
+        if (typeof window !== 'undefined') {
+          // Accessing window object here is safe
+          // Example: Retrieve location from browser's geolocation API
+          navigator.geolocation.getCurrentPosition((position) => {
+            setLocation([position.coords.latitude, position.coords.longitude]);
+          }, (error) => {
+            console.error('Error getting current position:', error);
+          });
+        }
+      }, []);
+     
 
     return (
         <>
             <p className='text-sm text-sickness-gray text-center'> In this step you&apos;ll need to insert your <span className="text-sickness-primary font-semibold"> Location </span> </p>
             <p className='text-sm text-sickness-gray text-center'> Afer creating your account you&apos;ll need to wait for us verify your profile before you can create appointments, meanwhile feel free checkout our website 😊 </p>
             <div className="w-full h-64">
-                <LeafletMap center={SignupFormData.location} zoom={13} scrollWheelZoom={false} className='w-full h-full border-2 border-sickness-border rounded-lg shadow-lg z-10'>
-                    <TileLayer
-                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    />
-                    <Marker position={SignupFormData.location} draggable={true} eventHandlers={{ dragend: handleMarkerMove }}>
-                        <Popup>
-                            My location
-                        </Popup>
-                    </Marker>
-                </LeafletMap>
+                {
+                    location && 
+                    <LeafletMap center={SignupFormData.location} zoom={13} scrollWheelZoom={false} className='w-full h-full border-2 border-sickness-border rounded-lg shadow-lg z-10'>
+                        <TileLayer
+                            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        />
+                        <Marker position={SignupFormData.location} draggable={true} eventHandlers={{ dragend: handleMarkerMove }}>
+                            <Popup>
+                                My location
+                            </Popup>
+                        </Marker>
+                    </LeafletMap>
+                }
             </div>
             <p className='text-sm text-red-500 break-words'> { Errors.location } </p>
             <div className='flex flex-col gap-2 w-full mt-4'>
