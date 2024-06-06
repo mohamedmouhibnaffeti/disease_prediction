@@ -6,25 +6,26 @@ import nodemailer from "nodemailer";
 import { encryptToken } from '@/lib/functions/strings';
 import Otp from '@/Models/OtpModel/Otp';
 
-// Function to send OTP to user's email
-async function sendOTPToEmail(email: string, otp: any, type: string) {
+import { TransportOptions } from 'nodemailer';
+
+async function sendOTPToEmail(email: string, otp: string, type: string) {
     // Create a nodemailer transporter with your SMTP settings
     let transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST,
-        port: process.env.SMTP_PORT,
+        host: process.env.SMTP_HOST as string,
+        port: parseInt(process.env.SMTP_PORT as string, 10),
         auth: {
-            user: process.env.SMTP_USER,
-            pass: process.env.SMTP_PASS,
+            user: process.env.SMTP_USER as string,
+            pass: process.env.SMTP_PASS as string,
         },
         tls: {
             rejectUnauthorized: false
         },
-    });
+    } as TransportOptions);
 
     let info = await transporter.sendMail({
         from: `"${process.env.SENDER_NAME}" <${process.env.SMTP_USER}>`,
         to: email,
-        subject: `${type}`,
+        subject: type,
         html: `
         <html>
             <head>
@@ -70,7 +71,7 @@ async function sendOTPToEmail(email: string, otp: any, type: string) {
                     </div>
                     <div class="content">
                         <p>Your verification code is: <strong>${otp}</strong>.</p>
-                        <p> The code expires in <strong> 2 minutes </strong>. </p>
+                        <p>The code expires in <strong>2 minutes</strong>.</p>
                         <p><em>SymptoSense technical support.</em></p>
                     </div>
                     <div class="footer">
@@ -82,9 +83,10 @@ async function sendOTPToEmail(email: string, otp: any, type: string) {
     `,
         headers: {
             'Brand-Indicators': 'bimi validate',
-          },
+        },
     });
 }
+
 
 export async function POST(request: Request){
     try{
