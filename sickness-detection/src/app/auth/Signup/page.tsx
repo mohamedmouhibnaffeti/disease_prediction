@@ -7,6 +7,9 @@ import { useSelector } from "react-redux"
 
 export default function Signup() {
     const CurrentSignupPage = useSelector((state: RootState) => state.Authentication.currentSignUpPage)
+    if(typeof window === "undefined"){
+        return null
+    }
     return(
         <div className="w-screen h-screen flex justify-center items-center py-4 px-8">
             {

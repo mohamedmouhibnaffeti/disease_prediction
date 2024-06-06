@@ -118,6 +118,9 @@ const DoctorParametres = () => {
               })
         }
     }
+    if(typeof window === "undefined"){
+        return null
+    }
     return (
         <div className="grid min-h-screen w-full overflow-hidden md:grid-cols-[280px_1fr]">
             <SideBarDash />
