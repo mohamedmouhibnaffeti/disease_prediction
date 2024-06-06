@@ -20,10 +20,6 @@ const LeafletMap = dynamic(() => import('react-leaflet').then((mod) => mod.MapCo
 
 export default function Third({ Errors, setErrors }: { Errors: DoctorSignupErrorsType, setErrors: any }) {
 
-    if(typeof window === "undefined"){
-        return null
-    }
-
     const dispatch = useDispatch<AppDispatch>()
     const [isLoading, setIsLoading] = useState(false)
     const SignupFormData = useSelector((state: RootState) => state.Authentication.SignupFormDataDoctor)
@@ -84,7 +80,9 @@ export default function Third({ Errors, setErrors }: { Errors: DoctorSignupError
           
         setErrors((prevErrors: DoctorSignupErrorsType) => ({ ...prevErrors,  location: ""}))
       };
-      console.log(SignupFormData)
+      if(typeof window === "undefined"){
+        return null
+    }
 
     return (
         <>

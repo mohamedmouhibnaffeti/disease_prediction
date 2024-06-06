@@ -13,9 +13,6 @@ import withAuth from "@/components/HOC/AuthHOC"
 import SmallWhiteLoader from "@/components/Loaders/WhiteButtonLoader"
 
 const DoctorPage = () => {
-    if(typeof window === "undefined"){
-        return null
-    }
     const { toast } = useToast()
 
     const dispatch = useDispatch<AppDispatch>()
@@ -63,7 +60,9 @@ const DoctorPage = () => {
             setRendered(prev => false )
         }
     })
-
+    if(typeof window === "undefined"){
+        return null
+    }
     if(!rendered){
         return null
     }
