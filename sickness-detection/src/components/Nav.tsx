@@ -20,12 +20,19 @@ export default function Nav() {
         if (typeof window !== "undefined") {
             console.log("Running in the browser");
             try {
-                const userString = localStorage.getItem("user") || "";
+                const userString = window.localStorage.getItem("user") || "";
                 console.log("userString from localStorage:", userString);
                 if (userString) {
                     const userObject = JSON.parse(userString);
                     console.log("Parsed userObject:", userObject);
-                    setUser(userObject);
+                    if (userObject && typeof userObject === 'object' && Object.keys(userObject).length > 0) {
+                        // Ensure that the userObject has the expected properties
+                        if (userObject.name) {
+                            setUser(userObject);
+                        } else {
+                            console.log("Invalid user object:", userObject);
+                        }
+                    }
                 }
             } catch (error) {
                 console.error("Error parsing user from localStorage:", error);
