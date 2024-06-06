@@ -1,3 +1,2 @@
 export const flask_backend_route = "http://127.0.0.1:5000"
-  
-export const next_backend_route = process.env.next_backend_route
+export const next_backend_route = "/api"
