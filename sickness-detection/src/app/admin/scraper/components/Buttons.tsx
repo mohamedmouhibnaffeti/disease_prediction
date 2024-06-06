@@ -1,10 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { AddWebDialog } from './components/AddWebDialog';
 import { io } from 'socket.io-client';
-import Navbar from './components/navBar/NavBar';
-import Scraper from './components/Scraper';
-import App from './components/Buttons';
 
 const Page: React.FC = () => {
   const [isScraping, setIsScraping] = useState(true);
@@ -61,7 +57,6 @@ const stopScraping = async () => {
 
   return (
     <main className="flex flex-col lg:h-screen p-4 main-bg"> 
-    <Navbar />
       <div className='flex flex-col h-4/5 w-full lg:flex-row-reverse'>
         {/* SectionTwo */}
         <div className="p-4 w-full lg:w-1/3 sm:ml-2">
@@ -69,7 +64,6 @@ const stopScraping = async () => {
           <div className='w-full'>
             <h2 className='text-xl font-bold mb-2'>Data Operations</h2>
             <div className='flex flex-col justify-between sm:flex-row gap-2'>
-            <App />
             <button className="flex mt-6 w-full items-center justify-center bg-red-700 border-2 border-red-900 text-white p-3 rounded-md hover:bg-red-800 gap-2" onClick={stopScraping}>
                   Stop Scraping
                 </button>
@@ -97,11 +91,9 @@ const stopScraping = async () => {
           <div className="h-3/5">
             <div className="flex justify-between items-center my-5">
               <h2 className="h-9 text-xl font-bold my-4">Websites</h2>
-              <AddWebDialog />
             </div>
 
             <div className="h-5/6 overflow-y-auto p-2 border border-black">
-            <Scraper />
             </div>
           </div>
 
