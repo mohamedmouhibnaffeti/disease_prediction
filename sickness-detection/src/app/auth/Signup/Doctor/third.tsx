@@ -8,15 +8,8 @@ import { setCurrentDoctorSignupPage, setSignupFormDataDoctor, DoctorSignup, Regi
 import { DoctorSignupErrorsType } from '@/app/interfaces/interfaces'
 import { useRouter } from 'next/navigation'
 import VerifyEmail from './VeriyEmailModal'
-import dynamic from 'next/dynamic'; // or any other library for dynamic imports
-import 'leaflet/dist/leaflet.css';
-import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
-import 'leaflet-defaulticon-compatibility';
-import { Marker, Popup, TileLayer } from 'react-leaflet';
+
 import SmallWhiteLoader from '@/components/Loaders/WhiteButtonLoader'
-const LeafletMap = dynamic(() => import('react-leaflet').then((mod) => mod.MapContainer), {
-    ssr: false
-  });
 
 export default function Third({ Errors, setErrors }: { Errors: DoctorSignupErrorsType, setErrors: any }) {
 
@@ -100,6 +93,29 @@ export default function Third({ Errors, setErrors }: { Errors: DoctorSignupError
             <p className='text-sm text-sickness-gray text-center'> In this step you&apos;ll need to insert your <span className="text-sickness-primary font-semibold"> Location </span> </p>
             <p className='text-sm text-sickness-gray text-center'> Afer creating your account you&apos;ll need to wait for us verify your profile before you can create appointments, meanwhile feel free checkout our website 😊 </p>
             <div className="w-full h-64">
+
+            </div>
+            <p className='text-sm text-red-500 break-words'> { Errors.location } </p>
+            <div className='flex flex-col gap-2 w-full mt-4'>
+                <button className="w-full rounded-md text-sickness-primary hover:text-white bg-none border-2 border-sickness-primary hover:border-inherit hover:bg-sickness-primaryText/70 active:bg-sickness-primaryText transition delay-75 duration-100 py-2 font-semibold flex justify-center items-center gap-2" onClick={()=>dispatch(setCurrentDoctorSignupPage(2))} disabled={isLoading} > <ChevronsLeftIcon /> Back  </button>
+                <button className={`w-full rounded-md text-white ${isLoading ? "bg-sickness-primary/70" : "bg-sickness-primary hover:border-inherit hover:bg-sickness-primaryText/70 active:bg-sickness-primaryText"} border-2 border-sickness-primary transition delay-75 duration-100 py-2 font-semibold flex justify-center items-center gap-2`} onClick={handleDoctorSignup} disabled={isLoading} > Create Account { isLoading ? <SmallWhiteLoader /> : <UserPlusIcon className="h-5 w-5" /> } </button>
+                <p className="text-center self-center text-sm text-red-500"> { SignupResponse } </p>
+            </div>
+            <VerifyEmail open={open} setOpen={setOpen} />
+        </>
+      );
+}
+
+/*
+import dynamic from 'next/dynamic'; // or any other library for dynamic imports
+import 'leaflet/dist/leaflet.css';
+import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
+import 'leaflet-defaulticon-compatibility';
+import { Marker, Popup, TileLayer } from 'react-leaflet';
+const LeafletMap = dynamic(() => import('react-leaflet').then((mod) => mod.MapContainer), {
+    ssr: false
+  });
+
                 {
                     location && 
                     <LeafletMap center={SignupFormData.location} zoom={13} scrollWheelZoom={false} className='w-full h-full border-2 border-sickness-border rounded-lg shadow-lg z-10'>
@@ -114,14 +130,5 @@ export default function Third({ Errors, setErrors }: { Errors: DoctorSignupError
                         </Marker>
                     </LeafletMap>
                 }
-            </div>
-            <p className='text-sm text-red-500 break-words'> { Errors.location } </p>
-            <div className='flex flex-col gap-2 w-full mt-4'>
-                <button className="w-full rounded-md text-sickness-primary hover:text-white bg-none border-2 border-sickness-primary hover:border-inherit hover:bg-sickness-primaryText/70 active:bg-sickness-primaryText transition delay-75 duration-100 py-2 font-semibold flex justify-center items-center gap-2" onClick={()=>dispatch(setCurrentDoctorSignupPage(2))} disabled={isLoading} > <ChevronsLeftIcon /> Back  </button>
-                <button className={`w-full rounded-md text-white ${isLoading ? "bg-sickness-primary/70" : "bg-sickness-primary hover:border-inherit hover:bg-sickness-primaryText/70 active:bg-sickness-primaryText"} border-2 border-sickness-primary transition delay-75 duration-100 py-2 font-semibold flex justify-center items-center gap-2`} onClick={handleDoctorSignup} disabled={isLoading} > Create Account { isLoading ? <SmallWhiteLoader /> : <UserPlusIcon className="h-5 w-5" /> } </button>
-                <p className="text-center self-center text-sm text-red-500"> { SignupResponse } </p>
-            </div>
-            <VerifyEmail open={open} setOpen={setOpen} />
-        </>
-      );
-}
+
+*/
