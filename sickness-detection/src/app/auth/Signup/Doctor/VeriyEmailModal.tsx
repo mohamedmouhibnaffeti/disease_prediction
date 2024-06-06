@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/alert-dialog"
 import { BadgeCheckIcon, BanIcon } from "lucide-react";
 import { useEffect, useState } from "react";
-import ReactCodeInput from "react-verification-code-input";
+import VerificationInput from "react-verification-input";
 import { RootState, AppDispatch } from "@/Store/store"
 import { DoctorSignup, RegisterOTP, setSignupFormDataDoctor } from "@/Store/auth/authSlice"
 import { useDispatch, useSelector } from "react-redux"
@@ -52,7 +52,7 @@ export default function VerifyEmail({open, setOpen}: {open: boolean, setOpen :an
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <div className='w-full flex justify-center items-center flex-col'>
-                    <ReactCodeInput onChange={(e)=>{dispatch(setSignupFormDataDoctor({ name: "otp", value: e })); setError("")}} values={SignupFormDataDoctor.otp.split("")} />
+                    <VerificationInput onChange={(e)=>{dispatch(setSignupFormDataDoctor({ name: "otp", value: e })); setError("")}} value={SignupFormDataDoctor.otp} />
                     <p className="text-sm text-red-500 mt-2"> {error} </p> 
                 </div>
                 <div className='flex justify-between'>    
