@@ -4,6 +4,7 @@ import { User } from "@/Models/UserModel/UserModel";
 import { encryptToken } from "@/lib/functions/strings";
 import otpGn from "otp-generator"
 import Otp from "@/Models/OtpModel/Otp";
+import nodemailer from "nodemailer";
 
 async function sendOTPToEmail(email: string, otp: any, type: string) {
     // Create a nodemailer transporter with your SMTP settings
