@@ -12,7 +12,7 @@ export function AddWebDialog() {
 
   const handleUpload = () => {
     const fileInput = document.getElementById('scraper-file') as HTMLInputElement;
-    const file = fileInput?.files[0];
+    const file = fileInput.files ? fileInput.files[0] :  0
     const className = (document.getElementById('class-name') as HTMLInputElement).value;
     const classFunction = (document.getElementById('class-function') as HTMLInputElement).value;
 
