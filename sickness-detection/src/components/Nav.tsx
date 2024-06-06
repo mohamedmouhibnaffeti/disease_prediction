@@ -16,14 +16,7 @@ export default function Nav() {
     console.log(role)
     const [user, setUser] = useState<any>(null)
     const [loading, setLoading] = useState(true)
-    useLayoutEffect(()=>{
-        const userString = localStorage.getItem("user") || ""
-        if(userString){
-            const userObject = JSON.parse(userString)    
-            setUser(userObject)
-        }
-        setLoading(false)
-    }, [])
+
     const Router = useRouter()
     const pathname = usePathname()
     const dispatch = useDispatch<AppDispatch>()
