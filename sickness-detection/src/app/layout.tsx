@@ -32,6 +32,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+      <link rel="stylesheet" href="https://unpkg.com/leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css" />
       <body className={cn(
           "min-h-screen bg-sickness-lightGray font-sans antialiased overflow-x-hidden",
           inter.variable,

@@ -52,12 +52,12 @@ export default function VerifyEmail({open, setOpen}: {open: boolean, setOpen :an
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <div className='w-full flex justify-center items-center flex-col'>
-                    <VerificationInput onChange={(e)=>{dispatch(setSignupFormDataDoctor({ name: "otp", value: e })); setError("")}} value={SignupFormDataDoctor.otp} />
+                    <VerificationInput classNames={{ characterSelected: "border border-sickness-primary", character: "rounded-md" }} onChange={(e)=>{dispatch(setSignupFormDataDoctor({ name: "otp", value: e })); setError("")}} value={SignupFormDataDoctor.otp} />
                     <p className="text-sm text-red-500 mt-2"> {error} </p> 
                 </div>
                 <div className='flex justify-between'>    
-                    <button onClick={()=>setOpen(false)} className={`w-fit px-4 rounded-md text-sickness-primary hover:text-white bg-none border-2 border-sickness-primary hover:border-inherit hover:bg-sickness-primaryText/70 active:bg-sickness-primaryText transition delay-75 duration-100 py-2 font-semibold flex justify-center items-center gap-2`} disabled={loading} > Annuler&nbsp;<BanIcon /> </button>
-                    <button onClick={handleRegister} className={`w-fit px-4 rounded-md text-white ${loading || SignupFormDataDoctor.otp.length < 6 ? "bg-sickness-primary/70" : "bg-sickness-primary hover:border-inherit hover:bg-sickness-primaryText/70 active:bg-sickness-primaryText"} border-2 cursor-pointer border-sickness-primary transition delay-75 duration-100 py-2 font-semibold flex justify-center items-center gap-2`} disabled={loading || SignupFormDataDoctor.otp.length < 6}> Vérifier&nbsp;<BadgeCheckIcon /> </button>
+                    <button onClick={()=>setOpen(false)} className={`w-fit px-4 rounded-md text-sickness-primary hover:text-white bg-none border-2 border-sickness-primary hover:border-inherit hover:bg-sickness-primaryText/70 active:bg-sickness-primaryText transition delay-75 duration-100 py-2 font-semibold flex justify-center items-center gap-2`} disabled={loading} > Cancem&nbsp;<BanIcon /> </button>
+                    <button onClick={handleRegister} className={`w-fit px-4 rounded-md text-white ${loading || SignupFormDataDoctor.otp.length < 6 ? "bg-sickness-primary/70" : "bg-sickness-primary hover:border-inherit hover:bg-sickness-primaryText/70 active:bg-sickness-primaryText"} border-2 cursor-pointer border-sickness-primary transition delay-75 duration-100 py-2 font-semibold flex justify-center items-center gap-2`} disabled={loading || SignupFormDataDoctor.otp.length < 6}> Verify&nbsp;<BadgeCheckIcon /> </button>
                 </div>
             </AlertDialogContent>
         </AlertDialog>

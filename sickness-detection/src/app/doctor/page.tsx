@@ -22,8 +22,8 @@ const DoctorPage = () => {
     const doctorID = params.get("id") || ""
     const name = params.get("name") || ""
     const lastname = params.get("lastname") || ""
-    const distance = parseFloat(params.get("distance") || "")
-    const location = JSON.parse(params.get("location") || "")
+    const distance = parseFloat(params.get("distance") || "" ) 
+    const location = params.get("location") ? JSON.parse(params.get("location") || "") : ""
     const phone = params.get("phone") || ""
     const email = params.get("email") || ""
     const speciality = params.get("speciality") || ""
@@ -95,7 +95,10 @@ const DoctorPage = () => {
                     </div>
                 </div>
                 <div className="h-[30rem] mt-4">
-                    <Map location={location} />
+                    {
+                        location &&
+                        <Map location={location} />
+                    }
                 </div>
                 <button className={` ${requestLoading ? "bg-sickness-primary/70" : "bg-sickness-primary"} w-full py-2 text-white rounded-md flex gap-2 font-semibold mt-8 items-center justify-center`} disabled={requestLoading} onClick={RequestAppointment} > Request Appointment { requestLoading ? <SmallWhiteLoader /> : <NotebookPen className="h-5 w-5" /> } </button>
             </div>
