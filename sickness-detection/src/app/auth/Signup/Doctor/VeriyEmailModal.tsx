@@ -31,8 +31,8 @@ export default function VerifyEmail({open, setOpen}: {open: boolean, setOpen :an
             setLoading(false)
             const userString = JSON.stringify(response.payload.user)
             localStorage.setItem("user", userString)
-            localStorage.setItem("AccessToken", response.payload?.AccessToken)
-            localStorage.setItem("RefreshToken", response.payload?.RefreshToken)
+            localStorage.setItem("AccessToken", response.payload.AccessToken)
+            localStorage.setItem("RefreshToken", response.payload.RefreshToken)
             window.location.href = "/"
         }else{
             setError(response.payload.message)
