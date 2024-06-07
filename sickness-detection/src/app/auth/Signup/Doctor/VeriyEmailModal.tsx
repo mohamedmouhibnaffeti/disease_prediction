@@ -47,9 +47,13 @@ export default function VerifyEmail({open, setOpen}: {open: boolean, setOpen :an
                     <AlertDialogTitle className='w-full flex justify-center'>
                         Check your inbox!
                     </AlertDialogTitle>
-                    <AlertDialogDescription className='text-sm text-center'>
+{
+    /*
+                        <AlertDialogDescription className='text-sm text-center'>
                         We&apos;ve sent you an email containing a verification code which will expire in <span className='text-settaPrimary font-semibold'> {60} seconds </span>
                     </AlertDialogDescription>
+    */
+}
                 </AlertDialogHeader>
                 <div className='w-full flex justify-center items-center flex-col'>
                     <VerificationInput classNames={{ characterSelected: "border border-sickness-primary", character: "rounded-md" }} onChange={(e)=>{dispatch(setSignupFormDataDoctor({ name: "otp", value: e })); setError("")}} value={SignupFormDataDoctor.otp} />
