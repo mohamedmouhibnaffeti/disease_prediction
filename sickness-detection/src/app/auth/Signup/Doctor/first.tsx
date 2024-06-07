@@ -31,10 +31,10 @@ export default function First({ Errors, setErrors }: { Errors: DoctorSignupError
     const dispatch = useDispatch<AppDispatch>()
 
     const handleNextClick = () => {
-        if(SignupFormData.name?.length < 5 ){
+        if(SignupFormData.name?.length < 2 ){
             setErrors((prevErrors: DoctorSignupErrorsType) => ({ ...prevErrors, name: "Name should be longer than 4 caracters." }))
         }
-        if(SignupFormData.lastname?.length < 5 ){
+        if(SignupFormData.lastname?.length < 2 ){
             setErrors((prevErrors: DoctorSignupErrorsType) => ({ ...prevErrors, lastname: "Lastname should be longer than 4 caracters." }))
         }
         if(SignupFormData.password?.length < 5 ){
@@ -49,7 +49,7 @@ export default function First({ Errors, setErrors }: { Errors: DoctorSignupError
         if(!isValidEmail(SignupFormData.email)){
             setErrors((prevErrors: DoctorSignupErrorsType) => ({ ...prevErrors, email: "Invalid email." }))
         }
-        if((!isValidEmail(SignupFormData.email)) || (SignupFormData.password !== SignupFormData.confirmPassword) || (SignupFormData.phone?.length < 9) || (SignupFormData.password?.length < 5) || (SignupFormData.name?.length < 5) || (SignupFormData.lastname?.length < 5)){
+        if((!isValidEmail(SignupFormData.email)) || (SignupFormData.password !== SignupFormData.confirmPassword) || (SignupFormData.phone?.length < 9) || (SignupFormData.password?.length < 5) || (SignupFormData.name?.length < 2) || (SignupFormData.lastname?.length < 2)){
             return
         }else{
             dispatch(setCurrentDoctorSignupPage(2))

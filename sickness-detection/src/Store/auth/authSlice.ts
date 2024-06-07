@@ -111,10 +111,10 @@ export const DoctorSignup = createAsyncThunk(
         if(!isValidEmail(SignupFormDataDoctor.email)){
             return ({message: "Invalid email."})
         }
-        if(SignupFormDataDoctor.name.length < 5){
+        if(SignupFormDataDoctor.name.length < 2){
             return ({message: "Name should be of 5 caracters long minimum."})
         }
-        if(SignupFormDataDoctor.lastname.length < 5){
+        if(SignupFormDataDoctor.lastname.length < 2){
             return ({message: "Lastname should be of 5 caracters long minimum."})
         }
         if(SignupFormDataDoctor.password.length < 5){

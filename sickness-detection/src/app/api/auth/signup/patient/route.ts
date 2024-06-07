@@ -10,7 +10,7 @@ export async function POST(request: Request){
         const { name, lastname, phone, email, password, confirmPassword, gender, age } = await request.json()
         await connectMongoDB()
         const salt = await bcrypt.genSalt(10)
-        if(name.length < 5 || lastname.length < 5 || !isValidEmail(email) || password.length < 6 || confirmPassword < 6 || confirmPassword !== password || phone.length < 9 || gender.length === 0 || parseInt(age) < 15 ){
+        if(name.length < 2 || lastname.length < 2 || !isValidEmail(email) || password.length < 6 || confirmPassword < 6 || confirmPassword !== password || phone.length < 9 || gender.length === 0 || parseInt(age) < 15 ){
             return NextResponse.json({ message: "check patient form data" }, { status: 400 })
         }
         const existingPatient = await User.findOne({email: email})

@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
         if (!images || images.length < 2) {
             return NextResponse.json({ message: 'Images were not provided' }, { status: 400 });
         }
-        if(name.length < 5 || lastname.length < 5 || !isValidEmail(email) || password.length < 5 || confirmPassword !== password ||  phone.length < 9 ){
+        if(name.length < 2 || lastname.length < 2 || !isValidEmail(email) || password.length < 5 || confirmPassword !== password ||  phone.length < 9 ){
             return NextResponse.json({ message: "Please check form data" }, { status: 400 })
         }
         await connectMongoDB()

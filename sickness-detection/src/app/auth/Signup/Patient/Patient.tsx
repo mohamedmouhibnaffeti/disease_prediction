@@ -38,10 +38,10 @@ export default function Patient() {
     const Router = useRouter()
     const [SignupResponse, setSignupResponse] = useState<any>({})
     const handleSignup = async() => {
-        if(SignupFormData.name?.length < 5 ){
+        if(SignupFormData.name?.length < 2 ){
             setErrorMessages((prevErrors: PatientSignupErrorsType) => ({ ...prevErrors, name: "Name should be longer than 4 caracters." }))
         }
-        if(SignupFormData.lastname?.length < 5 ){
+        if(SignupFormData.lastname?.length < 2 ){
             setErrorMessages((prevErrors: PatientSignupErrorsType) => ({ ...prevErrors, lastname: "Lastname should be longer than 4 caracters." }))
         }
         if(SignupFormData.password?.length < 5 ){
@@ -62,7 +62,7 @@ export default function Patient() {
         if(parseInt(SignupFormData.age) < 15){
             setErrorMessages((prevErrors: PatientSignupErrorsType) => ({ ...prevErrors, age: "You should be older than 15 years old." }))
         }
-        if((parseInt(SignupFormData.age) < 15) || (SignupFormData.gender.length === 0) || (!isValidEmail(SignupFormData.email)) || (SignupFormData.password !== SignupFormData.confirmPassword) || (SignupFormData.phone?.length < 9) || (SignupFormData.password?.length < 5) || (SignupFormData.name?.length < 5) || (SignupFormData.lastname?.length < 5)){
+        if((parseInt(SignupFormData.age) < 15) || (SignupFormData.gender.length === 0) || (!isValidEmail(SignupFormData.email)) || (SignupFormData.password !== SignupFormData.confirmPassword) || (SignupFormData.phone?.length < 9) || (SignupFormData.password?.length < 5) || (SignupFormData.name?.length < 2) || (SignupFormData.lastname?.length < 2)){
             return
         }else{
             setIsLoading(true)

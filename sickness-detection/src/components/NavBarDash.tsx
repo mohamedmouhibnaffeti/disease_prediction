@@ -2,6 +2,9 @@
 import { usePathname, useRouter } from "next/navigation"
 import { ApercuIcon } from "./SideBarDash"
 import { Settings2Icon, Clock, MenuIcon,LineChartIcon, CalendarCheckIcon } from "lucide-react"
+import { useDispatch } from "react-redux"
+import { AppDispatch } from "@/Store/store"
+import { ToggleHamMenu } from "@/Store/auth/authSlice";
 
 const ConditionalNavTitle = ({pathname}: {pathname: string}) => {
     return(
@@ -52,13 +55,14 @@ const ConditionalNavTitle = ({pathname}: {pathname: string}) => {
 const NavBarDash = () => {
     const Router = useRouter()
     const pathname = usePathname()
+    const dispatch = useDispatch<AppDispatch>()
 
     return(
         <header className="flex h-14 lg:h-[60px] items-center border-b border-sickness-border md:px-0 px-6 lg:px-8 justify-between z-20 bg-gray-200/40">
             <div className="w-full flex justify-between px-6 pr-2 items-center">
                 <ConditionalNavTitle pathname={pathname} />
                 <div className="flex sm:gap-8 gap-2 items-center">
-                    <MenuIcon className={`md:hidden flex cursor-pointer `} />
+                    <MenuIcon className={`md:hidden flex cursor-pointer `} onClick={() => dispatch(ToggleHamMenu(true))} />
                 </div>
             </div>
         </header>

@@ -2,7 +2,9 @@
 import { usePathname, useRouter } from "next/navigation"
 import { ApercuIcon } from "./SideBarDash"
 import { Settings2Icon, MenuIcon, CalendarCheckIcon, HeartIcon } from "lucide-react"
-
+import { ToggleHamMenu } from "@/Store/auth/authSlice";
+import { useDispatch } from "react-redux"
+import { AppDispatch } from "@/Store/store"
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -52,13 +54,14 @@ const ConditionalNavTitle = ({pathname}: {pathname: string}) => {
 const PatientNavBarDash = () => {
     const Router = useRouter()
     const pathname = usePathname()
+    const dispatch = useDispatch<AppDispatch>()
 
     return(
         <header className="flex h-14 lg:h-[60px] items-center border-b border-sickness-border md:px-0 px-6 lg:px-8 justify-between z-20 bg-gray-200/40">
             <div className="w-full flex justify-between px-6 pr-2 items-center">
                 <ConditionalNavTitle pathname={pathname} />
                 <div className="flex sm:gap-8 gap-2 items-center justify-between">
-                    <MenuIcon className={`md:hidden flex cursor-pointer `} />
+                    <MenuIcon className={`md:hidden flex cursor-pointer `} onClick={() => dispatch(ToggleHamMenu(true))} />
                     <NotificationBell />
                     <div className="md:flex hidden border border-sickness-border rounded-full p-2 text-lg bg-teal-500 text-white w-fit h-fit">
                         <p className="uppercase"> MN </p>
