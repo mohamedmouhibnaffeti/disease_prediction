@@ -57,11 +57,12 @@ export function compareDates(date1: Date,date2: Date){
     return (Day1 === Day2 && Month1 === Month2 && Year1 === Year2)
 }
 
-export function getHoursAndMinutes(date: Date){
-    const hours = date.getHours()
-    const minutes = date.getMinutes()
-    return { hours, minutes }
+export function getHoursAndMinutes(date: Date) {
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    return { hours, minutes };
 }
+
 
 export function Greeting() {
     const currentHour = new Date().getHours()

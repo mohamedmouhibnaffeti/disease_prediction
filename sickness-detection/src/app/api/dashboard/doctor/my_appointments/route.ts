@@ -9,8 +9,8 @@ export async function GET(request: NextRequest) {
         const doctorID = request.nextUrl.searchParams.get("doctorID") || "";
         connectMongoDB();
         const appointments = await Appointment.find({ doctor: doctorID }).populate({ path: "patient", select: "name lastname age gender phone" });
-        const todayAppointments = appointments.filter((appointment) => isToday(appointment.requestedAt));
-        const yesterdayAppointments = appointments.filter((appointment) => isYesterday(appointment.requestedAt));
+        const todayAppointments = appointments.filter((appointment) => (isToday(appointment.requestedAt) && appointment.state === "accepted"));
+        const yesterdayAppointments = appointments.filter((appointment) => (isYesterday(appointment.requestedAt) && appointment.state === "accepted" ));
         const visitsToday = appointments.filter((appointment) => (isToday(appointment.requestedAt) && appointment.state === "accepted"));
         const appointmentHistory = appointments.filter(
             (appointment) => appointment.state === "accepted"
@@ -50,7 +50,8 @@ export async function GET(request: NextRequest) {
                         observation: latestMatch.observation || "No recorded observation",
                         finishedAt: latestMatch.finishedAt || "No recorded prescription",
                         firstTime: false
-                    }
+                    },
+                    from: historyAppointment.from
                 };
             } else {
                 // If no matches, add "First Visit" to lastChecked
@@ -70,7 +71,8 @@ export async function GET(request: NextRequest) {
                     lastChecked: {
                         message: "First Visit",
                         firstTime: true
-                    }
+                    },
+                    from: historyAppointment.from
                 };
             }
         });
@@ -78,7 +80,7 @@ export async function GET(request: NextRequest) {
         const returnBody = {
             newPatients: {
                 value: todayAppointments.length - yesterdayAppointments.length >= 0  ? todayAppointments.length - yesterdayAppointments.length : 0,
-                etat: (todayAppointments.length - yesterdayAppointments.length) >= 0 ? "positive" : "negative"
+                etat: (todayAppointments.length - yesterdayAppointments.length) > 0 ? "positive" : ((todayAppointments.length - yesterdayAppointments.length) < 0 ? "negative" : "none")
             },
             yesterdayPatients: yesterdayAppointments.length,
             visitsToday: visitsToday.length,

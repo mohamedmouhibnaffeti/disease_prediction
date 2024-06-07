@@ -72,7 +72,7 @@ const DoctorAppointemnts = () => {
                                             <div className="flex flex-col gap-4">
                                                 {
                                                     appointmentsData.body.appointmentHistory.map((appointment: any, index: number) => {
-                                                        const appointmentDate = new Date(appointment.requestedAt)
+                                                        const appointmentDate = new Date(appointment.from)
                                                         if(compareDates(appointmentDate, date)){
                                                             return(
                                                                 <TodayAppointmentsCard key={index} appointment={appointment} setAppointmentDetails={setAppointmentDetails} setDetailsOpen={setDetailsOpen} />

@@ -130,7 +130,8 @@ export const requestAppointment = createAsyncThunk(
 
 export const acceptAppointment = createAsyncThunk(
     "doctor/acceptAppointment",
-    async({ AppointmentID, from, to }: { AppointmentID: any, from: Date | undefined, to: Date | undefined }) => {
+    async({ AppointmentID, from, to }: { AppointmentID: any, from: any, to: any }) => {
+        console.log(from)
         try{
             const response = await sendAuthenticatedRequest(`/Appointments/accepted_appointment`, {
                 method: 'POST',
@@ -156,7 +157,7 @@ export const acceptAppointment = createAsyncThunk(
 
 export const postponeAppointment = createAsyncThunk(
     "doctor/postponeAppointment",
-    async({ AppointmentID, from, to }: { AppointmentID: any, from: Date | undefined, to: Date | undefined }) => {
+    async({ AppointmentID, from, to }: { AppointmentID: any, from: any, to: any }) => {
         try{
             const response = await sendAuthenticatedRequest(`/Appointments/postpone_appointment`, {
                 method: 'POST',

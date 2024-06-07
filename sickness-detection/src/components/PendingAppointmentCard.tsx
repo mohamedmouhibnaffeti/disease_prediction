@@ -27,9 +27,11 @@ export default function PendingAppointmentCard({appointment}: {appointment: any}
         setSelectedStartDate(newDate)
     }
     const selectEndDate = (e: any) => {
-        const newDate = new Date(e.year, e.month - 1, e.day, e.hour + 1 , e.minute);
+        const newDate = new Date(e.year, e.month - 1, e.day, e.hour + 1, e.minute);
         setSelectedEndDate(newDate)
     }
+
+    console.log(selectedStartDate)
 
     const [Acceptloading, AcceptsetLoading] = useState(false)
     const [Refuseloading, RefusesetLoading] = useState(false)

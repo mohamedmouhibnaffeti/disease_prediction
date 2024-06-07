@@ -5,6 +5,7 @@ import Appointment from "@/Models/AppointmentModel/Appointment";
 export async function POST(request: Request) {
     try {
         const { from, to, appointmentID } = await request.json();
+        console.log(from)
         const fromDate = new Date(from);
         const toDate = new Date(to);
         const duration = toDate.getTime() - fromDate.getTime();

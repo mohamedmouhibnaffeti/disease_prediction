@@ -6,7 +6,7 @@ import { JwtPayloadType, Role, RolePermissionsType } from "./app/interfaces/inte
 const rolePermissions: RolePermissionsType = {
     patient: ['/api/Appointments/request_appointment', '/api/dashboard/patient', '/api/user/patient/update_patient', '/api/user/doctor/get_doctor_by_speciality'],
     doctor: ['/api/Appointments', '/api/dashboard/doctor', '/api/user/doctor/update_doctor'],
-    admin: ['/api/admin', '/api/dashboard/admin', '/api/user/admin', '/api/user/doctor', '/api/user/patient/change_patient_state', '/api/user/patient/get_all_patients',]
+    admin: ['/api/admin', '/api/dashboard/admin', '/api/user/admin', '/api/user/doctor', '/api/user/patient/change_patient_state', '/api/user/patient/get_all_patients']
 };
 
 export async function middleware(request: Request){

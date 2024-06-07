@@ -4,7 +4,7 @@ export default function TodayAppointmentsCard({appointment, setAppointmentDetail
         setDetailsOpen(true)
         setAppointmentDetails((prev: any) => appointment)
     }
-    const date = new Date(appointment.requestedAt)
+    const date = new Date(appointment.from)
     const time = getHoursAndMinutes(date)
     return(
         <div className="flex gap-2 border border-sickness-border shadow-md rounded-md pl-2 cursor-pointer hover:bg-sickness-primary/10 transition ease-in delay-100 xl:w-fit w-full" onClick={handleOpenCard} >

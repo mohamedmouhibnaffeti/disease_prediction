@@ -8,7 +8,8 @@ import timeGridPlugin from '@fullcalendar/timegrid'
 export default function DashboardCalendar({appointments}: {appointments: Array<any>}) {
 
   const updatedAppointments = appointments.map((appointment) => {
-    const date = new Date(appointment.requestedAt)
+    const date = new Date(appointment.from)
+    date.setHours(date.getHours() - 1);
     const AppointmentExample = { title: `${appointment.patient.name} ${appointment.patient.lastname}`, start: date, resourceId: appointment.state === "accepted" ? 'a' : (appointment.state === "finished" ? 'b' : 'c')}
     return (AppointmentExample)
   })
