@@ -73,7 +73,7 @@ export default function Patient() {
                 localStorage.setItem("user", userString)
                 localStorage.setItem("AccessToken", response.payload?.AccessToken)
                 localStorage.setItem("RefreshToken", response.payload?.RefreshToken)
-                Router.push("/")
+                window.location.href = "/"
             }
             setIsLoading(false)
         }

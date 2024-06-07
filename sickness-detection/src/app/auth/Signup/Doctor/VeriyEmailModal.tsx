@@ -33,7 +33,7 @@ export default function VerifyEmail({open, setOpen}: {open: boolean, setOpen :an
             localStorage.setItem("user", userString)
             localStorage.setItem("AccessToken", response.payload?.AccessToken)
             localStorage.setItem("RefreshToken", response.payload?.RefreshToken)
-            Router.push("/")
+            window.location.href = "/"
         }else{
             setError(response.payload.message)
         }

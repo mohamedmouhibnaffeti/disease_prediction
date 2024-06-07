@@ -32,7 +32,7 @@ export default function Authenticate() {
                 localStorage.setItem("user", StringifiedUser)
                 localStorage.setItem("AccessToken", resp.payload?.AccessToken)
                 localStorage.setItem("RefreshToken", resp.payload?.RefreshToken)
-                Router.push("/")
+                window.location.href = "/"
             }
         }
         setRequestLoading(prevstate => false)
