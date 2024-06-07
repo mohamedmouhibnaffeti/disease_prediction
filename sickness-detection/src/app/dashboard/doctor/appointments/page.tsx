@@ -1,7 +1,7 @@
 "use client"
 import SideBarDash from "@/components/SideBarDash"
 import NavBarDash from "@/components/NavBarDash"
-import { TrendingDownIcon, TrendingUpIcon } from "lucide-react"
+import { MinusIcon, TrendingDownIcon, TrendingUpIcon } from "lucide-react"
 import DashboardCalendar from "@/components/DashboardCalendar"
 import TodayAppointmentsCard from "@/components/TodayAppointmentsCard"
 import AppointmentDetailsCard from "@/components/AppointmentDetailsCard"
@@ -55,7 +55,7 @@ const DoctorAppointemnts = () => {
                                         <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 w-full">
                                             <div className="px-4 py-2 flex w-full flex-col border border-sickness-border rounded-sm shadow-sm">
                                                 <h1 className="text-xl"> New Patients </h1>
-                                                <p className="text-lg font-semibold flex gap-2 self-end">  { appointmentsData.body.newPatients.value } { appointmentsData.body.newPatients.etat === "positive" ? <TrendingUpIcon className="text-green-500" /> : (appointmentsData.body.newPatients.etat === "negative" ? <TrendingDownIcon className="text-red-500" /> : "" ) } </p>
+                                                <p className="text-lg font-semibold flex gap-2 self-end">  { appointmentsData.body.newPatients.value } { appointmentsData.body.newPatients.etat === "positive" ? <TrendingUpIcon className="text-green-500" /> : (appointmentsData.body.newPatients.etat === "negative" ? <TrendingDownIcon className="text-red-500" /> : <MinusIcon className="text-gray-500" /> ) } </p>
                                             </div>
                                             <div className="px-4 py-2 flex w-full flex-col border border-sickness-border rounded-sm shadow-sm">
                                                 <h1 className="text-xl"> Yesterday&apos;s Patients </h1>

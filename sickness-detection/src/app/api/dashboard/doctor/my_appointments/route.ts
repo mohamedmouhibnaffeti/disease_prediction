@@ -9,9 +9,18 @@ export async function GET(request: NextRequest) {
         const doctorID = request.nextUrl.searchParams.get("doctorID") || "";
         connectMongoDB();
         const appointments = await Appointment.find({ doctor: doctorID }).populate({ path: "patient", select: "name lastname age gender phone" });
-        const todayAppointments = appointments.filter((appointment) => (isToday(appointment.requestedAt) && appointment.state === "accepted"));
-        const yesterdayAppointments = appointments.filter((appointment) => (isYesterday(appointment.requestedAt) && appointment.state === "accepted" ));
-        const visitsToday = appointments.filter((appointment) => (isToday(appointment.requestedAt) && appointment.state === "accepted"));
+        const todayAppointments = appointments.filter(
+            (appointment) => appointment.from && isToday(appointment.from) && appointment.state === "accepted"
+        );
+        
+        const yesterdayAppointments = appointments.filter(
+            (appointment) => appointment.from && isYesterday(appointment.from) && appointment.state === "accepted"
+        );
+        
+        const visitsToday = appointments.filter(
+            (appointment) => appointment.from && isToday(appointment.from) && appointment.state === "accepted"
+        );
+        
         const appointmentHistory = appointments.filter(
             (appointment) => appointment.state === "accepted"
         );
@@ -26,13 +35,11 @@ export async function GET(request: NextRequest) {
                 (finishedAppointment) => (finishedAppointment.patient._id.equals(historyAppointment.patient._id) && finishedAppointment.doctor.equals(historyAppointment.doctor))
             );
 
-            // If there are matches, find the latest one
             if (matches.length > 0) {
                 const latestMatch = matches.reduce((latest, current) =>
                     new Date(latest.finishedAt) > new Date(current.finishedAt) ? latest : current
                 );
 
-                // Return the updated historyAppointment with lastChecked object
                 return {
                     _id: historyAppointment._id,
                     doctor: historyAppointment.doctor,
@@ -54,7 +61,6 @@ export async function GET(request: NextRequest) {
                     from: historyAppointment.from
                 };
             } else {
-                // If no matches, add "First Visit" to lastChecked
                 return {
                     _id: historyAppointment._id,
                     doctor: historyAppointment.doctor,
