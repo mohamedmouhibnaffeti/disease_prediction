@@ -16,6 +16,7 @@ export async function POST(request: Request){
             }
             return NextResponse.json({ message: "Created predicted sickness successfully" }, { status: 201 })
         }
+        return NextResponse.json({ message: "Error" }, { status: 400 })
     }catch(err){
         return NextResponse.json({message: `Internal server error: ${err}`}, { status: 500 })
     }

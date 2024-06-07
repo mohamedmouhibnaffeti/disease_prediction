@@ -19,6 +19,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { fetchSymptomsByFilter, resetSymptomsArray, selectSymptoms } from "@/Store/Predict/PredictSlice"
 import { AppDispatch, RootState } from "@/Store/store"
 import { returnSpecificBodyParts } from "@/lib/functions/strings"
+import MainLoader from "../Loaders/MainLoader"
 
 const DialogItem = (props: {etat: boolean, setDialogOpen: any, BodyPart: string, Symptoms: Array<Symptom>, selectedSymptoms: Array<string>, sex: string}) => {
     const {etat, setDialogOpen, BodyPart, Symptoms, selectedSymptoms, sex} = props
@@ -74,7 +75,7 @@ const DialogItem = (props: {etat: boolean, setDialogOpen: any, BodyPart: string,
                             {
                                 symptomsLoading ?
                                 <div className="flex justify-center items-center w-full h-full" >
-                                    <div className="dialog-loader-primary self-center" />
+                                    <MainLoader />
                                 </div>
                                 :
                                 (
