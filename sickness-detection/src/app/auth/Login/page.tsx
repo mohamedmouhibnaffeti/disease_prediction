@@ -3,7 +3,7 @@ import { LogInIcon } from "lucide-react"
 import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch, RootState } from "@/Store/store"
 import { setLoginFormData, Login } from "@/Store/auth/authSlice"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import SmallWhiteLoader from "@/components/Loaders/WhiteButtonLoader"
 
@@ -14,6 +14,12 @@ export default function Authenticate() {
     const [loginErrors, setLoginErrors] = useState({ email: "", password: "" })
     const [LoginResponse, setLoginResponse] = useState<any>({})
     const dispatch = useDispatch<AppDispatch>()
+    const [sicknessString, setSicknessString] = useState<string>("")
+    
+    useEffect(()=>{
+        const sickness = localStorage.getItem("sickness") || ""
+        setSicknessString(sickness)
+    })
     const handleLogin = async () => {
         setRequestLoading(prevstate => true)
         if(LoginData.email.length === 0){
@@ -32,7 +38,12 @@ export default function Authenticate() {
                 localStorage.setItem("user", StringifiedUser)
                 localStorage.setItem("AccessToken", resp.payload?.AccessToken)
                 localStorage.setItem("RefreshToken", resp.payload?.RefreshToken)
-                window.location.href = "/"
+                if(sicknessString?.length > 0){
+                    window.location.href = "/symptoms-checker"
+                }
+                else{
+                    window.location.href = "/"
+                }
             }
         }
         setRequestLoading(prevstate => false)

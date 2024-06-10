@@ -5,7 +5,7 @@ import 'react-phone-input-2/lib/style.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@/Store/store';
 import { PatientSignup, setPatientSignupFormData } from '@/Store/auth/authSlice';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { PatientSignupErrorsType } from '@/app/interfaces/interfaces';
 import { isValidEmail } from '@/lib/functions/strings';
 import { useRouter } from 'next/navigation';
@@ -33,6 +33,12 @@ const ButtonStyle = {
 export default function Patient() {
     const [ErrorMessages, setErrorMessages] = useState<PatientSignupErrorsType>({name: "", lastname: "", email: "", phone: "",password: "", confirmPassword: "", age: "", gender: ""})
     const SignupFormData = useSelector((state: RootState) => state.Authentication.PatientSignupFormData)
+    const [sicknessString, setSicknessString] = useState<string>("")
+    
+    useEffect(()=>{
+        const sickness = localStorage.getItem("sickness") || ""
+        setSicknessString(sickness)
+    })
     const dispatch = useDispatch<AppDispatch>()
     const [isLoading, setIsLoading] = useState(false)
     const Router = useRouter()
@@ -73,7 +79,12 @@ export default function Patient() {
                 localStorage.setItem("user", userString)
                 localStorage.setItem("AccessToken", response.payload?.AccessToken)
                 localStorage.setItem("RefreshToken", response.payload?.RefreshToken)
-                window.location.href = "/"
+                if(sicknessString?.length > 0){
+                    window.location.href = "/symptoms-checker"
+                }
+                else{
+                    window.location.href = "/"
+                }
             }
             setIsLoading(false)
         }

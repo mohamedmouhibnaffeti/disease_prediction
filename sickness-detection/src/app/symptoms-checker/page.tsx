@@ -1,8 +1,8 @@
 "use client"
 
-import { lazy } from "react"
-import {  useSelector } from "react-redux"
-import { RootState } from "@/Store/store"
+import { lazy, useEffect } from "react"
+import {  useSelector, useDispatch } from "react-redux"
+import { RootState,AppDispatch } from "@/Store/store"
 
 const Informations = lazy(()=>import("./Informations"))
 const Conditions = lazy(()=>import("./Conditions"))
@@ -18,10 +18,19 @@ import result from "../../components/Images/NavigationImages/result.svg"
 import symptoms from "../../components/Images/NavigationImages/symptoms.svg"
 import history from "../../components/Images/NavigationImages/history.svg"
 import Image from "next/image"
+import { changeEtatByNom } from "@/Store/Predict/PredictSlice"
 
 export default function Predict(){
+    const dispatch = useDispatch<AppDispatch>()
     const ListItems = useSelector((state: RootState)=>state.Predict.listItems)
     const currentItem = useSelector((state: RootState)=>state.Predict.currentItem)
+    useEffect(()=>{
+        const sickness = localStorage.getItem("sickness") || ""
+        if(sickness.length > 0){
+            dispatch(changeEtatByNom('doctors'))
+        }
+        console.log(sickness)
+    }, [])
     return (
         <div className="flex flex-col items-center justify-center w-full px-8 py-4">
             <div className="md:flex hidden gap-8 mt-[8rem]"> 

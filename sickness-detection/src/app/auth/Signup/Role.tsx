@@ -11,7 +11,7 @@ export default function Role() {
         <div className="w-[32rem] shadow-md rounded-lg flex justify-center items-center flex-col gap-4 py-4 px-8 bg-white border border-sickness-border">
             <h1 className="text-sickness-primaryText text-3xl font-semibold"> Signup as... </h1>
             <button className="mt-4 w-full rounded-md text-lg text-white bg-sickness-primary hover:bg-sickness-primaryText/70 active:bg-sickness-primaryText transition delay-75 duration-100 py-2 font-semibold flex justify-center items-center gap-2" onClick={()=>dispatch(setCurrentSignupPage("patient"))} > Patient <PatientAvatar /> </button>
-            <button className="mt-4 w-full rounded-md text-lg text-white bg-sickness-primary hover:bg-sickness-primaryText/70 active:bg-sickness-primaryText transition delay-75 duration-100 py-2 font-semibold flex justify-center items-center gap-2" onClick={()=>dispatch(setCurrentSignupPage("doctor"))} > Doctor <DocAvatar /> </button>
+            <button className="mt-4 w-full rounded-md text-lg text-white bg-sickness-primary/70 transition delay-75 duration-100 py-2 font-semibold justify-center items-center gap-2 flex-col text-center " onClick={()=>dispatch(setCurrentSignupPage("doctor"))} disabled={true} >  <p className="flex gap-2 justify-center items-center text-center"> Doctor <DocAvatar /> </p> <p className="text-xs text-red-500 text-center font-extrabold"> This feature is currently closed. </p> </button>
         </div>
     )
 }

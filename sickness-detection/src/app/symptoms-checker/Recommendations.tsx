@@ -24,8 +24,8 @@ export default function Recommendations() {
         localStorage.setItem("sickness", JSON.stringify(sicknessDetails))
     }, [sicknessDetails])
     return (
-        <div className="flex flex-wrap md:py-4 pb-4">
-            <div className="md:w-fit w-full flex flex-col bg-white border-[1px] border-sickness-border shadow-md md:rounded-l-lg rounded-lg md:mt-[6rem] mt-[2rem] py-8 px-4">
+        <div className="grid md:grid-cols-2 grid-cols-1 md:py-4 pb-4">
+            <div className="md:w-fit w-full flex flex-col bg-white border-[1px] border-sickness-border shadow-md md:rounded-r-none rounded-l-lg rounded-r-lg md:mt-[6rem] mt-[2rem] py-8 px-4">
                 <p className="text-center text-2xl text-sickness-primaryText font-semibold self-start">
                     Our Recommendations :
                 </p>
@@ -64,7 +64,7 @@ export default function Recommendations() {
                 </div>
                 }
             </div>
-            <div className="md:w-[30rem] w-full flex flex-col bg-white border-[1px] md:border-l-0 border-sickness-border shadow-md md:rounded-r-lg rounded-lg md:mt-[6rem] mt-[2rem] py-8 px-4 items-center justify-center">
+            <div className="md:w-[30rem] w-full flex flex-col bg-white border-[1px] md:border-l-0 border-sickness-border shadow-md md:rounded-l-none rounded-r-lg rounded-l-lg md:mt-[6rem] mt-[2rem] py-8 px-4 items-center justify-center">
                 <p className="text-center text-sickness-primaryText font-semibold self-center py-4 px-2 border-2 border-sickness-orange bg-sickness-yellow/20 rounded-md">
                     Please note that we won&apos;t recommend any medicines as it&apos;s out of our responsibilities, so we won&apos;t be responsible for you taking any kind of madicins based on our predictions, also please note that we urge you to seek a medical professional, it&apos;s not adviced to only follow our prediction.
                     <br />However don&apos;t worry in the next page we will provide you with a list with our trusted doctors so you can make an appointment as soon as possible.

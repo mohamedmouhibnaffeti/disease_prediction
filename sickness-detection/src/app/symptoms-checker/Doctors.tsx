@@ -23,10 +23,13 @@ export default function Doctors() {
     }
     useLayoutEffect(()=>{
         const stringSickness = localStorage.getItem("sickness") || ""
-        setSickness((prevSickness: any) => JSON.parse(stringSickness))
-        setRendered(prev => true)
+        if(stringSickness.length > 0){
+            setSickness((prevSickness: any) => JSON.parse(stringSickness))
+            setRendered(prev => true)
+        }
         return ()=>{
             setRendered(prev => false)
+            localStorage.removeItem("sickness")
         }
     }, [])
     useEffect(()=>{

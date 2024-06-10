@@ -23,6 +23,12 @@ export default function VerifyEmail({open, setOpen}: {open: boolean, setOpen :an
     const [error, setError] = useState<string>("")
     const [loading, setLoading] = useState(false)
     const { SignupFormDataDoctor } = useSelector((state: RootState) => state.Authentication)
+    const [sicknessString, setSicknessString] = useState<string>("")
+    
+    useEffect(()=>{
+        const sickness = localStorage.getItem("sickness") || ""
+        setSicknessString(sickness)
+    })
     const handleRegister = async() => {
         setLoading(true)
         const response = await dispatch(DoctorSignup())
@@ -33,7 +39,12 @@ export default function VerifyEmail({open, setOpen}: {open: boolean, setOpen :an
             localStorage.setItem("user", userString)
             localStorage.setItem("AccessToken", response.payload.AccessToken)
             localStorage.setItem("RefreshToken", response.payload.RefreshToken)
-            window.location.href = "/"
+            if(sicknessString?.length > 0){
+                window.location.href = "/symptoms-checker"
+            }
+            else{
+                window.location.href = "/"
+            }
         }else{
             setError(response.payload.message)
         }
