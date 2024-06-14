@@ -5,7 +5,7 @@ import pymongo
 # Connect to MongoDB
 client = pymongo.MongoClient("mongodb+srv://mouhib:mouhib@medicaledb.nltr2yw.mongodb.net/")
 db = client["SicknessDetection"]
-collection = db["sicknesses"]
+collection = db["UploadedSicknesses"]
 
 url = "http://localhost:3040/v1/chat/completions"
 import pathlib
@@ -21,7 +21,7 @@ def to_markdown(text):
   text = text.replace('•', '  *')
   return Markdown(textwrap.indent(text, '> ', predicate=lambda _: True))
 # Or use `os.getenv('GOOGLE_API_KEY')` to fetch an environment variable.
-GOOGLE_API_KEY="AIzaSyApBppxuzstUkd2Q2SgU9A1f8HzN2MfcV8"
+GOOGLE_API_KEY="process.env.APIKEY"
 
 
 genai.configure(api_key=GOOGLE_API_KEY)
@@ -29,11 +29,11 @@ for m in genai.list_models():
   if 'generateContent' in m.supported_generation_methods:
     print(m.name)
 
-model = genai.GenerativeModel('gemini-pro')
+model = genai.GenerativeModel('gemini-1.5-flash')
 
 # Fetch data from MongoDB and update symptoms
 batch_size = 101
-skip = 0
+skip = 3
 total_docs = collection.count_documents({})
 body_parts_and_systems = [
     "Head", "Brain", "Eyes", "Ears", "Nose", "Mouth", "Jaw", "Temporomandibular Joint (TMJ)", "Lips",
@@ -63,10 +63,10 @@ try:
             for symptom in sickness.get('symptoms'):   
                 print(f"Sickness {si}")
                 try:
-                    response = model.generate_content(f"where does this symptom '{symptom.get('title')}' fall into in human body (body parts to choose from ({body_parts_and_systems})).")
+                    response = model.generate_content(f"where does this symptom '{symptom.get('title')}' fall into in human body (body parts to choose from ({body_parts_and_systems})), please only return the body part from the provided list only without any external text.")
                     body_part = response.text.strip()  # Get the generated body part and gender
-                    time.sleep(1)
-                    responseGender = model.generate_content(f"which gender does this symptom '{symptom.get('title')}' affect (male, female, or both)?")
+                    time.sleep(4)
+                    responseGender = model.generate_content(f"which gender does this symptom '{symptom.get('title')}' affect (male, female, both or none)? please only return the gender from the provided list only without any external text.")
                     gender = responseGender.text.strip()
                     # Update the symptom with body part and gender
                     updatedSickness = collection.update_one(
@@ -77,7 +77,7 @@ try:
                     print(f"Updated body part for symptom '{symptom.get('title')}': {body_part}")
                     print(f"Gender for symptom '{symptom.get('title')}': {gender}")
                     print("-----------------------------------------------------------------------------------------------------------------")
-                    time.sleep(1.1)
+                    time.sleep(4)
                 except Exception as e:
                     print(f"Error updating body_part for symptom '{symptom}' of {sickness.get('title')}: {str(e)}")
 

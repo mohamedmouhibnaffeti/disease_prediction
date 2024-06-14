@@ -18,3 +18,4 @@ documents/
 .next/
 
 sickness-detection/.env
+FlaskBackend/.env

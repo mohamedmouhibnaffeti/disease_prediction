@@ -1,0 +1,3618 @@
+Sickness ID: 666a0c136cdb714d22f0f73f
+Total Symptoms: 6
+Symptoms with Body Part: 6
+Symptoms without Body Part: 0
+Count: 1
+---------------------------------------------------
+Sickness ID: 666a0c136cdb714d22f0f747
+Total Symptoms: 7
+Symptoms with Body Part: 7
+Symptoms without Body Part: 0
+Count: 2
+---------------------------------------------------
+Sickness ID: 666a0c136cdb714d22f0f751
+Total Symptoms: 9
+Symptoms with Body Part: 9
+Symptoms without Body Part: 0
+Count: 3
+---------------------------------------------------
+Sickness ID: 666a0c146cdb714d22f0f75d
+Total Symptoms: 11
+Symptoms with Body Part: 11
+Symptoms without Body Part: 0
+Count: 4
+---------------------------------------------------
+Sickness ID: 666a0c146cdb714d22f0f763
+Total Symptoms: 5
+Symptoms with Body Part: 5
+Symptoms without Body Part: 0
+Count: 5
+---------------------------------------------------
+Sickness ID: 666a0c146cdb714d22f0f76d
+Total Symptoms: 9
+Symptoms with Body Part: 9
+Symptoms without Body Part: 0
+Count: 6
+---------------------------------------------------
+Sickness ID: 666a0c146cdb714d22f0f771
+Total Symptoms: 3
+Symptoms with Body Part: 3
+Symptoms without Body Part: 0
+Count: 7
+---------------------------------------------------
+Sickness ID: 666a0c146cdb714d22f0f778
+Total Symptoms: 6
+Symptoms with Body Part: 6
+Symptoms without Body Part: 0
+Count: 8
+---------------------------------------------------
+Sickness ID: 666a0c146cdb714d22f0f77d
+Total Symptoms: 4
+Symptoms with Body Part: 4
+Symptoms without Body Part: 0
+Count: 9
+---------------------------------------------------
+Sickness ID: 666a0c146cdb714d22f0f7f5
+Total Symptoms: 119
+Symptoms with Body Part: 119
+Symptoms without Body Part: 0
+Count: 10
+---------------------------------------------------
+Sickness ID: 666a0c146cdb714d22f0f7fd
+Total Symptoms: 7
+Symptoms with Body Part: 7
+Symptoms without Body Part: 0
+Count: 11
+---------------------------------------------------
+Sickness ID: 666a0c146cdb714d22f0f80f
+Total Symptoms: 17
+Symptoms with Body Part: 16
+Symptoms without Body Part: 1
+Count: 12
+---------------------------------------------------
+Sickness ID: 666a0c146cdb714d22f0f812
+Total Symptoms: 2
+Symptoms with Body Part: 2
+Symptoms without Body Part: 0
+Count: 13
+---------------------------------------------------
+Sickness ID: 666a0c146cdb714d22f0f81e
+Total Symptoms: 11
+Symptoms with Body Part: 11
+Symptoms without Body Part: 0
+Count: 14
+---------------------------------------------------
+Sickness ID: 666a0c146cdb714d22f0f826
+Total Symptoms: 7
+Symptoms with Body Part: 7
+Symptoms without Body Part: 0
+Count: 15
+---------------------------------------------------
+Sickness ID: 666a0c146cdb714d22f0f835
+Total Symptoms: 14
+Symptoms with Body Part: 14
+Symptoms without Body Part: 0
+Count: 16
+---------------------------------------------------
+Sickness ID: 666a0c146cdb714d22f0f83f
+Total Symptoms: 9
+Symptoms with Body Part: 9
+Symptoms without Body Part: 0
+Count: 17
+---------------------------------------------------
+Sickness ID: 666a0c146cdb714d22f0f859
+Total Symptoms: 25
+Symptoms with Body Part: 25
+Symptoms without Body Part: 0
+Count: 18
+---------------------------------------------------
+Sickness ID: 666a0c146cdb714d22f0f86f
+Total Symptoms: 21
+Symptoms with Body Part: 20
+Symptoms without Body Part: 1
+Count: 19
+---------------------------------------------------
+Sickness ID: 666a0c146cdb714d22f0f877
+Total Symptoms: 7
+Symptoms with Body Part: 6
+Symptoms without Body Part: 1
+Count: 20
+---------------------------------------------------
+Sickness ID: 666a0c156cdb714d22f0f88b
+Total Symptoms: 19
+Symptoms with Body Part: 19
+Symptoms without Body Part: 0
+Count: 21
+---------------------------------------------------
+Sickness ID: 666a0c156cdb714d22f0f88d
+Total Symptoms: 1
+Symptoms with Body Part: 1
+Symptoms without Body Part: 0
+Count: 22
+---------------------------------------------------
+Sickness ID: 666a0c156cdb714d22f0f893
+Total Symptoms: 5
+Symptoms with Body Part: 5
+Symptoms without Body Part: 0
+Count: 23
+---------------------------------------------------
+Sickness ID: 666a0c156cdb714d22f0f89c
+Total Symptoms: 8
+Symptoms with Body Part: 8
+Symptoms without Body Part: 0
+Count: 24
+---------------------------------------------------
+Sickness ID: 666a0c156cdb714d22f0f8ac
+Total Symptoms: 15
+Symptoms with Body Part: 15
+Symptoms without Body Part: 0
+Count: 25
+---------------------------------------------------
+Sickness ID: 666a0c156cdb714d22f0f8c4
+Total Symptoms: 23
+Symptoms with Body Part: 23
+Symptoms without Body Part: 0
+Count: 26
+---------------------------------------------------
+Sickness ID: 666a0c156cdb714d22f0f8db
+Total Symptoms: 22
+Symptoms with Body Part: 22
+Symptoms without Body Part: 0
+Count: 27
+---------------------------------------------------
+Sickness ID: 666a0c156cdb714d22f0f8e5
+Total Symptoms: 9
+Symptoms with Body Part: 9
+Symptoms without Body Part: 0
+Count: 28
+---------------------------------------------------
+Sickness ID: 666a0c156cdb714d22f0f906
+Total Symptoms: 32
+Symptoms with Body Part: 32
+Symptoms without Body Part: 0
+Count: 29
+---------------------------------------------------
+Sickness ID: 666a0c156cdb714d22f0f91f
+Total Symptoms: 24
+Symptoms with Body Part: 24
+Symptoms without Body Part: 0
+Count: 30
+---------------------------------------------------
+Sickness ID: 666a0c156cdb714d22f0f933
+Total Symptoms: 19
+Symptoms with Body Part: 19
+Symptoms without Body Part: 0
+Count: 31
+---------------------------------------------------
+Sickness ID: 666a0c156cdb714d22f0f93a
+Total Symptoms: 6
+Symptoms with Body Part: 2
+Symptoms without Body Part: 4
+Count: 32
+---------------------------------------------------
+Sickness ID: 666a0c156cdb714d22f0f93f
+Total Symptoms: 4
+Symptoms with Body Part: 1
+Symptoms without Body Part: 3
+Count: 33
+---------------------------------------------------
+Sickness ID: 666a0c156cdb714d22f0f956
+Total Symptoms: 22
+Symptoms with Body Part: 18
+Symptoms without Body Part: 4
+Count: 34
+---------------------------------------------------
+Sickness ID: 666a0c156cdb714d22f0f962
+Total Symptoms: 11
+Symptoms with Body Part: 10
+Symptoms without Body Part: 1
+Count: 35
+---------------------------------------------------
+Sickness ID: 666a0c156cdb714d22f0f969
+Total Symptoms: 6
+Symptoms with Body Part: 5
+Symptoms without Body Part: 1
+Count: 36
+---------------------------------------------------
+Sickness ID: 666a0c156cdb714d22f0f976
+Total Symptoms: 12
+Symptoms with Body Part: 12
+Symptoms without Body Part: 0
+Count: 37
+---------------------------------------------------
+Sickness ID: 666a0c156cdb714d22f0f98a
+Total Symptoms: 19
+Symptoms with Body Part: 19
+Symptoms without Body Part: 0
+Count: 38
+---------------------------------------------------
+Sickness ID: 666a0c166cdb714d22f0f9a6
+Total Symptoms: 27
+Symptoms with Body Part: 26
+Symptoms without Body Part: 1
+Count: 39
+---------------------------------------------------
+Sickness ID: 666a0c166cdb714d22f0f9cb
+Total Symptoms: 36
+Symptoms with Body Part: 36
+Symptoms without Body Part: 0
+Count: 40
+---------------------------------------------------
+Sickness ID: 666a0c166cdb714d22f0f9dc
+Total Symptoms: 16
+Symptoms with Body Part: 16
+Symptoms without Body Part: 0
+Count: 41
+---------------------------------------------------
+Sickness ID: 666a0c166cdb714d22f0f9e5
+Total Symptoms: 8
+Symptoms with Body Part: 8
+Symptoms without Body Part: 0
+Count: 42
+---------------------------------------------------
+Sickness ID: 666a0c166cdb714d22f0f9f5
+Total Symptoms: 15
+Symptoms with Body Part: 15
+Symptoms without Body Part: 0
+Count: 43
+---------------------------------------------------
+Sickness ID: 666a0c166cdb714d22f0fa06
+Total Symptoms: 16
+Symptoms with Body Part: 16
+Symptoms without Body Part: 0
+Count: 44
+---------------------------------------------------
+Sickness ID: 666a0c166cdb714d22f0fa10
+Total Symptoms: 9
+Symptoms with Body Part: 9
+Symptoms without Body Part: 0
+Count: 45
+---------------------------------------------------
+Sickness ID: 666a0c166cdb714d22f0fa1a
+Total Symptoms: 9
+Symptoms with Body Part: 9
+Symptoms without Body Part: 0
+Count: 46
+---------------------------------------------------
+Sickness ID: 666a0c166cdb714d22f0fa22
+Total Symptoms: 7
+Symptoms with Body Part: 7
+Symptoms without Body Part: 0
+Count: 47
+---------------------------------------------------
+Sickness ID: 666a0c166cdb714d22f0fa2f
+Total Symptoms: 12
+Symptoms with Body Part: 12
+Symptoms without Body Part: 0
+Count: 48
+---------------------------------------------------
+Sickness ID: 666a0c166cdb714d22f0fa41
+Total Symptoms: 17
+Symptoms with Body Part: 17
+Symptoms without Body Part: 0
+Count: 49
+---------------------------------------------------
+Sickness ID: 666a0c166cdb714d22f0fa49
+Total Symptoms: 7
+Symptoms with Body Part: 6
+Symptoms without Body Part: 1
+Count: 50
+---------------------------------------------------
+Sickness ID: 666a0c166cdb714d22f0fa4d
+Total Symptoms: 3
+Symptoms with Body Part: 3
+Symptoms without Body Part: 0
+Count: 51
+---------------------------------------------------
+Sickness ID: 666a0c166cdb714d22f0fa51
+Total Symptoms: 3
+Symptoms with Body Part: 3
+Symptoms without Body Part: 0
+Count: 52
+---------------------------------------------------
+Sickness ID: 666a0c166cdb714d22f0faf1
+Total Symptoms: 159
+Symptoms with Body Part: 124
+Symptoms without Body Part: 35
+Count: 53
+---------------------------------------------------
+Sickness ID: 666a0c166cdb714d22f0fb06
+Total Symptoms: 20
+Symptoms with Body Part: 15
+Symptoms without Body Part: 5
+Count: 54
+---------------------------------------------------
+Sickness ID: 666a0c166cdb714d22f0fb0a
+Total Symptoms: 3
+Symptoms with Body Part: 3
+Symptoms without Body Part: 0
+Count: 55
+---------------------------------------------------
+Sickness ID: 666a0c166cdb714d22f0fb10
+Total Symptoms: 5
+Symptoms with Body Part: 5
+Symptoms without Body Part: 0
+Count: 56
+---------------------------------------------------
+Sickness ID: 666a0c176cdb714d22f0fb1a
+Total Symptoms: 9
+Symptoms with Body Part: 4
+Symptoms without Body Part: 5
+Count: 57
+---------------------------------------------------
+Sickness ID: 666a0c176cdb714d22f0fb23
+Total Symptoms: 8
+Symptoms with Body Part: 7
+Symptoms without Body Part: 1
+Count: 58
+---------------------------------------------------
+Sickness ID: 666a0c176cdb714d22f0fb2c
+Total Symptoms: 8
+Symptoms with Body Part: 8
+Symptoms without Body Part: 0
+Count: 59
+---------------------------------------------------
+Sickness ID: 666a0c176cdb714d22f0fb33
+Total Symptoms: 6
+Symptoms with Body Part: 6
+Symptoms without Body Part: 0
+Count: 60
+---------------------------------------------------
+Sickness ID: 666a0c176cdb714d22f0fb3c
+Total Symptoms: 8
+Symptoms with Body Part: 2
+Symptoms without Body Part: 6
+Count: 61
+---------------------------------------------------
+Sickness ID: 666a0c176cdb714d22f0fb47
+Total Symptoms: 10
+Symptoms with Body Part: 10
+Symptoms without Body Part: 0
+Count: 62
+---------------------------------------------------
+Sickness ID: 666a0c176cdb714d22f0fb50
+Total Symptoms: 8
+Symptoms with Body Part: 4
+Symptoms without Body Part: 4
+Count: 63
+---------------------------------------------------
+Sickness ID: 666a0c176cdb714d22f0fb55
+Total Symptoms: 4
+Symptoms with Body Part: 0
+Symptoms without Body Part: 4
+Count: 64
+---------------------------------------------------
+Sickness ID: 666a0c176cdb714d22f0fb5a
+Total Symptoms: 4
+Symptoms with Body Part: 4
+Symptoms without Body Part: 0
+Count: 65
+---------------------------------------------------
+Sickness ID: 666a0c176cdb714d22f0fb61
+Total Symptoms: 6
+Symptoms with Body Part: 6
+Symptoms without Body Part: 0
+Count: 66
+---------------------------------------------------
+Sickness ID: 666a0c176cdb714d22f0fb67
+Total Symptoms: 5
+Symptoms with Body Part: 2
+Symptoms without Body Part: 3
+Count: 67
+---------------------------------------------------
+Sickness ID: 666a0c176cdb714d22f0fb6f
+Total Symptoms: 7
+Symptoms with Body Part: 5
+Symptoms without Body Part: 2
+Count: 68
+---------------------------------------------------
+Sickness ID: 666a0c176cdb714d22f0fb74
+Total Symptoms: 4
+Symptoms with Body Part: 4
+Symptoms without Body Part: 0
+Count: 69
+---------------------------------------------------
+Sickness ID: 666a0c176cdb714d22f0fb7e
+Total Symptoms: 9
+Symptoms with Body Part: 6
+Symptoms without Body Part: 3
+Count: 70
+---------------------------------------------------
+Sickness ID: 666a0c176cdb714d22f0fb85
+Total Symptoms: 6
+Symptoms with Body Part: 1
+Symptoms without Body Part: 5
+Count: 71
+---------------------------------------------------
+Sickness ID: 666a0c176cdb714d22f0fb8e
+Total Symptoms: 8
+Symptoms with Body Part: 8
+Symptoms without Body Part: 0
+Count: 72
+---------------------------------------------------
+Sickness ID: 666a0c176cdb714d22f0fb97
+Total Symptoms: 8
+Symptoms with Body Part: 4
+Symptoms without Body Part: 4
+Count: 73
+---------------------------------------------------
+Sickness ID: 666a0c186cdb714d22f0fbc2
+Total Symptoms: 42
+Symptoms with Body Part: 33
+Symptoms without Body Part: 9
+Count: 74
+---------------------------------------------------
+Sickness ID: 666a0c186cdb714d22f0fbc7
+Total Symptoms: 4
+Symptoms with Body Part: 0
+Symptoms without Body Part: 4
+Count: 75
+---------------------------------------------------
+Sickness ID: 666a0c186cdb714d22f0fbcc
+Total Symptoms: 4
+Symptoms with Body Part: 4
+Symptoms without Body Part: 0
+Count: 76
+---------------------------------------------------
+Sickness ID: 666a0c186cdb714d22f0fbdc
+Total Symptoms: 15
+Symptoms with Body Part: 12
+Symptoms without Body Part: 3
+Count: 77
+---------------------------------------------------
+Sickness ID: 666a0c186cdb714d22f0fbe2
+Total Symptoms: 5
+Symptoms with Body Part: 2
+Symptoms without Body Part: 3
+Count: 78
+---------------------------------------------------
+Sickness ID: 666a0c186cdb714d22f0fbea
+Total Symptoms: 7
+Symptoms with Body Part: 7
+Symptoms without Body Part: 0
+Count: 79
+---------------------------------------------------
+Sickness ID: 666a0c186cdb714d22f0fc01
+Total Symptoms: 22
+Symptoms with Body Part: 16
+Symptoms without Body Part: 6
+Count: 80
+---------------------------------------------------
+Sickness ID: 666a0c186cdb714d22f0fc16
+Total Symptoms: 20
+Symptoms with Body Part: 15
+Symptoms without Body Part: 5
+Count: 81
+---------------------------------------------------
+Sickness ID: 666a0c186cdb714d22f0fc1f
+Total Symptoms: 8
+Symptoms with Body Part: 7
+Symptoms without Body Part: 1
+Count: 82
+---------------------------------------------------
+Sickness ID: 666a0c186cdb714d22f0fc36
+Total Symptoms: 22
+Symptoms with Body Part: 15
+Symptoms without Body Part: 7
+Count: 83
+---------------------------------------------------
+Sickness ID: 666a0c186cdb714d22f0fc3f
+Total Symptoms: 8
+Symptoms with Body Part: 4
+Symptoms without Body Part: 4
+Count: 84
+---------------------------------------------------
+Sickness ID: 666a0c186cdb714d22f0fc42
+Total Symptoms: 2
+Symptoms with Body Part: 0
+Symptoms without Body Part: 2
+Count: 85
+---------------------------------------------------
+Sickness ID: 666a0c186cdb714d22f0fc49
+Total Symptoms: 6
+Symptoms with Body Part: 2
+Symptoms without Body Part: 4
+Count: 86
+---------------------------------------------------
+Sickness ID: 666a0c186cdb714d22f0fc52
+Total Symptoms: 8
+Symptoms with Body Part: 8
+Symptoms without Body Part: 0
+Count: 87
+---------------------------------------------------
+Sickness ID: 666a0c186cdb714d22f0fc5d
+Total Symptoms: 10
+Symptoms with Body Part: 7
+Symptoms without Body Part: 3
+Count: 88
+---------------------------------------------------
+Sickness ID: 666a0c186cdb714d22f0fc65
+Total Symptoms: 7
+Symptoms with Body Part: 5
+Symptoms without Body Part: 2
+Count: 89
+---------------------------------------------------
+Sickness ID: 666a0c196cdb714d22f0fd42
+Total Symptoms: 220
+Symptoms with Body Part: 156
+Symptoms without Body Part: 64
+Count: 90
+---------------------------------------------------
+Sickness ID: 666a0c196cdb714d22f0fd4e
+Total Symptoms: 11
+Symptoms with Body Part: 9
+Symptoms without Body Part: 2
+Count: 91
+---------------------------------------------------
+Sickness ID: 666a0c196cdb714d22f0fd5b
+Total Symptoms: 12
+Symptoms with Body Part: 9
+Symptoms without Body Part: 3
+Count: 92
+---------------------------------------------------
+Sickness ID: 666a0c196cdb714d22f0fd69
+Total Symptoms: 13
+Symptoms with Body Part: 7
+Symptoms without Body Part: 6
+Count: 93
+---------------------------------------------------
+Sickness ID: 666a0c196cdb714d22f0fd87
+Total Symptoms: 29
+Symptoms with Body Part: 21
+Symptoms without Body Part: 8
+Count: 94
+---------------------------------------------------
+Sickness ID: 666a0c196cdb714d22f0fd8f
+Total Symptoms: 7
+Symptoms with Body Part: 5
+Symptoms without Body Part: 2
+Count: 95
+---------------------------------------------------
+Sickness ID: 666a0c196cdb714d22f0fd9b
+Total Symptoms: 11
+Symptoms with Body Part: 6
+Symptoms without Body Part: 5
+Count: 96
+---------------------------------------------------
+Sickness ID: 666a0c196cdb714d22f0fda7
+Total Symptoms: 11
+Symptoms with Body Part: 10
+Symptoms without Body Part: 1
+Count: 97
+---------------------------------------------------
+Sickness ID: 666a0c196cdb714d22f0fdad
+Total Symptoms: 5
+Symptoms with Body Part: 5
+Symptoms without Body Part: 0
+Count: 98
+---------------------------------------------------
+Sickness ID: 666a0c196cdb714d22f0fdb8
+Total Symptoms: 10
+Symptoms with Body Part: 5
+Symptoms without Body Part: 5
+Count: 99
+---------------------------------------------------
+Sickness ID: 666a0c196cdb714d22f0fdbb
+Total Symptoms: 2
+Symptoms with Body Part: 2
+Symptoms without Body Part: 0
+Count: 100
+---------------------------------------------------
+Sickness ID: 666a0c196cdb714d22f0fdcc
+Total Symptoms: 16
+Symptoms with Body Part: 12
+Symptoms without Body Part: 4
+Count: 101
+---------------------------------------------------
+Sickness ID: 666a0c196cdb714d22f0fdda
+Total Symptoms: 13
+Symptoms with Body Part: 12
+Symptoms without Body Part: 1
+Count: 102
+---------------------------------------------------
+Sickness ID: 666a0c196cdb714d22f0fde4
+Total Symptoms: 9
+Symptoms with Body Part: 4
+Symptoms without Body Part: 5
+Count: 103
+---------------------------------------------------
+Sickness ID: 666a0c196cdb714d22f0fde9
+Total Symptoms: 4
+Symptoms with Body Part: 3
+Symptoms without Body Part: 1
+Count: 104
+---------------------------------------------------
+Sickness ID: 666a0c196cdb714d22f0fdec
+Total Symptoms: 2
+Symptoms with Body Part: 2
+Symptoms without Body Part: 0
+Count: 105
+---------------------------------------------------
+Sickness ID: 666a0c196cdb714d22f0fe01
+Total Symptoms: 20
+Symptoms with Body Part: 14
+Symptoms without Body Part: 6
+Count: 106
+---------------------------------------------------
+Sickness ID: 666a0c196cdb714d22f0fe05
+Total Symptoms: 3
+Symptoms with Body Part: 3
+Symptoms without Body Part: 0
+Count: 107
+---------------------------------------------------
+Sickness ID: 666a0c1a6cdb714d22f0fe0f
+Total Symptoms: 9
+Symptoms with Body Part: 7
+Symptoms without Body Part: 2
+Count: 108
+---------------------------------------------------
+Sickness ID: 666a0c1a6cdb714d22f0fe2e
+Total Symptoms: 30
+Symptoms with Body Part: 24
+Symptoms without Body Part: 6
+Count: 109
+---------------------------------------------------
+Sickness ID: 666a0c1a6cdb714d22f0fe3a
+Total Symptoms: 11
+Symptoms with Body Part: 2
+Symptoms without Body Part: 9
+Count: 110
+---------------------------------------------------
+Sickness ID: 666a0c1a6cdb714d22f0fecd
+Total Symptoms: 146
+Symptoms with Body Part: 83
+Symptoms without Body Part: 63
+Count: 111
+---------------------------------------------------
+Sickness ID: 666a0c1a6cdb714d22f0fed6
+Total Symptoms: 8
+Symptoms with Body Part: 8
+Symptoms without Body Part: 0
+Count: 112
+---------------------------------------------------
+Sickness ID: 666a0c1a6cdb714d22f0fee7
+Total Symptoms: 16
+Symptoms with Body Part: 14
+Symptoms without Body Part: 2
+Count: 113
+---------------------------------------------------
+Sickness ID: 666a0c1a6cdb714d22f0fefa
+Total Symptoms: 18
+Symptoms with Body Part: 12
+Symptoms without Body Part: 6
+Count: 114
+---------------------------------------------------
+Sickness ID: 666a0c1a6cdb714d22f0ffa4
+Total Symptoms: 169
+Symptoms with Body Part: 119
+Symptoms without Body Part: 50
+Count: 115
+---------------------------------------------------
+Sickness ID: 666a0c1a6cdb714d22f0ffb0
+Total Symptoms: 11
+Symptoms with Body Part: 11
+Symptoms without Body Part: 0
+Count: 116
+---------------------------------------------------
+Sickness ID: 666a0c1a6cdb714d22f0ffb7
+Total Symptoms: 6
+Symptoms with Body Part: 5
+Symptoms without Body Part: 1
+Count: 117
+---------------------------------------------------
+Sickness ID: 666a0c1a6cdb714d22f0ffbc
+Total Symptoms: 4
+Symptoms with Body Part: 0
+Symptoms without Body Part: 4
+Count: 118
+---------------------------------------------------
+Sickness ID: 666a0c1a6cdb714d22f0ffc5
+Total Symptoms: 8
+Symptoms with Body Part: 6
+Symptoms without Body Part: 2
+Count: 119
+---------------------------------------------------
+Sickness ID: 666a0c1a6cdb714d22f0ffd2
+Total Symptoms: 12
+Symptoms with Body Part: 9
+Symptoms without Body Part: 3
+Count: 120
+---------------------------------------------------
+Sickness ID: 666a0c1a6cdb714d22f0ffdb
+Total Symptoms: 8
+Symptoms with Body Part: 6
+Symptoms without Body Part: 2
+Count: 121
+---------------------------------------------------
+Sickness ID: 666a0c1a6cdb714d22f0ffea
+Total Symptoms: 14
+Symptoms with Body Part: 5
+Symptoms without Body Part: 9
+Count: 122
+---------------------------------------------------
+Sickness ID: 666a0c1a6cdb714d22f0fffc
+Total Symptoms: 17
+Symptoms with Body Part: 17
+Symptoms without Body Part: 0
+Count: 123
+---------------------------------------------------
+Sickness ID: 666a0c1b6cdb714d22f10002
+Total Symptoms: 5
+Symptoms with Body Part: 5
+Symptoms without Body Part: 0
+Count: 124
+---------------------------------------------------
+Sickness ID: 666a0c1b6cdb714d22f10011
+Total Symptoms: 14
+Symptoms with Body Part: 8
+Symptoms without Body Part: 6
+Count: 125
+---------------------------------------------------
+Sickness ID: 666a0c1b6cdb714d22f10014
+Total Symptoms: 2
+Symptoms with Body Part: 1
+Symptoms without Body Part: 1
+Count: 126
+---------------------------------------------------
+Sickness ID: 666a0c1b6cdb714d22f1001f
+Total Symptoms: 10
+Symptoms with Body Part: 8
+Symptoms without Body Part: 2
+Count: 127
+---------------------------------------------------
+Sickness ID: 666a0c1b6cdb714d22f10039
+Total Symptoms: 25
+Symptoms with Body Part: 16
+Symptoms without Body Part: 9
+Count: 128
+---------------------------------------------------
+Sickness ID: 666a0c1b6cdb714d22f10043
+Total Symptoms: 9
+Symptoms with Body Part: 7
+Symptoms without Body Part: 2
+Count: 129
+---------------------------------------------------
+Sickness ID: 666a0c1b6cdb714d22f10049
+Total Symptoms: 5
+Symptoms with Body Part: 2
+Symptoms without Body Part: 3
+Count: 130
+---------------------------------------------------
+Sickness ID: 666a0c1b6cdb714d22f10055
+Total Symptoms: 11
+Symptoms with Body Part: 10
+Symptoms without Body Part: 1
+Count: 131
+---------------------------------------------------
+Sickness ID: 666a0c1b6cdb714d22f1005e
+Total Symptoms: 8
+Symptoms with Body Part: 4
+Symptoms without Body Part: 4
+Count: 132
+---------------------------------------------------
+Sickness ID: 666a0c1b6cdb714d22f10068
+Total Symptoms: 9
+Symptoms with Body Part: 6
+Symptoms without Body Part: 3
+Count: 133
+---------------------------------------------------
+Sickness ID: 666a0c1b6cdb714d22f10073
+Total Symptoms: 10
+Symptoms with Body Part: 10
+Symptoms without Body Part: 0
+Count: 134
+---------------------------------------------------
+Sickness ID: 666a0c1b6cdb714d22f10075
+Total Symptoms: 1
+Symptoms with Body Part: 1
+Symptoms without Body Part: 0
+Count: 135
+---------------------------------------------------
+Sickness ID: 666a0c1b6cdb714d22f10077
+Total Symptoms: 1
+Symptoms with Body Part: 1
+Symptoms without Body Part: 0
+Count: 136
+---------------------------------------------------
+Sickness ID: 666a0c1b6cdb714d22f10181
+Total Symptoms: 265
+Symptoms with Body Part: 186
+Symptoms without Body Part: 79
+Count: 137
+---------------------------------------------------
+Sickness ID: 666a0c1b6cdb714d22f10197
+Total Symptoms: 21
+Symptoms with Body Part: 16
+Symptoms without Body Part: 5
+Count: 138
+---------------------------------------------------
+Sickness ID: 666a0c1b6cdb714d22f101ac
+Total Symptoms: 20
+Symptoms with Body Part: 13
+Symptoms without Body Part: 7
+Count: 139
+---------------------------------------------------
+Sickness ID: 666a0c1b6cdb714d22f101bc
+Total Symptoms: 15
+Symptoms with Body Part: 10
+Symptoms without Body Part: 5
+Count: 140
+---------------------------------------------------
+Sickness ID: 666a0c1c6cdb714d22f101c8
+Total Symptoms: 11
+Symptoms with Body Part: 9
+Symptoms without Body Part: 2
+Count: 141
+---------------------------------------------------
+Sickness ID: 666a0c1c6cdb714d22f101ca
+Total Symptoms: 1
+Symptoms with Body Part: 1
+Symptoms without Body Part: 0
+Count: 142
+---------------------------------------------------
+Sickness ID: 666a0c1c6cdb714d22f101d5
+Total Symptoms: 10
+Symptoms with Body Part: 5
+Symptoms without Body Part: 5
+Count: 143
+---------------------------------------------------
+Sickness ID: 666a0c1c6cdb714d22f101dd
+Total Symptoms: 7
+Symptoms with Body Part: 7
+Symptoms without Body Part: 0
+Count: 144
+---------------------------------------------------
+Sickness ID: 666a0c1c6cdb714d22f101e3
+Total Symptoms: 5
+Symptoms with Body Part: 5
+Symptoms without Body Part: 0
+Count: 145
+---------------------------------------------------
+Sickness ID: 666a0c1c6cdb714d22f101ef
+Total Symptoms: 11
+Symptoms with Body Part: 5
+Symptoms without Body Part: 6
+Count: 146
+---------------------------------------------------
+Sickness ID: 666a0c1c6cdb714d22f101f8
+Total Symptoms: 8
+Symptoms with Body Part: 8
+Symptoms without Body Part: 0
+Count: 147
+---------------------------------------------------
+Sickness ID: 666a0c1c6cdb714d22f1020f
+Total Symptoms: 22
+Symptoms with Body Part: 15
+Symptoms without Body Part: 7
+Count: 148
+---------------------------------------------------
+Sickness ID: 666a0c1c6cdb714d22f10227
+Total Symptoms: 23
+Symptoms with Body Part: 15
+Symptoms without Body Part: 8
+Count: 149
+---------------------------------------------------
+Sickness ID: 666a0c1c6cdb714d22f10238
+Total Symptoms: 16
+Symptoms with Body Part: 12
+Symptoms without Body Part: 4
+Count: 150
+---------------------------------------------------
+Sickness ID: 666a0c1c6cdb714d22f10253
+Total Symptoms: 26
+Symptoms with Body Part: 20
+Symptoms without Body Part: 6
+Count: 151
+---------------------------------------------------
+Sickness ID: 666a0c1c6cdb714d22f10256
+Total Symptoms: 2
+Symptoms with Body Part: 2
+Symptoms without Body Part: 0
+Count: 152
+---------------------------------------------------
+Sickness ID: 666a0c1c6cdb714d22f10271
+Total Symptoms: 26
+Symptoms with Body Part: 16
+Symptoms without Body Part: 10
+Count: 153
+---------------------------------------------------
+Sickness ID: 666a0c1c6cdb714d22f10276
+Total Symptoms: 4
+Symptoms with Body Part: 1
+Symptoms without Body Part: 3
+Count: 154
+---------------------------------------------------
+Sickness ID: 666a0c1c6cdb714d22f1027d
+Total Symptoms: 6
+Symptoms with Body Part: 4
+Symptoms without Body Part: 2
+Count: 155
+---------------------------------------------------
+Sickness ID: 666a0c1c6cdb714d22f10298
+Total Symptoms: 26
+Symptoms with Body Part: 10
+Symptoms without Body Part: 16
+Count: 156
+---------------------------------------------------
+Sickness ID: 666a0c1c6cdb714d22f1034c
+Total Symptoms: 179
+Symptoms with Body Part: 35
+Symptoms without Body Part: 144
+Count: 157
+---------------------------------------------------
+Sickness ID: 666a0c1d6cdb714d22f1035e
+Total Symptoms: 17
+Symptoms with Body Part: 0
+Symptoms without Body Part: 17
+Count: 158
+---------------------------------------------------
+Sickness ID: 666a0c1d6cdb714d22f1037c
+Total Symptoms: 29
+Symptoms with Body Part: 8
+Symptoms without Body Part: 21
+Count: 159
+---------------------------------------------------
+Sickness ID: 666a0c1d6cdb714d22f1038e
+Total Symptoms: 17
+Symptoms with Body Part: 0
+Symptoms without Body Part: 17
+Count: 160
+---------------------------------------------------
+Sickness ID: 666a0c1d6cdb714d22f10399
+Total Symptoms: 10
+Symptoms with Body Part: 0
+Symptoms without Body Part: 10
+Count: 161
+---------------------------------------------------
+Sickness ID: 666a0c1d6cdb714d22f103af
+Total Symptoms: 21
+Symptoms with Body Part: 0
+Symptoms without Body Part: 21
+Count: 162
+---------------------------------------------------
+Sickness ID: 666a0c1d6cdb714d22f103ba
+Total Symptoms: 10
+Symptoms with Body Part: 0
+Symptoms without Body Part: 10
+Count: 163
+---------------------------------------------------
+Sickness ID: 666a0c1d6cdb714d22f103ce
+Total Symptoms: 19
+Symptoms with Body Part: 2
+Symptoms without Body Part: 17
+Count: 164
+---------------------------------------------------
+Sickness ID: 666a0c1d6cdb714d22f103d8
+Total Symptoms: 9
+Symptoms with Body Part: 5
+Symptoms without Body Part: 4
+Count: 165
+---------------------------------------------------
+Sickness ID: 666a0c1d6cdb714d22f103e0
+Total Symptoms: 7
+Symptoms with Body Part: 0
+Symptoms without Body Part: 7
+Count: 166
+---------------------------------------------------
+Sickness ID: 666a0c1d6cdb714d22f103e7
+Total Symptoms: 6
+Symptoms with Body Part: 0
+Symptoms without Body Part: 6
+Count: 167
+---------------------------------------------------
+Sickness ID: 666a0c1d6cdb714d22f1046f
+Total Symptoms: 135
+Symptoms with Body Part: 5
+Symptoms without Body Part: 130
+Count: 168
+---------------------------------------------------
+Sickness ID: 666a0c1d6cdb714d22f10475
+Total Symptoms: 5
+Symptoms with Body Part: 0
+Symptoms without Body Part: 5
+Count: 169
+---------------------------------------------------
+Sickness ID: 666a0c1d6cdb714d22f1047c
+Total Symptoms: 6
+Symptoms with Body Part: 0
+Symptoms without Body Part: 6
+Count: 170
+---------------------------------------------------
+Sickness ID: 666a0c1d6cdb714d22f1048e
+Total Symptoms: 17
+Symptoms with Body Part: 0
+Symptoms without Body Part: 17
+Count: 171
+---------------------------------------------------
+Sickness ID: 666a0c1d6cdb714d22f10494
+Total Symptoms: 5
+Symptoms with Body Part: 0
+Symptoms without Body Part: 5
+Count: 172
+---------------------------------------------------
+Sickness ID: 666a0c1d6cdb714d22f104a3
+Total Symptoms: 14
+Symptoms with Body Part: 0
+Symptoms without Body Part: 14
+Count: 173
+---------------------------------------------------
+Sickness ID: 666a0c1d6cdb714d22f104bf
+Total Symptoms: 27
+Symptoms with Body Part: 1
+Symptoms without Body Part: 26
+Count: 174
+---------------------------------------------------
+Sickness ID: 666a0c1e6cdb714d22f104ca
+Total Symptoms: 10
+Symptoms with Body Part: 7
+Symptoms without Body Part: 3
+Count: 175
+---------------------------------------------------
+Sickness ID: 666a0c1e6cdb714d22f104d1
+Total Symptoms: 6
+Symptoms with Body Part: 0
+Symptoms without Body Part: 6
+Count: 176
+---------------------------------------------------
+Sickness ID: 666a0c1e6cdb714d22f104d9
+Total Symptoms: 7
+Symptoms with Body Part: 0
+Symptoms without Body Part: 7
+Count: 177
+---------------------------------------------------
+Sickness ID: 666a0c1e6cdb714d22f104df
+Total Symptoms: 5
+Symptoms with Body Part: 0
+Symptoms without Body Part: 5
+Count: 178
+---------------------------------------------------
+Sickness ID: 666a0c1e6cdb714d22f104e2
+Total Symptoms: 2
+Symptoms with Body Part: 0
+Symptoms without Body Part: 2
+Count: 179
+---------------------------------------------------
+Sickness ID: 666a0c1e6cdb714d22f104ed
+Total Symptoms: 10
+Symptoms with Body Part: 0
+Symptoms without Body Part: 10
+Count: 180
+---------------------------------------------------
+Sickness ID: 666a0c1e6cdb714d22f104f4
+Total Symptoms: 6
+Symptoms with Body Part: 0
+Symptoms without Body Part: 6
+Count: 181
+---------------------------------------------------
+Sickness ID: 666a0c1e6cdb714d22f104fd
+Total Symptoms: 8
+Symptoms with Body Part: 3
+Symptoms without Body Part: 5
+Count: 182
+---------------------------------------------------
+Sickness ID: 666a0c1e6cdb714d22f10504
+Total Symptoms: 6
+Symptoms with Body Part: 5
+Symptoms without Body Part: 1
+Count: 183
+---------------------------------------------------
+Sickness ID: 666a0c1e6cdb714d22f1050e
+Total Symptoms: 9
+Symptoms with Body Part: 0
+Symptoms without Body Part: 9
+Count: 184
+---------------------------------------------------
+Sickness ID: 666a0c1e6cdb714d22f1051a
+Total Symptoms: 11
+Symptoms with Body Part: 0
+Symptoms without Body Part: 11
+Count: 185
+---------------------------------------------------
+Sickness ID: 666a0c1e6cdb714d22f10531
+Total Symptoms: 22
+Symptoms with Body Part: 0
+Symptoms without Body Part: 22
+Count: 186
+---------------------------------------------------
+Sickness ID: 666a0c1e6cdb714d22f10538
+Total Symptoms: 6
+Symptoms with Body Part: 0
+Symptoms without Body Part: 6
+Count: 187
+---------------------------------------------------
+Sickness ID: 666a0c1e6cdb714d22f10540
+Total Symptoms: 7
+Symptoms with Body Part: 0
+Symptoms without Body Part: 7
+Count: 188
+---------------------------------------------------
+Sickness ID: 666a0c1e6cdb714d22f10555
+Total Symptoms: 20
+Symptoms with Body Part: 3
+Symptoms without Body Part: 17
+Count: 189
+---------------------------------------------------
+Sickness ID: 666a0c1e6cdb714d22f1055a
+Total Symptoms: 4
+Symptoms with Body Part: 0
+Symptoms without Body Part: 4
+Count: 190
+---------------------------------------------------
+Sickness ID: 666a0c1e6cdb714d22f1055f
+Total Symptoms: 4
+Symptoms with Body Part: 0
+Symptoms without Body Part: 4
+Count: 191
+---------------------------------------------------
+Sickness ID: 666a0c1f6cdb714d22f10568
+Total Symptoms: 8
+Symptoms with Body Part: 0
+Symptoms without Body Part: 8
+Count: 192
+---------------------------------------------------
+Sickness ID: 666a0c1f6cdb714d22f10574
+Total Symptoms: 11
+Symptoms with Body Part: 0
+Symptoms without Body Part: 11
+Count: 193
+---------------------------------------------------
+Sickness ID: 666a0c1f6cdb714d22f10580
+Total Symptoms: 11
+Symptoms with Body Part: 0
+Symptoms without Body Part: 11
+Count: 194
+---------------------------------------------------
+Sickness ID: 666a0c1f6cdb714d22f10587
+Total Symptoms: 6
+Symptoms with Body Part: 0
+Symptoms without Body Part: 6
+Count: 195
+---------------------------------------------------
+Sickness ID: 666a0c1f6cdb714d22f10592
+Total Symptoms: 10
+Symptoms with Body Part: 0
+Symptoms without Body Part: 10
+Count: 196
+---------------------------------------------------
+Sickness ID: 666a0c1f6cdb714d22f1059c
+Total Symptoms: 9
+Symptoms with Body Part: 0
+Symptoms without Body Part: 9
+Count: 197
+---------------------------------------------------
+Sickness ID: 666a0c1f6cdb714d22f105aa
+Total Symptoms: 13
+Symptoms with Body Part: 0
+Symptoms without Body Part: 13
+Count: 198
+---------------------------------------------------
+Sickness ID: 666a0c1f6cdb714d22f105ac
+Total Symptoms: 1
+Symptoms with Body Part: 0
+Symptoms without Body Part: 1
+Count: 199
+---------------------------------------------------
+Sickness ID: 666a0c1f6cdb714d22f105b3
+Total Symptoms: 6
+Symptoms with Body Part: 0
+Symptoms without Body Part: 6
+Count: 200
+---------------------------------------------------
+Sickness ID: 666a0c1f6cdb714d22f105ba
+Total Symptoms: 6
+Symptoms with Body Part: 0
+Symptoms without Body Part: 6
+Count: 201
+---------------------------------------------------
+Sickness ID: 666a0c1f6cdb714d22f105bc
+Total Symptoms: 1
+Symptoms with Body Part: 0
+Symptoms without Body Part: 1
+Count: 202
+---------------------------------------------------
+Sickness ID: 666a0c1f6cdb714d22f105c1
+Total Symptoms: 4
+Symptoms with Body Part: 0
+Symptoms without Body Part: 4
+Count: 203
+---------------------------------------------------
+Sickness ID: 666a0c1f6cdb714d22f105c5
+Total Symptoms: 3
+Symptoms with Body Part: 0
+Symptoms without Body Part: 3
+Count: 204
+---------------------------------------------------
+Sickness ID: 666a0c1f6cdb714d22f105ec
+Total Symptoms: 38
+Symptoms with Body Part: 0
+Symptoms without Body Part: 38
+Count: 205
+---------------------------------------------------
+Sickness ID: 666a0c1f6cdb714d22f105ef
+Total Symptoms: 2
+Symptoms with Body Part: 2
+Symptoms without Body Part: 0
+Count: 206
+---------------------------------------------------
+Sickness ID: 666a0c1f6cdb714d22f105f8
+Total Symptoms: 8
+Symptoms with Body Part: 6
+Symptoms without Body Part: 2
+Count: 207
+---------------------------------------------------
+Sickness ID: 666a0c206cdb714d22f10607
+Total Symptoms: 14
+Symptoms with Body Part: 0
+Symptoms without Body Part: 14
+Count: 208
+---------------------------------------------------
+Sickness ID: 666a0c206cdb714d22f1061d
+Total Symptoms: 21
+Symptoms with Body Part: 0
+Symptoms without Body Part: 21
+Count: 209
+---------------------------------------------------
+Sickness ID: 666a0c206cdb714d22f10626
+Total Symptoms: 8
+Symptoms with Body Part: 0
+Symptoms without Body Part: 8
+Count: 210
+---------------------------------------------------
+Sickness ID: 666a0c206cdb714d22f1062a
+Total Symptoms: 3
+Symptoms with Body Part: 0
+Symptoms without Body Part: 3
+Count: 211
+---------------------------------------------------
+Sickness ID: 666a0c206cdb714d22f106e6
+Total Symptoms: 187
+Symptoms with Body Part: 24
+Symptoms without Body Part: 163
+Count: 212
+---------------------------------------------------
+Sickness ID: 666a0c206cdb714d22f106f4
+Total Symptoms: 13
+Symptoms with Body Part: 0
+Symptoms without Body Part: 13
+Count: 213
+---------------------------------------------------
+Sickness ID: 666a0c206cdb714d22f10701
+Total Symptoms: 12
+Symptoms with Body Part: 0
+Symptoms without Body Part: 12
+Count: 214
+---------------------------------------------------
+Sickness ID: 666a0c206cdb714d22f1070b
+Total Symptoms: 9
+Symptoms with Body Part: 0
+Symptoms without Body Part: 9
+Count: 215
+---------------------------------------------------
+Sickness ID: 666a0c206cdb714d22f1070f
+Total Symptoms: 3
+Symptoms with Body Part: 0
+Symptoms without Body Part: 3
+Count: 216
+---------------------------------------------------
+Sickness ID: 666a0c206cdb714d22f1071b
+Total Symptoms: 11
+Symptoms with Body Part: 0
+Symptoms without Body Part: 11
+Count: 217
+---------------------------------------------------
+Sickness ID: 666a0c206cdb714d22f10725
+Total Symptoms: 9
+Symptoms with Body Part: 0
+Symptoms without Body Part: 9
+Count: 218
+---------------------------------------------------
+Sickness ID: 666a0c206cdb714d22f1072f
+Total Symptoms: 9
+Symptoms with Body Part: 0
+Symptoms without Body Part: 9
+Count: 219
+---------------------------------------------------
+Sickness ID: 666a0c206cdb714d22f10737
+Total Symptoms: 7
+Symptoms with Body Part: 0
+Symptoms without Body Part: 7
+Count: 220
+---------------------------------------------------
+Sickness ID: 666a0c206cdb714d22f10743
+Total Symptoms: 11
+Symptoms with Body Part: 0
+Symptoms without Body Part: 11
+Count: 221
+---------------------------------------------------
+Sickness ID: 666a0c206cdb714d22f10757
+Total Symptoms: 19
+Symptoms with Body Part: 7
+Symptoms without Body Part: 12
+Count: 222
+---------------------------------------------------
+Sickness ID: 666a0c206cdb714d22f1075d
+Total Symptoms: 5
+Symptoms with Body Part: 0
+Symptoms without Body Part: 5
+Count: 223
+---------------------------------------------------
+Sickness ID: 666a0c206cdb714d22f10763
+Total Symptoms: 5
+Symptoms with Body Part: 0
+Symptoms without Body Part: 5
+Count: 224
+---------------------------------------------------
+Sickness ID: 666a0c216cdb714d22f10767
+Total Symptoms: 3
+Symptoms with Body Part: 0
+Symptoms without Body Part: 3
+Count: 225
+---------------------------------------------------
+Sickness ID: 666a0c216cdb714d22f1076e
+Total Symptoms: 6
+Symptoms with Body Part: 0
+Symptoms without Body Part: 6
+Count: 226
+---------------------------------------------------
+Sickness ID: 666a0c216cdb714d22f10779
+Total Symptoms: 10
+Symptoms with Body Part: 0
+Symptoms without Body Part: 10
+Count: 227
+---------------------------------------------------
+Sickness ID: 666a0c216cdb714d22f10789
+Total Symptoms: 15
+Symptoms with Body Part: 0
+Symptoms without Body Part: 15
+Count: 228
+---------------------------------------------------
+Sickness ID: 666a0c216cdb714d22f1078b
+Total Symptoms: 1
+Symptoms with Body Part: 0
+Symptoms without Body Part: 1
+Count: 229
+---------------------------------------------------
+Sickness ID: 666a0c216cdb714d22f10795
+Total Symptoms: 9
+Symptoms with Body Part: 0
+Symptoms without Body Part: 9
+Count: 230
+---------------------------------------------------
+Sickness ID: 666a0c216cdb714d22f10799
+Total Symptoms: 3
+Symptoms with Body Part: 0
+Symptoms without Body Part: 3
+Count: 231
+---------------------------------------------------
+Sickness ID: 666a0c216cdb714d22f107a8
+Total Symptoms: 14
+Symptoms with Body Part: 0
+Symptoms without Body Part: 14
+Count: 232
+---------------------------------------------------
+Sickness ID: 666a0c216cdb714d22f107b2
+Total Symptoms: 9
+Symptoms with Body Part: 0
+Symptoms without Body Part: 9
+Count: 233
+---------------------------------------------------
+Sickness ID: 666a0c216cdb714d22f107bc
+Total Symptoms: 9
+Symptoms with Body Part: 0
+Symptoms without Body Part: 9
+Count: 234
+---------------------------------------------------
+Sickness ID: 666a0c216cdb714d22f107c4
+Total Symptoms: 7
+Symptoms with Body Part: 4
+Symptoms without Body Part: 3
+Count: 235
+---------------------------------------------------
+Sickness ID: 666a0c216cdb714d22f107d4
+Total Symptoms: 15
+Symptoms with Body Part: 2
+Symptoms without Body Part: 13
+Count: 236
+---------------------------------------------------
+Sickness ID: 666a0c216cdb714d22f107df
+Total Symptoms: 10
+Symptoms with Body Part: 0
+Symptoms without Body Part: 10
+Count: 237
+---------------------------------------------------
+Sickness ID: 666a0c216cdb714d22f107ee
+Total Symptoms: 14
+Symptoms with Body Part: 0
+Symptoms without Body Part: 14
+Count: 238
+---------------------------------------------------
+Sickness ID: 666a0c216cdb714d22f107fd
+Total Symptoms: 14
+Symptoms with Body Part: 0
+Symptoms without Body Part: 14
+Count: 239
+---------------------------------------------------
+Sickness ID: 666a0c216cdb714d22f10813
+Total Symptoms: 21
+Symptoms with Body Part: 0
+Symptoms without Body Part: 21
+Count: 240
+---------------------------------------------------
+Sickness ID: 666a0c216cdb714d22f1081d
+Total Symptoms: 9
+Symptoms with Body Part: 0
+Symptoms without Body Part: 9
+Count: 241
+---------------------------------------------------
+Sickness ID: 666a0c216cdb714d22f10821
+Total Symptoms: 3
+Symptoms with Body Part: 0
+Symptoms without Body Part: 3
+Count: 242
+---------------------------------------------------
+Sickness ID: 666a0c226cdb714d22f10833
+Total Symptoms: 17
+Symptoms with Body Part: 0
+Symptoms without Body Part: 17
+Count: 243
+---------------------------------------------------
+Sickness ID: 666a0c226cdb714d22f10850
+Total Symptoms: 28
+Symptoms with Body Part: 7
+Symptoms without Body Part: 21
+Count: 244
+---------------------------------------------------
+Sickness ID: 666a0c226cdb714d22f10853
+Total Symptoms: 2
+Symptoms with Body Part: 0
+Symptoms without Body Part: 2
+Count: 245
+---------------------------------------------------
+Sickness ID: 666a0c226cdb714d22f1085a
+Total Symptoms: 6
+Symptoms with Body Part: 0
+Symptoms without Body Part: 6
+Count: 246
+---------------------------------------------------
+Sickness ID: 666a0c226cdb714d22f1086b
+Total Symptoms: 16
+Symptoms with Body Part: 0
+Symptoms without Body Part: 16
+Count: 247
+---------------------------------------------------
+Sickness ID: 666a0c226cdb714d22f10884
+Total Symptoms: 24
+Symptoms with Body Part: 0
+Symptoms without Body Part: 24
+Count: 248
+---------------------------------------------------
+Sickness ID: 666a0c226cdb714d22f10894
+Total Symptoms: 15
+Symptoms with Body Part: 0
+Symptoms without Body Part: 15
+Count: 249
+---------------------------------------------------
+Sickness ID: 666a0c226cdb714d22f108a4
+Total Symptoms: 15
+Symptoms with Body Part: 4
+Symptoms without Body Part: 11
+Count: 250
+---------------------------------------------------
+Sickness ID: 666a0c226cdb714d22f108b9
+Total Symptoms: 20
+Symptoms with Body Part: 4
+Symptoms without Body Part: 16
+Count: 251
+---------------------------------------------------
+Sickness ID: 666a0c226cdb714d22f108be
+Total Symptoms: 4
+Symptoms with Body Part: 0
+Symptoms without Body Part: 4
+Count: 252
+---------------------------------------------------
+Sickness ID: 666a0c226cdb714d22f108c1
+Total Symptoms: 2
+Symptoms with Body Part: 0
+Symptoms without Body Part: 2
+Count: 253
+---------------------------------------------------
+Sickness ID: 666a0c226cdb714d22f108c7
+Total Symptoms: 5
+Symptoms with Body Part: 0
+Symptoms without Body Part: 5
+Count: 254
+---------------------------------------------------
+Sickness ID: 666a0c226cdb714d22f108cf
+Total Symptoms: 7
+Symptoms with Body Part: 0
+Symptoms without Body Part: 7
+Count: 255
+---------------------------------------------------
+Sickness ID: 666a0c226cdb714d22f108f5
+Total Symptoms: 37
+Symptoms with Body Part: 0
+Symptoms without Body Part: 37
+Count: 256
+---------------------------------------------------
+Sickness ID: 666a0c226cdb714d22f10908
+Total Symptoms: 18
+Symptoms with Body Part: 0
+Symptoms without Body Part: 18
+Count: 257
+---------------------------------------------------
+Sickness ID: 666a0c226cdb714d22f1090f
+Total Symptoms: 6
+Symptoms with Body Part: 0
+Symptoms without Body Part: 6
+Count: 258
+---------------------------------------------------
+Sickness ID: 666a0c226cdb714d22f10912
+Total Symptoms: 2
+Symptoms with Body Part: 0
+Symptoms without Body Part: 2
+Count: 259
+---------------------------------------------------
+Sickness ID: 666a0c236cdb714d22f1091c
+Total Symptoms: 9
+Symptoms with Body Part: 0
+Symptoms without Body Part: 9
+Count: 260
+---------------------------------------------------
+Sickness ID: 666a0c236cdb714d22f10927
+Total Symptoms: 10
+Symptoms with Body Part: 4
+Symptoms without Body Part: 6
+Count: 261
+---------------------------------------------------
+Sickness ID: 666a0c236cdb714d22f10930
+Total Symptoms: 8
+Symptoms with Body Part: 2
+Symptoms without Body Part: 6
+Count: 262
+---------------------------------------------------
+Sickness ID: 666a0c236cdb714d22f10939
+Total Symptoms: 8
+Symptoms with Body Part: 0
+Symptoms without Body Part: 8
+Count: 263
+---------------------------------------------------
+Sickness ID: 666a0c236cdb714d22f10953
+Total Symptoms: 25
+Symptoms with Body Part: 0
+Symptoms without Body Part: 25
+Count: 264
+---------------------------------------------------
+Sickness ID: 666a0c236cdb714d22f1096f
+Total Symptoms: 27
+Symptoms with Body Part: 0
+Symptoms without Body Part: 27
+Count: 265
+---------------------------------------------------
+Sickness ID: 666a0c236cdb714d22f10986
+Total Symptoms: 22
+Symptoms with Body Part: 0
+Symptoms without Body Part: 22
+Count: 266
+---------------------------------------------------
+Sickness ID: 666a0c236cdb714d22f1099a
+Total Symptoms: 19
+Symptoms with Body Part: 0
+Symptoms without Body Part: 19
+Count: 267
+---------------------------------------------------
+Sickness ID: 666a0c236cdb714d22f109b6
+Total Symptoms: 27
+Symptoms with Body Part: 7
+Symptoms without Body Part: 20
+Count: 268
+---------------------------------------------------
+Sickness ID: 666a0c236cdb714d22f109be
+Total Symptoms: 7
+Symptoms with Body Part: 0
+Symptoms without Body Part: 7
+Count: 269
+---------------------------------------------------
+Sickness ID: 666a0c236cdb714d22f109cc
+Total Symptoms: 13
+Symptoms with Body Part: 0
+Symptoms without Body Part: 13
+Count: 270
+---------------------------------------------------
+Sickness ID: 666a0c236cdb714d22f109d6
+Total Symptoms: 9
+Symptoms with Body Part: 0
+Symptoms without Body Part: 9
+Count: 271
+---------------------------------------------------
+Sickness ID: 666a0c236cdb714d22f109e4
+Total Symptoms: 13
+Symptoms with Body Part: 0
+Symptoms without Body Part: 13
+Count: 272
+---------------------------------------------------
+Sickness ID: 666a0c236cdb714d22f109e8
+Total Symptoms: 3
+Symptoms with Body Part: 0
+Symptoms without Body Part: 3
+Count: 273
+---------------------------------------------------
+Sickness ID: 666a0c236cdb714d22f109ef
+Total Symptoms: 6
+Symptoms with Body Part: 0
+Symptoms without Body Part: 6
+Count: 274
+---------------------------------------------------
+Sickness ID: 666a0c236cdb714d22f109f7
+Total Symptoms: 7
+Symptoms with Body Part: 0
+Symptoms without Body Part: 7
+Count: 275
+---------------------------------------------------
+Sickness ID: 666a0c236cdb714d22f109fa
+Total Symptoms: 2
+Symptoms with Body Part: 0
+Symptoms without Body Part: 2
+Count: 276
+---------------------------------------------------
+Sickness ID: 666a0c246cdb714d22f10a02
+Total Symptoms: 7
+Symptoms with Body Part: 0
+Symptoms without Body Part: 7
+Count: 277
+---------------------------------------------------
+Sickness ID: 666a0c246cdb714d22f10a08
+Total Symptoms: 5
+Symptoms with Body Part: 0
+Symptoms without Body Part: 5
+Count: 278
+---------------------------------------------------
+Sickness ID: 666a0c246cdb714d22f10a24
+Total Symptoms: 27
+Symptoms with Body Part: 8
+Symptoms without Body Part: 19
+Count: 279
+---------------------------------------------------
+Sickness ID: 666a0c246cdb714d22f10a27
+Total Symptoms: 2
+Symptoms with Body Part: 0
+Symptoms without Body Part: 2
+Count: 280
+---------------------------------------------------
+Sickness ID: 666a0c246cdb714d22f10a38
+Total Symptoms: 16
+Symptoms with Body Part: 0
+Symptoms without Body Part: 16
+Count: 281
+---------------------------------------------------
+Sickness ID: 666a0c246cdb714d22f10a3e
+Total Symptoms: 5
+Symptoms with Body Part: 0
+Symptoms without Body Part: 5
+Count: 282
+---------------------------------------------------
+Sickness ID: 666a0c246cdb714d22f10a4b
+Total Symptoms: 12
+Symptoms with Body Part: 0
+Symptoms without Body Part: 12
+Count: 283
+---------------------------------------------------
+Sickness ID: 666a0c246cdb714d22f10ad7
+Total Symptoms: 139
+Symptoms with Body Part: 8
+Symptoms without Body Part: 131
+Count: 284
+---------------------------------------------------
+Sickness ID: 666a0c246cdb714d22f10ae3
+Total Symptoms: 11
+Symptoms with Body Part: 4
+Symptoms without Body Part: 7
+Count: 285
+---------------------------------------------------
+Sickness ID: 666a0c246cdb714d22f10afb
+Total Symptoms: 23
+Symptoms with Body Part: 4
+Symptoms without Body Part: 19
+Count: 286
+---------------------------------------------------
+Sickness ID: 666a0c246cdb714d22f10b15
+Total Symptoms: 25
+Symptoms with Body Part: 0
+Symptoms without Body Part: 25
+Count: 287
+---------------------------------------------------
+Sickness ID: 666a0c246cdb714d22f10b1e
+Total Symptoms: 8
+Symptoms with Body Part: 0
+Symptoms without Body Part: 8
+Count: 288
+---------------------------------------------------
+Sickness ID: 666a0c246cdb714d22f10b46
+Total Symptoms: 39
+Symptoms with Body Part: 3
+Symptoms without Body Part: 36
+Count: 289
+---------------------------------------------------
+Sickness ID: 666a0c246cdb714d22f10b50
+Total Symptoms: 9
+Symptoms with Body Part: 5
+Symptoms without Body Part: 4
+Count: 290
+---------------------------------------------------
+Sickness ID: 666a0c246cdb714d22f10b54
+Total Symptoms: 3
+Symptoms with Body Part: 0
+Symptoms without Body Part: 3
+Count: 291
+---------------------------------------------------
+Sickness ID: 666a0c246cdb714d22f10b70
+Total Symptoms: 27
+Symptoms with Body Part: 0
+Symptoms without Body Part: 27
+Count: 292
+---------------------------------------------------
+Sickness ID: 666a0c246cdb714d22f10b84
+Total Symptoms: 19
+Symptoms with Body Part: 0
+Symptoms without Body Part: 19
+Count: 293
+---------------------------------------------------
+Sickness ID: 666a0c256cdb714d22f10b8f
+Total Symptoms: 10
+Symptoms with Body Part: 0
+Symptoms without Body Part: 10
+Count: 294
+---------------------------------------------------
+Sickness ID: 666a0c256cdb714d22f10b97
+Total Symptoms: 7
+Symptoms with Body Part: 0
+Symptoms without Body Part: 7
+Count: 295
+---------------------------------------------------
+Sickness ID: 666a0c256cdb714d22f10c5f
+Total Symptoms: 199
+Symptoms with Body Part: 15
+Symptoms without Body Part: 184
+Count: 296
+---------------------------------------------------
+Sickness ID: 666a0c256cdb714d22f10c62
+Total Symptoms: 2
+Symptoms with Body Part: 0
+Symptoms without Body Part: 2
+Count: 297
+---------------------------------------------------
+Sickness ID: 666a0c256cdb714d22f10c6d
+Total Symptoms: 10
+Symptoms with Body Part: 0
+Symptoms without Body Part: 10
+Count: 298
+---------------------------------------------------
+Sickness ID: 666a0c256cdb714d22f10c83
+Total Symptoms: 21
+Symptoms with Body Part: 0
+Symptoms without Body Part: 21
+Count: 299
+---------------------------------------------------
+Sickness ID: 666a0c256cdb714d22f10c8b
+Total Symptoms: 7
+Symptoms with Body Part: 2
+Symptoms without Body Part: 5
+Count: 300
+---------------------------------------------------
+Sickness ID: 666a0c256cdb714d22f10c90
+Total Symptoms: 4
+Symptoms with Body Part: 3
+Symptoms without Body Part: 1
+Count: 301
+---------------------------------------------------
+Sickness ID: 666a0c256cdb714d22f10c99
+Total Symptoms: 8
+Symptoms with Body Part: 2
+Symptoms without Body Part: 6
+Count: 302
+---------------------------------------------------
+Sickness ID: 666a0c256cdb714d22f10ca0
+Total Symptoms: 6
+Symptoms with Body Part: 0
+Symptoms without Body Part: 6
+Count: 303
+---------------------------------------------------
+Sickness ID: 666a0c256cdb714d22f10cab
+Total Symptoms: 10
+Symptoms with Body Part: 0
+Symptoms without Body Part: 10
+Count: 304
+---------------------------------------------------
+Sickness ID: 666a0c256cdb714d22f10cb4
+Total Symptoms: 8
+Symptoms with Body Part: 0
+Symptoms without Body Part: 8
+Count: 305
+---------------------------------------------------
+Sickness ID: 666a0c256cdb714d22f10cc0
+Total Symptoms: 11
+Symptoms with Body Part: 0
+Symptoms without Body Part: 11
+Count: 306
+---------------------------------------------------
+Sickness ID: 666a0c256cdb714d22f10cd0
+Total Symptoms: 15
+Symptoms with Body Part: 0
+Symptoms without Body Part: 15
+Count: 307
+---------------------------------------------------
+Sickness ID: 666a0c256cdb714d22f10cda
+Total Symptoms: 9
+Symptoms with Body Part: 0
+Symptoms without Body Part: 9
+Count: 308
+---------------------------------------------------
+Sickness ID: 666a0c256cdb714d22f10ce3
+Total Symptoms: 8
+Symptoms with Body Part: 0
+Symptoms without Body Part: 8
+Count: 309
+---------------------------------------------------
+Sickness ID: 666a0c256cdb714d22f10cf5
+Total Symptoms: 17
+Symptoms with Body Part: 0
+Symptoms without Body Part: 17
+Count: 310
+---------------------------------------------------
+Sickness ID: 666a0c266cdb714d22f10d77
+Total Symptoms: 129
+Symptoms with Body Part: 15
+Symptoms without Body Part: 114
+Count: 311
+---------------------------------------------------
+Sickness ID: 666a0c266cdb714d22f10d80
+Total Symptoms: 8
+Symptoms with Body Part: 0
+Symptoms without Body Part: 8
+Count: 312
+---------------------------------------------------
+Sickness ID: 666a0c266cdb714d22f10d84
+Total Symptoms: 3
+Symptoms with Body Part: 0
+Symptoms without Body Part: 3
+Count: 313
+---------------------------------------------------
+Sickness ID: 666a0c266cdb714d22f10d91
+Total Symptoms: 12
+Symptoms with Body Part: 0
+Symptoms without Body Part: 12
+Count: 314
+---------------------------------------------------
+Sickness ID: 666a0c266cdb714d22f10da4
+Total Symptoms: 18
+Symptoms with Body Part: 0
+Symptoms without Body Part: 18
+Count: 315
+---------------------------------------------------
+Sickness ID: 666a0c266cdb714d22f10daa
+Total Symptoms: 5
+Symptoms with Body Part: 0
+Symptoms without Body Part: 5
+Count: 316
+---------------------------------------------------
+Sickness ID: 666a0c266cdb714d22f10db2
+Total Symptoms: 7
+Symptoms with Body Part: 0
+Symptoms without Body Part: 7
+Count: 317
+---------------------------------------------------
+Sickness ID: 666a0c266cdb714d22f10dbc
+Total Symptoms: 9
+Symptoms with Body Part: 0
+Symptoms without Body Part: 9
+Count: 318
+---------------------------------------------------
+Sickness ID: 666a0c266cdb714d22f10dc2
+Total Symptoms: 5
+Symptoms with Body Part: 0
+Symptoms without Body Part: 5
+Count: 319
+---------------------------------------------------
+Sickness ID: 666a0c266cdb714d22f10dd5
+Total Symptoms: 18
+Symptoms with Body Part: 0
+Symptoms without Body Part: 18
+Count: 320
+---------------------------------------------------
+Sickness ID: 666a0c266cdb714d22f10de3
+Total Symptoms: 13
+Symptoms with Body Part: 8
+Symptoms without Body Part: 5
+Count: 321
+---------------------------------------------------
+Sickness ID: 666a0c266cdb714d22f10deb
+Total Symptoms: 7
+Symptoms with Body Part: 0
+Symptoms without Body Part: 7
+Count: 322
+---------------------------------------------------
+Sickness ID: 666a0c266cdb714d22f10df5
+Total Symptoms: 9
+Symptoms with Body Part: 0
+Symptoms without Body Part: 9
+Count: 323
+---------------------------------------------------
+Sickness ID: 666a0c266cdb714d22f10dff
+Total Symptoms: 9
+Symptoms with Body Part: 0
+Symptoms without Body Part: 9
+Count: 324
+---------------------------------------------------
+Sickness ID: 666a0c266cdb714d22f10e0a
+Total Symptoms: 10
+Symptoms with Body Part: 0
+Symptoms without Body Part: 10
+Count: 325
+---------------------------------------------------
+Sickness ID: 666a0c266cdb714d22f10e19
+Total Symptoms: 14
+Symptoms with Body Part: 0
+Symptoms without Body Part: 14
+Count: 326
+---------------------------------------------------
+Sickness ID: 666a0c276cdb714d22f10e22
+Total Symptoms: 8
+Symptoms with Body Part: 0
+Symptoms without Body Part: 8
+Count: 327
+---------------------------------------------------
+Sickness ID: 666a0c276cdb714d22f10e26
+Total Symptoms: 3
+Symptoms with Body Part: 0
+Symptoms without Body Part: 3
+Count: 328
+---------------------------------------------------
+Sickness ID: 666a0c276cdb714d22f10e36
+Total Symptoms: 15
+Symptoms with Body Part: 0
+Symptoms without Body Part: 15
+Count: 329
+---------------------------------------------------
+Sickness ID: 666a0c276cdb714d22f10e42
+Total Symptoms: 11
+Symptoms with Body Part: 0
+Symptoms without Body Part: 11
+Count: 330
+---------------------------------------------------
+Sickness ID: 666a0c276cdb714d22f10e54
+Total Symptoms: 17
+Symptoms with Body Part: 8
+Symptoms without Body Part: 9
+Count: 331
+---------------------------------------------------
+Sickness ID: 666a0c276cdb714d22f10e57
+Total Symptoms: 2
+Symptoms with Body Part: 0
+Symptoms without Body Part: 2
+Count: 332
+---------------------------------------------------
+Sickness ID: 666a0c276cdb714d22f10e63
+Total Symptoms: 11
+Symptoms with Body Part: 0
+Symptoms without Body Part: 11
+Count: 333
+---------------------------------------------------
+Sickness ID: 666a0c276cdb714d22f10e6b
+Total Symptoms: 7
+Symptoms with Body Part: 0
+Symptoms without Body Part: 7
+Count: 334
+---------------------------------------------------
+Sickness ID: 666a0c276cdb714d22f10e76
+Total Symptoms: 10
+Symptoms with Body Part: 0
+Symptoms without Body Part: 10
+Count: 335
+---------------------------------------------------
+Sickness ID: 666a0c276cdb714d22f10e78
+Total Symptoms: 1
+Symptoms with Body Part: 0
+Symptoms without Body Part: 1
+Count: 336
+---------------------------------------------------
+Sickness ID: 666a0c276cdb714d22f10e84
+Total Symptoms: 11
+Symptoms with Body Part: 0
+Symptoms without Body Part: 11
+Count: 337
+---------------------------------------------------
+Sickness ID: 666a0c276cdb714d22f10e8c
+Total Symptoms: 7
+Symptoms with Body Part: 0
+Symptoms without Body Part: 7
+Count: 338
+---------------------------------------------------
+Sickness ID: 666a0c276cdb714d22f10e9c
+Total Symptoms: 15
+Symptoms with Body Part: 0
+Symptoms without Body Part: 15
+Count: 339
+---------------------------------------------------
+Sickness ID: 666a0c276cdb714d22f10eb7
+Total Symptoms: 26
+Symptoms with Body Part: 0
+Symptoms without Body Part: 26
+Count: 340
+---------------------------------------------------
+Sickness ID: 666a0c276cdb714d22f10ec1
+Total Symptoms: 9
+Symptoms with Body Part: 6
+Symptoms without Body Part: 3
+Count: 341
+---------------------------------------------------
+Sickness ID: 666a0c276cdb714d22f10ecb
+Total Symptoms: 9
+Symptoms with Body Part: 1
+Symptoms without Body Part: 8
+Count: 342
+---------------------------------------------------
+Sickness ID: 666a0c276cdb714d22f10ed2
+Total Symptoms: 6
+Symptoms with Body Part: 0
+Symptoms without Body Part: 6
+Count: 343
+---------------------------------------------------
+Sickness ID: 666a0c286cdb714d22f10f46
+Total Symptoms: 115
+Symptoms with Body Part: 8
+Symptoms without Body Part: 107
+Count: 344
+---------------------------------------------------
+Sickness ID: 666a0c286cdb714d22f10f56
+Total Symptoms: 15
+Symptoms with Body Part: 0
+Symptoms without Body Part: 15
+Count: 345
+---------------------------------------------------
+Sickness ID: 666a0c286cdb714d22f10f6a
+Total Symptoms: 19
+Symptoms with Body Part: 0
+Symptoms without Body Part: 19
+Count: 346
+---------------------------------------------------
+Sickness ID: 666a0c286cdb714d22f10f75
+Total Symptoms: 10
+Symptoms with Body Part: 0
+Symptoms without Body Part: 10
+Count: 347
+---------------------------------------------------
+Sickness ID: 666a0c286cdb714d22f10f86
+Total Symptoms: 16
+Symptoms with Body Part: 0
+Symptoms without Body Part: 16
+Count: 348
+---------------------------------------------------
+Sickness ID: 666a0c286cdb714d22f10f8b
+Total Symptoms: 4
+Symptoms with Body Part: 0
+Symptoms without Body Part: 4
+Count: 349
+---------------------------------------------------
+Sickness ID: 666a0c286cdb714d22f10f95
+Total Symptoms: 9
+Symptoms with Body Part: 8
+Symptoms without Body Part: 1
+Count: 350
+---------------------------------------------------
+Sickness ID: 666a0c286cdb714d22f10f9d
+Total Symptoms: 7
+Symptoms with Body Part: 0
+Symptoms without Body Part: 7
+Count: 351
+---------------------------------------------------
+Sickness ID: 666a0c286cdb714d22f10fb9
+Total Symptoms: 27
+Symptoms with Body Part: 0
+Symptoms without Body Part: 27
+Count: 352
+---------------------------------------------------
+Sickness ID: 666a0c286cdb714d22f10fcc
+Total Symptoms: 18
+Symptoms with Body Part: 0
+Symptoms without Body Part: 18
+Count: 353
+---------------------------------------------------
+Sickness ID: 666a0c286cdb714d22f10fd7
+Total Symptoms: 10
+Symptoms with Body Part: 0
+Symptoms without Body Part: 10
+Count: 354
+---------------------------------------------------
+Sickness ID: 666a0c286cdb714d22f10fdd
+Total Symptoms: 5
+Symptoms with Body Part: 0
+Symptoms without Body Part: 5
+Count: 355
+---------------------------------------------------
+Sickness ID: 666a0c286cdb714d22f10fed
+Total Symptoms: 15
+Symptoms with Body Part: 0
+Symptoms without Body Part: 15
+Count: 356
+---------------------------------------------------
+Sickness ID: 666a0c286cdb714d22f11087
+Total Symptoms: 153
+Symptoms with Body Part: 16
+Symptoms without Body Part: 137
+Count: 357
+---------------------------------------------------
+Sickness ID: 666a0c286cdb714d22f11093
+Total Symptoms: 11
+Symptoms with Body Part: 0
+Symptoms without Body Part: 11
+Count: 358
+---------------------------------------------------
+Sickness ID: 666a0c286cdb714d22f110a0
+Total Symptoms: 12
+Symptoms with Body Part: 0
+Symptoms without Body Part: 12
+Count: 359
+---------------------------------------------------
+Sickness ID: 666a0c296cdb714d22f110a8
+Total Symptoms: 7
+Symptoms with Body Part: 0
+Symptoms without Body Part: 7
+Count: 360
+---------------------------------------------------
+Sickness ID: 666a0c296cdb714d22f110ab
+Total Symptoms: 2
+Symptoms with Body Part: 0
+Symptoms without Body Part: 2
+Count: 361
+---------------------------------------------------
+Sickness ID: 666a0c296cdb714d22f110b0
+Total Symptoms: 4
+Symptoms with Body Part: 0
+Symptoms without Body Part: 4
+Count: 362
+---------------------------------------------------
+Sickness ID: 666a0c296cdb714d22f110b8
+Total Symptoms: 7
+Symptoms with Body Part: 0
+Symptoms without Body Part: 7
+Count: 363
+---------------------------------------------------
+Sickness ID: 666a0c296cdb714d22f110c2
+Total Symptoms: 9
+Symptoms with Body Part: 0
+Symptoms without Body Part: 9
+Count: 364
+---------------------------------------------------
+Sickness ID: 666a0c296cdb714d22f110c5
+Total Symptoms: 2
+Symptoms with Body Part: 0
+Symptoms without Body Part: 2
+Count: 365
+---------------------------------------------------
+Sickness ID: 666a0c296cdb714d22f110c9
+Total Symptoms: 3
+Symptoms with Body Part: 0
+Symptoms without Body Part: 3
+Count: 366
+---------------------------------------------------
+Sickness ID: 666a0c296cdb714d22f110d6
+Total Symptoms: 12
+Symptoms with Body Part: 0
+Symptoms without Body Part: 12
+Count: 367
+---------------------------------------------------
+Sickness ID: 666a0c296cdb714d22f110dc
+Total Symptoms: 5
+Symptoms with Body Part: 0
+Symptoms without Body Part: 5
+Count: 368
+---------------------------------------------------
+Sickness ID: 666a0c296cdb714d22f110e8
+Total Symptoms: 11
+Symptoms with Body Part: 7
+Symptoms without Body Part: 4
+Count: 369
+---------------------------------------------------
+Sickness ID: 666a0c296cdb714d22f110f3
+Total Symptoms: 10
+Symptoms with Body Part: 0
+Symptoms without Body Part: 10
+Count: 370
+---------------------------------------------------
+Sickness ID: 666a0c296cdb714d22f1112a
+Total Symptoms: 54
+Symptoms with Body Part: 0
+Symptoms without Body Part: 54
+Count: 371
+---------------------------------------------------
+Sickness ID: 666a0c296cdb714d22f1113d
+Total Symptoms: 18
+Symptoms with Body Part: 0
+Symptoms without Body Part: 18
+Count: 372
+---------------------------------------------------
+Sickness ID: 666a0c296cdb714d22f11145
+Total Symptoms: 7
+Symptoms with Body Part: 0
+Symptoms without Body Part: 7
+Count: 373
+---------------------------------------------------
+Sickness ID: 666a0c296cdb714d22f11155
+Total Symptoms: 15
+Symptoms with Body Part: 0
+Symptoms without Body Part: 15
+Count: 374
+---------------------------------------------------
+Sickness ID: 666a0c296cdb714d22f1115f
+Total Symptoms: 9
+Symptoms with Body Part: 7
+Symptoms without Body Part: 2
+Count: 375
+---------------------------------------------------
+Sickness ID: 666a0c2a6cdb714d22f11169
+Total Symptoms: 9
+Symptoms with Body Part: 0
+Symptoms without Body Part: 9
+Count: 376
+---------------------------------------------------
+Sickness ID: 666a0c2a6cdb714d22f11175
+Total Symptoms: 11
+Symptoms with Body Part: 0
+Symptoms without Body Part: 11
+Count: 377
+---------------------------------------------------
+Sickness ID: 666a0c2a6cdb714d22f11180
+Total Symptoms: 10
+Symptoms with Body Part: 0
+Symptoms without Body Part: 10
+Count: 378
+---------------------------------------------------
+Sickness ID: 666a0c2a6cdb714d22f11184
+Total Symptoms: 3
+Symptoms with Body Part: 0
+Symptoms without Body Part: 3
+Count: 379
+---------------------------------------------------
+Sickness ID: 666a0c2a6cdb714d22f1118a
+Total Symptoms: 5
+Symptoms with Body Part: 0
+Symptoms without Body Part: 5
+Count: 380
+---------------------------------------------------
+Sickness ID: 666a0c2a6cdb714d22f11190
+Total Symptoms: 5
+Symptoms with Body Part: 0
+Symptoms without Body Part: 5
+Count: 381
+---------------------------------------------------
+Sickness ID: 666a0c2a6cdb714d22f1119c
+Total Symptoms: 11
+Symptoms with Body Part: 0
+Symptoms without Body Part: 11
+Count: 382
+---------------------------------------------------
+Sickness ID: 666a0c2a6cdb714d22f111a2
+Total Symptoms: 5
+Symptoms with Body Part: 0
+Symptoms without Body Part: 5
+Count: 383
+---------------------------------------------------
+Sickness ID: 666a0c2a6cdb714d22f111ac
+Total Symptoms: 9
+Symptoms with Body Part: 0
+Symptoms without Body Part: 9
+Count: 384
+---------------------------------------------------
+Sickness ID: 666a0c2a6cdb714d22f111bb
+Total Symptoms: 14
+Symptoms with Body Part: 0
+Symptoms without Body Part: 14
+Count: 385
+---------------------------------------------------
+Sickness ID: 666a0c2a6cdb714d22f111be
+Total Symptoms: 2
+Symptoms with Body Part: 0
+Symptoms without Body Part: 2
+Count: 386
+---------------------------------------------------
+Sickness ID: 666a0c2a6cdb714d22f111d1
+Total Symptoms: 18
+Symptoms with Body Part: 0
+Symptoms without Body Part: 18
+Count: 387
+---------------------------------------------------
+Sickness ID: 666a0c2a6cdb714d22f111da
+Total Symptoms: 8
+Symptoms with Body Part: 6
+Symptoms without Body Part: 2
+Count: 388
+---------------------------------------------------
+Sickness ID: 666a0c2a6cdb714d22f111dc
+Total Symptoms: 1
+Symptoms with Body Part: 1
+Symptoms without Body Part: 0
+Count: 389
+---------------------------------------------------
+Sickness ID: 666a0c2a6cdb714d22f111e4
+Total Symptoms: 7
+Symptoms with Body Part: 1
+Symptoms without Body Part: 6
+Count: 390
+---------------------------------------------------
+Sickness ID: 666a0c2a6cdb714d22f111ef
+Total Symptoms: 10
+Symptoms with Body Part: 0
+Symptoms without Body Part: 10
+Count: 391
+---------------------------------------------------
+Sickness ID: 666a0c2a6cdb714d22f111f7
+Total Symptoms: 7
+Symptoms with Body Part: 0
+Symptoms without Body Part: 7
+Count: 392
+---------------------------------------------------
+Sickness ID: 666a0c2b6cdb714d22f11201
+Total Symptoms: 9
+Symptoms with Body Part: 0
+Symptoms without Body Part: 9
+Count: 393
+---------------------------------------------------
+Sickness ID: 666a0c2b6cdb714d22f11208
+Total Symptoms: 6
+Symptoms with Body Part: 0
+Symptoms without Body Part: 6
+Count: 394
+---------------------------------------------------
+Sickness ID: 666a0c2b6cdb714d22f11223
+Total Symptoms: 26
+Symptoms with Body Part: 0
+Symptoms without Body Part: 26
+Count: 395
+---------------------------------------------------
+Sickness ID: 666a0c2b6cdb714d22f1122e
+Total Symptoms: 10
+Symptoms with Body Part: 0
+Symptoms without Body Part: 10
+Count: 396
+---------------------------------------------------
+Sickness ID: 666a0c2b6cdb714d22f11231
+Total Symptoms: 2
+Symptoms with Body Part: 0
+Symptoms without Body Part: 2
+Count: 397
+---------------------------------------------------
+Sickness ID: 666a0c2b6cdb714d22f11237
+Total Symptoms: 5
+Symptoms with Body Part: 0
+Symptoms without Body Part: 5
+Count: 398
+---------------------------------------------------
+Sickness ID: 666a0c2b6cdb714d22f11244
+Total Symptoms: 12
+Symptoms with Body Part: 3
+Symptoms without Body Part: 9
+Count: 399
+---------------------------------------------------
+Sickness ID: 666a0c2b6cdb714d22f11250
+Total Symptoms: 11
+Symptoms with Body Part: 2
+Symptoms without Body Part: 9
+Count: 400
+---------------------------------------------------
+Sickness ID: 666a0c2b6cdb714d22f11256
+Total Symptoms: 5
+Symptoms with Body Part: 0
+Symptoms without Body Part: 5
+Count: 401
+---------------------------------------------------
+Sickness ID: 666a0c2b6cdb714d22f11263
+Total Symptoms: 12
+Symptoms with Body Part: 0
+Symptoms without Body Part: 12
+Count: 402
+---------------------------------------------------
+Sickness ID: 666a0c2b6cdb714d22f1126e
+Total Symptoms: 10
+Symptoms with Body Part: 0
+Symptoms without Body Part: 10
+Count: 403
+---------------------------------------------------
+Sickness ID: 666a0c2b6cdb714d22f1127c
+Total Symptoms: 13
+Symptoms with Body Part: 0
+Symptoms without Body Part: 13
+Count: 404
+---------------------------------------------------
+Sickness ID: 666a0c2b6cdb714d22f11286
+Total Symptoms: 9
+Symptoms with Body Part: 0
+Symptoms without Body Part: 9
+Count: 405
+---------------------------------------------------
+Sickness ID: 666a0c2b6cdb714d22f112b6
+Total Symptoms: 47
+Symptoms with Body Part: 0
+Symptoms without Body Part: 47
+Count: 406
+---------------------------------------------------
+Sickness ID: 666a0c2b6cdb714d22f112be
+Total Symptoms: 7
+Symptoms with Body Part: 0
+Symptoms without Body Part: 7
+Count: 407
+---------------------------------------------------
+Sickness ID: 666a0c2b6cdb714d22f112c2
+Total Symptoms: 3
+Symptoms with Body Part: 0
+Symptoms without Body Part: 3
+Count: 408
+---------------------------------------------------
+Sickness ID: 666a0c2b6cdb714d22f112c6
+Total Symptoms: 3
+Symptoms with Body Part: 0
+Symptoms without Body Part: 3
+Count: 409
+---------------------------------------------------
+Sickness ID: 666a0c2c6cdb714d22f112d1
+Total Symptoms: 10
+Symptoms with Body Part: 0
+Symptoms without Body Part: 10
+Count: 410
+---------------------------------------------------
+Sickness ID: 666a0c2c6cdb714d22f112d9
+Total Symptoms: 7
+Symptoms with Body Part: 0
+Symptoms without Body Part: 7
+Count: 411
+---------------------------------------------------
+Sickness ID: 666a0c2c6cdb714d22f112eb
+Total Symptoms: 17
+Symptoms with Body Part: 0
+Symptoms without Body Part: 17
+Count: 412
+---------------------------------------------------
+Sickness ID: 666a0c2c6cdb714d22f112fa
+Total Symptoms: 14
+Symptoms with Body Part: 7
+Symptoms without Body Part: 7
+Count: 413
+---------------------------------------------------
+Sickness ID: 666a0c2c6cdb714d22f11301
+Total Symptoms: 6
+Symptoms with Body Part: 0
+Symptoms without Body Part: 6
+Count: 414
+---------------------------------------------------
+Sickness ID: 666a0c2c6cdb714d22f11309
+Total Symptoms: 7
+Symptoms with Body Part: 0
+Symptoms without Body Part: 7
+Count: 415
+---------------------------------------------------
+Sickness ID: 666a0c2c6cdb714d22f1130f
+Total Symptoms: 5
+Symptoms with Body Part: 0
+Symptoms without Body Part: 5
+Count: 416
+---------------------------------------------------
+Sickness ID: 666a0c2c6cdb714d22f11319
+Total Symptoms: 9
+Symptoms with Body Part: 0
+Symptoms without Body Part: 9
+Count: 417
+---------------------------------------------------
+Sickness ID: 666a0c2c6cdb714d22f11323
+Total Symptoms: 9
+Symptoms with Body Part: 0
+Symptoms without Body Part: 9
+Count: 418
+---------------------------------------------------
+Sickness ID: 666a0c2c6cdb714d22f1133c
+Total Symptoms: 24
+Symptoms with Body Part: 0
+Symptoms without Body Part: 24
+Count: 419
+---------------------------------------------------
+Sickness ID: 666a0c2c6cdb714d22f11347
+Total Symptoms: 10
+Symptoms with Body Part: 0
+Symptoms without Body Part: 10
+Count: 420
+---------------------------------------------------
+Sickness ID: 666a0c2c6cdb714d22f11358
+Total Symptoms: 16
+Symptoms with Body Part: 0
+Symptoms without Body Part: 16
+Count: 421
+---------------------------------------------------
+Sickness ID: 666a0c2c6cdb714d22f11363
+Total Symptoms: 10
+Symptoms with Body Part: 0
+Symptoms without Body Part: 10
+Count: 422
+---------------------------------------------------
+Sickness ID: 666a0c2c6cdb714d22f1136a
+Total Symptoms: 6
+Symptoms with Body Part: 0
+Symptoms without Body Part: 6
+Count: 423
+---------------------------------------------------
+Sickness ID: 666a0c2c6cdb714d22f11376
+Total Symptoms: 11
+Symptoms with Body Part: 7
+Symptoms without Body Part: 4
+Count: 424
+---------------------------------------------------
+Sickness ID: 666a0c2c6cdb714d22f11384
+Total Symptoms: 13
+Symptoms with Body Part: 0
+Symptoms without Body Part: 13
+Count: 425
+---------------------------------------------------
+Sickness ID: 666a0c2c6cdb714d22f1138b
+Total Symptoms: 6
+Symptoms with Body Part: 0
+Symptoms without Body Part: 6
+Count: 426
+---------------------------------------------------
+Sickness ID: 666a0c2d6cdb714d22f11399
+Total Symptoms: 13
+Symptoms with Body Part: 0
+Symptoms without Body Part: 13
+Count: 427
+---------------------------------------------------
+Sickness ID: 666a0c2d6cdb714d22f1139e
+Total Symptoms: 4
+Symptoms with Body Part: 0
+Symptoms without Body Part: 4
+Count: 428
+---------------------------------------------------
+Sickness ID: 666a0c2d6cdb714d22f113a6
+Total Symptoms: 7
+Symptoms with Body Part: 0
+Symptoms without Body Part: 7
+Count: 429
+---------------------------------------------------
+Sickness ID: 666a0c2d6cdb714d22f113a8
+Total Symptoms: 1
+Symptoms with Body Part: 0
+Symptoms without Body Part: 1
+Count: 430
+---------------------------------------------------
+Sickness ID: 666a0c2d6cdb714d22f113b1
+Total Symptoms: 8
+Symptoms with Body Part: 0
+Symptoms without Body Part: 8
+Count: 431
+---------------------------------------------------
+Sickness ID: 666a0c2d6cdb714d22f113c2
+Total Symptoms: 16
+Symptoms with Body Part: 0
+Symptoms without Body Part: 16
+Count: 432
+---------------------------------------------------
+Sickness ID: 666a0c2d6cdb714d22f113ca
+Total Symptoms: 7
+Symptoms with Body Part: 0
+Symptoms without Body Part: 7
+Count: 433
+---------------------------------------------------
+Sickness ID: 666a0c2d6cdb714d22f113cd
+Total Symptoms: 2
+Symptoms with Body Part: 0
+Symptoms without Body Part: 2
+Count: 434
+---------------------------------------------------
+Sickness ID: 666a0c2d6cdb714d22f113d7
+Total Symptoms: 9
+Symptoms with Body Part: 0
+Symptoms without Body Part: 9
+Count: 435
+---------------------------------------------------
+Sickness ID: 666a0c2d6cdb714d22f114bd
+Total Symptoms: 229
+Symptoms with Body Part: 16
+Symptoms without Body Part: 213
+Count: 436
+---------------------------------------------------
+Sickness ID: 666a0c2d6cdb714d22f114c6
+Total Symptoms: 8
+Symptoms with Body Part: 6
+Symptoms without Body Part: 2
+Count: 437
+---------------------------------------------------
+Sickness ID: 666a0c2d6cdb714d22f114d1
+Total Symptoms: 10
+Symptoms with Body Part: 2
+Symptoms without Body Part: 8
+Count: 438
+---------------------------------------------------
+Sickness ID: 666a0c2d6cdb714d22f114d9
+Total Symptoms: 7
+Symptoms with Body Part: 0
+Symptoms without Body Part: 7
+Count: 439
+---------------------------------------------------
+Sickness ID: 666a0c2d6cdb714d22f114eb
+Total Symptoms: 17
+Symptoms with Body Part: 0
+Symptoms without Body Part: 17
+Count: 440
+---------------------------------------------------
+Sickness ID: 666a0c2d6cdb714d22f114f3
+Total Symptoms: 7
+Symptoms with Body Part: 0
+Symptoms without Body Part: 7
+Count: 441
+---------------------------------------------------
+Sickness ID: 666a0c2d6cdb714d22f11507
+Total Symptoms: 19
+Symptoms with Body Part: 0
+Symptoms without Body Part: 19
+Count: 442
+---------------------------------------------------
+Sickness ID: 666a0c2d6cdb714d22f1151a
+Total Symptoms: 18
+Symptoms with Body Part: 0
+Symptoms without Body Part: 18
+Count: 443
+---------------------------------------------------
+Sickness ID: 666a0c2d6cdb714d22f11530
+Total Symptoms: 21
+Symptoms with Body Part: 2
+Symptoms without Body Part: 19
+Count: 444
+---------------------------------------------------
+Sickness ID: 666a0c2e6cdb714d22f11546
+Total Symptoms: 21
+Symptoms with Body Part: 5
+Symptoms without Body Part: 16
+Count: 445
+---------------------------------------------------
+Sickness ID: 666a0c2e6cdb714d22f11552
+Total Symptoms: 11
+Symptoms with Body Part: 0
+Symptoms without Body Part: 11
+Count: 446
+---------------------------------------------------
+Sickness ID: 666a0c2e6cdb714d22f11558
+Total Symptoms: 5
+Symptoms with Body Part: 0
+Symptoms without Body Part: 5
+Count: 447
+---------------------------------------------------
+Sickness ID: 666a0c2e6cdb714d22f11560
+Total Symptoms: 7
+Symptoms with Body Part: 0
+Symptoms without Body Part: 7
+Count: 448
+---------------------------------------------------
+Sickness ID: 666a0c2e6cdb714d22f11565
+Total Symptoms: 4
+Symptoms with Body Part: 0
+Symptoms without Body Part: 4
+Count: 449
+---------------------------------------------------
+Sickness ID: 666a0c2e6cdb714d22f11582
+Total Symptoms: 28
+Symptoms with Body Part: 0
+Symptoms without Body Part: 28
+Count: 450
+---------------------------------------------------
+Sickness ID: 666a0c2e6cdb714d22f11586
+Total Symptoms: 3
+Symptoms with Body Part: 0
+Symptoms without Body Part: 3
+Count: 451
+---------------------------------------------------
+Sickness ID: 666a0c2e6cdb714d22f11594
+Total Symptoms: 13
+Symptoms with Body Part: 0
+Symptoms without Body Part: 13
+Count: 452
+---------------------------------------------------
+Sickness ID: 666a0c2e6cdb714d22f115a4
+Total Symptoms: 15
+Symptoms with Body Part: 0
+Symptoms without Body Part: 15
+Count: 453
+---------------------------------------------------
+Sickness ID: 666a0c2e6cdb714d22f115ae
+Total Symptoms: 9
+Symptoms with Body Part: 3
+Symptoms without Body Part: 6
+Count: 454
+---------------------------------------------------
+Sickness ID: 666a0c2e6cdb714d22f115b7
+Total Symptoms: 8
+Symptoms with Body Part: 2
+Symptoms without Body Part: 6
+Count: 455
+---------------------------------------------------
+Sickness ID: 666a0c2e6cdb714d22f115d1
+Total Symptoms: 25
+Symptoms with Body Part: 0
+Symptoms without Body Part: 25
+Count: 456
+---------------------------------------------------
+Sickness ID: 666a0c2e6cdb714d22f115d8
+Total Symptoms: 6
+Symptoms with Body Part: 0
+Symptoms without Body Part: 6
+Count: 457
+---------------------------------------------------
+Sickness ID: 666a0c2e6cdb714d22f115de
+Total Symptoms: 5
+Symptoms with Body Part: 0
+Symptoms without Body Part: 5
+Count: 458
+---------------------------------------------------
+Sickness ID: 666a0c2e6cdb714d22f115e7
+Total Symptoms: 8
+Symptoms with Body Part: 0
+Symptoms without Body Part: 8
+Count: 459
+---------------------------------------------------
+Sickness ID: 666a0c2e6cdb714d22f116ba
+Total Symptoms: 210
+Symptoms with Body Part: 15
+Symptoms without Body Part: 195
+Count: 460
+---------------------------------------------------
+Sickness ID: 666a0c2e6cdb714d22f116c7
+Total Symptoms: 12
+Symptoms with Body Part: 0
+Symptoms without Body Part: 12
+Count: 461
+---------------------------------------------------
+Sickness ID: 666a0c2e6cdb714d22f116d3
+Total Symptoms: 11
+Symptoms with Body Part: 0
+Symptoms without Body Part: 11
+Count: 462
+---------------------------------------------------
+Sickness ID: 666a0c2f6cdb714d22f116dd
+Total Symptoms: 9
+Symptoms with Body Part: 0
+Symptoms without Body Part: 9
+Count: 463
+---------------------------------------------------
+Sickness ID: 666a0c2f6cdb714d22f116e9
+Total Symptoms: 11
+Symptoms with Body Part: 0
+Symptoms without Body Part: 11
+Count: 464
+---------------------------------------------------
+Sickness ID: 666a0c2f6cdb714d22f116f3
+Total Symptoms: 9
+Symptoms with Body Part: 0
+Symptoms without Body Part: 9
+Count: 465
+---------------------------------------------------
+Sickness ID: 666a0c2f6cdb714d22f116ff
+Total Symptoms: 11
+Symptoms with Body Part: 0
+Symptoms without Body Part: 11
+Count: 466
+---------------------------------------------------
+Sickness ID: 666a0c2f6cdb714d22f1171c
+Total Symptoms: 28
+Symptoms with Body Part: 0
+Symptoms without Body Part: 28
+Count: 467
+---------------------------------------------------
+Sickness ID: 666a0c2f6cdb714d22f11725
+Total Symptoms: 8
+Symptoms with Body Part: 1
+Symptoms without Body Part: 7
+Count: 468
+---------------------------------------------------
+Sickness ID: 666a0c2f6cdb714d22f11732
+Total Symptoms: 12
+Symptoms with Body Part: 5
+Symptoms without Body Part: 7
+Count: 469
+---------------------------------------------------
+Sickness ID: 666a0c2f6cdb714d22f1173d
+Total Symptoms: 10
+Symptoms with Body Part: 0
+Symptoms without Body Part: 10
+Count: 470
+---------------------------------------------------
+Sickness ID: 666a0c2f6cdb714d22f11743
+Total Symptoms: 5
+Symptoms with Body Part: 0
+Symptoms without Body Part: 5
+Count: 471
+---------------------------------------------------
+Sickness ID: 666a0c2f6cdb714d22f1174e
+Total Symptoms: 10
+Symptoms with Body Part: 0
+Symptoms without Body Part: 10
+Count: 472
+---------------------------------------------------
+Sickness ID: 666a0c2f6cdb714d22f1175a
+Total Symptoms: 11
+Symptoms with Body Part: 0
+Symptoms without Body Part: 11
+Count: 473
+---------------------------------------------------
+Sickness ID: 666a0c2f6cdb714d22f11760
+Total Symptoms: 5
+Symptoms with Body Part: 0
+Symptoms without Body Part: 5
+Count: 474
+---------------------------------------------------
+Sickness ID: 666a0c2f6cdb714d22f11778
+Total Symptoms: 23
+Symptoms with Body Part: 0
+Symptoms without Body Part: 23
+Count: 475
+---------------------------------------------------
+Sickness ID: 666a0c2f6cdb714d22f11789
+Total Symptoms: 16
+Symptoms with Body Part: 0
+Symptoms without Body Part: 16
+Count: 476
+---------------------------------------------------
+Sickness ID: 666a0c2f6cdb714d22f11795
+Total Symptoms: 11
+Symptoms with Body Part: 0
+Symptoms without Body Part: 11
+Count: 477
+---------------------------------------------------
+Sickness ID: 666a0c2f6cdb714d22f117a7
+Total Symptoms: 17
+Symptoms with Body Part: 7
+Symptoms without Body Part: 10
+Count: 478
+---------------------------------------------------
+Sickness ID: 666a0c2f6cdb714d22f117b2
+Total Symptoms: 10
+Symptoms with Body Part: 0
+Symptoms without Body Part: 10
+Count: 479
+---------------------------------------------------
+Sickness ID: 666a0c306cdb714d22f117c1
+Total Symptoms: 14
+Symptoms with Body Part: 0
+Symptoms without Body Part: 14
+Count: 480
+---------------------------------------------------
+Sickness ID: 666a0c306cdb714d22f117cc
+Total Symptoms: 10
+Symptoms with Body Part: 0
+Symptoms without Body Part: 10
+Count: 481
+---------------------------------------------------
+Sickness ID: 666a0c306cdb714d22f117d5
+Total Symptoms: 8
+Symptoms with Body Part: 0
+Symptoms without Body Part: 8
+Count: 482
+---------------------------------------------------
+Sickness ID: 666a0c306cdb714d22f117dd
+Total Symptoms: 7
+Symptoms with Body Part: 0
+Symptoms without Body Part: 7
+Count: 483
+---------------------------------------------------
+Sickness ID: 666a0c306cdb714d22f117e5
+Total Symptoms: 7
+Symptoms with Body Part: 0
+Symptoms without Body Part: 7
+Count: 484
+---------------------------------------------------
+Sickness ID: 666a0c306cdb714d22f117f0
+Total Symptoms: 10
+Symptoms with Body Part: 0
+Symptoms without Body Part: 10
+Count: 485
+---------------------------------------------------
+Sickness ID: 666a0c306cdb714d22f11801
+Total Symptoms: 16
+Symptoms with Body Part: 0
+Symptoms without Body Part: 16
+Count: 486
+---------------------------------------------------
+Sickness ID: 666a0c306cdb714d22f11806
+Total Symptoms: 4
+Symptoms with Body Part: 1
+Symptoms without Body Part: 3
+Count: 487
+---------------------------------------------------
+Sickness ID: 666a0c306cdb714d22f11817
+Total Symptoms: 16
+Symptoms with Body Part: 6
+Symptoms without Body Part: 10
+Count: 488
+---------------------------------------------------
+Sickness ID: 666a0c306cdb714d22f11832
+Total Symptoms: 26
+Symptoms with Body Part: 0
+Symptoms without Body Part: 26
+Count: 489
+---------------------------------------------------
+Sickness ID: 666a0c306cdb714d22f11839
+Total Symptoms: 6
+Symptoms with Body Part: 0
+Symptoms without Body Part: 6
+Count: 490
+---------------------------------------------------
+Sickness ID: 666a0c306cdb714d22f11866
+Total Symptoms: 44
+Symptoms with Body Part: 0
+Symptoms without Body Part: 44
+Count: 491
+---------------------------------------------------
+Sickness ID: 666a0c306cdb714d22f1187b
+Total Symptoms: 20
+Symptoms with Body Part: 0
+Symptoms without Body Part: 20
+Count: 492
+---------------------------------------------------
+Sickness ID: 666a0c306cdb714d22f1188d
+Total Symptoms: 17
+Symptoms with Body Part: 0
+Symptoms without Body Part: 17
+Count: 493
+---------------------------------------------------
+Sickness ID: 666a0c306cdb714d22f11893
+Total Symptoms: 5
+Symptoms with Body Part: 3
+Symptoms without Body Part: 2
+Count: 494
+---------------------------------------------------
+Sickness ID: 666a0c306cdb714d22f11898
+Total Symptoms: 4
+Symptoms with Body Part: 4
+Symptoms without Body Part: 0
+Count: 495
+---------------------------------------------------
+Sickness ID: 666a0c306cdb714d22f118aa
+Total Symptoms: 17
+Symptoms with Body Part: 0
+Symptoms without Body Part: 17
+Count: 496
+---------------------------------------------------
+Sickness ID: 666a0c306cdb714d22f118b2
+Total Symptoms: 7
+Symptoms with Body Part: 0
+Symptoms without Body Part: 7
+Count: 497
+---------------------------------------------------
+Sickness ID: 666a0c316cdb714d22f118b6
+Total Symptoms: 3
+Symptoms with Body Part: 0
+Symptoms without Body Part: 3
+Count: 498
+---------------------------------------------------
+Sickness ID: 666a0c316cdb714d22f118c2
+Total Symptoms: 11
+Symptoms with Body Part: 0
+Symptoms without Body Part: 11
+Count: 499
+---------------------------------------------------
+Sickness ID: 666a0c316cdb714d22f118cb
+Total Symptoms: 8
+Symptoms with Body Part: 0
+Symptoms without Body Part: 8
+Count: 500
+---------------------------------------------------
+Sickness ID: 666a0c316cdb714d22f118de
+Total Symptoms: 18
+Symptoms with Body Part: 0
+Symptoms without Body Part: 18
+Count: 501
+---------------------------------------------------
+Sickness ID: 666a0c316cdb714d22f118e8
+Total Symptoms: 9
+Symptoms with Body Part: 0
+Symptoms without Body Part: 9
+Count: 502
+---------------------------------------------------
+Sickness ID: 666a0c316cdb714d22f118f9
+Total Symptoms: 16
+Symptoms with Body Part: 0
+Symptoms without Body Part: 16
+Count: 503
+---------------------------------------------------
+Sickness ID: 666a0c316cdb714d22f118fc
+Total Symptoms: 2
+Symptoms with Body Part: 0
+Symptoms without Body Part: 2
+Count: 504
+---------------------------------------------------
+Sickness ID: 666a0c316cdb714d22f11908
+Total Symptoms: 11
+Symptoms with Body Part: 4
+Symptoms without Body Part: 7
+Count: 505
+---------------------------------------------------
+Sickness ID: 666a0c316cdb714d22f11919
+Total Symptoms: 16
+Symptoms with Body Part: 4
+Symptoms without Body Part: 12
+Count: 506
+---------------------------------------------------
+Sickness ID: 666a0c316cdb714d22f1192d
+Total Symptoms: 19
+Symptoms with Body Part: 0
+Symptoms without Body Part: 19
+Count: 507
+---------------------------------------------------
+Sickness ID: 666a0c316cdb714d22f1193e
+Total Symptoms: 16
+Symptoms with Body Part: 0
+Symptoms without Body Part: 16
+Count: 508
+---------------------------------------------------
+Sickness ID: 666a0c316cdb714d22f11943
+Total Symptoms: 4
+Symptoms with Body Part: 0
+Symptoms without Body Part: 4
+Count: 509
+---------------------------------------------------
+Sickness ID: 666a0c316cdb714d22f11950
+Total Symptoms: 12
+Symptoms with Body Part: 0
+Symptoms without Body Part: 12
+Count: 510
+---------------------------------------------------
+Sickness ID: 666a0c316cdb714d22f11957
+Total Symptoms: 6
+Symptoms with Body Part: 0
+Symptoms without Body Part: 6
+Count: 511
+---------------------------------------------------
+Sickness ID: 666a0c316cdb714d22f11962
+Total Symptoms: 10
+Symptoms with Body Part: 0
+Symptoms without Body Part: 10
+Count: 512
+---------------------------------------------------
+Sickness ID: 666a0c316cdb714d22f11969
+Total Symptoms: 6
+Symptoms with Body Part: 0
+Symptoms without Body Part: 6
+Count: 513
+---------------------------------------------------
+Sickness ID: 666a0c316cdb714d22f1197c
+Total Symptoms: 18
+Symptoms with Body Part: 3
+Symptoms without Body Part: 15
+Count: 514
+---------------------------------------------------
+Sickness ID: 666a0c326cdb714d22f1198b
+Total Symptoms: 14
+Symptoms with Body Part: 4
+Symptoms without Body Part: 10
+Count: 515
+---------------------------------------------------
+Sickness ID: 666a0c326cdb714d22f11999
+Total Symptoms: 13
+Symptoms with Body Part: 0
+Symptoms without Body Part: 13
+Count: 516
+---------------------------------------------------
+Sickness ID: 666a0c326cdb714d22f119a0
+Total Symptoms: 6
+Symptoms with Body Part: 0
+Symptoms without Body Part: 6
+Count: 517
+---------------------------------------------------
+Sickness ID: 666a0c326cdb714d22f119b0
+Total Symptoms: 15
+Symptoms with Body Part: 0
+Symptoms without Body Part: 15
+Count: 518
+---------------------------------------------------
+Sickness ID: 666a0c326cdb714d22f119c0
+Total Symptoms: 15
+Symptoms with Body Part: 0
+Symptoms without Body Part: 15
+Count: 519
+---------------------------------------------------
+Sickness ID: 666a0c326cdb714d22f119ca
+Total Symptoms: 9
+Symptoms with Body Part: 0
+Symptoms without Body Part: 9
+Count: 520
+---------------------------------------------------
+Sickness ID: 666a0c326cdb714d22f119d9
+Total Symptoms: 14
+Symptoms with Body Part: 0
+Symptoms without Body Part: 14
+Count: 521
+---------------------------------------------------
+Sickness ID: 666a0c326cdb714d22f119dd
+Total Symptoms: 3
+Symptoms with Body Part: 0
+Symptoms without Body Part: 3
+Count: 522
+---------------------------------------------------
+Sickness ID: 666a0c326cdb714d22f119fa
+Total Symptoms: 28
+Symptoms with Body Part: 0
+Symptoms without Body Part: 28
+Count: 523
+---------------------------------------------------
+Sickness ID: 666a0c326cdb714d22f11a01
+Total Symptoms: 6
+Symptoms with Body Part: 0
+Symptoms without Body Part: 6
+Count: 524
+---------------------------------------------------
+Sickness ID: 666a0c326cdb714d22f11a0f
+Total Symptoms: 13
+Symptoms with Body Part: 6
+Symptoms without Body Part: 7
+Count: 525
+---------------------------------------------------
+Sickness ID: 666a0c326cdb714d22f11a17
+Total Symptoms: 7
+Symptoms with Body Part: 0
+Symptoms without Body Part: 7
+Count: 526
+---------------------------------------------------
+Sickness ID: 666a0c326cdb714d22f11a1f
+Total Symptoms: 7
+Symptoms with Body Part: 0
+Symptoms without Body Part: 7
+Count: 527
+---------------------------------------------------
+Sickness ID: 666a0c326cdb714d22f11a26
+Total Symptoms: 6
+Symptoms with Body Part: 0
+Symptoms without Body Part: 6
+Count: 528
+---------------------------------------------------
+Sickness ID: 666a0c326cdb714d22f11a36
+Total Symptoms: 15
+Symptoms with Body Part: 0
+Symptoms without Body Part: 15
+Count: 529
+---------------------------------------------------
+Sickness ID: 666a0c326cdb714d22f11a43
+Total Symptoms: 12
+Symptoms with Body Part: 0
+Symptoms without Body Part: 12
+Count: 530
+---------------------------------------------------
+Sickness ID: 666a0c326cdb714d22f11a4b
+Total Symptoms: 7
+Symptoms with Body Part: 0
+Symptoms without Body Part: 7
+Count: 531
+---------------------------------------------------
+Sickness ID: 666a0c326cdb714d22f11a57
+Total Symptoms: 11
+Symptoms with Body Part: 0
+Symptoms without Body Part: 11
+Count: 532
+---------------------------------------------------
+Sickness ID: 666a0c336cdb714d22f11a5c
+Total Symptoms: 4
+Symptoms with Body Part: 0
+Symptoms without Body Part: 4
+Count: 533
+---------------------------------------------------
+Sickness ID: 666a0c336cdb714d22f11a64
+Total Symptoms: 7
+Symptoms with Body Part: 0
+Symptoms without Body Part: 7
+Count: 534
+---------------------------------------------------
+Sickness ID: 666a0c336cdb714d22f11a6d
+Total Symptoms: 8
+Symptoms with Body Part: 0
+Symptoms without Body Part: 8
+Count: 535
+---------------------------------------------------
+Sickness ID: 666a0c336cdb714d22f11a74
+Total Symptoms: 6
+Symptoms with Body Part: 0
+Symptoms without Body Part: 6
+Count: 536
+---------------------------------------------------
+Sickness ID: 666a0c336cdb714d22f11a87
+Total Symptoms: 18
+Symptoms with Body Part: 0
+Symptoms without Body Part: 18
+Count: 537
+---------------------------------------------------
+Sickness ID: 666a0c336cdb714d22f11a92
+Total Symptoms: 10
+Symptoms with Body Part: 0
+Symptoms without Body Part: 10
+Count: 538
+---------------------------------------------------
+Sickness ID: 666a0c336cdb714d22f11a9b
+Total Symptoms: 8
+Symptoms with Body Part: 0
+Symptoms without Body Part: 8
+Count: 539
+---------------------------------------------------
+Sickness ID: 666a0c336cdb714d22f11aa5
+Total Symptoms: 9
+Symptoms with Body Part: 0
+Symptoms without Body Part: 9
+Count: 540
+---------------------------------------------------
+Sickness ID: 666a0c336cdb714d22f11aaa
+Total Symptoms: 4
+Symptoms with Body Part: 0
+Symptoms without Body Part: 4
+Count: 541
+---------------------------------------------------
+Sickness ID: 666a0c336cdb714d22f11ab0
+Total Symptoms: 5
+Symptoms with Body Part: 0
+Symptoms without Body Part: 5
+Count: 542
+---------------------------------------------------
+Sickness ID: 666a0c336cdb714d22f11ab3
+Total Symptoms: 2
+Symptoms with Body Part: 0
+Symptoms without Body Part: 2
+Count: 543
+---------------------------------------------------
+Sickness ID: 666a0c336cdb714d22f11ab8
+Total Symptoms: 4
+Symptoms with Body Part: 0
+Symptoms without Body Part: 4
+Count: 544
+---------------------------------------------------
+Sickness ID: 666a0c336cdb714d22f11ac3
+Total Symptoms: 10
+Symptoms with Body Part: 0
+Symptoms without Body Part: 10
+Count: 545
+---------------------------------------------------
+Sickness ID: 666a0c336cdb714d22f11ac7
+Total Symptoms: 3
+Symptoms with Body Part: 0
+Symptoms without Body Part: 3
+Count: 546
+---------------------------------------------------
+Sickness ID: 666a0c336cdb714d22f11add
+Total Symptoms: 21
+Symptoms with Body Part: 0
+Symptoms without Body Part: 21
+Count: 547
+---------------------------------------------------
+Sickness ID: 666a0c336cdb714d22f11ae6
+Total Symptoms: 8
+Symptoms with Body Part: 0
+Symptoms without Body Part: 8
+Count: 548
+---------------------------------------------------
+Sickness ID: 666a0c346cdb714d22f11aeb
+Total Symptoms: 4
+Symptoms with Body Part: 0
+Symptoms without Body Part: 4
+Count: 549
+---------------------------------------------------
+Sickness ID: 666a0c346cdb714d22f11b02
+Total Symptoms: 22
+Symptoms with Body Part: 0
+Symptoms without Body Part: 22
+Count: 550
+---------------------------------------------------
+Sickness ID: 666a0c346cdb714d22f11b17
+Total Symptoms: 20
+Symptoms with Body Part: 0
+Symptoms without Body Part: 20
+Count: 551
+---------------------------------------------------
+Sickness ID: 666a0c346cdb714d22f11b1d
+Total Symptoms: 5
+Symptoms with Body Part: 0
+Symptoms without Body Part: 5
+Count: 552
+---------------------------------------------------
+Sickness ID: 666a0c346cdb714d22f11b27
+Total Symptoms: 9
+Symptoms with Body Part: 0
+Symptoms without Body Part: 9
+Count: 553
+---------------------------------------------------
+Sickness ID: 666a0c346cdb714d22f11b38
+Total Symptoms: 16
+Symptoms with Body Part: 0
+Symptoms without Body Part: 16
+Count: 554
+---------------------------------------------------
+Sickness ID: 666a0c346cdb714d22f11b66
+Total Symptoms: 45
+Symptoms with Body Part: 0
+Symptoms without Body Part: 45
+Count: 555
+---------------------------------------------------
+Sickness ID: 666a0c346cdb714d22f11b71
+Total Symptoms: 10
+Symptoms with Body Part: 0
+Symptoms without Body Part: 10
+Count: 556
+---------------------------------------------------
+Sickness ID: 666a0c346cdb714d22f11b77
+Total Symptoms: 5
+Symptoms with Body Part: 0
+Symptoms without Body Part: 5
+Count: 557
+---------------------------------------------------
+Sickness ID: 666a0c346cdb714d22f11b81
+Total Symptoms: 9
+Symptoms with Body Part: 0
+Symptoms without Body Part: 9
+Count: 558
+---------------------------------------------------
+Sickness ID: 666a0c346cdb714d22f11b87
+Total Symptoms: 5
+Symptoms with Body Part: 0
+Symptoms without Body Part: 5
+Count: 559
+---------------------------------------------------
+Sickness ID: 666a0c346cdb714d22f11b8d
+Total Symptoms: 5
+Symptoms with Body Part: 0
+Symptoms without Body Part: 5
+Count: 560
+---------------------------------------------------
+Sickness ID: 666a0c346cdb714d22f11bb9
+Total Symptoms: 43
+Symptoms with Body Part: 0
+Symptoms without Body Part: 43
+Count: 561
+---------------------------------------------------
+Sickness ID: 666a0c346cdb714d22f11bd3
+Total Symptoms: 25
+Symptoms with Body Part: 0
+Symptoms without Body Part: 25
+Count: 562
+---------------------------------------------------
+Sickness ID: 666a0c346cdb714d22f11be2
+Total Symptoms: 14
+Symptoms with Body Part: 0
+Symptoms without Body Part: 14
+Count: 563
+---------------------------------------------------
+Sickness ID: 666a0c356cdb714d22f11bf1
+Total Symptoms: 14
+Symptoms with Body Part: 0
+Symptoms without Body Part: 14
+Count: 564
+---------------------------------------------------
+Sickness ID: 666a0c356cdb714d22f11bfa
+Total Symptoms: 8
+Symptoms with Body Part: 0
+Symptoms without Body Part: 8
+Count: 565
+---------------------------------------------------
+Sickness ID: 666a0c356cdb714d22f11cd3
+Total Symptoms: 216
+Symptoms with Body Part: 0
+Symptoms without Body Part: 216
+Count: 566
+---------------------------------------------------
+Sickness ID: 666a0c356cdb714d22f11ce5
+Total Symptoms: 17
+Symptoms with Body Part: 0
+Symptoms without Body Part: 17
+Count: 567
+---------------------------------------------------
+Sickness ID: 666a0c356cdb714d22f11cf6
+Total Symptoms: 16
+Symptoms with Body Part: 0
+Symptoms without Body Part: 16
+Count: 568
+---------------------------------------------------
+Sickness ID: 666a0c356cdb714d22f11cf9
+Total Symptoms: 2
+Symptoms with Body Part: 0
+Symptoms without Body Part: 2
+Count: 569
+---------------------------------------------------
+Sickness ID: 666a0c356cdb714d22f11cfc
+Total Symptoms: 2
+Symptoms with Body Part: 0
+Symptoms without Body Part: 2
+Count: 570
+---------------------------------------------------
+Sickness ID: 666a0c356cdb714d22f11d06
+Total Symptoms: 9
+Symptoms with Body Part: 0
+Symptoms without Body Part: 9
+Count: 571
+---------------------------------------------------
+Sickness ID: 666a0c356cdb714d22f11d1b
+Total Symptoms: 20
+Symptoms with Body Part: 0
+Symptoms without Body Part: 20
+Count: 572
+---------------------------------------------------
+Sickness ID: 666a0c356cdb714d22f11d27
+Total Symptoms: 11
+Symptoms with Body Part: 0
+Symptoms without Body Part: 11
+Count: 573
+---------------------------------------------------
+Sickness ID: 666a0c356cdb714d22f11d2e
+Total Symptoms: 6
+Symptoms with Body Part: 0
+Symptoms without Body Part: 6
+Count: 574
+---------------------------------------------------
+Sickness ID: 666a0c356cdb714d22f11d38
+Total Symptoms: 9
+Symptoms with Body Part: 0
+Symptoms without Body Part: 9
+Count: 575
+---------------------------------------------------
+Sickness ID: 666a0c356cdb714d22f11d3c
+Total Symptoms: 3
+Symptoms with Body Part: 0
+Symptoms without Body Part: 3
+Count: 576
+---------------------------------------------------
+Sickness ID: 666a0c356cdb714d22f11d46
+Total Symptoms: 9
+Symptoms with Body Part: 0
+Symptoms without Body Part: 9
+Count: 577
+---------------------------------------------------
+Sickness ID: 666a0c356cdb714d22f11d52
+Total Symptoms: 11
+Symptoms with Body Part: 0
+Symptoms without Body Part: 11
+Count: 578
+---------------------------------------------------
+Sickness ID: 666a0c366cdb714d22f11d56
+Total Symptoms: 3
+Symptoms with Body Part: 0
+Symptoms without Body Part: 3
+Count: 579
+---------------------------------------------------
+Sickness ID: 666a0c366cdb714d22f11ddf
+Total Symptoms: 136
+Symptoms with Body Part: 0
+Symptoms without Body Part: 136
+Count: 580
+---------------------------------------------------
+Sickness ID: 666a0c366cdb714d22f11df3
+Total Symptoms: 19
+Symptoms with Body Part: 0
+Symptoms without Body Part: 19
+Count: 581
+---------------------------------------------------
+Sickness ID: 666a0c366cdb714d22f11dfa
+Total Symptoms: 6
+Symptoms with Body Part: 0
+Symptoms without Body Part: 6
+Count: 582
+---------------------------------------------------
+Sickness ID: 666a0c366cdb714d22f11e06
+Total Symptoms: 11
+Symptoms with Body Part: 0
+Symptoms without Body Part: 11
+Count: 583
+---------------------------------------------------
+Sickness ID: 666a0c366cdb714d22f11e14
+Total Symptoms: 13
+Symptoms with Body Part: 0
+Symptoms without Body Part: 13
+Count: 584
+---------------------------------------------------
+Sickness ID: 666a0c366cdb714d22f11e1f
+Total Symptoms: 10
+Symptoms with Body Part: 0
+Symptoms without Body Part: 10
+Count: 585
+---------------------------------------------------
+Sickness ID: 666a0c366cdb714d22f11e2b
+Total Symptoms: 11
+Symptoms with Body Part: 0
+Symptoms without Body Part: 11
+Count: 586
+---------------------------------------------------
+Sickness ID: 666a0c366cdb714d22f11e33
+Total Symptoms: 7
+Symptoms with Body Part: 0
+Symptoms without Body Part: 7
+Count: 587
+---------------------------------------------------
+Sickness ID: 666a0c366cdb714d22f11e36
+Total Symptoms: 2
+Symptoms with Body Part: 0
+Symptoms without Body Part: 2
+Count: 588
+---------------------------------------------------
+Sickness ID: 666a0c366cdb714d22f11e3e
+Total Symptoms: 7
+Symptoms with Body Part: 0
+Symptoms without Body Part: 7
+Count: 589
+---------------------------------------------------
+Sickness ID: 666a0c366cdb714d22f11e48
+Total Symptoms: 9
+Symptoms with Body Part: 0
+Symptoms without Body Part: 9
+Count: 590
+---------------------------------------------------
+Sickness ID: 666a0c366cdb714d22f11e51
+Total Symptoms: 8
+Symptoms with Body Part: 0
+Symptoms without Body Part: 8
+Count: 591
+---------------------------------------------------
+Sickness ID: 666a0c366cdb714d22f11e5d
+Total Symptoms: 11
+Symptoms with Body Part: 0
+Symptoms without Body Part: 11
+Count: 592
+---------------------------------------------------
+Sickness ID: 666a0c366cdb714d22f11e67
+Total Symptoms: 9
+Symptoms with Body Part: 0
+Symptoms without Body Part: 9
+Count: 593
+---------------------------------------------------
+Sickness ID: 666a0c366cdb714d22f11e6e
+Total Symptoms: 6
+Symptoms with Body Part: 0
+Symptoms without Body Part: 6
+Count: 594
+---------------------------------------------------
+Sickness ID: 666a0c366cdb714d22f11e77
+Total Symptoms: 8
+Symptoms with Body Part: 0
+Symptoms without Body Part: 8
+Count: 595
+---------------------------------------------------
+Sickness ID: 666a0c376cdb714d22f11e84
+Total Symptoms: 12
+Symptoms with Body Part: 0
+Symptoms without Body Part: 12
+Count: 596
+---------------------------------------------------
+Sickness ID: 666a0c376cdb714d22f11f41
+Total Symptoms: 188
+Symptoms with Body Part: 0
+Symptoms without Body Part: 188
+Count: 597
+---------------------------------------------------
+Sickness ID: 666a0c376cdb714d22f11fe7
+Total Symptoms: 165
+Symptoms with Body Part: 0
+Symptoms without Body Part: 165
+Count: 598
+---------------------------------------------------
+Sickness ID: 666a0c376cdb714d22f1208a
+Total Symptoms: 162
+Symptoms with Body Part: 0
+Symptoms without Body Part: 162
+Count: 599
+---------------------------------------------------
+Sickness ID: 666a0c376cdb714d22f1212c
+Total Symptoms: 161
+Symptoms with Body Part: 0
+Symptoms without Body Part: 161
+Count: 600
+---------------------------------------------------
+Sickness ID: 666a0c376cdb714d22f12138
+Total Symptoms: 11
+Symptoms with Body Part: 0
+Symptoms without Body Part: 11
+Count: 601
+---------------------------------------------------
+Sickness ID: 666a0c376cdb714d22f121e5
+Total Symptoms: 172
+Symptoms with Body Part: 0
+Symptoms without Body Part: 172
+Count: 602
+---------------------------------------------------
+Sickness ID: 666a0c376cdb714d22f122ac
+Total Symptoms: 198
+Symptoms with Body Part: 0
+Symptoms without Body Part: 198
+Count: 603
+---------------------------------------------------
