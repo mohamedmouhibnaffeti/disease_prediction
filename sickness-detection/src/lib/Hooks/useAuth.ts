@@ -7,7 +7,7 @@ const useAuth = () => {
     const [role, setRole] = useState<string | null>(null)
     const router = useRouter()
     
-    const publicRoutes = ["/symptoms-checker", "/", "/auth/Signup"]
+    const publicRoutes = ["/symptoms-checker", "/", "/auth/Signup", "/auth/Login", "/auth/Login/ForgotPassword", "/auth/Login/ForgotPassword/InsertOTP", "/auth/Login/ForgotPassword/InsertOTP/ChangePassword"]
 
     useEffect(() => {
         const verifyToken = async (token: string): Promise<JwtPayloadType | null> => {

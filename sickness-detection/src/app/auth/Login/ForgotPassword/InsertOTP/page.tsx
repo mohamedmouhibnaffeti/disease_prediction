@@ -31,6 +31,7 @@ export default function InsertOTP() {
         }
         setRequestLoading(false)
     }
+    console.log(forgotpassworddata.otp)
     return(
         <div className="w-full flex justify-center items-center h-screen px-8 py-4">
             <div className="w-[32rem] px-8 py-4 rounded-md border border-sickness-border bg-white flex flex-col gap-4 items-center">
@@ -38,7 +39,7 @@ export default function InsertOTP() {
                 {/*    
                       <p className="text-sickness-gray font-medium md:text-xsm text-sm"> <span className="text-sickness-primaryText font-semibold"> {60} seconds </span> until verification code expires. </p>    
                 */}
-                <VerificationInput value={forgotpassworddata.otp} onChange={e=>{ dispatch(setForgotPasswordData({ name: 'otp', value: e })); setErrorMsg("") }} />
+                <VerificationInput value={forgotpassworddata.otp} onChange={e=>{dispatch(setForgotPasswordData({ name: 'otp', value: e })); setErrorMsg("") }} />
                 <button className={`mt-4 w-full rounded-md text-white ${requestLoading ? "bg-sickness-primary/70" : "bg-sickness-primary hover:bg-sickness-primaryText/70 active:bg-sickness-primaryText"} transition delay-75 duration-100 md:h-12 h-10 font-semibold flex justify-center items-center gap-1 md:text-md text-sm`} disabled={requestLoading} onClick={SendOTP}> Send verification code { requestLoading ? <SmallWhiteLoader /> : <ChevronRight /> } </button>
                 <p className="text-sm text-red-500 break-words text-center self-center"> {errorMsg} </p>
             </div>
