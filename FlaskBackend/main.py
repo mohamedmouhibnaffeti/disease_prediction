@@ -2,21 +2,24 @@ import csv
 import ctypes
 import os
 import threading
-import pandas as pd
-from Scraper.scrapers.mayoclinic import MayoClinicScraper
+#import pandas as pd
+#from Scraper.scrapers.mayoclinic import MayoClinicScraper
 from Scraper import settings
-from llamaModel.Predict import predict_disease_llama
+#from llamaModel.Predict import predict_disease_llama
 from machineLearningModel.DataNormalization import *
-from machineLearningModel.Model.predictor import predict_disease
+#from machineLearningModel.Model.predictor import predict_disease
 from pymongo import MongoClient
 from bson import json_util
-from machineLearningModel.Model.predict import predict_top_sickness
-
-
-from flask import Flask, request, jsonify, send_file
+#from machineLearningModel.Model.predict import predict_top_sickness
+import importlib
+import threading
+import ctypes
+import csv
+from flask import Flask, jsonify, request, send_file
 from flask_cors import CORS
 from flask_socketio import SocketIO
-import importlib
+
+running = False
 
 
 def kill_thread(thread):
@@ -41,7 +44,7 @@ def kill_thread(thread):
 def scrape_selected_websites(selected_websites):
     for scraper_info in settings.python_files:
         if scraper_info['file name'] in selected_websites:
-            module = importlib.import_module(f"scrapers.{scraper_info['file name']}")
+            module = importlib.import_module(f"Scraper.scrapers.{scraper_info['file name']}")
             scraper_class = getattr(module, scraper_info['class name'])
             scraper_instance = scraper_class(socketio)
             scrape_function = getattr(scraper_instance, scraper_info['function name'])
@@ -62,7 +65,7 @@ def find_file_or_class(file_name, class_name, python_files):
 def write_csv_header():
     with open("data.csv", mode='w', newline='') as csv_file:
         writer = csv.writer(csv_file)
-        writer.writerow(["Desias", "Symptoms"])
+        writer.writerow(["SicknessName", "Symptoms"])
 
 
 
@@ -82,10 +85,6 @@ cors = CORS(app)
 socketio = SocketIO(app, cors_allowed_origins="*")
 
 #scraper code
-
-totaldata=0
-MayoClinic = MayoClinicScraper(socketio)
-
 
 @app.route('/api/running-status', methods=['GET'])
 def get_running_status():
@@ -117,7 +116,7 @@ def start_collecting():
     running = False
 
     documentation_path = 'data.csv'
-    return send_file(documentation_path, as_attachment=True)
+    return 
 
 
 
@@ -147,7 +146,7 @@ def get_data():
     return jsonify({"sickness": data_list})
 
 #predict endpoint
-@app.route('/predict', methods=['POST'])
+"""@app.route('/predict', methods=['POST'])
 def predict():
     symptoms = request.json.get('symptoms')
     if not symptoms:
@@ -157,7 +156,7 @@ def predict():
     predicted_disease = predict_disease_llama(symptomsString)
     
     return jsonify({"predicted_disease": predicted_disease}), 200
-
+"""
 #preprocess csv file endpoint
 @app.route('/api/preprocess', methods=['POST'])
 def preprocess():

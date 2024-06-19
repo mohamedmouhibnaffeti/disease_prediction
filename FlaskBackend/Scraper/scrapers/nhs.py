@@ -1,3 +1,4 @@
+import csv
 import json
 import requests
 from bs4 import BeautifulSoup
@@ -9,6 +10,12 @@ class NHSScraper:
 
     def __init__(self, socketio):
         self.socketio = socketio
+
+
+    def write_csv_data(self, data):
+        with open("data.csv", mode='a', newline='') as csv_file:
+            writer = csv.writer(csv_file)
+            writer.writerows([data])
 
     def extract(self, url):
         response = requests.get(url)
@@ -26,11 +33,8 @@ class NHSScraper:
                     text_elements = section.find_all('li')
                     symptoms = [element.get_text(strip=True) for element in text_elements]
                     if symptoms:
-                        data={'name': name, 'symptoms': symptoms}
-                        self.socketio.emit('new_data', {'deseas': data})
-                        with open("C:/Users/mouss/OneDrive/Bureau/PFE/disease_prediction/Scraper/test/datawith.json",
-                                  'a') as json_file:
-                            json.dump({'name': name, 'url': url, 'symptoms': symptoms}, json_file, indent=4)
+                        self.write_csv_data([name, symptoms])
+                        self.socketio.emit('newdata', {"name" : name, "symptoms": symptoms})
                     sleep(3)
 
     def main_nhs(self):

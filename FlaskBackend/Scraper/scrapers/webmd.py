@@ -1,4 +1,6 @@
+import csv
 import json
+from time import sleep
 import requests
 from bs4 import BeautifulSoup
 
@@ -10,6 +12,12 @@ class WebMDScraper:
 
     def __init__(self, socketio):
         self.socketio = socketio
+
+    def write_csv_data(self, data):
+        with open("data.csv", mode='a', newline='') as csv_file:
+            writer = csv.writer(csv_file)
+            writer.writerows([data])  # Writing a list containing the data
+
 
     def extract_symptoms(self, url):
         response = requests.get(url, headers=self.HEADERS)
@@ -32,12 +40,11 @@ class WebMDScraper:
             symptoms = self.extract_symptoms(link)
             data = {'name': name, 'url': link, 'symptoms': symptoms}
             if symptoms:
-                self.socketio.emit('new_data', {'deseas': data})
-                with open("C:/Users/mouss/OneDrive/Bureau/PFE/disease_prediction/Scraper/test/datawith.json", 'a') as json_file:
-                    json.dump(data, json_file, indent=4)
-                    json_file.write('\n')
+                    self.write_csv_data([name, symptoms])
+                    self.socketio.emit('newdata', {"name" : name, "symptoms": symptoms})
 
     def main_webmd(self):
+        print("Starting WebMDScraper")
         response = requests.get(self.BASE_URL, headers=self.HEADERS)
         soup = BeautifulSoup(response.content, 'lxml')
         link_tags = soup.find('nav', class_='letter-nav').find('ul').find_all('a')

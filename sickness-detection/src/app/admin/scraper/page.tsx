@@ -76,7 +76,7 @@ const Page: React.FC = () => {
   }
   useLayoutEffect(()=>{
   }, [])
-  const [isScraping, setIsScraping] = useState<boolean>(true);
+  const [isScraping, setIsScraping] = useState<boolean>(false);
   const [url, setUrl] = useState<string | undefined>();
   const [newData, setNewData] = useState<DataProps[]>([]);
   const [totalNewData, setTotalNewData] = useState<number>(0);

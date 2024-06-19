@@ -1,12 +1,19 @@
-import json
+import csv
 import requests
 from bs4 import BeautifulSoup
-
+import time
 class NHSInformScraper:
     START_URL = "https://www.nhsinform.scot/symptoms-and-self-help/a-to-z/"
 
     def __init__(self, socketio):
         self.socketio = socketio
+
+
+    def write_csv_data(self, data):
+        with open("data.csv", mode='a', newline='') as csv_file:
+            writer = csv.writer(csv_file)
+            writer.writerows([data])
+    
 
     def extract_symptoms(self, html_text):
         response = requests.get(html_text)
@@ -27,16 +34,12 @@ class NHSInformScraper:
         response = requests.get(self.START_URL)
         soup = BeautifulSoup(response.content, "html.parser")
         divs = soup.find_all('div', class_='az_list_indivisual')
-
         for div in divs:
             links = div.find_all('a')
             for link in links:
                 name = link.get_text(strip=True)
                 url = link.get('href')
                 symptoms = self.extract_symptoms(url)
-                data = {'name': name, 'url': url, 'symptoms': symptoms}
                 if symptoms:
-                    self.socketio.emit('new_data', {'deseas': data})
-                    with open("C:/Users/mouss/OneDrive/Bureau/PFE/disease_prediction/Scraper/test/datawith.json", 'a') as json_file:
-                        json.dump(data, json_file, indent=4)
-                        json_file.write('\n')
+                    self.write_csv_data([name, symptoms])
+                    self.socketio.emit('newdata', {"name" : name, "symptoms": symptoms})

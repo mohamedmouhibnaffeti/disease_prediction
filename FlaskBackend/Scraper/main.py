@@ -79,7 +79,7 @@ def start_collecting():
     running = True
     global_thread = threading.Thread(target=MayoClinic.main_MayoClinicScraper)
     global_thread.start()
-    return jsonify('scraper completed !')
+    return 
 
 
 
