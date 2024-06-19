@@ -243,13 +243,13 @@ const Page: React.FC = () => {
                               </div>
 
                               {/* New Data Section */}
-                              <div className="w-full lg:w-2/3 p-4 border border-black sm:mr-2 bg-white">
+                              <div className="w-full lg:w-2/3 p-4 border border-black sm:mr-2 bg-white overflow-y-auto max-h-screen">
                                 <div className="flex flex-row h-10 mr-4">
                                   <div className="w-1/4 border-2 border-black flex justify-center items-center">#</div>
                                   <div className="w-1/4 border-2 border-black flex justify-center items-center">Sickness Name</div>
                                   <div className="w-1/2 border-2 border-black flex justify-center items-center">Symptoms</div>
                                 </div>
-                                <div className="h-[95%] overflow-y-scroll">
+                                <div className="max-h-[95%] overflow-y-scroll">
                                   {newData.map((data, index) => (
                                     <div key={index} className="flex flex-row">
                                       <div className="w-1/4 border border-black flex justify-center items-center">{index + 1}</div>
